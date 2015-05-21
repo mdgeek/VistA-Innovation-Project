@@ -1,0 +1,30 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window title="Manage Chief Complaint Pick Lists" width="400px"
+		apply="${rpmsManageCCPickListsController}">
+		<vlayout>
+			<hlayout hflex="1">
+				<radiogroup id="rgComplaints">
+					<space spacing="5px" />
+					<radio label="Symptoms" selected="true" forward="onClick=parent.onClick"/>
+					<space spacing="10px" />
+					<radio label="Diagnosis" forward="onClick=parent.onClick"/>
+					<space spacing="10px" />
+					<radio label="Patient Request" forward="onClick=parent.onClick"/>
+				</radiogroup>
+			</hlayout>
+			<hlayout hflex="1">
+				<listbox id="lstItems" width="300px" rows="12"/>
+				<toolbar mold="panel" orient="vertical" hflex="1"
+					vflex="1" style="border-left: solid 0px; padding-left: 15px">
+					<button id="btnAdd" label="Add" width="60px" />
+					<separator height="5px" />
+					<button id="btnDelete" label="Delete" width="60px" />
+				</toolbar>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

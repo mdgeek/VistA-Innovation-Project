@@ -1,0 +1,101 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window title="Chief Complaint" width="640px"
+		apply="${rpmsAddChiefComplaintController}" mold="bootstrap">
+		<vlayout vflex="1">
+			<hlayout hflex="1">
+				<textbox id="txtComplaint" hflex="7" height="150px"
+					multiline="true" xmlns:w="client">
+					<attribute w:name="onKeyPress">
+						<![CDATA[ var keyCode = event.which; if (keyCode
+						== 94 || keyCode < 32 || keyCode >126)
+						event.stop(); ]]>
+					</attribute>
+				</textbox>
+				<toolbar mold="panel" orient="vertical" hflex="1"
+					vflex="1" style="border-left: solid 0px; padding-left: 15px">
+					<button id="btnSave" label="Save" width="60px" />
+					<separator height="5px" />
+					<button id="btnCancel" label="Cancel" width="60px" />
+				</toolbar>
+			</hlayout>
+			<hlayout vflex="1" hflex="1">
+				<div vflex="1" hflex="5" 
+					sclass="cwf-radio-list">
+					<radiogroup id="rgWords" orient="vertical">
+						<div id="divRadio" width="100%" height="100%"
+							style="border: 1px solid lightgray; 
+									overflow: auto; -webkit-column-count: 3;
+									-moz-column-count: 3;
+									column-count: 3">
+							<!-- Radio buttons are inserted here. -->
+						</div>
+					</radiogroup>
+				</div>
+
+              <div id="divRGRight">
+                <groupbox id="gbSeverity" vflex="1"
+                          closable="false" mold="3d" style="padding:0px">
+                  <caption label="Severity" />
+                  <radiogroup id="rgSeverity"
+                              orient="vertical">
+                    <radio label="Minor" />
+                    <radio label="Moderate" />
+                    <radio label="Severe" />
+                  </radiogroup>
+                </groupbox>
+                <groupbox id="gbLocation" closable="false"
+                          vflex="min" mold="3d">
+                  <caption label="* Location" />
+                  <radiogroup id="rgLocation"
+                              orient="vertical">
+                    <radio label="Right" />
+                    <radio label="Left" />
+                    <radio label="Both" />
+                  </radiogroup>
+                  <combobox id="cbOther" width="76px" />
+                  <separator height="5px" />
+                </groupbox>
+              </div>
+				<groupbox id="gbDuration" hflex="1" vflex="1"
+					closable="false" mold="3d">
+					<caption label="Duration" />
+					<vlayout>
+						<spinner id="spnDuration" width="60px"
+							constraint="min 0 max 72" />
+						<radiogroup id="rgDuration" orient="vertical">
+							<radio label="Hours" />
+							<radio label="Days" selected="true" />
+							<radio label="Weeks" />
+							<radio label="Months" />
+							<radio label="Years" />
+						</radiogroup>
+					</vlayout>
+				</groupbox>
+			</hlayout>
+			<hlayout>
+				<radiogroup id="rgComplaints">
+					<space width="5px" />
+					<radio label="Symptoms" selected="true" />
+					<space width="10px" />
+					<radio label="Diagnosis" />
+					<space width="10px" />
+					<radio label="Patient Request" />
+				</radiogroup>
+				<space spacing="60px" />
+				<toolbar mold="panel" hflex="1">
+					<span style="float:left">
+						<button id="btnClear" label="Clear" />
+					</span>
+					<span style="float:right">
+						<button id="btnAppend" label="Append" />
+					</span>
+				</toolbar>
+			</hlayout>
+		</vlayout>
+	</window>
+</zk>

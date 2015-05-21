@@ -1,0 +1,43 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window id="addSymWin" title="Add Symptom" width="310px"
+		apply="${rpmsAddCCPLSymptomController}">
+		<vlayout>
+			<hlayout hflex="1">
+				<div>
+					<separator height="8px" />
+					<div
+						style="text-align: center; display:inline:inline-block">
+						<label id="lbl" pre="true" />
+						<zscript>
+							lbl.setValue("Chief\nComplaint");
+						</zscript>
+					</div>
+				</div>
+				<div>
+					<separator height="20px" />
+					<textbox id="txtValue" maxlength="30" width="150px">
+					<attribute w:name="onKeyPress"><![CDATA[
+						   var keyCode = event.which;
+						   if (keyCode == 94 || keyCode < 32 || keyCode >126)
+							   event.stop();					   
+					 ]]>
+					 </attribute>
+					 </textbox>
+				</div>
+				<toolbar mold="panel" orient="vertical" hflex="1"
+					vflex="1" style="border-left: solid 1px; padding-left: 15px">
+					<button id="btnAdd" label="Add" width="60px" />
+					<separator height="5px" />
+					<button id="btnCancel" label="Cancel" width="60px"
+						forward="onClick=onClose" />
+				</toolbar>
+			</hlayout>
+			<checkbox id="ckBody"
+				label="   Body Location applicable to the symptom?" />
+		</vlayout>
+	</window>
+</zk>
