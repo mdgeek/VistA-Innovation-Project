@@ -7,14 +7,13 @@
  * Disclaimer of Warranty and Limitation of Liability available at
  * http://www.carewebframework.org/licensing/disclaimer.
  */
-package org.carewebframework.vista.ui.patientgoals;
+package org.carewebframework.vista.ui.patientgoals.model;
 
-import org.carewebframework.shell.plugins.PluginController;
 
 /**
- * Controller for patient goals plugin.
+ * Model object for a patient goal.
  */
-public class MainController extends PluginController {
+public class Goal {
     
     private static final long serialVersionUID = 1L;
     
