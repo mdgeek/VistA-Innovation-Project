@@ -17,20 +17,21 @@
 				<cwp:help-resource module="vistaPatientGoalsHelp" />
 			</cwp:resource>
 		</cwp:plugin>
+	
+	</beans>
 
 	<beans profile="desktop">
 
-		<bean id="vistaPatientGoalsService"
+		<bean id="vistaPatientGoalsService" scope="prototype"
 			class="org.carewebframework.vista.ui.patientgoals.service.GoalService">
 			<constructor-arg ref="brokerSession" />
 		</bean>
-	</beans>
 
-		<bean id="vistaPatientGoalsMainController"
-			class="org.carewebframework.vista.ui.patientgoals.controller.MainController" scope="prototype" />
+		<bean id="vistaPatientGoalsMainController" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.controller.MainController" />
 
-		<bean id="vistaPatientGoalsGoalsController"
-			class="org.carewebframework.vista.ui.patientgoals.controller.GoalsController" scope="prototype" />
+		<bean id="vistaPatientGoalsGoalsController" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.controller.GoalsController" />
 
 	</beans>
 

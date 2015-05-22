@@ -24,7 +24,7 @@ public class GoalsController extends AbstractListController<Goal> {
     private static final long serialVersionUID = 1L;
     
     public GoalsController(GoalService service) {
-        super(service, "vistaPatientGoals", "BGOPG", null);
+        super(service, "vistaPatientGoals", "BEHOPG", null);
         setPaging(false);
     }
     
