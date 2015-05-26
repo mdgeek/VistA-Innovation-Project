@@ -18,7 +18,6 @@ import org.carewebframework.common.StrUtil;
 import org.carewebframework.rpms.api.common.Params;
 import org.carewebframework.rpms.ui.common.BgoBaseController;
 import org.carewebframework.rpms.ui.common.PCC;
-import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.PopupDialog;
 import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.vista.api.encounter.EncounterFlag;
@@ -32,14 +31,10 @@ import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Groupbox;
-import org.zkoss.zul.Hlayout;
-import org.zkoss.zul.Label;
-import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
 import org.zkoss.zul.Spinner;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Window;
 
 public class AddComplaintController extends BgoBaseController<Object> {
     
@@ -49,19 +44,11 @@ public class AddComplaintController extends BgoBaseController<Object> {
     
     private Button btnSave;
     
-    private Button btnCancel;
-    
     private Button btnClear;
     
     private Button btnAppend;
     
     private Textbox txtComplaint;
-    
-    private Label lblWord;
-    
-    private Listbox lbItems;
-    
-    private Hlayout folb;
     
     private Groupbox gbSeverity;
     
@@ -80,8 +67,6 @@ public class AddComplaintController extends BgoBaseController<Object> {
     private Radiogroup rgWords;
     
     private Combobox cbOther;
-    
-    private Window winMain;
     
     private ChiefComplaint complaint;
     
@@ -114,8 +99,7 @@ public class AddComplaintController extends BgoBaseController<Object> {
     
     public static void execute(ChiefComplaint complaint) {
         Params params = new Params(complaint);
-        Window dlg = PopupDialog.popup(DIALOG, params, true, false, true);
-        AddComplaintController controller = (AddComplaintController) FrameworkController.getController(dlg);
+        PopupDialog.popup(DIALOG, params, true, false, true);
         return;
     }
     
@@ -313,7 +297,6 @@ public class AddComplaintController extends BgoBaseController<Object> {
         }
         
         if (!spnDuration.getText().isEmpty()) {
-            String u = "";
             String dlabel = rgDuration.getSelectedItem().getLabel();
             Integer dur = spnDuration.getValue();
             s = s + " for " + dur.toString();

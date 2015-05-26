@@ -14,12 +14,10 @@ import static org.carewebframework.common.StrUtil.U;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
 
 import ca.uhn.fhir.model.dstu2.resource.Encounter;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.event.EventManager;
@@ -28,7 +26,6 @@ import org.carewebframework.api.event.IEventManager;
 import org.carewebframework.api.event.IGenericEvent;
 import org.carewebframework.cal.api.encounter.EncounterContext;
 import org.carewebframework.cal.api.encounter.EncounterContext.IEncounterContextEvent;
-import org.carewebframework.cal.api.encounter.EncounterUtil;
 import org.carewebframework.cal.api.patient.PatientContext;
 import org.carewebframework.cal.api.patient.PatientContext.IPatientContextEvent;
 import org.carewebframework.common.StrUtil;
@@ -43,6 +40,8 @@ import org.carewebframework.ui.zk.ListUtil;
 import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ReportBox;
 import org.carewebframework.ui.zk.RowComparator;
+import org.carewebframework.vista.api.encounter.EncounterFlag;
+import org.carewebframework.vista.ui.encounter.EncounterUtil;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCCompleteEvent;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCErrorEvent;
 
@@ -60,13 +59,14 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     private static final long serialVersionUID = 1L;
     
-    private static final Log log = LogFactory.getLog(MainController.class);
-    
     private static final ChiefComplaintRenderer chiefRenderer = new ChiefComplaintRenderer();
     
     private static enum Command {
         ADD, EDIT, DELETE, MANAGE, REFRESH
     }
+    
+    private final static Set<EncounterFlag> EF1 = EncounterFlag.flags(EncounterFlag.NOT_LOCKED, EncounterFlag.VALIDATE_ONLY,
+        EncounterFlag.FORCE);
     
     private Image imgMain;
     
@@ -88,11 +88,13 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     private Menuitem mnuManagePickList;
     
-    private Menuitem mnuRefresh;
+    private String pccEvent = "";
     
-    private String pccEvent;
+    private String visitEvent = "";
     
-    private String visitEvent;
+    private Long patientIEN;
+    
+    private Long visitIEN;
     
     private boolean allowAsync;
     
@@ -108,9 +110,13 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     private Object selectedItem;
     
+    private Patient patient;
+    
     private Encounter encounter;
     
     private boolean g_bCAC;
+    
+    private boolean g_bInitialized;
     
     @Override
     public void onAsyncRPCComplete(AsyncRPCCompleteEvent event) {
@@ -119,7 +125,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     @Override
     public void onAsyncRPCError(AsyncRPCErrorEvent event) {
-        //TODO: 
+        //TODO:
     }
     
     private final IPatientContextEvent patientContextEventHandler = new IPatientContextEvent() {
@@ -131,20 +137,10 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         
         @Override
         public void committed() {
-            IEventManager eventManager = EventManager.getInstance();
             
-            if (pccEvent != null) {
-                eventManager.unsubscribe(pccEvent, genericEventHandler);
+            if (g_bInitialized) {
+                updateSubscriptions();
             }
-            
-            Patient patient = PatientContext.getActivePatient();
-            pccEvent = patient == null ? null : "PCC." + patient.getId().getIdPart() + ".VST";
-            
-            if (pccEvent != null) {
-                eventManager.subscribe(pccEvent, genericEventHandler);
-            }
-            
-            updateControls();
         }
         
         @Override
@@ -162,20 +158,9 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         
         @Override
         public void committed() {
-            IEventManager eventManager = EventManager.getInstance();
-            
-            if (visitEvent != null) {
-                eventManager.unsubscribe(visitEvent, genericEventHandler);
+            if (g_bInitialized) {
+                updateSubscriptions();
             }
-            
-            encounter = EncounterContext.getActiveEncounter();
-            visitEvent = encounter == null ? null : "VISIT." + encounter.getId().getIdPart() + ".NT";
-            
-            if (visitEvent != null) {
-                eventManager.subscribe(visitEvent, genericEventHandler);
-            }
-            updateControls();
-            loadChiefComplaints(false);
         }
         
         @Override
@@ -187,9 +172,11 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         
         @Override
         public void eventCallback(String eventName, Object eventData) {
-            if (eventName.equals(pccEvent) || eventName.equals(visitEvent) || (eventName.startsWith("REFRESH"))) {
-                refresh();
+            
+            if (eventName.startsWith("PCC.") && visitIEN != encounter.getId().getIdPartAsLong()) {
+                updateSubscriptions();
             }
+            refresh();
         }
     };
     
@@ -205,7 +192,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     /**
      * Sets the asynchronous property.
      * 
-     * @param value The asynchronous setting.
+     * @param allowAsync The asynchronous setting.
      */
     public void setAllowAsync(boolean allowAsync) {
         this.allowAsync = allowAsync;
@@ -223,7 +210,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     /**
      * Sets the hide plugin icon property.
      * 
-     * @param value The hide icon setting.
+     * @param hideIcon The hide icon setting.
      */
     public void setHideIcon(boolean hideIcon) {
         this.hideIcon = hideIcon;
@@ -242,7 +229,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     /**
      * Sets the hide buttons property.
      * 
-     * @param value The hide buttons setting.
+     * @param hideButtons The hide buttons setting.
      */
     public void setHideButtons(boolean hideButtons) {
         this.hideButtons = hideButtons;
@@ -261,6 +248,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         //g_bCAC = SecurityUtil.isGranted("BGOZ CAC");
         String s = getBroker().callRPC("BGOUTL CHKSEC", "BGOZ CAC");
         g_bCAC = StrUtil.toBoolean(StrUtil.extractIntPrefix(s));
+        g_bInitialized = true;
         
         lbCC.setItemRenderer(chiefRenderer);
         
@@ -270,15 +258,15 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         patientContextEventHandler.committed();
         CommandUtil.associateCommand("REFRESH", lbCC);
         getEventManager().subscribe("REFRESH", genericEventHandler);
+        updateControls();
     }
     
     protected void updateControls() {
         ChiefComplaint complaint = getSelectedCComplaint();
-        encounter = EncounterContext.getActiveEncounter();
         boolean b = (!EncounterUtil.isPrepared(encounter) || !BgoUtil.checkSecurity(true));
         boolean e = encounter == null ? true : EncounterUtil.isLocked(encounter);
         
-        btnAdd.setDisabled(b);
+        btnAdd.setDisabled(b || e);
         btnEdit.setDisabled(e || (!checkAuthor()));
         btnDelete.setDisabled(btnEdit.isDisabled());
         
@@ -289,7 +277,57 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         mnuVisitDetail.setDisabled(complaint == null);
         
         mnuManagePickList.setVisible(g_bCAC);
-        
+    }
+    
+    protected void updateSubscriptions() {
+        IEventManager eventManager = EventManager.getInstance();
+        encounter = EncounterContext.getActiveEncounter();
+        patient = PatientContext.getActivePatient();
+        if (patient != null) {
+            
+            String sHandle = encounter == null ? "" : encounter.getId().getIdPart();
+            Long eHandle = (sHandle == null || sHandle.isEmpty()) ? 0 : encounter.getId().getIdPartAsLong();
+            Long pHandle = patient == null ? 0 : patient.getId().getIdPartAsLong();
+            
+            if (visitIEN != eHandle) {
+                
+                visitIEN = eHandle;
+                
+                if (visitEvent != null && !visitEvent.isEmpty()) {
+                    eventManager.unsubscribe(visitEvent, genericEventHandler);
+                }
+                
+                if (visitIEN == 0) {
+                    visitEvent = "";
+                } else {
+                    visitEvent = "VISIT." + visitIEN + ".NT";
+                }
+                
+                if (!visitEvent.isEmpty()) {
+                    eventManager.subscribe(visitEvent, genericEventHandler);
+                }
+            }
+            
+            if (patientIEN != pHandle) {
+                
+                patientIEN = pHandle;
+                
+                if (pccEvent != null && !pccEvent.isEmpty()) {
+                    eventManager.unsubscribe(pccEvent, genericEventHandler);
+                }
+                
+                if (patientIEN == 0) {
+                    pccEvent = "";
+                } else {
+                    pccEvent = "PCC." + patientIEN + ".VST";
+                }
+                
+                if (!pccEvent.isEmpty()) {
+                    eventManager.subscribe(pccEvent, genericEventHandler);
+                }
+            }
+        }
+        refresh();
     }
     
     private boolean checkAuthor() {
@@ -344,6 +382,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
             loadChiefComplaints(true);
             restoreGridState();
         }
+        updateControls();
     }
     
     private void refreshList() {
@@ -466,7 +505,12 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     }
     
     private void addComplaint() {
-        AddComplaintController.execute(null);
+        if (!EncounterUtil.ensureEncounter(EF1)) {
+            PromptDialog.showError("Cannot add the chief complaint because an active visit has not been selected.",
+                BgoConstants.TC_NO_ACTIVE_VISIT);
+        } else {
+            AddComplaintController.execute(null);
+        }
     }
     
     private void editComplaint() {

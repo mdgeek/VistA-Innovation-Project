@@ -11,9 +11,11 @@
 				<textbox id="txtComplaint" hflex="7" height="150px"
 					multiline="true" xmlns:w="client">
 					<attribute w:name="onKeyPress">
-						<![CDATA[ var keyCode = event.which; if (keyCode
-						== 94 || keyCode < 32 || keyCode >126)
-						event.stop(); ]]>
+						<![CDATA[ 
+							var keyCode = event.which; 
+							if (keyCode == 94 || keyCode < 32 || keyCode >126)
+								event.stop(); 
+						]]>
 					</attribute>
 				</textbox>
 				<toolbar mold="panel" orient="vertical" hflex="1"
@@ -24,8 +26,7 @@
 				</toolbar>
 			</hlayout>
 			<hlayout vflex="1" hflex="1">
-				<div vflex="1" hflex="5" 
-					sclass="cwf-radio-list">
+				<div vflex="1" hflex="5" sclass="cwf-radio-list">
 					<radiogroup id="rgWords" orient="vertical">
 						<div id="divRadio" width="100%" height="100%"
 							style="border: 1px solid lightgray; 
@@ -36,31 +37,28 @@
 						</div>
 					</radiogroup>
 				</div>
-
-              <div id="divRGRight">
-                <groupbox id="gbSeverity" vflex="1"
-                          closable="false" mold="3d" style="padding:0px">
-                  <caption label="Severity" />
-                  <radiogroup id="rgSeverity"
-                              orient="vertical">
-                    <radio label="Minor" />
-                    <radio label="Moderate" />
-                    <radio label="Severe" />
-                  </radiogroup>
-                </groupbox>
-                <groupbox id="gbLocation" closable="false"
-                          vflex="min" mold="3d">
-                  <caption label="* Location" />
-                  <radiogroup id="rgLocation"
-                              orient="vertical">
-                    <radio label="Right" />
-                    <radio label="Left" />
-                    <radio label="Both" />
-                  </radiogroup>
-                  <combobox id="cbOther" width="76px" />
-                  <separator height="5px" />
-                </groupbox>
-              </div>
+				<div id="divRGRight">
+					<groupbox id="gbSeverity" vflex="1" closable="false"
+						mold="3d" style="padding:0px">
+						<caption label="Severity" />
+						<radiogroup id="rgSeverity" orient="vertical">
+							<radio label="Minor" />
+							<radio label="Moderate" />
+							<radio label="Severe" />
+						</radiogroup>
+					</groupbox>
+					<groupbox id="gbLocation" closable="false"
+						vflex="min" mold="3d">
+						<caption label="* Location" />
+						<radiogroup id="rgLocation" orient="vertical">
+							<radio label="Right" />
+							<radio label="Left" />
+							<radio label="Both" />
+						</radiogroup>
+						<combobox id="cbOther" width="76px" />
+						<separator height="5px" />
+					</groupbox>
+				</div>
 				<groupbox id="gbDuration" hflex="1" vflex="1"
 					closable="false" mold="3d">
 					<caption label="Duration" />
