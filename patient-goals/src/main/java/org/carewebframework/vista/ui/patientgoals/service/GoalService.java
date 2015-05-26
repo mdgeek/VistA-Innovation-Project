@@ -13,116 +13,144 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.carewebframework.cal.api.query.AbstractServiceContext;
-import org.carewebframework.cal.api.query.IDataService;
-import org.carewebframework.cal.api.query.IQueryResult;
 import org.carewebframework.common.StrUtil;
+import org.carewebframework.vista.api.mbroker.AbstractBrokerService;
 import org.carewebframework.vista.mbroker.BrokerSession;
-import org.carewebframework.vista.mbroker.BrokerSession.IAsyncRPCEvent;
+import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.Review;
+import org.carewebframework.vista.ui.patientgoals.model.Step;
 
 /**
  * Data service for patient goals.
  */
-public class GoalService implements IDataService<Goal>, IAsyncRPCEvent {
-    
-    private final BrokerSession brokerSession;
-    
-    private final Object mutex = new Object();
-    
-    private int asyncHandle;
-    
-    private boolean done;
-    
-    private IQueryResult<Goal> results;
+public class GoalService extends AbstractBrokerService<Goal> {
     
     public GoalService(BrokerSession brokerSession) {
-        this.brokerSession = brokerSession;
+        super(brokerSession, "BEHOPGAP GETGOAL", false);
     }
     
     @Override
-    public IQueryResult<Goal> fetchData(AbstractServiceContext<Goal> serviceContext) throws Exception {
-        abort();
-        done = false;
-        results = null;
-        asyncHandle = brokerSession.callRPCAsync("BEHOPGAP GETGOAL", this, serviceContext.patient.getId().getIdPart());
-        
-        synchronized (mutex) {
-            while (!done) {
-                mutex.wait();
-            }
-        }
-        return results;
-    }
-    
-    @Override
-    public void abort() {
-        if (asyncHandle > 0) {
-            brokerSession.callRPCAbort(asyncHandle);
-            asyncHandle = 0;
-            done();
-        }
+    protected void createArgumentList(List<Object> args, AbstractServiceContext<Goal> serviceContext) {
+        super.createArgumentList(args, serviceContext);
+        args.add(true); // This argument forces retrieval of goal steps as well.
     }
     
     /**
      * Convert raw data into patient goals list. <code>
-     * (goal no,0)=IEN(1)^GSET(2)^CREATED(3)^BY(4)^LASTMODIFIED(5)^FACILITY(6)
-     * ^PROVIDER(7)^STARTDT(8)^FOLLOWUPDT(9)^STATUS(10)^GOAL NUMBER (11)
-     * (goal no,10)=TYPE1^TYPE2^TYPE3...
-     * (goal no,11)=GOALNAME
-     * (goal no,12)=GOALREASON
-     * (goal no,13,n)=REVIEW DATE(1)^NOTE(2)
+     * (0) IEN [0] ^ GSET [1] ^ CREATED BY [2] ^ CREATED DATE [3] ^ LAST MODIFIED [4] ^ FACILITY [5] ^ PROVIDER [6] ^
+     *     START DATE [7] ^ FOLLOWUP DATE [8] ^ STATUS [9] ^ GOAL NUMBER [10]
+     * (1) TYPE1 ^ TYPE2 ^ TYPE3...
+     * (2) GOAL NAME [0]
+     * (3) GOAL REASON [0]
+     * (4) "REVIEW" [0] ^ REVIEW DATE [1] ^ NOTE [2]    (will be 0 or more rows of these)
+     * (5) "STEP" [0] ^ FACILITY [1] ^ STEP IEN [2] ^ STEP NUMBER [3] ^ CREATED BY [4] ^ CREATED DATE [5] ^
+     *     TYPE [6] ^ START DATE [7] ^ FOLLOWUP DATE [8] ^ MODIFIED BY [9] ^ LAST MODIFIED [10] ^ STATUS [11] ^
+     *     PROVIDER [13]    (will be 0 or more rows of these)
+     * (6) STEP TEXT [0]  (only if #5 is present)
      * </code> For example:<code>
      * 0: 1^GOAL SET^3150521^ADAM,ADAM^3150521.21114^DEMO IHS CLINIC^ADAM,ADAM^3150521^3150530^A;ACTIVE^1
      * 1: PHYSICAL ACTIVITY
      * 2: TEST
      * 3:
      * 4: REVIEW^3150522^PROGRESS NOTE REVIEWED
-     * 5: 2^GOAL SET^3150521^ADAM,ADAM^3150521.212321^DEMO IHS CLINIC^ADAM,ADAM^3150521^3150530^S;GOAL STOPPED^2
-     * 6: MEDICATIONS^OTHER^WELLNESS AND SAFETY
-     * 7: TEST2
-     * 8: TEST
+     * 5: STEP^7819;DEMO IHS CLINIC^1^1^ADAM,ADAM^3150521^TOBACCO^3150521^3150627^ADAM,ADAM^3150521.211237^A;ACTIVE^ADAM,ADAM
+     * 6: TEST STEP
+     * 7: 2^GOAL SET^3150521^ADAM,ADAM^3150521.212321^DEMO IHS CLINIC^ADAM,ADAM^3150521^3150530^S;GOAL STOPPED^2
+     * 8: MEDICATIONS^OTHER^WELLNESS AND SAFETY
+     * 9: TEST2
+     * 10:TEST
      * </code>
      */
     @Override
-    public void onRPCComplete(int handle, String data) {
-        if (handle != asyncHandle) {
-            return;
-        }
-        
+    protected List<Goal> processData(String data) {
         List<String> list = new ArrayList<>();
-        final List<Goal> goals = new ArrayList<Goal>();
+        List<Goal> results = new ArrayList<>();
+        Goal goal = null;
+        Step step = null;
+        int state = 0;
         list = StrUtil.toList(data, "\r");
         
-        results = new IQueryResult<Goal>() {
+        for (String line : list) {
+            String[] pcs = StrUtil.split(line, StrUtil.U, 1);
             
-            @Override
-            public List<Goal> getResults() {
-                return goals;
+            switch (state) {
+                case 4: // Review
+                    if ("REVIEW".equals(pcs[0])) {
+                        goal.getReview().add(new Review(FMDate.fromString(pcs[1]), pcs[2]));
+                        break;
+                    }
+                    // Note that fall through is intended here.
+                case 5: // Step
+                    if ("STEP".equals(pcs[0])) {
+                        state = 6;
+                        step = new Step();
+                        goal.getStep().add(step);
+                        step.setFacility(pcs[1]);
+                        step.setIEN(pcs[2]);
+                        step.setNumber(pcs[3]);
+                        step.setCreatedBy(pcs[4]);
+                        step.setCreatedDate(FMDate.fromString(pcs[5]));
+                        step.getType().add(pcs[6]);
+                        step.setStartDate(FMDate.fromString(pcs[7]));
+                        step.setFollowupDate(FMDate.fromString(pcs[8]));
+                        step.setUpdatedBy(pcs[9]);
+                        step.setLastUpdated(FMDate.fromString(pcs[10]));
+                        step.setStatus(pcs[11]);
+                        step.setProvider(pcs[12]);
+                        break;
+                    }
+                    // Note that fall through is intended here.
+                case 0: // New goal
+                    if (goal != null) {
+                        results.add(goal);
+                    }
+                    
+                    step = null;
+                    goal = new Goal();
+                    goal.setIEN(pcs[0]);
+                    goal.setDeclined("GOAL NOT SET".equals(pcs[1]));
+                    goal.setCreatedDate(FMDate.fromString(pcs[2]));
+                    goal.setCreatedBy(pcs[3]);
+                    goal.setLastUpdated(FMDate.fromString(pcs[4]));
+                    goal.setLocationIEN(pcs[5]);
+                    goal.setProvider(pcs[6]);
+                    goal.setStartDate(FMDate.fromString(pcs[7]));
+                    goal.setFollowupDate(FMDate.fromString(pcs[8]));
+                    goal.setStatus(pcs[9]);
+                    goal.setNumber(pcs[10]);
+                    state = 1;
+                    break;
+                
+                case 1: // Types
+                    for (int i = 0; i < pcs.length; i++) {
+                        goal.getType().add(pcs[i]);
+                    }
+                    
+                    state = 2;
+                    break;
+                
+                case 2: // Goal name
+                    goal.setName(pcs[0]);
+                    state = 3;
+                    break;
+                
+                case 3: // Goal reason
+                    goal.setReason(pcs[0]);
+                    state = 4;
+                    break;
+                
+                case 6: // Step text
+                    step.setText(pcs[0]);
+                    state = 5;
+                    break;
             }
-            
-            @Override
-            public Object getMetadata(String key) {
-                return null;
-            }
-            
-        };
-        
-        done();
-    }
-    
-    @Override
-    public void onRPCError(int handle, int code, String text) {
-        if (handle != asyncHandle) {
-            return;
         }
         
-        done();
-    }
-    
-    private void done() {
-        synchronized (mutex) {
-            done = true;
-            mutex.notifyAll();
+        if (goal != null) {
+            results.add(goal);
         }
+        
+        return results;
     }
 }

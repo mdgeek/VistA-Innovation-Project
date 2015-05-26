@@ -29,9 +29,13 @@ public class GoalsController extends AbstractListController<Goal> {
     }
     
     @Override
-    protected Date getDate(Goal result, DateMode dateMode) {
-        // TODO Auto-generated method stub
-        return null;
+    protected Date getDate(Goal goal, DateMode dateMode) {
+        return dateMode == DateMode.UPDATE ? goal.getLastUpdated() : goal.getFollowupDate();
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
     }
     
 }

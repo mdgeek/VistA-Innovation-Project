@@ -43,6 +43,10 @@
   		<tabpanels>
   			<tabpanel>
   				<toolbar mold="panel">
+   					<a id="btnNewGoal" label="New Goal" />
+  					<space width="10px" />
+   					<a id="btnNewDeclined" label="Declined Goal" />
+  					<separator bar="true" orient="vertical" hflex="1" vflex="1" />
   					<a id="btnExpandAll" label="Expand All"/>
   					<space width="10px" />
   					<a id="btnCollapseAll" label="Collapse All" />

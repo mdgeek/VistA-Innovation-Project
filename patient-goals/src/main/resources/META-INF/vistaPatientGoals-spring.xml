@@ -22,16 +22,26 @@
 
 	<beans profile="desktop">
 
-		<bean id="vistaPatientGoalsService" scope="prototype"
+		<bean id="vistaPatientGoalsGoalService" scope="prototype"
 			class="org.carewebframework.vista.ui.patientgoals.service.GoalService">
+			<constructor-arg ref="brokerSession" />
+		</bean>
+
+		<bean id="vistaPatientGoalsStepService" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.service.StepService">
 			<constructor-arg ref="brokerSession" />
 		</bean>
 
 		<bean id="vistaPatientGoalsMainController" scope="prototype"
 			class="org.carewebframework.vista.ui.patientgoals.controller.MainController" />
 
-		<bean id="vistaPatientGoalsGoalsController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.GoalsController" />
+		<bean id="vistaPatientGoalsGoalController" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.controller.GoalsController">
+			<constructor-arg ref="vistaPatientGoalsGoalService" />
+			<property name="itemRenderer">
+				<bean class="org.carewebframework.vista.ui.patientgoals.view.GoalRenderer" />
+			</property>
+		</bean>
 
 	</beans>
 

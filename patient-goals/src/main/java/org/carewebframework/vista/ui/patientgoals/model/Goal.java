@@ -9,12 +9,54 @@
  */
 package org.carewebframework.vista.ui.patientgoals.model;
 
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Model object for a patient goal.
  */
-public class Goal {
+public class Goal extends GoalBase {
     
-    private static final long serialVersionUID = 1L;
+    private boolean declined;
+    
+    private String locationIEN;
+    
+    private String name;
+    
+    private final List<Review> review = new ArrayList<>();
+    
+    private final List<Step> step = new ArrayList<>();
+    
+    public boolean isDeclined() {
+        return declined;
+    }
+    
+    public void setDeclined(boolean declined) {
+        this.declined = declined;
+    }
+    
+    public String getLocationIEN() {
+        return locationIEN;
+    }
+    
+    public void setLocationIEN(String locationIEN) {
+        this.locationIEN = locationIEN;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public List<Review> getReview() {
+        return review;
+    }
+    
+    public List<Step> getStep() {
+        return step;
+    }
     
 }

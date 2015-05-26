@@ -9,11 +9,34 @@
  */
 package org.carewebframework.vista.ui.patientgoals.model;
 
+import org.carewebframework.common.StrUtil;
+
 /**
  * Model object for a step within a patient goal.
  */
-public class Step {
+public class Step extends GoalBase {
     
-    private static final long serialVersionUID = 1L;
+    private String text;
     
+    private String facility;
+    
+    public String getText() {
+        return text;
+    }
+    
+    public void setText(String text) {
+        this.text = text;
+    }
+    
+    public String getFacilityName() {
+        return StrUtil.piece(facility, ";", 2);
+    }
+    
+    public String getFacilityIEN() {
+        return StrUtil.piece(facility, ";");
+    }
+    
+    public void setFacility(String facility) {
+        this.facility = facility;
+    }
 }
