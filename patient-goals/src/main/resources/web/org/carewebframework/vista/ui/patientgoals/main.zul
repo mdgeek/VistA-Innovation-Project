@@ -1,92 +1,85 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
-  <style>
-    .vistaPatientGoals-collapsible a {
-      float: left;
-      margin-right: 5px; 
-      margin-top: 6px; 
-      font-size: 70%;
-      border: 1px solid transparent;
-    }
+	<style
+		src="~./org/carewebframework/vista/ui/patientgoals/goals.css" />
 
-    .vistaPatientGoals-collapsible a:hover,
-    .vistaPatientGoals-collapsible a:focus {
-      text-decoration: none;
-    }
-
-    .vistaPatientGoals-collapsible a:hover {
-      border: 1px solid gray;
-    }
-    
-    .vistaPatientGoals-collapsible .z-caption-content {
-      font-weight: bold;
-      color: darkblue;
-    }
-    
-    .vistaPatientGoals .z-toolbar label {
-      margin-bottom: 0;
-    }
-    
-    .vistaPatientGoals .z-toolbar .z-separator {
-      margin-right: 5px;
-    }
-  </style>
-
-  <div zclass="vistaPatientGoals" height="100%" width="100%"
-  	apply="${vistaPatientGoalsMainController}">
-  	<tabbox id="tabbox" vflex="1" hflex="1">
-  		<tabs>
-  			<tab label="Patient Goals / Steps" />
-  		</tabs>
-  		<tabpanels>
-  			<tabpanel>
-  				<toolbar mold="panel">
-   					<a id="btnNewGoal" label="New Goal" />
-  					<space width="10px" />
-   					<a id="btnNewDeclined" label="Declined Goal" />
-  					<separator bar="true" orient="vertical" hflex="1" vflex="1" />
-  					<a id="btnExpandAll" label="Expand All"/>
-  					<space width="10px" />
-  					<a id="btnCollapseAll" label="Collapse All" />
-  					<separator bar="true" orient="vertical" hflex="1" vflex="1" />
-  					<label value="Filter Goals On" />
-  					<space width="10px" />
-  					<checkbox label="Active" value="${0}" onCheck="$composer.onFilterChange(event);" />
-  					<checkbox label="Inactive" value="${1}" onCheck="$composer.onFilterChange(event);" />
-  					<checkbox label="Declined" value="${2}" onCheck="$composer.onFilterChange(event);" />
-  					<separator bar="true" orient="vertical" hflex="1" vflex="1" />
-  					<label value="Filter Steps On" />
-  					<space width="10px" />
-  					<checkbox label="Active" value="${10}" onCheck="$composer.onFilterChange(event);" />
-  					<checkbox label="Inactive" value="${11}" onCheck="$composer.onFilterChange(event);" />
-  					<space hflex="1" />
-  				</toolbar>
-  				<groupbox id="gbFirst" title="Active Goals" onOpen="$composer.onToggleOpen(event);">
-  					<caption sclass="vistaPatientGoals-collapsible">
-  						<a zclass="glyphicon" sclass="glyphicon-minus"
-  							onClick="$composer.onToggleOpen(event);" />
-  					</caption>
-  					<include src="~./org/carewebframework/vista/ui/patientgoals/goals.zul" />
-  				</groupbox>
-  				<groupbox title="Inactive Goals" onOpen="$composer.onToggleOpen(event);"
-  					open="false">
-  					<caption sclass="vistaPatientGoals-collapsible">
-  						<a zclass="glyphicon" sclass="glyphicon-plus"
-  							onClick="$composer.onToggleOpen(event);" />
-  					</caption>
-  				</groupbox>
-  				<groupbox title="Declined Goals" onOpen="$composer.onToggleOpen(event);"
-  					open="false">
-  					<caption sclass="vistaPatientGoals-collapsible">
-  						<a zclass="glyphicon" sclass="glyphicon-plus"
-  							onClick="$composer.onToggleOpen(event);" />
-  					</caption>
-  				</groupbox>
-  			</tabpanel>
-  		</tabpanels>
-  	</tabbox>
-  </div>
+	<div zclass="vistaPatientGoals" height="100%" width="100%"
+		apply="${vistaPatientGoalsMainController}">
+		<tabbox id="tabbox" vflex="1" hflex="1">
+			<tabs>
+				<tab label="Patient Goals / Steps" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<toolbar mold="panel" vflex="min">
+						<a id="btnNewGoal" label="New Goal" />
+						<space width="10px" />
+						<a id="btnNewDeclined" label="Declined Goal" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<a id="btnExpandAll" label="Expand All" />
+						<space width="10px" />
+						<a id="btnCollapseAll" label="Collapse All" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<label value="Filter Goals On" />
+						<space width="10px" />
+						<checkbox label="Active" value="${0}"
+							onCheck="$composer.onFilterChange(event);" />
+						<checkbox label="Inactive" value="${1}"
+							onCheck="$composer.onFilterChange(event);" />
+						<checkbox label="Declined" value="${2}"
+							onCheck="$composer.onFilterChange(event);" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<label value="Filter Steps On" />
+						<space width="10px" />
+						<checkbox label="Active" value="${10}"
+							onCheck="$composer.onFilterChange(event);" />
+						<checkbox label="Inactive" value="${11}"
+							onCheck="$composer.onFilterChange(event);" />
+						<space hflex="1" />
+					</toolbar>
+					<groupbox id="gbFirst" title="Active Goals"
+						onOpen="$composer.onToggleOpen(event);">
+						<caption
+							sclass="vistaPatientGoals-collapsible">
+							<a zclass="glyphicon"
+								sclass="glyphicon-minus"
+								onClick="$composer.onToggleOpen(event);" />
+						</caption>
+						<include status="A"
+							src="~./org/carewebframework/vista/ui/patientgoals/goals.zul" />
+					</groupbox>
+					<groupbox title="Inactive Goals"
+						onOpen="$composer.onToggleOpen(event);"
+						open="false">
+						<caption
+							sclass="vistaPatientGoals-collapsible">
+							<a zclass="glyphicon"
+								sclass="glyphicon-plus"
+								onClick="$composer.onToggleOpen(event);" />
+						</caption>
+						<include status="ME,MA"
+							src="~./org/carewebframework/vista/ui/patientgoals/goals.zul" />
+					</groupbox>
+					<groupbox title="Declined Goals"
+						onOpen="$composer.onToggleOpen(event);"
+						open="false">
+						<caption
+							sclass="vistaPatientGoals-collapsible">
+							<a zclass="glyphicon"
+								sclass="glyphicon-plus"
+								onClick="$composer.onToggleOpen(event);" />
+						</caption>
+						<include status="S"
+							src="~./org/carewebframework/vista/ui/patientgoals/goals.zul" />
+					</groupbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</div>
 
 </zk>

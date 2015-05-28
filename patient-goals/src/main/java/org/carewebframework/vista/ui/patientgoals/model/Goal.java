@@ -51,11 +51,11 @@ public class Goal extends GoalBase {
         this.name = name;
     }
     
-    public List<Review> getReview() {
+    public List<Review> getReviews() {
         return review;
     }
     
-    public List<Step> getStep() {
+    public List<Step> getSteps() {
         return step;
     }
     

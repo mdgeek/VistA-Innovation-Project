@@ -3,54 +3,39 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
                         http://www.zkoss.org/2005/zul/zul.xsd">
 
-	<div height="100%" width="100%"
+	<idspace height="100%" width="100%" 
 		apply="${vistaPatientGoalsGoalController}">
-		<listbox id="listBox" vflex="1"
-			sclass="vistaPatientGoals-listbox">
-			<listhead>
-				<listheader width="20px" />
-				<listheader align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.header.review.label}" />
-				<listheader align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.header.newstep.label}" />
-				<listheader align="center" width="60px"
-					label="${labels.vistaPatientGoals.goal.header.lastupdate.label}" />
-				<listheader align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.header.goalnumber.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.goalset.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.startdate.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.reason.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.goaltype.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.followup.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.goalstatus.label}" />
-				<listheader align="center"
-					label="${labels.vistaPatientGoals.goal.header.provider.label}" />
-				<listheader hflex="1"
-					label="${labels.vistaPatientGoals.goal.header.notes.label}" />
-			</listhead>
-		</listbox>
+		<grid id="grid" oddRowSclass="alert-success"
+			sclass="vistaPatientGoals-grid">
+			<columns>
+				<column width="30px" />
+				<column align="center" width="50px"
+					label="${labels.vistaPatientGoals.goal.column.review.label}" />
+				<column align="center" width="50px"
+					label="${labels.vistaPatientGoals.goal.column.newstep.label}" />
+				<column align="center" width="75px"
+					label="${labels.vistaPatientGoals.goal.column.lastupdate.label}" />
+				<column align="center" width="50px"
+					label="${labels.vistaPatientGoals.goal.column.number.label}" />
+				<column align="center"
+					label="${labels.vistaPatientGoals.goal.column.goal.label}" />
+				<column align="center"
+					label="${labels.vistaPatientGoals.goal.column.startdate.label}" />
+				<column align="center" width="75px"
+					label="${labels.vistaPatientGoals.goal.column.reason.label}" />
+				<column align="center"
+					label="${labels.vistaPatientGoals.goal.column.type.label}" />
+				<column align="center"
+					label="${labels.vistaPatientGoals.goal.column.followup.label}" />
+				<column align="center" width="75px"
+					label="${labels.vistaPatientGoals.goal.column.status.label}" />
+				<column align="center"
+					label="${labels.vistaPatientGoals.goal.column.provider.label}" />
+				<column hflex="1"
+					label="${labels.vistaPatientGoals.goal.column.notes.label}" />
+			</columns>
+		</grid>
 
 		<label id="lblMessage" />
-	</div>
-	
-	<style>
-	    .vistaPatientGoals-listbox .z-listheader-content {
-	    	white-space: pre-line;
-	    	line-height: 15px;
-	    }
-	    
-	    .vistaPatientGoals-listbox .z-listcell .glyphicon-plus {
-	    	color: green;
-	    }
-	    
-	    .vistaPatientGoals-listbox .z-listcell .glyphicon-pencil {
-	    	color: brown;
-	    }
-	</style>
+	</idspace>
 </zk>

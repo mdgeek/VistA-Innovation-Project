@@ -11,31 +11,41 @@ package org.carewebframework.vista.ui.patientgoals.controller;
 
 import java.util.Date;
 
-import org.carewebframework.cal.api.query.AbstractServiceContext.DateMode;
-import org.carewebframework.cal.ui.reporting.controller.AbstractListController;
+import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
-import org.carewebframework.vista.ui.patientgoals.service.GoalService;
+
+import org.zkoss.zk.ui.util.Clients;
 
 /**
  * Controller for patient goals list.
  */
-public class GoalsController extends AbstractListController<Goal> {
+public class GoalController extends AbstractGridController<Goal> {
     
     private static final long serialVersionUID = 1L;
     
-    public GoalsController(GoalService service) {
-        super(service, "vistaPatientGoals", "BEHOPG", null);
+    private String statusFilter;
+    
+    public GoalController() {
+        super(null, "vistaPatientGoals", "BEHOPG", null);
         setPaging(false);
     }
     
     @Override
-    protected Date getDate(Goal goal, DateMode dateMode) {
-        return dateMode == DateMode.UPDATE ? goal.getLastUpdated() : goal.getFollowupDate();
+    protected void initializeController() {
+        super.initializeController();
+        statusFilter = (String) arg.get("status");
+    }
+    
+    @Override
+    public Date getDateByType(Goal goal, DateType dateType) {
+        return dateType == DateType.UPDATED ? goal.getLastUpdated() : goal.getFollowupDate();
     }
     
     @Override
     public void refresh() {
         super.refresh();
+        Clients.resize(root);
     }
     
 }

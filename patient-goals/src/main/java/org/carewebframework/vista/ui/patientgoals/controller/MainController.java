@@ -9,19 +9,26 @@
  */
 package org.carewebframework.vista.ui.patientgoals.controller;
 
-import org.carewebframework.shell.plugins.PluginController;
+import java.util.List;
+
+import org.carewebframework.api.query.IQueryService;
+import org.carewebframework.api.query.QueryUtil;
+import org.carewebframework.cal.ui.reporting.controller.AbstractServiceController;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.patientgoals.model.Goal;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Groupbox;
+import org.zkoss.zul.Include;
 
 /**
  * Controller for patient goals plugin.
  */
-public class MainController extends PluginController {
+public class MainController extends AbstractServiceController<Goal> {
     
     private static final long serialVersionUID = 1L;
     
@@ -40,6 +47,15 @@ public class MainController extends PluginController {
     private GoalFilter activeGoalFilter;
     
     private StepFilter activeStepFilter;
+    
+    public MainController(IQueryService<Goal> service) {
+        super(service, true, "vistaPatientGoals");
+    }
+    
+    @Override
+    protected void initializeController() {
+        super.initializeController();
+    }
     
     public void onToggleOpen(Event event) {
         Component target = event.getTarget();
@@ -101,6 +117,21 @@ public class MainController extends PluginController {
         } else {
             activeStepFilter = chk1.isChecked() ? StepFilter.values()[ord] : null;
             stepFilterChanged();
+        }
+    }
+    
+    /**
+     * Passes the filtered model to each of the grids.
+     */
+    @Override
+    protected void modelChanged(List<Goal> filteredModel) {
+        Component gb = gbFirst;
+        
+        while (gb != null) {
+            Component target = ZKUtil.findChild(gb, Include.class).getFirstChild();
+            QueryFinishedEvent event = new QueryFinishedEvent(null, QueryUtil.packageResult(filteredModel), target);
+            Events.postEvent(event);
+            gb = gb.getNextSibling();
         }
     }
     

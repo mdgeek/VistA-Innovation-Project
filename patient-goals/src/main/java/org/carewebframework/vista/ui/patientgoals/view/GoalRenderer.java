@@ -9,78 +9,89 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
-import org.carewebframework.ui.zk.AbstractListitemRenderer;
+import org.carewebframework.ui.zk.AbstractRowRenderer;
+import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
-import org.carewebframework.vista.ui.patientgoals.model.Step;
 
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
+import org.zkoss.zul.Cell;
 import org.zkoss.zul.Detail;
-import org.zkoss.zul.Listcell;
-import org.zkoss.zul.Listitem;
+import org.zkoss.zul.Div;
+import org.zkoss.zul.Row;
 
 /**
  * Renderer for a goal.
  */
-public class GoalRenderer extends AbstractListitemRenderer<Goal, Object> {
+public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
+    
+    private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
     
     public GoalRenderer() {
-        super("background-color: white", null);
+        super(null, null);
     }
     
     /**
-     * Render the list item for the specified goal.
+     * Render the row for the specified goal.
      *
-     * @param item List item to render.
-     * @param goal The goal associated with the list item.
+     * @param row Row to render.
+     * @param goal The goal associated with the row.
      */
     @Override
-    public void renderItem(Listitem item, Goal goal) {
-        addCell(item, "");
+    public Component renderRow(Row row, Goal goal) {
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        addCell(item, "").appendChild(anchor);
+        createCell(row, "").appendChild(anchor);
         anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-plus");
-        addCell(item, "").appendChild(anchor);
-        addCell(item, goal.getLastUpdated());
-        addCell(item, goal.getNumber());
-        addCell(item, goal.getCreatedDate());
-        addCell(item, goal.getStartDate());
-        addCell(item, goal.getReason());
-        addCell(item, goal.getType());
-        addCell(item, goal.getFollowupDate());
-        addCell(item, goal.getStatusText());
-        addCell(item, goal.getProvider());
-        addCell(item, goal.getReview());
-        renderDetail(item, goal.getStep());
+        createCell(row, "").appendChild(anchor);
+        createCell(row, goal.getLastUpdated());
+        createCell(row, goal.getNumber());
+        createCell(row, goal.getCreatedDate());
+        createCell(row, goal.getStartDate());
+        createCell(row, goal.getReason());
+        createCell(row, goal.getType());
+        createCell(row, goal.getFollowupDate());
+        createCell(row, goal.getStatusText());
+        createCell(row, goal.getProvider());
+        createCell(row, goal.getReviews());
+        return row;
     }
     
-    private void renderDetail(Listitem item, List<Step> steps) {
-        if (steps.isEmpty()) {
+    @Override
+    protected void renderDetail(final Detail detail, final Goal goal) {
+        if (goal.getSteps().isEmpty()) {
             return;
         }
         
-        Detail detail = new Detail();
-        item.appendChild(detail);
+        detail.appendChild(new Div());
+        
+        detail.addEventListener(Events.ON_OPEN, new EventListener<Event>() {
+            
+            @Override
+            public void onEvent(Event event) throws Exception {
+                detail.removeEventListener(Events.ON_OPEN, this);
+                ZKUtil.detachChildren(detail);
+                Map<Object, Object> args = new HashMap<>();
+                args.put("steps", goal.getSteps());
+                ZKUtil.loadZulPage(STEP_VIEW, detail, args);
+            }
+            
+        });
+        
     }
     
-    /**
-     * Add a cell to the list item containing the specified text value.
-     *
-     * @param item List item to receive new cell.
-     * @param value Text to include in the new cell.
-     * @return The newly created cell.
-     */
-    private Listcell addCell(Listitem item, Object value) {
-        return createCell(item, value, null, null);
-    }
-    
-    private Listcell addCell(Listitem item, List<Review> reviews) {
+    private Cell createCell(Row row, List<Review> reviews) {
         StringBuilder sb = new StringBuilder();
         
         for (Review review : reviews) {
@@ -95,7 +106,7 @@ public class GoalRenderer extends AbstractListitemRenderer<Goal, Object> {
             }
         }
         
-        return addCell(item, sb.toString());
+        return createCell(row, sb.toString());
     }
     
 }

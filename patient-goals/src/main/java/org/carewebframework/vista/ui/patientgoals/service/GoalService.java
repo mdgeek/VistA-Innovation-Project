@@ -12,9 +12,11 @@ package org.carewebframework.vista.ui.patientgoals.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.carewebframework.cal.api.query.AbstractServiceContext;
+import ca.uhn.fhir.model.dstu2.resource.Patient;
+
+import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.common.StrUtil;
-import org.carewebframework.vista.api.mbroker.AbstractBrokerService;
+import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
@@ -24,16 +26,23 @@ import org.carewebframework.vista.ui.patientgoals.model.Step;
 /**
  * Data service for patient goals.
  */
-public class GoalService extends AbstractBrokerService<Goal> {
+public class GoalService extends AbstractBrokerQueryService<Goal> {
     
     public GoalService(BrokerSession brokerSession) {
-        super(brokerSession, "BEHOPGAP GETGOAL", false);
+        super(brokerSession, "BEHOPGAP GETGOAL");
     }
     
     @Override
-    protected void createArgumentList(List<Object> args, AbstractServiceContext<Goal> serviceContext) {
-        super.createArgumentList(args, serviceContext);
+    protected void createArgumentList(List<Object> args, IQueryContext context) {
+        super.createArgumentList(args, context);
+        Patient patient = (Patient) context.getParam("patient");
+        args.add(patient.getId().getIdPart());
         args.add(true); // This argument forces retrieval of goal steps as well.
+    }
+    
+    @Override
+    public boolean hasRequired(IQueryContext context) {
+        return context.getParam("patient") instanceof Patient;
     }
     
     /**
@@ -64,12 +73,11 @@ public class GoalService extends AbstractBrokerService<Goal> {
      */
     @Override
     protected List<Goal> processData(String data) {
-        List<String> list = new ArrayList<>();
         List<Goal> results = new ArrayList<>();
+        List<String> list = StrUtil.toList(data, "\r");
         Goal goal = null;
         Step step = null;
         int state = 0;
-        list = StrUtil.toList(data, "\r");
         
         for (String line : list) {
             String[] pcs = StrUtil.split(line, StrUtil.U, 1);
@@ -77,7 +85,7 @@ public class GoalService extends AbstractBrokerService<Goal> {
             switch (state) {
                 case 4: // Review
                     if ("REVIEW".equals(pcs[0])) {
-                        goal.getReview().add(new Review(FMDate.fromString(pcs[1]), pcs[2]));
+                        goal.getReviews().add(new Review(FMDate.fromString(pcs[1]), pcs[2]));
                         break;
                     }
                     // Note that fall through is intended here.
@@ -85,7 +93,7 @@ public class GoalService extends AbstractBrokerService<Goal> {
                     if ("STEP".equals(pcs[0])) {
                         state = 6;
                         step = new Step();
-                        goal.getStep().add(step);
+                        goal.getSteps().add(step);
                         step.setFacility(pcs[1]);
                         step.setIEN(pcs[2]);
                         step.setNumber(pcs[3]);

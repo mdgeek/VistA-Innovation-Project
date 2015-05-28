@@ -9,45 +9,39 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import org.carewebframework.ui.zk.AbstractListitemRenderer;
+import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
-import org.zkoss.zul.Listitem;
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zul.A;
+import org.zkoss.zul.Row;
 
 /**
  * Renderer for a goal step.
  */
-public class StepRenderer extends AbstractListitemRenderer<Step, Object> {
-    
-    private static final Log log = LogFactory.getLog(StepRenderer.class);
+public class StepRenderer extends AbstractRowRenderer<Step, Object> {
     
     public StepRenderer() {
-        super("background-color: white", null);
+        super(null, null);
     }
     
     /**
-     * Render the list item for the specified goal.
+     * Render the row for the specified step.
      *
-     * @param item List item to render.
-     * @param step The step associated with the list item.
+     * @param row Row to render.
+     * @param step The step associated with the row.
      */
     @Override
-    public void renderItem(Listitem item, Step step) {
-        log.trace("item render");
-        addCell(item, "");
-    }
-    
-    /**
-     * Add a cell to the list item containing the specified text value.
-     *
-     * @param item List item to receive new cell.
-     * @param value Text to include in the new cell.
-     */
-    private void addCell(Listitem item, Object value) {
-        createCell(item, value, null, null);
+    protected Component renderRow(Row row, Step step) {
+        A anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-pencil");
+        createCell(row, "").appendChild(anchor);
+        createCell(row, step.getNumber());
+        createCell(row, step.getText());
+        createCell(row, step.getStartDate());
+        createCell(row, step.getFollowupDate());
+        createCell(row, step.getStatusText());
+        return null;
     }
     
 }
