@@ -9,7 +9,7 @@
 
 	<beans profile="root">
 
-		<cwp:plugin url="~./org/carewebframework/vista/ui/patientgoals/main.zul" id="vistaPatientGoals"
+		<cwp:plugin url="~./org/carewebframework/vista/ui/patientgoals/goals.zul" id="vistaPatientGoals"
 			name="Patient Goals">
 			<cwp:serialization>
 			</cwp:serialization>
@@ -27,13 +27,9 @@
 			<constructor-arg ref="brokerSession" />
 		</bean>
 
-		<bean id="vistaPatientGoalsMainController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.MainController">
-			<constructor-arg ref="vistaPatientGoalsGoalService" />
-		</bean>
-
 		<bean id="vistaPatientGoalsGoalController" scope="prototype"
 			class="org.carewebframework.vista.ui.patientgoals.controller.GoalController">
+			<constructor-arg ref="vistaPatientGoalsGoalService" />
 			<property name="rowRenderer">
 				<bean class="org.carewebframework.vista.ui.patientgoals.view.GoalRenderer" />
 			</property>

@@ -16,9 +16,13 @@ import java.util.List;
 import org.carewebframework.common.StrUtil;
 
 /**
- * Model object for a patient goal.
+ * Base class for goals and steps.
  */
-public class GoalBase {
+public abstract class GoalBase {
+    
+    public enum GoalGroup {
+        ACTIVE, INACTIVE, DECLINED
+    };
     
     private String ien;
     
@@ -43,6 +47,8 @@ public class GoalBase {
     private String reason;
     
     private final List<String> type = new ArrayList<>();
+    
+    public abstract GoalGroup getGroup();
     
     public String getIEN() {
         return ien;

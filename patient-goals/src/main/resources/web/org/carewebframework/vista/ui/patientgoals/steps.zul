@@ -5,6 +5,7 @@
 
 	<idspace height="100%" width="100%"
 		apply="${vistaPatientGoalsStepController}">
+		<label id="lblMessage" />
 		<grid id="grid" vflex="1" oddRowSclass="none"
 			sclass="vistaPatientGoals-grid">
 			<columns>

@@ -20,6 +20,16 @@ public class Step extends GoalBase {
     
     private String facility;
     
+    private final Goal goal;
+    
+    public Step(Goal goal) {
+        this.goal = goal;
+    }
+    
+    public Goal getGoal() {
+        return goal;
+    }
+    
     public String getText() {
         return text;
     }
@@ -38,5 +48,10 @@ public class Step extends GoalBase {
     
     public void setFacility(String facility) {
         this.facility = facility;
+    }
+    
+    @Override
+    public GoalGroup getGroup() {
+        return "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
     }
 }

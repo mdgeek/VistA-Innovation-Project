@@ -92,7 +92,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                 case 5: // Step
                     if ("STEP".equals(pcs[0])) {
                         state = 6;
-                        step = new Step();
+                        step = new Step(goal);
                         goal.getSteps().add(step);
                         step.setFacility(pcs[1]);
                         step.setIEN(pcs[2]);

@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 
 import org.zkoss.zk.ui.Component;
@@ -37,6 +38,8 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     
     private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
     
+    private static final String[] GROUP_STYLE = { "alert-success", "alert-warning", "alert-danger" };
+    
     public GoalRenderer() {
         super(null, null);
     }
@@ -49,6 +52,8 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
      */
     @Override
     public Component renderRow(Row row, Goal goal) {
+        GoalGroup group = goal.getGroup();
+        ZKUtil.updateSclass(row, GROUP_STYLE[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);
@@ -83,7 +88,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
                 detail.removeEventListener(Events.ON_OPEN, this);
                 ZKUtil.detachChildren(detail);
                 Map<Object, Object> args = new HashMap<>();
-                args.put("steps", goal.getSteps());
+                args.put("goal", goal);
                 ZKUtil.loadZulPage(STEP_VIEW, detail, args);
             }
             

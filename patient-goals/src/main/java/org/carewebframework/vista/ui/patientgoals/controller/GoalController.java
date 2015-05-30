@@ -10,17 +10,31 @@
 package org.carewebframework.vista.ui.patientgoals.controller;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
+import ca.uhn.fhir.model.dstu2.resource.Patient;
+
+import org.apache.commons.lang.ObjectUtils;
 
 import org.carewebframework.api.query.AbstractQueryFilter;
 import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
 import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
-import org.carewebframework.common.StrUtil;
+import org.carewebframework.ui.FrameworkController;
+import org.carewebframework.ui.zk.HybridModel.IGrouper;
+import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
+import org.carewebframework.vista.ui.patientgoals.model.Step;
+import org.carewebframework.vista.ui.patientgoals.service.GoalService;
 
+import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.Checkbox;
+import org.zkoss.zul.Detail;
+import org.zkoss.zul.Group;
+import org.zkoss.zul.Row;
+import org.zkoss.zul.Toolbar;
 
 /**
  * Controller for patient goals list.
@@ -29,17 +43,24 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static final long serialVersionUID = 1L;
     
-    private static class StatusFilter extends AbstractQueryFilter<Goal> {
+    private static abstract class BaseFilter<T> extends AbstractQueryFilter<T> {
         
-        private final Set<String> status;
+        protected GoalGroup group;
         
-        public StatusFilter(String status) {
-            this.status = new HashSet<>(StrUtil.toList(status, ","));
-        }
+        protected Checkbox chkActive;
         
-        @Override
-        public boolean include(Goal result) {
-            return status.contains(result.getStatusCode());
+        public void updateState(Event event) {
+            event = ZKUtil.getEventOrigin(event);
+            Checkbox chkActive = (Checkbox) event.getTarget();
+            String group = chkActive.isChecked() ? (String) chkActive.getValue() : null;
+            
+            if (this.chkActive != null && this.chkActive != chkActive) {
+                this.chkActive.setChecked(false);
+            }
+            
+            this.chkActive = chkActive;
+            this.group = group == null ? null : GoalGroup.values()["AID".indexOf(group)];
+            notifyListener();
         }
         
         @Override
@@ -49,20 +70,155 @@ public class GoalController extends AbstractGridController<Goal> {
         
     }
     
-    public GoalController() {
-        super(null, "vistaPatientGoals", "BEHOPG", null, false, null);
+    protected static class GoalFilter extends BaseFilter<Goal> {
+        
+        @Override
+        public boolean include(Goal goal) {
+            return group == null || goal.getGroup() == group;
+        }
+    }
+    
+    protected static class StepFilter extends BaseFilter<Step> {
+        
+        @Override
+        public boolean include(Step step) {
+            return group == null || step.getGroup() == group;
+        }
+        
+    }
+    
+    private static class GrouperGroup {
+        
+        public GrouperGroup(String label, int order) {
+            this.label = label;
+            this.order = order;
+        }
+        
+        private final String label;
+        
+        private final int order;
+        
+    }
+    
+    private static IGrouper<Goal, GrouperGroup> goalGrouper = new IGrouper<Goal, GrouperGroup>() {
+        
+        @Override
+        public GrouperGroup getGroup(Goal goal) {
+            switch (goal.getGroup()) {
+                case ACTIVE:
+                    return groupActive;
+                case INACTIVE:
+                    return groupInactive;
+                case DECLINED:
+                    return groupDeclined;
+                default:
+                    return null;
+            }
+        }
+        
+        @Override
+        public String getGroupName(GrouperGroup group) {
+            return group.label;
+        }
+        
+        @Override
+        public int compareElement(Goal goal1, Goal goal2) {
+            return ObjectUtils.compare(goal1.getName(), goal2.getName());
+        }
+        
+        @Override
+        public int compareGroup(GrouperGroup group1, GrouperGroup group2) {
+            return group1.order - group2.order;
+        }
+        
+    };
+    
+    private static GrouperGroup groupActive = new GrouperGroup("Active Goals", 0);
+    
+    private static GrouperGroup groupInactive = new GrouperGroup("Inactive Goals", 1);
+    
+    private static GrouperGroup groupDeclined = new GrouperGroup("Declined Goals", 2);
+    
+    private static GoalFilter goalFilter = new GoalFilter();
+    
+    private static StepFilter stepFilter = new StepFilter();
+    
+    private Toolbar toolbar;
+    
+    /**
+     * Allows the step controller to find the enclosing goal controller.
+     * 
+     * @param stepRoot Root component of the step view.
+     * @return The goal controller.
+     */
+    public static GoalController findController(Component stepRoot) {
+        return (GoalController) FrameworkController.getController(stepRoot.getParent(), true);
+    }
+    
+    public GoalController(GoalService service) {
+        super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, goalGrouper);
         setPaging(false);
     }
     
     @Override
     protected void initializeController() {
         super.initializeController();
-        registerQueryFilter(new StatusFilter((String) arg.get("status")));
+        registerQueryFilter(goalFilter);
+    }
+    
+    /**
+     * Determine goal filter change from onCheck event.
+     * 
+     * @param event The onCheck event.
+     */
+    public void onGoalFilterChange(Event event) {
+        goalFilter.updateState(event);
+    }
+    
+    /**
+     * Determine step filter change from onCheck event.
+     * 
+     * @param event The onCheck event.
+     */
+    public void onStepFilterChange(Event event) {
+        stepFilter.updateState(event);
+    }
+    
+    public void registerStepController(StepController controller) {
+        controller.registerQueryFilter(stepFilter);
+    }
+    
+    public void onClick$btnExpandAll() {
+        openAll(true);
+    }
+    
+    public void onClick$btnCollapseAll() {
+        openAll(false);
+    }
+    
+    private void openAll(boolean open) {
+        for (Row row : getGrid().getRows().<Row> getChildren()) {
+            Detail detail = row.getDetailChild();
+            
+            if (row instanceof Group) {
+                ((Group) row).setOpen(open);
+            }
+            
+            if (detail != null) {
+                detail.setOpen(open);
+            }
+        }
     }
     
     @Override
     public Date getDateByType(Goal goal, DateType dateType) {
         return dateType == DateType.UPDATED ? goal.getLastUpdated() : goal.getFollowupDate();
+    }
+    
+    @Override
+    public void onPatientChanged(Patient patient) {
+        super.onPatientChanged(patient);
+        ZKUtil.disableChildren(toolbar, patient == null);
     }
     
     @Override

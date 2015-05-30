@@ -59,4 +59,9 @@ public class Goal extends GoalBase {
         return step;
     }
     
+    @Override
+    public GoalGroup getGroup() {
+        return declined ? GoalGroup.DECLINED : "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
+    }
+    
 }

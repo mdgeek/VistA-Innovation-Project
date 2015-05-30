@@ -1,41 +1,81 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n="native"
-	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
-                        http://www.zkoss.org/2005/zul/zul.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
-	<idspace height="100%" width="100%" 
+	<style
+		src="~./org/carewebframework/vista/ui/patientgoals/goals.css?1.0" />
+
+	<div id="root" zclass="vistaPatientGoals" height="100%" width="100%"
 		apply="${vistaPatientGoalsGoalController}">
-		<grid id="grid" oddRowSclass="alert-success"
-			sclass="vistaPatientGoals-grid">
-			<columns>
-				<column width="30px" />
-				<column align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.column.review.label}" />
-				<column align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.column.newstep.label}" />
-				<column align="center" width="75px"
-					label="${labels.vistaPatientGoals.goal.column.lastupdate.label}" />
-				<column align="center" width="50px"
-					label="${labels.vistaPatientGoals.goal.column.number.label}" />
-				<column align="center"
-					label="${labels.vistaPatientGoals.goal.column.goal.label}" />
-				<column align="center"
-					label="${labels.vistaPatientGoals.goal.column.startdate.label}" />
-				<column align="center" width="75px"
-					label="${labels.vistaPatientGoals.goal.column.reason.label}" />
-				<column align="center"
-					label="${labels.vistaPatientGoals.goal.column.type.label}" />
-				<column align="center"
-					label="${labels.vistaPatientGoals.goal.column.followup.label}" />
-				<column align="center" width="75px"
-					label="${labels.vistaPatientGoals.goal.column.status.label}" />
-				<column align="center"
-					label="${labels.vistaPatientGoals.goal.column.provider.label}" />
-				<column hflex="1"
-					label="${labels.vistaPatientGoals.goal.column.notes.label}" />
-			</columns>
-		</grid>
+		<tabbox id="tabbox" vflex="1" hflex="1">
+			<tabs>
+				<tab label="Patient Goals / Steps" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<toolbar id="toolbar" mold="panel">
+						<a id="btnNewGoal" label="New Goal" />
+						<space width="10px" />
+						<a id="btnNewDeclined" label="Declined Goal" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<a id="btnExpandAll" label="Expand All" />
+						<space width="10px" />
+						<a id="btnCollapseAll" label="Collapse All" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<label value="Filter Goals On" />
+						<space width="10px" />
+						<checkbox label="Active" value="A"
+							forward="onCheck=root.onGoalFilterChange" />
+						<checkbox label="Inactive" value="I"
+							forward="onCheck=root.onGoalFilterChange" />
+						<checkbox label="Declined" value="D"
+							forward="onCheck=root.onGoalFilterChange" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<label value="Filter Steps On" />
+						<space width="10px" />
+						<checkbox label="Active" value="A"
+							forward="onCheck=root.onStepFilterChange" />
+						<checkbox label="Inactive" value="I"
+							forward="onCheck=root.onStepFilterChange" />
+						<space hflex="1" />
+					</toolbar>
+					<label id="lblMessage" />
+					<grid id="grid" vflex="1" oddRowSclass="none"
+						sclass="vistaPatientGoals-grid">
+						<columns>
+							<column width="30px" />
+							<column align="center" width="50px"
+								label="${labels.vistaPatientGoals.goal.column.review.label}" />
+							<column align="center" width="50px"
+								label="${labels.vistaPatientGoals.goal.column.newstep.label}" />
+							<column align="center" width="75px"
+								label="${labels.vistaPatientGoals.goal.column.lastupdate.label}" />
+							<column align="center" width="50px"
+								label="${labels.vistaPatientGoals.goal.column.number.label}" />
+							<column align="center"
+								label="${labels.vistaPatientGoals.goal.column.goal.label}" />
+							<column align="center"
+								label="${labels.vistaPatientGoals.goal.column.startdate.label}" />
+							<column align="center" width="75px"
+								label="${labels.vistaPatientGoals.goal.column.reason.label}" />
+							<column align="center"
+								label="${labels.vistaPatientGoals.goal.column.type.label}" />
+							<column align="center"
+								label="${labels.vistaPatientGoals.goal.column.followup.label}" />
+							<column align="center" width="75px"
+								label="${labels.vistaPatientGoals.goal.column.status.label}" />
+							<column align="center"
+								label="${labels.vistaPatientGoals.goal.column.provider.label}" />
+							<column hflex="1"
+								label="${labels.vistaPatientGoals.goal.column.notes.label}" />
+						</columns>
+					</grid>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</div>
 
-		<label id="lblMessage" />
-	</idspace>
 </zk>

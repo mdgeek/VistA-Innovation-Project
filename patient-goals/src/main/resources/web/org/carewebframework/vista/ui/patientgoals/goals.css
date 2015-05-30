@@ -1,26 +1,5 @@
 @CHARSET "UTF-8";
 
-.vistaPatientGoals-collapsible a {
-	float: left;
-	margin-right: 5px;
-	margin-top: 6px;
-	font-size: 70%;
-	border: 1px solid transparent;
-}
-
-.vistaPatientGoals-collapsible a:hover, .vistaPatientGoals-collapsible a:focus {
-	text-decoration: none;
-}
-
-.vistaPatientGoals-collapsible a:hover {
-	border: 1px solid gray;
-}
-
-.vistaPatientGoals-collapsible .z-caption-content {
-	font-weight: bold;
-	color: darkblue;
-}
-
 .vistaPatientGoals .z-toolbar label {
 	margin-bottom: 0;
 }
@@ -48,4 +27,14 @@
 
 .vistaPatientGoals-grid .z-detail-outer {
 	padding: 0;
+}
+
+.vistaPatientGoals-group-active {
+	background-color: lightgreen;	
+}
+.vistaPatientGoals-group-inactive {
+	background-color: lightgreen;	
+}
+.vistaPatientGoals-group-declined {
+	background-color: lightgreen;	
 }
