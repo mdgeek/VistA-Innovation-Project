@@ -22,6 +22,7 @@ import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.HybridModel.IGrouper;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.patientgoals.controller.AddEditController.ActionType;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
@@ -34,6 +35,7 @@ import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
+import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Toolbar;
 
 /**
@@ -149,6 +151,8 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private Toolbar toolbar;
     
+    private Tabbox tabbox;
+    
     /**
      * Allows the step controller to find the enclosing goal controller.
      * 
@@ -198,6 +202,21 @@ public class GoalController extends AbstractGridController<Goal> {
     
     public void registerStepController(StepController controller) {
         controller.registerQueryFilter(stepFilter);
+    }
+    
+    public void onClick$btnNewGoal() {
+        newGoal(ActionType.ADD_GOAL_ACTIVE);
+    }
+    
+    public void onClick$btnNewDeclined() {
+        newGoal(ActionType.ADD_GOAL_DECLINED);
+    }
+    
+    private void newGoal(ActionType actionType) {
+        Goal goal = new Goal();
+        goal.setName(actionType.toString());
+        goal.setDeclined(actionType == ActionType.ADD_GOAL_DECLINED);
+        AddEditController.execute(tabbox, goal, actionType);
     }
     
     public void onClick$btnExpandAll() {

@@ -1,0 +1,49 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
+                        http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<idspace height="100%" width="100%"
+		apply="${vistaPatientGoalsAddEditController}">
+		<vlayout id="form" spacing="20px" style="padding: 10px" vflex="1">
+			<hlayout>
+				<label value="Goal Name:" />
+				<textbox id="txtName" hflex="1" />
+			</hlayout>
+			<groupbox title="Types of Goal" height="150px">
+				<span id="goalTypes" sclass="vistaPatientGoals-types" />
+			</groupbox>
+			<hlayout>
+				<label value="Reason for Goal:" />
+				<textbox id="txtReason" hflex="1" />
+			</hlayout>
+			<hlayout height="100px">
+				<label value="Notes History:" />
+				<textbox id="txtNotesHistory" hflex="1" vflex="1"
+					multiline="true" />
+				<label value="Notes:" />
+				<textbox id="txtNotes" hflex="1" vflex="1"
+					multiline="true" />
+			</hlayout>
+			<hlayout>
+				<label value="Goal Start Date:" />
+				<datebox id="datStart" hflex="1" vflex="1" />
+				<label value="Goal Followup Date:" />
+				<datebox id="datFollowup" hflex="1" vflex="1" />
+			</hlayout>
+			<radiogroup>
+				<radio id="radActive" label="Active" />
+				<radio id="radMet" label="Met" />
+				<radio id="radStopped" label="Stopped" />
+				<radio id="radMaintained" label="Maintained" />
+				<radio id="radDelete" label="Delete/Entered in Error" />
+			</radiogroup>
+		</vlayout>
+		<toolbar align="end" style="border-top: 1px solid lightgray">
+			<button id="btnOK" label="Ok" zclass="btn"
+				sclass="btn-success" />
+			<button id="btnCancel" label="Cancel" zclass="btn"
+				sclass="btn-danger" />
+		</toolbar>
+	</idspace>
+</zk>

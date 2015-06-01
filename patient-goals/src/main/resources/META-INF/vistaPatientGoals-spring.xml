@@ -41,6 +41,11 @@
 				<bean class="org.carewebframework.vista.ui.patientgoals.view.StepRenderer" />
 			</property>
 		</bean>
+		
+		<bean id="vistaPatientGoalsAddEditController" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.controller.AddEditController">
+			<constructor-arg ref="vistaPatientGoalsGoalService" />
+		</bean>
 
 	</beans>
 

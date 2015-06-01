@@ -46,7 +46,7 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     private String reason;
     
-    private final List<String> type = new ArrayList<>();
+    private final List<GoalType> type = new ArrayList<>();
     
     public abstract GoalGroup getGroup();
     
@@ -120,11 +120,11 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     }
     
     public String getStatusCode() {
-        return StrUtil.piece(status, ";");
+        return status == null ? "" : StrUtil.piece(status, ";");
     }
     
     public String getStatusText() {
-        return StrUtil.piece(status, ";", 2);
+        return status == null ? "" : StrUtil.piece(status, ";", 2);
     }
     
     public void setStatus(String status) {
@@ -147,7 +147,7 @@ public abstract class GoalBase implements Comparable<GoalBase> {
         this.reason = reason;
     }
     
-    public List<String> getType() {
+    public List<GoalType> getType() {
         return type;
     }
     

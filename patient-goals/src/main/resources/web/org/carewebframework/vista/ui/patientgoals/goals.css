@@ -17,6 +17,10 @@
 	border-bottom: 1px solid lightgray;
 }
 
+.vistaPatientGoals-grid .z-grid {
+	margin-left: 50px;
+}
+
 .vistaPatientGoals-grid .z-cell .glyphicon-plus {
 	color: green;
 }
@@ -32,4 +36,14 @@
 .vistaPatientGoals-bold,
 .vistaPatientGoals-bold * {
 	font-weight: bold!important;
+}
+
+.vistaPatientGoals-types span {
+	 display: block;
+}
+.vistaPatientGoals-types {
+	overflow: auto; 
+	-webkit-column-count: 3; 
+	-moz-column-count: 3; 
+	column-count: 3;
 }

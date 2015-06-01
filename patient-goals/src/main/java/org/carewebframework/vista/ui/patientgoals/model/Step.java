@@ -39,11 +39,11 @@ public class Step extends GoalBase {
     }
     
     public String getFacilityName() {
-        return StrUtil.piece(facility, ";", 2);
+        return facility == null ? "" : StrUtil.piece(facility, ";", 2);
     }
     
     public String getFacilityIEN() {
-        return StrUtil.piece(facility, ";");
+        return facility == null ? "" : StrUtil.piece(facility, ";");
     }
     
     public void setFacility(String facility) {

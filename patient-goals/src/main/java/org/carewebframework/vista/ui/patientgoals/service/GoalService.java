@@ -10,6 +10,7 @@
 package org.carewebframework.vista.ui.patientgoals.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ca.uhn.fhir.model.dstu2.resource.Patient;
@@ -22,6 +23,7 @@ import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
@@ -29,6 +31,8 @@ import org.carewebframework.vista.ui.patientgoals.model.Step;
  * Data service for patient goals.
  */
 public class GoalService extends AbstractBrokerQueryService<Goal> {
+    
+    private List<GoalType> goalTypes;
     
     public GoalService(BrokerSession brokerSession) {
         super(brokerSession, "BEHOPGAP GETGOAL");
@@ -101,7 +105,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                         step.setNumber(NumberUtils.toFloat(pcs[3]));
                         step.setCreatedBy(pcs[4]);
                         step.setCreatedDate(FMDate.fromString(pcs[5]));
-                        step.getType().add(pcs[6]);
+                        step.getType().add(getGoalType(pcs[6]));
                         step.setStartDate(FMDate.fromString(pcs[7]));
                         step.setFollowupDate(FMDate.fromString(pcs[8]));
                         step.setUpdatedBy(pcs[9]);
@@ -134,7 +138,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                 
                 case 1: // Types
                     for (int i = 0; i < pcs.length; i++) {
-                        goal.getType().add(pcs[i]);
+                        goal.getType().add(getGoalType(pcs[i]));
                     }
                     
                     state = 2;
@@ -162,5 +166,29 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         }
         
         return results;
+    }
+    
+    public GoalType getGoalType(String name) {
+        for (GoalType goalType : getGoalTypes()) {
+            if (goalType.getName().equalsIgnoreCase(name)) {
+                return goalType;
+            }
+        }
+        
+        return null;
+    }
+    
+    public List<GoalType> getGoalTypes() {
+        if (goalTypes == null) {
+            goalTypes = new ArrayList<>();
+            
+            for (String entry : service.callRPCList("RGUTRPC FILENT", null, "9001002.4")) {
+                goalTypes.add(new GoalType(entry));
+            }
+            
+            Collections.sort(goalTypes);
+        }
+        
+        return goalTypes;
     }
 }
