@@ -87,16 +87,20 @@ public class GoalController extends AbstractGridController<Goal> {
         
     }
     
-    private static class GrouperGroup {
-        
-        public GrouperGroup(String label, int order) {
-            this.label = label;
-            this.order = order;
-        }
+    public static class GrouperGroup {
         
         private final String label;
         
-        private final int order;
+        private final GoalGroup group;
+        
+        public GrouperGroup(String label, GoalGroup group) {
+            this.label = label;
+            this.group = group;
+        }
+        
+        public GoalGroup getGroup() {
+            return group;
+        }
         
     }
     
@@ -128,16 +132,16 @@ public class GoalController extends AbstractGridController<Goal> {
         
         @Override
         public int compareGroup(GrouperGroup group1, GrouperGroup group2) {
-            return group1.order - group2.order;
+            return group1.group.ordinal() - group2.group.ordinal();
         }
         
     };
     
-    private static GrouperGroup groupActive = new GrouperGroup("Active Goals", 0);
+    private static GrouperGroup groupActive = new GrouperGroup("Active Goals", GoalGroup.ACTIVE);
     
-    private static GrouperGroup groupInactive = new GrouperGroup("Inactive Goals", 1);
+    private static GrouperGroup groupInactive = new GrouperGroup("Inactive Goals", GoalGroup.INACTIVE);
     
-    private static GrouperGroup groupDeclined = new GrouperGroup("Declined Goals", 2);
+    private static GrouperGroup groupDeclined = new GrouperGroup("Declined Goals", GoalGroup.DECLINED);
     
     private static GoalFilter goalFilter = new GoalFilter();
     
@@ -158,6 +162,14 @@ public class GoalController extends AbstractGridController<Goal> {
     public GoalController(GoalService service) {
         super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, goalGrouper);
         setPaging(false);
+    }
+    
+    public String getLabelClass(int i) {
+        return "vistaPatientGoals-bold " + Constants.LABEL_SCLASS[i];
+    }
+    
+    public String getGroupClass(int i) {
+        return Constants.GROUP_SCLASS[i];
     }
     
     @Override

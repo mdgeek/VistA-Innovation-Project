@@ -14,31 +14,36 @@
 			<tabpanels>
 				<tabpanel>
 					<toolbar id="toolbar" mold="panel">
-						<a id="btnNewGoal" label="New Goal" />
+						<a id="btnNewGoal" label="New Goal" sclass="vistaPatientGoals-bold" />
 						<space width="10px" />
-						<a id="btnNewDeclined" label="Declined Goal" />
+						<a id="btnNewDeclined" label="Declined Goal" sclass="vistaPatientGoals-bold" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
-						<a id="btnExpandAll" label="Expand All" />
+						<a id="btnExpandAll" label="Expand All" sclass="vistaPatientGoals-bold" />
 						<space width="10px" />
-						<a id="btnCollapseAll" label="Collapse All" />
+						<a id="btnCollapseAll" label="Collapse All" sclass="vistaPatientGoals-bold" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
 						<label value="Filter Goals On" />
-						<space width="10px" />
+						<space width="5px" />
 						<checkbox label="Active" value="A"
+							sclass="${$composer.getLabelClass(0)}"
 							forward="onCheck=root.onGoalFilterChange" />
 						<checkbox label="Inactive" value="I"
+							sclass="${$composer.getLabelClass(1)}"
 							forward="onCheck=root.onGoalFilterChange" />
 						<checkbox label="Declined" value="D"
+							sclass="${$composer.getLabelClass(2)}"
 							forward="onCheck=root.onGoalFilterChange" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
 						<label value="Filter Steps On" />
-						<space width="10px" />
+						<space width="5px" />
 						<checkbox label="Active" value="A"
+							sclass="${$composer.getLabelClass(0)}"
 							forward="onCheck=root.onStepFilterChange" />
 						<checkbox label="Inactive" value="I"
+							sclass="${$composer.getLabelClass(1)}"
 							forward="onCheck=root.onStepFilterChange" />
 						<space hflex="1" />
 					</toolbar>

@@ -29,12 +29,7 @@
 	padding: 0;
 }
 
-.vistaPatientGoals-group-active {
-	background-color: lightgreen;	
-}
-.vistaPatientGoals-group-inactive {
-	background-color: lightgreen;	
-}
-.vistaPatientGoals-group-declined {
-	background-color: lightgreen;	
+.vistaPatientGoals-bold,
+.vistaPatientGoals-bold * {
+	font-weight: bold!important;
 }

@@ -16,20 +16,19 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
+import org.carewebframework.ui.zk.HybridModel.GroupHeader;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.controller.Constants;
+import org.carewebframework.vista.ui.patientgoals.controller.GoalController.GrouperGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Cell;
 import org.zkoss.zul.Detail;
-import org.zkoss.zul.Div;
+import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
 
 /**
@@ -52,7 +51,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     @Override
     public Component renderRow(Row row, Goal goal) {
         GoalGroup group = goal.getGroup();
-        ZKUtil.updateSclass(row, Constants.GROUP_STYLE[group.ordinal()], false);
+        ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);
@@ -83,21 +82,18 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
             return;
         }
         
-        detail.appendChild(new Div());
-        
-        detail.addEventListener(Events.ON_OPEN, new EventListener<Event>() {
-            
-            @Override
-            public void onEvent(Event event) throws Exception {
-                detail.removeEventListener(Events.ON_OPEN, this);
-                ZKUtil.detachChildren(detail);
-                Map<Object, Object> args = new HashMap<>();
-                args.put("goal", goal);
-                ZKUtil.loadZulPage(STEP_VIEW, detail, args);
-            }
-            
-        });
-        
+        Map<Object, Object> args = new HashMap<>();
+        args.put("goal", goal);
+        ZKUtil.loadZulPage(STEP_VIEW, detail, args);
+    }
+    
+    @Override
+    protected void renderGroup(Group group, Object object) {
+        super.renderGroup(group, object);
+        @SuppressWarnings("unchecked")
+        GroupHeader<Group, GrouperGroup> gh = (GroupHeader<Group, GrouperGroup>) object;
+        String sclass = Constants.LABEL_SCLASS[gh.getGroup().getGroup().ordinal()];
+        group.setWidgetListener("onBind", "jq(this).find('.z-label').addClass('" + sclass + "')");
     }
     
     private Cell createCell(Row row, List<Review> reviews) {

@@ -15,7 +15,9 @@ public class Constants {
     
     public static final String LABEL_PREFIX = "vistaPatientGoals";
     
-    public static final String[] GROUP_STYLE = { "alert-success", "alert-warning", "alert-danger" };
+    public static final String[] GROUP_SCLASS = { "alert-success", "alert-danger", "alert-warning" };
+    
+    public static final String[] LABEL_SCLASS = { "text-success", "text-danger", "text-warning" };
     
     /**
      * Enforce static class.

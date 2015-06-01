@@ -37,7 +37,7 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
     @Override
     protected Component renderRow(Row row, Step step) {
         GoalGroup group = step.getGroup();
-        ZKUtil.updateSclass(row, Constants.GROUP_STYLE[group.ordinal()], false);
+        ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);
