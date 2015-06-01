@@ -17,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.patientgoals.controller.Constants;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
@@ -38,8 +39,6 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     
     private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
     
-    private static final String[] GROUP_STYLE = { "alert-success", "alert-warning", "alert-danger" };
-    
     public GoalRenderer() {
         super(null, null);
     }
@@ -53,13 +52,18 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     @Override
     public Component renderRow(Row row, Goal goal) {
         GoalGroup group = goal.getGroup();
-        ZKUtil.updateSclass(row, GROUP_STYLE[group.ordinal()], false);
+        ZKUtil.updateSclass(row, Constants.GROUP_STYLE[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);
-        anchor = new A();
-        anchor.setIconSclass("glyphicon glyphicon-plus");
-        createCell(row, "").appendChild(anchor);
+        Cell cell = createCell(row, "");
+        
+        if (group == GoalGroup.ACTIVE) {
+            anchor = new A();
+            anchor.setIconSclass("glyphicon glyphicon-plus");
+            cell.appendChild(anchor);
+        }
+        
         createCell(row, goal.getLastUpdated());
         createCell(row, goal.getNumber());
         createCell(row, goal.getCreatedDate());

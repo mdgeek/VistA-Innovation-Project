@@ -18,7 +18,7 @@ import org.carewebframework.common.StrUtil;
 /**
  * Base class for goals and steps.
  */
-public abstract class GoalBase {
+public abstract class GoalBase implements Comparable<GoalBase> {
     
     public enum GoalGroup {
         ACTIVE, INACTIVE, DECLINED
@@ -42,13 +42,18 @@ public abstract class GoalBase {
     
     private String status;
     
-    private String number;
+    private float number;
     
     private String reason;
     
     private final List<String> type = new ArrayList<>();
     
     public abstract GoalGroup getGroup();
+    
+    @Override
+    public int compareTo(GoalBase goalBase) {
+        return Float.compare(this.number, goalBase.number);
+    }
     
     public String getIEN() {
         return ien;
@@ -126,11 +131,11 @@ public abstract class GoalBase {
         this.status = status;
     }
     
-    public String getNumber() {
+    public float getNumber() {
         return number;
     }
     
-    public void setNumber(String number) {
+    public void setNumber(float number) {
         this.number = number;
     }
     

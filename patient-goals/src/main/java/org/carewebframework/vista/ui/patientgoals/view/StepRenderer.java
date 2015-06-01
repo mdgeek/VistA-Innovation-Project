@@ -10,6 +10,9 @@
 package org.carewebframework.vista.ui.patientgoals.view;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
+import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.patientgoals.controller.Constants;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
 import org.zkoss.zk.ui.Component;
@@ -33,6 +36,8 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
      */
     @Override
     protected Component renderRow(Row row, Step step) {
+        GoalGroup group = step.getGroup();
+        ZKUtil.updateSclass(row, Constants.GROUP_STYLE[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);

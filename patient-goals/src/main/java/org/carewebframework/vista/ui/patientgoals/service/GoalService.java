@@ -14,6 +14,8 @@ import java.util.List;
 
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
+import org.apache.commons.lang.math.NumberUtils;
+
 import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
@@ -96,7 +98,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                         goal.getSteps().add(step);
                         step.setFacility(pcs[1]);
                         step.setIEN(pcs[2]);
-                        step.setNumber(pcs[3]);
+                        step.setNumber(NumberUtils.toFloat(pcs[3]));
                         step.setCreatedBy(pcs[4]);
                         step.setCreatedDate(FMDate.fromString(pcs[5]));
                         step.getType().add(pcs[6]);
@@ -126,7 +128,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     goal.setStartDate(FMDate.fromString(pcs[7]));
                     goal.setFollowupDate(FMDate.fromString(pcs[8]));
                     goal.setStatus(pcs[9]);
-                    goal.setNumber(pcs[10]);
+                    goal.setNumber(NumberUtils.toFloat(pcs[10]));
                     state = 1;
                     break;
                 
