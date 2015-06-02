@@ -9,12 +9,13 @@
  */
 package org.carewebframework.vista.ui.patientgoals.model;
 
+import org.carewebframework.common.DateUtil;
 import org.carewebframework.vista.mbroker.FMDate;
 
 /**
  * Model object for a goal review.
  */
-public class Review {
+public class Review implements Comparable<Review> {
     
     private final FMDate reviewed;
     
@@ -31,6 +32,16 @@ public class Review {
     
     public String getNote() {
         return note;
+    }
+    
+    @Override
+    public int compareTo(Review review) {
+        return DateUtil.compare(reviewed, review.reviewed);
+    }
+    
+    @Override
+    public String toString() {
+        return (reviewed == null ? "" : DateUtil.formatDate(reviewed) + "  ") + (note == null ? "" : note);
     }
     
 }

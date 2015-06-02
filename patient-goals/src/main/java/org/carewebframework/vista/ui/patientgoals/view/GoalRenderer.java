@@ -69,11 +69,17 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         createCell(row, goal.getCreatedDate());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());
-        createCell(row, goal.getType());
+        createCell(row, goal.getTypes());
         createCell(row, goal.getFollowupDate());
         createCell(row, goal.getStatusText());
         createCell(row, goal.getProvider());
-        createCell(row, goal.getReviews());
+        
+        List<Review> reviews = goal.getReviews();
+        Review review = reviews == null || reviews.isEmpty() ? null : reviews.get(reviews.size() - 1);
+        String label = review == null ? "" : review.getNote();
+        String hint = review == null ? "" : review.toString();
+        createCell(row, label).setTooltiptext(hint);
+        
         return row;
     }
     

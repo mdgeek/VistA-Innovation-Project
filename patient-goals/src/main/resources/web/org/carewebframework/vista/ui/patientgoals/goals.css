@@ -18,7 +18,7 @@
 }
 
 .vistaPatientGoals-grid .z-grid {
-	margin-left: 50px;
+	margin-left: 49px;
 }
 
 .vistaPatientGoals-grid .z-cell .glyphicon-plus {
@@ -46,4 +46,9 @@
 	-webkit-column-count: 3; 
 	-moz-column-count: 3; 
 	column-count: 3;
+}
+
+.vistaPatientGoals-framed {
+	border: 1px solid lightgray;
+	padding: 5px;
 }

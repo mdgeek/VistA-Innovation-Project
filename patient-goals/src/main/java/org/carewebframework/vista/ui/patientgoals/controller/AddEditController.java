@@ -15,15 +15,21 @@ import java.util.Map;
 
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.FrameworkController;
+import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
+import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.carewebframework.vista.ui.patientgoals.service.GoalService;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Radio;
@@ -85,13 +91,15 @@ public class AddEditController extends FrameworkController {
     
     private Textbox txtNotesHistory;
     
-    private Textbox txtNotes;
+    private Textbox txtNote;
     
     private Datebox datStart;
     
     private Datebox datFollowup;
     
     private Radiogroup rgStatus;
+    
+    private Button btnCancel;
     
     public static boolean execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
         Tab tab = findTab(tabbox, goalBase, actionType);
@@ -102,6 +110,7 @@ public class AddEditController extends FrameworkController {
         }
         
         tab = new Tab();
+        tab.setClosable(true);
         Tabpanel panel = new Tabpanel();
         tabbox.getTabs().appendChild(tab);
         tabbox.getTabpanels().appendChild(panel);
@@ -141,6 +150,7 @@ public class AddEditController extends FrameworkController {
         goalBase = (GoalBase) arg.get("goalBase");
         actionType = (ActionType) arg.get("actionType");
         tab = (Tab) arg.get("tab");
+        tab.addForward(Events.ON_CLOSE, comp, "onCloseTab");
         isStep = goalBase instanceof Step;
         
         if (isStep) {
@@ -161,10 +171,18 @@ public class AddEditController extends FrameworkController {
     }
     
     private void populateControls() {
-        txtName.setText(isStep ? null : goal.getName());
-        txtNotes.setText(null);
-        txtNotesHistory.setText(null);
         txtReason.setText(goalBase.getReason());
+        
+        if (!isStep) {
+            txtName.setText(goal.getName());
+            StringBuilder sb = new StringBuilder();
+            
+            for (Review review : goal.getReviews()) {
+                sb.append(review).append('\n');
+            }
+            
+            txtNotesHistory.setText(sb.toString());
+        }
         
         if (goalBase.getStartDate() != null) {
             datStart.setValue(goalBase.getStartDate());
@@ -178,12 +196,35 @@ public class AddEditController extends FrameworkController {
         Checkbox chk = null;
         
         while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
-            chk.setChecked(goal.getType().contains((chk.getValue())));
+            chk.setChecked(goal.getTypes().contains((chk.getValue())));
         }
     }
     
     private void populateGoalBase() {
+        goalBase.setReason(txtReason.getText());
         
+        if (!isStep) {
+            goal.setName(txtName.getText());
+            goal.setStartDate(datStart.getValue() == null ? null : new FMDate(datStart.getValue()));
+            goal.setFollowupDate(datFollowup.getValue() == null ? null : new FMDate(datFollowup.getValue()));
+            String note = txtNote.getText();
+            
+            if (note != null && !note.isEmpty()) {
+                Review review = new Review(new FMDate(), note);
+                goal.getReviews().add(review);
+            }
+        }
+        
+        goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
+        goalBase.getTypes().clear();
+        goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
+        Checkbox chk = null;
+        
+        while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
+            if (chk.isChecked()) {
+                goalBase.getTypes().add((GoalType) chk.getValue());
+            }
+        }
     }
     
     private void populateGoalTypes() {
@@ -206,13 +247,20 @@ public class AddEditController extends FrameworkController {
     
     public boolean isType(String actions) {
         for (String action : actions.split("\\,")) {
+            boolean result = false;
             action = action.trim();
             
-            if (!action.contains("_")) {
-                return goalBase.getGroup() == GoalGroup.valueOf(action);
+            if ("GOAL".equals(action)) {
+                result = !isStep;
+            } else if ("STEP".equals(action)) {
+                result = isStep;
+            } else if (!action.contains("_")) {
+                result = goalBase.getGroup() == GoalGroup.valueOf(action);
+            } else {
+                result = actionType == ActionType.valueOf(action);
             }
             
-            if (actionType == ActionType.valueOf(action)) {
+            if (result) {
                 return true;
             }
         }
@@ -235,28 +283,42 @@ public class AddEditController extends FrameworkController {
     }
     
     public void onClick$btnOK() {
-        commit();
-        close();
+        if (commit()) {
+            close(true);
+        }
     }
     
     public void onClick$btnCancel() {
-        close();
+        close(false);
     }
     
-    private void commit() {
+    public void onCloseTab(Event event) {
+        ZKUtil.getEventOrigin(event).stopPropagation();
+        close(false);
+    }
+    
+    private boolean commit() {
         populateGoalBase();
+        
         if (!hasRequired()) {
-            return;
+            return false;
         }
         
-        switch (actionType) {
-            case ADD_GOAL_ACTIVE:
-                service.addGoal((Goal) goalBase);
-                break;
+        try {
+            switch (actionType) {
+                case ADD_GOAL_ACTIVE:
+                    service.addGoal((Goal) goalBase);
+                    break;
+            }
+        } catch (Exception e) {
+            PromptDialog.showError(e);
+            return false;
         }
+        
+        return true;
     }
     
-    private void close() {
+    private void close(boolean force) {
         tab.getTabbox().setSelectedIndex(0);
         tab.getLinkedPanel().detach();
         tab.detach();

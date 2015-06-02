@@ -147,7 +147,7 @@ public abstract class GoalBase implements Comparable<GoalBase> {
         this.reason = reason;
     }
     
-    public List<GoalType> getType() {
+    public List<GoalType> getTypes() {
         return type;
     }
     

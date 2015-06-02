@@ -16,6 +16,7 @@ import java.util.List;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.query.IQueryContext;
@@ -96,6 +97,9 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                         goal.getReviews().add(new Review(FMDate.fromString(pcs[1]), pcs[2]));
                         break;
                     }
+                    
+                    Collections.sort(goal.getReviews());
+                    
                     // Note that fall through is intended here.
                 case 5: // Step
                     if ("STEP".equals(pcs[0])) {
@@ -107,7 +111,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                         step.setNumber(NumberUtils.toFloat(pcs[3]));
                         step.setCreatedBy(pcs[4]);
                         step.setCreatedDate(FMDate.fromString(pcs[5]));
-                        step.getType().add(getGoalType(pcs[6]));
+                        step.getTypes().add(getGoalType(pcs[6]));
                         step.setStartDate(FMDate.fromString(pcs[7]));
                         step.setFollowupDate(FMDate.fromString(pcs[8]));
                         step.setUpdatedBy(pcs[9]);
@@ -141,7 +145,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                 
                 case 1: // Types
                     for (int i = 0; i < pcs.length; i++) {
-                        goal.getType().add(getGoalType(pcs[i]));
+                        goal.getTypes().add(getGoalType(pcs[i]));
                     }
                     
                     state = 2;
@@ -209,10 +213,11 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * @param goal The goal to add.
      */
     public void addGoal(Goal goal) {
+        updateGoalNumber(goal);
         List<String> data = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         addPiece(sb, "GOAL");
-        addPiece(sb, goal.getStatusCode());
+        addPiece(sb, goal.isDeclined() ? "N" : "S");
         addPiece(sb, goal.getLocationIEN());
         addPiece(sb, NumUtil.toString(goal.getNumber()));
         addPiece(sb, goal.getProvider());
@@ -222,7 +227,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         flush(sb, data);
         addPiece(sb, "TYPE");
         
-        for (GoalType goalType : goal.getType()) {
+        for (GoalType goalType : goal.getTypes()) {
             addPiece(sb, goalType.getIEN());
         }
         
@@ -235,6 +240,15 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         flush(sb, data);
         String result = service.callRPC("BEHOPGAP ADDGOAL", goal.getPatient().getId().getIdPart(), data);
         goal.setIEN(checkResult(result));
+    }
+    
+    public void updateGoalNumber(Goal goal) {
+        if (StringUtils.isEmpty(goal.getLocationIEN())) {
+            goal.setLocationIEN(UserContext.getActiveUser().getSecurityDomain().getLogicalId());
+        }
+        
+        String result = service.callRPC("BEHOPGAP NEXTGN", goal.getPatient().getId().getIdPart(), goal.getLocationIEN());
+        goal.setNumber(Float.parseFloat(result));
     }
     
     private String checkResult(String result) {
