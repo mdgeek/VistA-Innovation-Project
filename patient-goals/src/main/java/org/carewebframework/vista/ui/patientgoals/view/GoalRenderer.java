@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
-
-import org.carewebframework.common.NumUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.HybridModel.GroupHeader;
 import org.carewebframework.ui.zk.ZKUtil;
@@ -26,6 +23,7 @@ import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Cell;
 import org.zkoss.zul.Detail;
@@ -55,17 +53,19 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
+        anchor.addForward(Events.ON_CLICK, "root", "onReviewGroup", goal);
         createCell(row, "").appendChild(anchor);
         Cell cell = createCell(row, "");
         
         if (group == GoalGroup.ACTIVE) {
             anchor = new A();
             anchor.setIconSclass("glyphicon glyphicon-plus");
+            anchor.addForward(Events.ON_CLICK, "root", "onAddStep", goal);
             cell.appendChild(anchor);
         }
         
         createCell(row, goal.getLastUpdated());
-        createCell(row, NumUtil.toString(goal.getNumber()));
+        createCell(row, goal.getNumberString());
         createCell(row, goal.getCreatedDate());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());
@@ -101,24 +101,6 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         GroupHeader<Group, GrouperGroup> gh = (GroupHeader<Group, GrouperGroup>) object;
         String sclass = Constants.LABEL_SCLASS[gh.getGroup().getGroup().ordinal()];
         group.setWidgetListener("onBind", "jq(this).find('.z-label').addClass('" + sclass + "')");
-    }
-    
-    private Cell createCell(Row row, List<Review> reviews) {
-        StringBuilder sb = new StringBuilder();
-        
-        for (Review review : reviews) {
-            String note = review.getNote();
-            
-            if (!StringUtils.isEmpty(note)) {
-                if (sb.length() > 0) {
-                    sb.append(", ");
-                }
-                
-                sb.append(note);
-            }
-        }
-        
-        return createCell(row, sb.toString());
     }
     
 }

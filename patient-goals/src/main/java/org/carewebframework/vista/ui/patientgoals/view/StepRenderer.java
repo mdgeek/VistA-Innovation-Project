@@ -9,7 +9,6 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
-import org.carewebframework.common.NumUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.controller.Constants;
@@ -17,6 +16,7 @@ import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Row;
 
@@ -41,8 +41,9 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
         ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
+        anchor.addForward(Events.ON_CLICK, "root", "onReviewStep", step);
         createCell(row, "").appendChild(anchor);
-        createCell(row, NumUtil.toString(step.getNumber()));
+        createCell(row, step.getNumberString());
         createCell(row, step.getText());
         createCell(row, step.getStartDate());
         createCell(row, step.getFollowupDate());

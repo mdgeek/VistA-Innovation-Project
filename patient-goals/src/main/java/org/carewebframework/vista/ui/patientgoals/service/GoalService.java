@@ -20,7 +20,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.query.IQueryContext;
-import org.carewebframework.common.NumUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
@@ -219,7 +218,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         addPiece(sb, "GOAL");
         addPiece(sb, goal.isDeclined() ? "N" : "S");
         addPiece(sb, goal.getLocationIEN());
-        addPiece(sb, NumUtil.toString(goal.getNumber()));
+        addPiece(sb, goal.getNumberString());
         addPiece(sb, goal.getProvider());
         addPiece(sb, goal.getStartDate());
         addPiece(sb, goal.getFollowupDate());

@@ -9,6 +9,7 @@
  */
 package org.carewebframework.vista.ui.patientgoals.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,6 @@ import org.carewebframework.vista.ui.patientgoals.service.GoalService;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Radio;
@@ -48,20 +48,17 @@ public class AddEditController extends FrameworkController {
     
     private static final String DIALOG = "~./org/carewebframework/vista/ui/patientgoals/add-edit.zul";
     
+    private static final String[] TYPES = { "GOAL", "STEP", "ACTIVE", "INACTIVE", "DECLINED", "ADD", "REVIEW" };
+    
     public enum ActionType {
-        ADD_GOAL_ACTIVE("New Goal"), REVIEW_GOAL_ACTIVE("Review Active Goal %s"), REVIEW_GOAL_INACTIVE(
-                "Review Inactive Goal %s"), ADD_GOAL_DECLINED("New Declined"), REVIEW_GOAL_DECLINED(
-                "Review Declined Goal %s"), ADD_STEP_ACTIVE("New Step"), REVIEW_STEP_ACTIVE("Review Active Step %s"), REVIEW_STEP_INACTIVE(
-                "Review Inactive Step %s");
+        ADD, REVIEW;
         
-        private String label;
-        
-        ActionType(String label) {
-            this.label = label;
-        }
-        
-        public String getLabel() {
-            return label;
+        public String getLabel(GoalBase goalBase) {
+            Goal goal = goalBase instanceof Goal ? (Goal) goalBase : ((Step) goalBase).getGoal();
+            Step step = goalBase instanceof Step ? (Step) goalBase : null;
+            return StrUtil.formatMessage("@vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
+                    + goalBase.getGroup().name().toLowerCase() + "." + this.name().toLowerCase(), goal.getName(),
+                step == null ? null : step.getNumberString());
         }
     }
     
@@ -99,8 +96,6 @@ public class AddEditController extends FrameworkController {
     
     private Radiogroup rgStatus;
     
-    private Button btnCancel;
-    
     public static boolean execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
         Tab tab = findTab(tabbox, goalBase, actionType);
         
@@ -137,7 +132,8 @@ public class AddEditController extends FrameworkController {
     }
     
     private static String createId(GoalBase goalBase, ActionType actionType) {
-        return goalBase.getIEN() + actionType;
+        return actionType + "." + goalBase.getGroup() + "." + goalBase.getIEN()
+                + (goalBase instanceof Step ? "." + ((Step) goalBase).getGoal().getIEN() : "");
     }
     
     public AddEditController(GoalService service) {
@@ -159,8 +155,7 @@ public class AddEditController extends FrameworkController {
             goal = (Goal) goalBase;
         }
         
-        String name = (isStep ? step.getGoal() : goal).getName();
-        tab.setLabel(StrUtil.formatMessage(actionType.getLabel(), name));
+        tab.setLabel(actionType.getLabel(goalBase));
         tab.setValue(createId(goalBase, actionType));
         populateGoalTypes();
         populateControls();
@@ -248,16 +243,24 @@ public class AddEditController extends FrameworkController {
     public boolean isType(String actions) {
         for (String action : actions.split("\\,")) {
             boolean result = false;
-            action = action.trim();
+            int type = Arrays.asList(TYPES).indexOf(action.trim().toUpperCase());
             
-            if ("GOAL".equals(action)) {
-                result = !isStep;
-            } else if ("STEP".equals(action)) {
-                result = isStep;
-            } else if (!action.contains("_")) {
-                result = goalBase.getGroup() == GoalGroup.valueOf(action);
-            } else {
-                result = actionType == ActionType.valueOf(action);
+            switch (type) {
+                case 0: // GOAL
+                case 1: // STEP
+                    result = type == 0 ? !isStep : isStep;
+                    break;
+                
+                case 2: // ACTIVE
+                case 3: // INACTIVE
+                case 4: // DECLINED
+                    result = goalBase.getGroup() == GoalGroup.values()[type - 2];
+                    break;
+                
+                case 5: // ADD
+                case 6: // REVIEW
+                    result = actionType == ActionType.values()[type - 5];
+                    break;
             }
             
             if (result) {
@@ -306,9 +309,20 @@ public class AddEditController extends FrameworkController {
         
         try {
             switch (actionType) {
-                case ADD_GOAL_ACTIVE:
-                    service.addGoal((Goal) goalBase);
+                case ADD:
+                    if (isStep) {
+                        // service.addStep(step);
+                    } else {
+                        service.addGoal(goal);
+                    }
                     break;
+                
+                case REVIEW:
+                    if (isStep) {
+                        // service.updateStep(step);
+                    } else {
+                        // service.updateGoal(goal);
+                    }
             }
         } catch (Exception e) {
             PromptDialog.showError(e);

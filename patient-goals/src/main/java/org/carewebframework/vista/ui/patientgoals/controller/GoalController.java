@@ -200,25 +200,55 @@ public class GoalController extends AbstractGridController<Goal> {
         stepFilter.updateState(event);
     }
     
+    public void onReviewGroup(Event event) {
+        Goal goal = (Goal) event.getData();
+        
+        if (AddEditController.execute(tabbox, goal, ActionType.REVIEW)) {
+            applyFilters();
+        }
+    }
+    
+    public void onAddStep(Event event) {
+        Goal goal = (Goal) event.getData();
+        Step step = new Step(goal);
+        
+        if (AddEditController.execute(tabbox, step, ActionType.ADD)) {
+            goal.getSteps().add(step);
+            applyFilters();
+        }
+    }
+    
+    public void onReviewStep(Event event) {
+        Step step = (Step) event.getData();
+        
+        if (AddEditController.execute(tabbox, step, ActionType.REVIEW)) {
+            applyFilters();
+        }
+    }
+    
     public void registerStepController(StepController controller) {
         controller.registerQueryFilter(stepFilter);
     }
     
     public void onClick$btnNewGoal() {
-        newGoal(ActionType.ADD_GOAL_ACTIVE);
+        newGoal(ActionType.ADD, GoalGroup.ACTIVE);
     }
     
     public void onClick$btnNewDeclined() {
-        newGoal(ActionType.ADD_GOAL_DECLINED);
+        newGoal(ActionType.ADD, GoalGroup.DECLINED);
     }
     
-    private void newGoal(ActionType actionType) {
+    private void newGoal(ActionType actionType, GoalGroup goalGroup) {
         Goal goal = new Goal();
         goal.setPatient(getPatient());
-        goal.setName(actionType.getLabel());
-        goal.setDeclined(actionType == ActionType.ADD_GOAL_DECLINED);
-        goal.setStatus("A;ACTIVE");
-        AddEditController.execute(tabbox, goal, actionType);
+        goal.setDeclined(goalGroup == GoalGroup.DECLINED);
+        goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        goal.setName(actionType.getLabel(goal));
+        
+        if (AddEditController.execute(tabbox, goal, actionType)) {
+            getModel().add(goal);
+            applyFilters();
+        }
     }
     
     public void onClick$btnExpandAll() {

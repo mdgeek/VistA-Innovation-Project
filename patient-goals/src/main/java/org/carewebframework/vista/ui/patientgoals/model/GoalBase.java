@@ -12,6 +12,7 @@ package org.carewebframework.vista.ui.patientgoals.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.carewebframework.common.NumUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.mbroker.FMDate;
 
@@ -133,6 +134,10 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     public float getNumber() {
         return number;
+    }
+    
+    public String getNumberString() {
+        return NumUtil.toString(number);
     }
     
     public void setNumber(float number) {
