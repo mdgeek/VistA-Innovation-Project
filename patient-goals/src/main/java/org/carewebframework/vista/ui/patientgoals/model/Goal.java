@@ -12,6 +12,8 @@ package org.carewebframework.vista.ui.patientgoals.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.uhn.fhir.model.dstu2.resource.Patient;
+
 /**
  * Model object for a patient goal.
  */
@@ -23,9 +25,19 @@ public class Goal extends GoalBase {
     
     private String name;
     
+    private Patient patient;
+    
     private final List<Review> review = new ArrayList<>();
     
     private final List<Step> step = new ArrayList<>();
+    
+    public Patient getPatient() {
+        return patient;
+    }
+    
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
     
     public boolean isDeclined() {
         return declined;

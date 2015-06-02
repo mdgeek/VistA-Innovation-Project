@@ -9,6 +9,7 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
+import org.carewebframework.common.NumUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.controller.Constants;
@@ -41,7 +42,7 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         createCell(row, "").appendChild(anchor);
-        createCell(row, step.getNumber());
+        createCell(row, NumUtil.toString(step.getNumber()));
         createCell(row, step.getText());
         createCell(row, step.getStartDate());
         createCell(row, step.getFollowupDate());

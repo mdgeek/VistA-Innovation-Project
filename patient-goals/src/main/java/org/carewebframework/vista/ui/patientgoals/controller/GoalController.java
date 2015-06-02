@@ -214,8 +214,10 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private void newGoal(ActionType actionType) {
         Goal goal = new Goal();
-        goal.setName(actionType.toString());
+        goal.setPatient(getPatient());
+        goal.setName(actionType.getLabel());
         goal.setDeclined(actionType == ActionType.ADD_GOAL_DECLINED);
+        goal.setStatus("A;ACTIVE");
         AddEditController.execute(tabbox, goal, actionType);
     }
     

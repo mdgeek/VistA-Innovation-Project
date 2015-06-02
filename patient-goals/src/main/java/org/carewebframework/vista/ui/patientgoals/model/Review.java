@@ -9,23 +9,23 @@
  */
 package org.carewebframework.vista.ui.patientgoals.model;
 
-import java.util.Date;
+import org.carewebframework.vista.mbroker.FMDate;
 
 /**
  * Model object for a goal review.
  */
 public class Review {
     
-    private final Date reviewed;
+    private final FMDate reviewed;
     
     private final String note;
     
-    public Review(Date reviewed, String note) {
+    public Review(FMDate reviewed, String note) {
         this.reviewed = reviewed;
         this.note = note;
     }
     
-    public Date getReviewed() {
+    public FMDate getReviewed() {
         return reviewed;
     }
     

@@ -17,7 +17,9 @@ import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 import org.apache.commons.lang.math.NumberUtils;
 
+import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.query.IQueryContext;
+import org.carewebframework.common.NumUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
@@ -78,7 +80,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * </code>
      */
     @Override
-    protected List<Goal> processData(String data) {
+    protected List<Goal> processData(IQueryContext context, String data) {
         List<Goal> results = new ArrayList<>();
         List<String> list = StrUtil.toList(data, "\r");
         Goal goal = null;
@@ -122,6 +124,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     
                     step = null;
                     goal = new Goal();
+                    goal.setPatient((Patient) context.getParam("patient"));
                     goal.setIEN(pcs[0]);
                     goal.setDeclined("GOAL NOT SET".equals(pcs[1]));
                     goal.setCreatedDate(FMDate.fromString(pcs[2]));
@@ -190,5 +193,75 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         }
         
         return goalTypes;
+    }
+    
+    /**
+     * Add a new goal.
+     * <p>
+     * 
+     * <pre>
+     * (0) =   "GOAL" ^ GOAL SET STATUS ^ WHERE SET ^ GOAL NUMBER ^ PROVIDER ^ START DATE ^ FOLLOWUP DATE ^ USER
+     * (1) =   "TYPE" ^ GOAL TYPE ^ GOAL TYP ^ GOAL TYPE ...
+     * (2) =   "NAME" ^ GOAL NAME
+     * (3) = "REASON" ^ GOAL REASON
+     * </pre>
+     * 
+     * @param goal The goal to add.
+     */
+    public void addGoal(Goal goal) {
+        List<String> data = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
+        addPiece(sb, "GOAL");
+        addPiece(sb, goal.getStatusCode());
+        addPiece(sb, goal.getLocationIEN());
+        addPiece(sb, NumUtil.toString(goal.getNumber()));
+        addPiece(sb, goal.getProvider());
+        addPiece(sb, goal.getStartDate());
+        addPiece(sb, goal.getFollowupDate());
+        addPiece(sb, UserContext.getActiveUser().getLogicalId());
+        flush(sb, data);
+        addPiece(sb, "TYPE");
+        
+        for (GoalType goalType : goal.getType()) {
+            addPiece(sb, goalType.getIEN());
+        }
+        
+        flush(sb, data);
+        addPiece(sb, "NAME");
+        addPiece(sb, goal.getName());
+        flush(sb, data);
+        addPiece(sb, "REASON");
+        addPiece(sb, goal.getReason());
+        flush(sb, data);
+        String result = service.callRPC("BEHOPGAP ADDGOAL", goal.getPatient().getId().getIdPart(), data);
+        goal.setIEN(checkResult(result));
+    }
+    
+    private String checkResult(String result) {
+        String[] pcs = result.split("\\^", 2);
+        
+        if ("0".equals(pcs[0])) {
+            throw new RuntimeException(pcs[1]);
+        }
+        
+        return pcs[1];
+    }
+    
+    private void flush(StringBuilder sb, List<String> data) {
+        data.add(sb.toString());
+        sb.setLength(0);
+    }
+    
+    private StringBuilder addPiece(StringBuilder sb, FMDate field) {
+        return addPiece(sb, field == null ? null : field.getFMDate());
+    }
+    
+    private StringBuilder addPiece(StringBuilder sb, Object field) {
+        if (sb.length() > 0) {
+            sb.append(StrUtil.U);
+        }
+        
+        sb.append(field == null ? "" : field);
+        return sb;
     }
 }

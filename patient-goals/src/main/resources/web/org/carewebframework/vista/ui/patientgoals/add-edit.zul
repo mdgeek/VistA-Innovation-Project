@@ -5,12 +5,14 @@
 
 	<idspace height="100%" width="100%"
 		apply="${vistaPatientGoalsAddEditController}">
-		<vlayout id="form" spacing="20px" style="padding: 10px" vflex="1">
+		<vlayout id="form" spacing="20px" style="padding: 10px"
+			vflex="1">
 			<hlayout>
 				<label value="Goal Name:" />
 				<textbox id="txtName" hflex="1" />
 			</hlayout>
-			<groupbox title="Types of Goal" height="150px">
+			<groupbox title="Types of Goal" height="150px"
+				style="overflow:auto">
 				<span id="goalTypes" sclass="vistaPatientGoals-types" />
 			</groupbox>
 			<hlayout>
@@ -31,13 +33,17 @@
 				<label value="Goal Followup Date:" />
 				<datebox id="datFollowup" hflex="1" vflex="1" />
 			</hlayout>
-			<radiogroup>
-				<radio id="radActive" label="Active" />
-				<radio id="radMet" label="Met" />
-				<radio id="radStopped" label="Stopped" />
-				<radio id="radMaintained" label="Maintained" />
-				<radio id="radDelete" label="Delete/Entered in Error" />
-			</radiogroup>
+			<groupbox title="Status" hflex="min">
+				<radiogroup id="rgStatus">
+					<radio label="Active" value="A;ACTIVE" />
+					<radio label="Met" value="ME;GOAL MET" />
+					<radio label="Stopped" value="S;GOAL STOPPED" />
+					<radio label="Maintained"
+						value="MA;MAINTAINING GOAL" />
+					<radio label="Delete/Entered in Error"
+						value="D;DELETED/ENTERED IN ERROR" />
+				</radiogroup>
+			</groupbox>
 		</vlayout>
 		<toolbar align="end" style="border-top: 1px solid lightgray">
 			<button id="btnOK" label="Ok" zclass="btn"

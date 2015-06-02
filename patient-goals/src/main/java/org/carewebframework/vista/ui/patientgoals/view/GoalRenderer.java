@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import org.carewebframework.common.NumUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.HybridModel.GroupHeader;
 import org.carewebframework.ui.zk.ZKUtil;
@@ -64,7 +65,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         }
         
         createCell(row, goal.getLastUpdated());
-        createCell(row, goal.getNumber());
+        createCell(row, NumUtil.toString(goal.getNumber()));
         createCell(row, goal.getCreatedDate());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());

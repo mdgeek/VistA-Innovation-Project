@@ -10,10 +10,10 @@
 package org.carewebframework.vista.ui.patientgoals.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.carewebframework.common.StrUtil;
+import org.carewebframework.vista.mbroker.FMDate;
 
 /**
  * Base class for goals and steps.
@@ -26,19 +26,19 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     private String ien;
     
-    private Date createdDate;
+    private FMDate createdDate;
     
     private String createdBy;
     
-    private Date lastUpdated;
+    private FMDate lastUpdated;
     
     private String updatedBy;
     
     private String provider;
     
-    private Date startDate;
+    private FMDate startDate;
     
-    private Date followupDate;
+    private FMDate followupDate;
     
     private String status;
     
@@ -63,11 +63,11 @@ public abstract class GoalBase implements Comparable<GoalBase> {
         this.ien = ien;
     }
     
-    public Date getCreatedDate() {
+    public FMDate getCreatedDate() {
         return createdDate;
     }
     
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(FMDate createdDate) {
         this.createdDate = createdDate;
     }
     
@@ -79,11 +79,11 @@ public abstract class GoalBase implements Comparable<GoalBase> {
         this.createdBy = createdBy;
     }
     
-    public Date getLastUpdated() {
+    public FMDate getLastUpdated() {
         return lastUpdated;
     }
     
-    public void setLastUpdated(Date lastUpdated) {
+    public void setLastUpdated(FMDate lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
     
@@ -103,19 +103,19 @@ public abstract class GoalBase implements Comparable<GoalBase> {
         this.provider = provider;
     }
     
-    public Date getStartDate() {
+    public FMDate getStartDate() {
         return startDate;
     }
     
-    public void setStartDate(Date startDate) {
+    public void setStartDate(FMDate startDate) {
         this.startDate = startDate;
     }
     
-    public Date getFollowupDate() {
+    public FMDate getFollowupDate() {
         return followupDate;
     }
     
-    public void setFollowupDate(Date followupDate) {
+    public void setFollowupDate(FMDate followupDate) {
         this.followupDate = followupDate;
     }
     
