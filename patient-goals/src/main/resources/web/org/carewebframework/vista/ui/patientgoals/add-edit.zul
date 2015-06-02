@@ -13,37 +13,42 @@
 				<column hflex="1" />
 			</columns>
 			<rows>
-				<row visible="${$composer.isType('GOAL')}" valign="middle">
-					<label value="Goal Name:" />
+				<row valign="middle">
+					<label value="${$composer.getLabel('txtName')}" />
 					<cell colspan="2">
 						<textbox id="txtName" hflex="1" maxlength="120" />
 					</cell>
 				</row>
 				<row valign="middle">
-					<label value="Goal Types:" />
+					<label value="${$composer.getLabel('goalTypes')}" />
 					<cell colspan="3">
-						<div id="goalTypes"
-							sclass="vistaPatientGoals-types vistaPatientGoals-framed" />
+						<div sclass="vistaPatientGoals-types vistaPatientGoals-framed">
+							<radiogroup id="goalTypes" />
+						</div>
 					</cell>
 				</row>
 				<row valign="middle">
-					<label value="Reason for Goal:" />
+					<label value="${$composer.getLabel('txtReason')}" />
 					<cell colspan="3">
-						<textbox id="txtReason" hflex="1" maxlength="120" />
+						<textbox id="txtReason" hflex="1"
+							maxlength="120" />
 					</cell>
 				</row>
-				<row visible="${$composer.isType('GOAL')}" valign="middle">
-					<label value="Notes History:" />
-					<textbox id="txtNotesHistory" hflex="1"
+				<row if="${$composer.isType('GOAL')}" valign="middle">
+					<label value="${$composer.getLabel('txtNote')}" />
+					<textbox id="txtNote" hflex="1" maxlength="120" />
+					<label
+						value="${$composer.getLabel('txtNoteHistory')}" />
+					<textbox id="txtNoteHistory" hflex="1"
 						height="100px" readonly="true" multiline="true" />
-					<label value="Notes" />
-					<textbox id="txtNote" hflex="1" maxlength="120"/>
 				</row>
 				<row valign="middle">
-					<label value="Goal Start Date:" />
-					<datebox id="datStart" hflex="1" vflex="1" constraint="" />
-					<label value="Goal Followup Date:" />
-					<datebox id="datFollowup" hflex="1" vflex="1" constraint="" />
+					<label value="${$composer.getLabel('datStart')}" />
+					<datebox id="datStart" hflex="1" vflex="1"
+						constraint="" />
+					<label value="${$composer.getLabel('datFollowup')}" />
+					<datebox id="datFollowup" hflex="1" vflex="1"
+						constraint="" />
 				</row>
 				<row height="20px" />
 				<row valign="middle">
@@ -51,14 +56,16 @@
 					<cell colspan="3">
 						<radiogroup id="rgStatus"
 							sclass="vistaPatientGoals-framed">
-							<radio label="Active" value="A;ACTIVE" />
-							<radio label="Met" value="ME;GOAL MET" />
-							<radio label="Stopped"
-								value="S;GOAL STOPPED" />
-							<radio label="Maintained"
-								value="MA;MAINTAINING GOAL" />
-							<radio label="Delete/Entered in Error"
-								value="D;DELETED/ENTERED IN ERROR" />
+							<radio value="A;ACTIVE"
+								label="${$composer.getLabel('status.active')}" />
+							<radio value="ME;GOAL MET"
+								label="${$composer.getLabel('status.met')}" />
+							<radio value="S;GOAL STOPPED"
+								label="${$composer.getLabel('status.stopped')}" />
+							<radio value="MA;MAINTAINING GOAL"
+								label="${$composer.getLabel('status.maintaining')}" />
+							<radio value="D;DELETED/ENTERED IN ERROR"
+								label="${$composer.getLabel('status.deleted')}" />
 						</radiogroup>
 					</cell>
 				</row>

@@ -16,8 +16,6 @@ import org.carewebframework.common.StrUtil;
  */
 public class Step extends GoalBase {
     
-    private String text;
-    
     private String facility;
     
     private final Goal goal;
@@ -28,14 +26,6 @@ public class Step extends GoalBase {
     
     public Goal getGoal() {
         return goal;
-    }
-    
-    public String getText() {
-        return text;
-    }
-    
-    public void setText(String text) {
-        this.text = text;
     }
     
     public String getFacilityName() {

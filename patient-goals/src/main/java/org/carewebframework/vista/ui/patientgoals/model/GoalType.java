@@ -47,4 +47,8 @@ public class GoalType implements Comparable<GoalType> {
         return name.compareToIgnoreCase(goalType.name);
     }
     
+    @Override
+    public boolean equals(Object object) {
+        return object instanceof GoalType && ((GoalType) object).ien == ien;
+    }
 }

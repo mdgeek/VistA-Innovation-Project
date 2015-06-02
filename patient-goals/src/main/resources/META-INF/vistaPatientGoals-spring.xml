@@ -12,6 +12,12 @@
 		<cwp:plugin url="~./org/carewebframework/vista/ui/patientgoals/goals.zul" id="vistaPatientGoals"
 			name="Patient Goals">
 			<cwp:serialization>
+				<cwp:property id="deferredFetch" type="boolean" getter="isDeferredFetch"
+					name="${labels.reporting.property.fetch.deferred.name}"
+					description="${labels.reporting.property.fetch.deferred.description}" />
+				<cwp:property id="backgroundFetch" type="boolean" getter="isBackgroundFetch"
+					name="${labels.reporting.property.fetch.background.name}" 
+					description="${labels.reporting.property.fetch.background.description}" />
 			</cwp:serialization>
 			<cwp:resource>
 				<cwp:help-resource module="vistaPatientGoalsHelp" />

@@ -27,6 +27,8 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     private String ien;
     
+    private String name;
+    
     private FMDate createdDate;
     
     private String createdBy;
@@ -62,6 +64,14 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     public void setIEN(String ien) {
         this.ien = ien;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
     public FMDate getCreatedDate() {

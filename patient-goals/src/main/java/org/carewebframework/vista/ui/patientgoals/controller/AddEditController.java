@@ -28,6 +28,7 @@ import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.carewebframework.vista.ui.patientgoals.service.GoalService;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Checkbox;
@@ -76,8 +77,6 @@ public class AddEditController extends FrameworkController {
     
     // Auto-wired members
     
-    private Component goalTypes;
-    
     private Tab tab;
     
     private Component form;
@@ -86,7 +85,7 @@ public class AddEditController extends FrameworkController {
     
     private Textbox txtReason;
     
-    private Textbox txtNotesHistory;
+    private Textbox txtNoteHistory;
     
     private Textbox txtNote;
     
@@ -94,14 +93,16 @@ public class AddEditController extends FrameworkController {
     
     private Datebox datFollowup;
     
+    private Radiogroup goalTypes;
+    
     private Radiogroup rgStatus;
     
-    public static boolean execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
+    public static Tab execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
         Tab tab = findTab(tabbox, goalBase, actionType);
         
         if (tab != null) {
             tabbox.setSelectedTab(tab);
-            return false;
+            return tab;
         }
         
         tab = new Tab();
@@ -115,7 +116,7 @@ public class AddEditController extends FrameworkController {
         args.put("actionType", actionType);
         args.put("tab", tab);
         ZKUtil.loadZulPage(DIALOG, panel, args);
-        return true;
+        return tab;
     }
     
     private static Tab findTab(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
@@ -143,6 +144,18 @@ public class AddEditController extends FrameworkController {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
+        populateGoalTypes();
+        populateControls();
+        
+        if (goalBase.getGroup() == GoalGroup.INACTIVE) {
+            ZKUtil.disableChildren(form, true);
+        }
+    }
+    
+    @Override
+    public void doBeforeComposeChildren(Component comp) throws Exception {
+        super.doBeforeComposeChildren(comp);
+        arg = Executions.getCurrent().getArg();
         goalBase = (GoalBase) arg.get("goalBase");
         actionType = (ActionType) arg.get("actionType");
         tab = (Tab) arg.get("tab");
@@ -157,26 +170,20 @@ public class AddEditController extends FrameworkController {
         
         tab.setLabel(actionType.getLabel(goalBase));
         tab.setValue(createId(goalBase, actionType));
-        populateGoalTypes();
-        populateControls();
-        
-        if (goalBase.getGroup() == GoalGroup.INACTIVE) {
-            ZKUtil.disableChildren(form, true);
-        }
     }
     
     private void populateControls() {
         txtReason.setText(goalBase.getReason());
+        txtName.setText(goalBase.getName());
         
         if (!isStep) {
-            txtName.setText(goal.getName());
             StringBuilder sb = new StringBuilder();
             
             for (Review review : goal.getReviews()) {
                 sb.append(review).append('\n');
             }
             
-            txtNotesHistory.setText(sb.toString());
+            txtNoteHistory.setText(sb.toString());
         }
         
         if (goalBase.getStartDate() != null) {
@@ -191,17 +198,12 @@ public class AddEditController extends FrameworkController {
         Checkbox chk = null;
         
         while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
-            chk.setChecked(goal.getTypes().contains((chk.getValue())));
+            chk.setChecked(goalBase.getTypes().contains((chk.getValue())));
         }
     }
     
     private void populateGoalBase() {
-        goalBase.setReason(txtReason.getText());
-        
         if (!isStep) {
-            goal.setName(txtName.getText());
-            goal.setStartDate(datStart.getValue() == null ? null : new FMDate(datStart.getValue()));
-            goal.setFollowupDate(datFollowup.getValue() == null ? null : new FMDate(datFollowup.getValue()));
             String note = txtNote.getText();
             
             if (note != null && !note.isEmpty()) {
@@ -210,6 +212,10 @@ public class AddEditController extends FrameworkController {
             }
         }
         
+        goalBase.setReason(txtReason.getText());
+        goalBase.setName(txtName.getText());
+        goalBase.setStartDate(datStart.getValue() == null ? null : new FMDate(datStart.getValue()));
+        goalBase.setFollowupDate(datFollowup.getValue() == null ? null : new FMDate(datFollowup.getValue()));
         goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
         goalBase.getTypes().clear();
         goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
@@ -223,43 +229,41 @@ public class AddEditController extends FrameworkController {
     }
     
     private void populateGoalTypes() {
-        Component parent;
-        
-        if (isStep) {
-            parent = new Radiogroup();
-            goalTypes.appendChild(parent);
-        } else {
-            parent = goalTypes;
-        }
-        
         for (GoalType goalType : service.getGoalTypes()) {
             Checkbox chk = isStep ? new Radio() : new Checkbox();
-            parent.appendChild(chk);
+            goalTypes.appendChild(chk);
             chk.setLabel(goalType.toString());
             chk.setValue(goalType);
         }
     }
     
-    public boolean isType(String actions) {
-        for (String action : actions.split("\\,")) {
+    /**
+     * Returns true if the goal/step is of one of the specified types. Used by zul page to modify
+     * the view.
+     * 
+     * @param types Comma-delimited string of types.
+     * @return True if goal/step is one of the specified types.
+     */
+    public boolean isType(String types) {
+        for (String type : types.split("\\,")) {
             boolean result = false;
-            int type = Arrays.asList(TYPES).indexOf(action.trim().toUpperCase());
+            int idx = Arrays.asList(TYPES).indexOf(type.trim().toUpperCase());
             
-            switch (type) {
+            switch (idx) {
                 case 0: // GOAL
                 case 1: // STEP
-                    result = type == 0 ? !isStep : isStep;
+                    result = idx == 0 ? !isStep : isStep;
                     break;
                 
                 case 2: // ACTIVE
                 case 3: // INACTIVE
                 case 4: // DECLINED
-                    result = goalBase.getGroup() == GoalGroup.values()[type - 2];
+                    result = goalBase.getGroup() == GoalGroup.values()[idx - 2];
                     break;
                 
                 case 5: // ADD
                 case 6: // REVIEW
-                    result = actionType == ActionType.values()[type - 5];
+                    result = actionType == ActionType.values()[idx - 5];
                     break;
             }
             
@@ -269,6 +273,18 @@ public class AddEditController extends FrameworkController {
         }
         
         return false;
+    }
+    
+    /**
+     * Returns the label for the current add/edit mode. Used by zul page to select appropriate
+     * labels.
+     * 
+     * @param key The label key
+     * @return The label text.
+     */
+    public String getLabel(String key) {
+        String type = isStep ? "step" : "goal";
+        return ZKUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type);
     }
     
     private boolean hasRequired() {
@@ -311,7 +327,8 @@ public class AddEditController extends FrameworkController {
             switch (actionType) {
                 case ADD:
                     if (isStep) {
-                        // service.addStep(step);
+                        service.addStep(step);
+                        step.getGoal().getSteps().add(step);
                     } else {
                         service.addGoal(goal);
                     }
@@ -319,9 +336,9 @@ public class AddEditController extends FrameworkController {
                 
                 case REVIEW:
                     if (isStep) {
-                        // service.updateStep(step);
+                        service.updateStep(step);
                     } else {
-                        // service.updateGoal(goal);
+                        service.updateGoal(goal);
                     }
             }
         } catch (Exception e) {
@@ -329,6 +346,7 @@ public class AddEditController extends FrameworkController {
             return false;
         }
         
+        Events.postEvent("onCommit", tab.getTabbox(), actionType == ActionType.ADD ? goalBase : null);
         return true;
     }
     

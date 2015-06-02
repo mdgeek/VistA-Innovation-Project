@@ -202,28 +202,23 @@ public class GoalController extends AbstractGridController<Goal> {
     
     public void onReviewGroup(Event event) {
         Goal goal = (Goal) event.getData();
-        
-        if (AddEditController.execute(tabbox, goal, ActionType.REVIEW)) {
-            applyFilters();
-        }
+        AddEditController.execute(tabbox, goal, ActionType.REVIEW);
     }
     
     public void onAddStep(Event event) {
         Goal goal = (Goal) event.getData();
-        Step step = new Step(goal);
-        
-        if (AddEditController.execute(tabbox, step, ActionType.ADD)) {
-            goal.getSteps().add(step);
-            applyFilters();
-        }
+        newStep(ActionType.ADD, GoalGroup.ACTIVE, goal);
     }
     
     public void onReviewStep(Event event) {
         Step step = (Step) event.getData();
-        
-        if (AddEditController.execute(tabbox, step, ActionType.REVIEW)) {
-            applyFilters();
-        }
+        AddEditController.execute(tabbox, step, ActionType.REVIEW);
+    }
+    
+    private void newStep(ActionType actionType, GoalGroup goalGroup, Goal goal) {
+        Step step = new Step(goal);
+        step.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        AddEditController.execute(tabbox, step, actionType);
     }
     
     public void registerStepController(StepController controller) {
@@ -244,11 +239,7 @@ public class GoalController extends AbstractGridController<Goal> {
         goal.setDeclined(goalGroup == GoalGroup.DECLINED);
         goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
         goal.setName(actionType.getLabel(goal));
-        
-        if (AddEditController.execute(tabbox, goal, actionType)) {
-            getModel().add(goal);
-            applyFilters();
-        }
+        AddEditController.execute(tabbox, goal, actionType);
     }
     
     public void onClick$btnExpandAll() {
@@ -271,6 +262,22 @@ public class GoalController extends AbstractGridController<Goal> {
                 detail.setOpen(open);
             }
         }
+    }
+    
+    /**
+     * Receives event from add/edit controller when a commit of a new goal/step has succeeded.
+     * 
+     * @param event For adds, the event data is the goal or step committed. Otherwise, the event
+     *            data is null.
+     */
+    public void onCommit$tabbox(Event event) {
+        Object data = event.getData();
+        
+        if (data instanceof Goal) {
+            getModel().add((Goal) data);
+        }
+        
+        applyFilters();
     }
     
     @Override

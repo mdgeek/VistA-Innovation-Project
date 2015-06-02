@@ -41,10 +41,10 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
         ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        anchor.addForward(Events.ON_CLICK, "root", "onReviewStep", step);
+        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onReviewStep", step);
         createCell(row, "").appendChild(anchor);
         createCell(row, step.getNumberString());
-        createCell(row, step.getText());
+        createCell(row, step.getName());
         createCell(row, step.getStartDate());
         createCell(row, step.getFollowupDate());
         createCell(row, step.getStatusText());

@@ -161,7 +161,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     break;
                 
                 case 6: // Step text
-                    step.setText(pcs[0]);
+                    step.setName(pcs[0]);
                     state = 5;
                     break;
             }
@@ -241,6 +241,10 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         goal.setIEN(checkResult(result));
     }
     
+    public void updateGoal(Goal goal) {
+        
+    }
+    
     public void updateGoalNumber(Goal goal) {
         if (StringUtils.isEmpty(goal.getLocationIEN())) {
             goal.setLocationIEN(UserContext.getActiveUser().getSecurityDomain().getLogicalId());
@@ -258,6 +262,18 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         }
         
         return pcs[1];
+    }
+    
+    public void addStep(Step step) {
+        
+    }
+    
+    public void updateStep(Step step) {
+        
+    }
+    
+    public void updateStepNumber(Step step) {
+        
     }
     
     private void flush(StringBuilder sb, List<String> data) {

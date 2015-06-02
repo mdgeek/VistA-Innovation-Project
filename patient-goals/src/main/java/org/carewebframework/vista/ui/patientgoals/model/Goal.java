@@ -23,8 +23,6 @@ public class Goal extends GoalBase {
     
     private String locationIEN;
     
-    private String name;
-    
     private Patient patient;
     
     private final List<Review> review = new ArrayList<>();
@@ -53,14 +51,6 @@ public class Goal extends GoalBase {
     
     public void setLocationIEN(String locationIEN) {
         this.locationIEN = locationIEN;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
     }
     
     public List<Review> getReviews() {
