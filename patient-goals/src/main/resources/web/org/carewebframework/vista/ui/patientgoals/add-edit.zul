@@ -16,7 +16,8 @@
 				<row valign="middle">
 					<label value="${$composer.getLabel('txtName')}" />
 					<cell colspan="2">
-						<textbox id="txtName" hflex="1" maxlength="120" />
+						<textbox id="txtName" hflex="1" maxlength="120" 
+							readonly="${$composer.isType('REVIEW')}"/>
 					</cell>
 				</row>
 				<row valign="middle">
@@ -31,7 +32,7 @@
 					<label value="${$composer.getLabel('txtReason')}" />
 					<cell colspan="3">
 						<textbox id="txtReason" hflex="1"
-							maxlength="120" />
+							maxlength="120" readonly="${$composer.isType('REVIEW')}" />
 					</cell>
 				</row>
 				<row if="${$composer.isType('GOAL')}" valign="middle">
@@ -45,7 +46,8 @@
 				<row valign="middle">
 					<label value="${$composer.getLabel('datStart')}" />
 					<datebox id="datStart" hflex="1" vflex="1"
-						constraint="" />
+						constraint="" readonly="${$composer.isType('REVIEW')}" 
+						buttonVisible="${$composer.isType('ADD')}" />
 					<label value="${$composer.getLabel('datFollowup')}" />
 					<datebox id="datFollowup" hflex="1" vflex="1"
 						constraint="" />
@@ -72,7 +74,7 @@
 			</rows>
 		</grid>
 		<toolbar align="end" style="border-top: 1px solid lightgray">
-			<button id="btnOK" label="Ok" zclass="btn"
+			<button id="btnOK" label="Ok" disabled="true" zclass="btn"
 				sclass="btn-success" />
 			<button id="btnCancel" label="Cancel" zclass="btn"
 				sclass="btn-danger" />

@@ -19,7 +19,7 @@ import org.carewebframework.vista.mbroker.FMDate;
 /**
  * Base class for goals and steps.
  */
-public abstract class GoalBase implements Comparable<GoalBase> {
+public class GoalBase implements Comparable<GoalBase> {
     
     public enum GoalGroup {
         ACTIVE, INACTIVE, DECLINED
@@ -51,11 +51,30 @@ public abstract class GoalBase implements Comparable<GoalBase> {
     
     private final List<GoalType> type = new ArrayList<>();
     
-    public abstract GoalGroup getGroup();
-    
     @Override
     public int compareTo(GoalBase goalBase) {
         return Float.compare(this.number, goalBase.number);
+    }
+    
+    public void copyFrom(GoalBase source) {
+        ien = source.ien;
+        name = source.name;
+        createdDate = source.createdDate;
+        createdBy = source.createdBy;
+        lastUpdated = source.lastUpdated;
+        updatedBy = source.updatedBy;
+        provider = source.provider;
+        startDate = source.startDate;
+        followupDate = source.followupDate;
+        status = source.status;
+        number = source.number;
+        reason = source.reason;
+        type.clear();
+        type.addAll(source.type);
+    }
+    
+    public GoalGroup getGroup() {
+        return "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
     }
     
     public String getIEN() {

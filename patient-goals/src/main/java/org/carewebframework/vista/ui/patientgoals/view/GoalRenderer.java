@@ -10,7 +10,6 @@
 package org.carewebframework.vista.ui.patientgoals.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
@@ -66,7 +65,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         
         createCell(row, goal.getLastUpdated());
         createCell(row, goal.getNumberString());
-        createCell(row, goal.getCreatedDate());
+        createCell(row, goal.getName());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());
         createCell(row, goal.getTypes());
@@ -74,8 +73,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         createCell(row, goal.getStatusText());
         createCell(row, goal.getProvider());
         
-        List<Review> reviews = goal.getReviews();
-        Review review = reviews == null || reviews.isEmpty() ? null : reviews.get(reviews.size() - 1);
+        Review review = goal.getLastReview();
         String label = review == null ? "" : review.getNote();
         String hint = review == null ? "" : review.toString();
         createCell(row, label).setTooltiptext(hint);

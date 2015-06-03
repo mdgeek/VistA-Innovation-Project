@@ -29,6 +29,19 @@ public class Goal extends GoalBase {
     
     private final List<Step> step = new ArrayList<>();
     
+    @Override
+    public void copyFrom(GoalBase source) {
+        super.copyFrom(source);
+        Goal src = (Goal) source;
+        declined = src.declined;
+        locationIEN = src.locationIEN;
+        patient = src.patient;
+        review.clear();
+        review.addAll(src.review);
+        step.clear();
+        step.addAll(src.step);
+    }
+    
     public Patient getPatient() {
         return patient;
     }
@@ -57,13 +70,17 @@ public class Goal extends GoalBase {
         return review;
     }
     
+    public Review getLastReview() {
+        return review.isEmpty() ? null : review.get(review.size() - 1);
+    }
+    
     public List<Step> getSteps() {
         return step;
     }
     
     @Override
     public GoalGroup getGroup() {
-        return declined ? GoalGroup.DECLINED : "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
+        return declined ? GoalGroup.DECLINED : super.getGroup();
     }
     
 }

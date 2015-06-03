@@ -20,6 +20,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.query.IQueryContext;
+import org.carewebframework.common.NumUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
@@ -54,7 +55,9 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
     }
     
     /**
-     * Convert raw data into patient goals list. <code>
+     * Convert raw data into patient goals list.
+     * 
+     * <pre>
      * (0) IEN [0] ^ GSET [1] ^ CREATED BY [2] ^ CREATED DATE [3] ^ LAST MODIFIED [4] ^ FACILITY [5] ^ PROVIDER [6] ^
      *     START DATE [7] ^ FOLLOWUP DATE [8] ^ STATUS [9] ^ GOAL NUMBER [10]
      * (1) TYPE1 ^ TYPE2 ^ TYPE3...
@@ -65,7 +68,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      *     TYPE [6] ^ START DATE [7] ^ FOLLOWUP DATE [8] ^ MODIFIED BY [9] ^ LAST MODIFIED [10] ^ STATUS [11] ^
      *     PROVIDER [13]    (will be 0 or more rows of these)
      * (6) STEP TEXT [0]  (only if #5 is present)
-     * </code> For example:<code>
+     * For example:
      * 0: 1^GOAL SET^3150521^ADAM,ADAM^3150521.21114^DEMO IHS CLINIC^ADAM,ADAM^3150521^3150530^A;ACTIVE^1
      * 1: PHYSICAL ACTIVITY
      * 2: TEST
@@ -77,7 +80,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * 8: MEDICATIONS^OTHER^WELLNESS AND SAFETY
      * 9: TEST2
      * 10:TEST
-     * </code>
+     * </pre>
      */
     @Override
     protected List<Goal> processData(IQueryContext context, String data) {
@@ -204,21 +207,30 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * 
      * <pre>
      * (0) =   "GOAL" ^ GOAL SET STATUS ^ WHERE SET ^ GOAL NUMBER ^ PROVIDER ^ START DATE ^ FOLLOWUP DATE ^ USER
-     * (1) =   "TYPE" ^ GOAL TYPE ^ GOAL TYP ^ GOAL TYPE ...
+     * (1) =   "TYPE" ^ GOAL TYPE ^ GOAL TYPE ^ GOAL TYPE ...
      * (2) =   "NAME" ^ GOAL NAME
      * (3) = "REASON" ^ GOAL REASON
+     * For example:
+     * 0: GOAL^S^7819^5^1^3150602^3150630^1
+     * 1: TYPE^PHYSICAL ACTIVITY
+     * 2: NAME^My New Goal
+     * 3: REASON^My Reason
      * </pre>
      * 
      * @param goal The goal to add.
      */
     public void addGoal(Goal goal) {
-        updateGoalNumber(goal);
+        if (StringUtils.isEmpty(goal.getLocationIEN())) {
+            goal.setLocationIEN(getLocationIEN());
+        }
+        
+        float number = nextGoalNumber(goal);
         List<String> data = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         addPiece(sb, "GOAL");
         addPiece(sb, goal.isDeclined() ? "N" : "S");
         addPiece(sb, goal.getLocationIEN());
-        addPiece(sb, goal.getNumberString());
+        addPiece(sb, NumUtil.toString(number));
         addPiece(sb, goal.getProvider());
         addPiece(sb, goal.getStartDate());
         addPiece(sb, goal.getFollowupDate());
@@ -227,7 +239,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         addPiece(sb, "TYPE");
         
         for (GoalType goalType : goal.getTypes()) {
-            addPiece(sb, goalType.getIEN());
+            addPiece(sb, goalType.getName());
         }
         
         flush(sb, data);
@@ -239,41 +251,87 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         flush(sb, data);
         String result = service.callRPC("BEHOPGAP ADDGOAL", goal.getPatient().getId().getIdPart(), data);
         goal.setIEN(checkResult(result));
+        goal.setNumber(number);
+        goal.setCreatedDate(FMDate.today());
+        goal.setLastUpdated(FMDate.now());
     }
     
-    public void updateGoal(Goal goal) {
+    private String getLocationIEN() {
+        return UserContext.getActiveUser().getSecurityDomain().getLogicalId();
+    }
+    
+    public void updateGoal(Goal goal, boolean includeReview) {
+        Review review = includeReview ? goal.getLastReview() : null;
+        FMDate reviewDate = review == null ? null : review.getReviewed();
+        String reviewNote = review == null ? null : review.getNote();
+        String result = service.callRPC("BEHOPGAP EDITGOAL", goal.getIEN(), goal.getFollowupDate(), goal.getStatusCode(),
+            reviewDate, reviewNote);
+        checkResult(result);
+    }
+    
+    public void deleteGoal(Goal goal) {
         
     }
     
-    public void updateGoalNumber(Goal goal) {
-        if (StringUtils.isEmpty(goal.getLocationIEN())) {
-            goal.setLocationIEN(UserContext.getActiveUser().getSecurityDomain().getLogicalId());
-        }
+    private float nextGoalNumber(Goal goal) {
+        String result = service.callRPC("BEHOPGAP NEXTGN", goal.getPatient().getId().getIdPart(), getLocationIEN());
+        return Float.parseFloat(result);
+    }
+    
+    /**
+     * Adds a new step.
+     * <p>
+     * 
+     * <pre>
+     *  (n) FACILITY ^ NUMBER ^ TYPE ^ START DATE ^ FOLLOWUP DATE ^ PROVIDER ^ TEXT
+     * 
+     * Example:
+     * 1: 5217^1^NUTRITION^3101029^3101231^1239^EAT LESS THAN 1200 CAAPCDTESTES PER DAY
+     * 2: 5217^2^PHYSICAL ACTIVITY^3101029^3101231^1239^WALK 60 MINUTES PER DAY
+     * </pre>
+     * 
+     * @param step New step to add.
+     */
+    public void addStep(Step step) {
+        float number = nextStepNumber(step);
+        StringBuilder sb = new StringBuilder();
+        addPiece(sb, step.getFacilityIEN());
+        addPiece(sb, NumUtil.toString(number));
+        addPiece(sb, step.getTypes().get(0).getName());
+        addPiece(sb, step.getStartDate());
+        addPiece(sb, step.getFollowupDate());
+        addPiece(sb, step.getProvider());
+        addPiece(sb, step.getName());
+        String result = service.callRPC("BEHOPGAP ADDSTEP", sb.toString());
+        step.setIEN(checkResult(result));
+        step.setNumber(number);
+        step.setCreatedDate(FMDate.today());
+        step.setLastUpdated(FMDate.now());
+    }
+    
+    public void updateStep(Step step) {
+        String result = service.callRPC("BEHOPGAP EDITSTEP", step.getGoal().getIEN(), step.getFacilityIEN(), step.getIEN(),
+            step.getFollowupDate(), step.getStatusCode());
+        checkResult(result);
+    }
+    
+    public void deleteStep(Step step) {
         
-        String result = service.callRPC("BEHOPGAP NEXTGN", goal.getPatient().getId().getIdPart(), goal.getLocationIEN());
-        goal.setNumber(Float.parseFloat(result));
+    }
+    
+    public float nextStepNumber(Step step) {
+        String result = service.callRPC("BEHOPGAP NEXTSN", step.getGoal().getIEN(), step.getFacilityIEN());
+        return Float.parseFloat(result);
     }
     
     private String checkResult(String result) {
-        String[] pcs = result.split("\\^", 2);
+        String[] pcs = StrUtil.split(result, StrUtil.U, 2);
         
         if ("0".equals(pcs[0])) {
             throw new RuntimeException(pcs[1]);
         }
         
         return pcs[1];
-    }
-    
-    public void addStep(Step step) {
-        
-    }
-    
-    public void updateStep(Step step) {
-        
-    }
-    
-    public void updateStepNumber(Step step) {
-        
     }
     
     private void flush(StringBuilder sb, List<String> data) {

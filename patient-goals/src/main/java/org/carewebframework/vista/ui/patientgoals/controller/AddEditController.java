@@ -11,8 +11,10 @@ package org.carewebframework.vista.ui.patientgoals.controller;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.FrameworkController;
@@ -31,6 +33,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Radio;
@@ -71,11 +74,17 @@ public class AddEditController extends FrameworkController {
     
     private Step step;
     
-    private final GoalService service;
-    
     private boolean isStep;
     
+    private boolean hasChanged;
+    
+    private final GoalService service;
+    
+    private final Set<Component> changeSet = new HashSet<>();
+    
     // Auto-wired members
+    
+    private Button btnOK;
     
     private Tab tab;
     
@@ -146,6 +155,7 @@ public class AddEditController extends FrameworkController {
         super.doAfterCompose(comp);
         populateGoalTypes();
         populateControls();
+        wireChangeEvents(comp);
         
         if (goalBase.getGroup() == GoalGroup.INACTIVE) {
             ZKUtil.disableChildren(form, true);
@@ -162,6 +172,12 @@ public class AddEditController extends FrameworkController {
         tab.addForward(Events.ON_CLOSE, comp, "onCloseTab");
         isStep = goalBase instanceof Step;
         
+        if (actionType == ActionType.REVIEW) {
+            GoalBase temp = isStep ? new Step(((Step) goalBase).getGoal()) : new Goal();
+            temp.copyFrom(goalBase);
+            goalBase = temp;
+        }
+        
         if (isStep) {
             step = (Step) goalBase;
         } else {
@@ -170,6 +186,27 @@ public class AddEditController extends FrameworkController {
         
         tab.setLabel(actionType.getLabel(goalBase));
         tab.setValue(createId(goalBase, actionType));
+    }
+    
+    private void wireChangeEvents(Component parent) {
+        for (Component child : parent.getChildren()) {
+            String sourceEvent = null;
+            
+            if (child instanceof Datebox) {
+                sourceEvent = Events.ON_CHANGE;
+            } else if (child instanceof Textbox) {
+                sourceEvent = Events.ON_CHANGING;
+            } else if (child instanceof Checkbox) {
+                sourceEvent = Events.ON_CHECK;
+            }
+            
+            if (sourceEvent != null) {
+                child.addForward(sourceEvent, root, Events.ON_CHANGE);
+            }
+            
+            wireChangeEvents(child);
+        }
+        
     }
     
     private void populateControls() {
@@ -203,12 +240,14 @@ public class AddEditController extends FrameworkController {
     }
     
     private void populateGoalBase() {
-        if (!isStep) {
+        if (!isStep && changeSet.contains(txtNote)) {
             String note = txtNote.getText();
             
             if (note != null && !note.isEmpty()) {
-                Review review = new Review(new FMDate(), note);
+                Review review = new Review(FMDate.today(), note);
                 goal.getReviews().add(review);
+            } else {
+                changeSet.remove(txtNote);
             }
         }
         
@@ -234,6 +273,18 @@ public class AddEditController extends FrameworkController {
             goalTypes.appendChild(chk);
             chk.setLabel(goalType.toString());
             chk.setValue(goalType);
+            chk.setDisabled(actionType == ActionType.REVIEW);
+        }
+    }
+    
+    public void onChange(Event event) {
+        changeSet.add(ZKUtil.getEventOrigin(event).getTarget());
+        
+        if (!hasChanged) {
+            hasChanged = true;
+            btnOK.setDisabled(false);
+            tab.setLabel("*" + tab.getLabel());
+            tab.setAttribute("changed", hasChanged);
         }
     }
     
@@ -338,19 +389,33 @@ public class AddEditController extends FrameworkController {
                     if (isStep) {
                         service.updateStep(step);
                     } else {
-                        service.updateGoal(goal);
+                        service.updateGoal(goal, changeSet.contains(txtNote));
                     }
             }
+            
+            if (actionType == ActionType.REVIEW) {
+                GoalBase original = (GoalBase) arg.get("goalBase");
+                original.copyFrom(goalBase);
+            }
+            
         } catch (Exception e) {
             PromptDialog.showError(e);
             return false;
         }
         
-        Events.postEvent("onCommit", tab.getTabbox(), actionType == ActionType.ADD ? goalBase : null);
+        changeSet.clear();
+        Events.postEvent("onCommit", tab.getFellow("root", true), actionType == ActionType.ADD ? goalBase : null);
         return true;
     }
     
     private void close(boolean force) {
+        if (!force
+                && !changeSet.isEmpty()
+                && !PromptDialog.confirm("If you continue, you will lose unsaved changes.  Continue?",
+                    "Closing " + tab.getLabel())) {
+            return;
+        }
+        
         tab.getTabbox().setSelectedIndex(0);
         tab.getLinkedPanel().detach();
         tab.detach();

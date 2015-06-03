@@ -24,6 +24,13 @@ public class Step extends GoalBase {
         this.goal = goal;
     }
     
+    @Override
+    public void copyFrom(GoalBase source) {
+        super.copyFrom(source);
+        Step src = (Step) source;
+        facility = src.facility;
+    }
+    
     public Goal getGoal() {
         return goal;
     }
@@ -40,8 +47,4 @@ public class Step extends GoalBase {
         this.facility = facility;
     }
     
-    @Override
-    public GoalGroup getGroup() {
-        return "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
-    }
 }

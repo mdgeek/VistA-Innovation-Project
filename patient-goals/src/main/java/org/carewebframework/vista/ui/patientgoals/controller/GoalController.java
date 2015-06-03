@@ -15,13 +15,18 @@ import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 import org.apache.commons.lang.ObjectUtils;
 
+import org.carewebframework.api.context.UserContext;
+import org.carewebframework.api.domain.IUser;
 import org.carewebframework.api.query.AbstractQueryFilter;
 import org.carewebframework.api.query.IQueryContext;
+import org.carewebframework.api.security.ISecurityDomain;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
 import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.HybridModel.IGrouper;
+import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.controller.AddEditController.ActionType;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
@@ -35,6 +40,7 @@ import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
+import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Toolbar;
 
@@ -218,6 +224,12 @@ public class GoalController extends AbstractGridController<Goal> {
     private void newStep(ActionType actionType, GoalGroup goalGroup, Goal goal) {
         Step step = new Step(goal);
         step.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        step.setName(ZKUtil.getLabel("vistaPatientGoals.new_.step.name"));
+        step.setStartDate(FMDate.today());
+        IUser user = UserContext.getActiveUser();
+        ISecurityDomain domain = user.getSecurityDomain();
+        step.setFacility(domain.getLogicalId() + ";" + domain.getName());
+        step.setProvider(user.getLogicalId());
         AddEditController.execute(tabbox, step, actionType);
     }
     
@@ -238,7 +250,8 @@ public class GoalController extends AbstractGridController<Goal> {
         goal.setPatient(getPatient());
         goal.setDeclined(goalGroup == GoalGroup.DECLINED);
         goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
-        goal.setName(actionType.getLabel(goal));
+        goal.setName(ZKUtil.getLabel("vistaPatientGoals.new_.goal.name"));
+        goal.setStartDate(FMDate.today());
         AddEditController.execute(tabbox, goal, actionType);
     }
     
@@ -270,7 +283,7 @@ public class GoalController extends AbstractGridController<Goal> {
      * @param event For adds, the event data is the goal or step committed. Otherwise, the event
      *            data is null.
      */
-    public void onCommit$tabbox(Event event) {
+    public void onCommit(Event event) {
         Object data = event.getData();
         
         if (data instanceof Goal) {
@@ -286,9 +299,42 @@ public class GoalController extends AbstractGridController<Goal> {
     }
     
     @Override
+    public String onPatientChanging() {
+        if (pendingChanges()
+                && !PromptDialog.confirm(
+                    "Patient goals has pending changes.  If you continue, all changes will be lost.  Continue?",
+                    "Pending Changes")) {
+            return "Patient goals has pending changes.";
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Returns true if any tab has pending changes.
+     * 
+     * @return True if pending changes exist.
+     */
+    private boolean pendingChanges() {
+        for (Tab tab : tabbox.getTabs().<Tab> getChildren()) {
+            if (tab.hasAttribute("changed")) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    @Override
     public void onPatientChanged(Patient patient) {
         super.onPatientChanged(patient);
         ZKUtil.disableChildren(toolbar, patient == null);
+        tabbox.setSelectedIndex(0);
+        
+        while (tabbox.getTabs().getChildren().size() > 1) {
+            tabbox.getTabs().getChildren().remove(1);
+            tabbox.getTabpanels().getChildren().remove(1);
+        }
     }
     
     @Override
