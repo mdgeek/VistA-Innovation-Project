@@ -223,19 +223,24 @@ public class AddEditController extends FrameworkController {
             txtNoteHistory.setText(sb.toString());
         }
         
-        if (goalBase.getStartDate() != null) {
+        if (datStart != null && goalBase.getStartDate() != null) {
             datStart.setValue(goalBase.getStartDate());
         }
         
-        if (goalBase.getFollowupDate() != null) {
+        if (datFollowup != null && goalBase.getFollowupDate() != null) {
             datFollowup.setValue(goalBase.getFollowupDate());
         }
         
-        findRadio(goalBase.getStatusCode()).setChecked(true);
-        Checkbox chk = null;
+        if (rgStatus != null) {
+            findRadio(goalBase.getStatusCode()).setChecked(true);
+        }
         
-        while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
-            chk.setChecked(goalBase.getTypes().contains((chk.getValue())));
+        if (goalTypes != null) {
+            Checkbox chk = null;
+            
+            while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
+                chk.setChecked(goalBase.getTypes().contains((chk.getValue())));
+            }
         }
     }
     
@@ -253,27 +258,40 @@ public class AddEditController extends FrameworkController {
         
         goalBase.setReason(txtReason.getText());
         goalBase.setName(txtName.getText());
-        goalBase.setStartDate(datStart.getValue() == null ? null : new FMDate(datStart.getValue()));
-        goalBase.setFollowupDate(datFollowup.getValue() == null ? null : new FMDate(datFollowup.getValue()));
-        goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
-        goalBase.getTypes().clear();
-        goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
-        Checkbox chk = null;
         
-        while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
-            if (chk.isChecked()) {
-                goalBase.getTypes().add((GoalType) chk.getValue());
+        if (datStart != null) {
+            goalBase.setStartDate(datStart.getValue() == null ? null : new FMDate(datStart.getValue()));
+        }
+        
+        if (datFollowup != null) {
+            goalBase.setFollowupDate(datFollowup.getValue() == null ? null : new FMDate(datFollowup.getValue()));
+        }
+        
+        if (rgStatus != null) {
+            goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
+        }
+        
+        if (goalTypes != null) {
+            goalBase.getTypes().clear();
+            Checkbox chk = null;
+            
+            while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
+                if (chk.isChecked()) {
+                    goalBase.getTypes().add((GoalType) chk.getValue());
+                }
             }
         }
     }
     
     private void populateGoalTypes() {
-        for (GoalType goalType : service.getGoalTypes()) {
-            Checkbox chk = isStep ? new Radio() : new Checkbox();
-            goalTypes.appendChild(chk);
-            chk.setLabel(goalType.toString());
-            chk.setValue(goalType);
-            chk.setDisabled(actionType == ActionType.REVIEW);
+        if (goalTypes != null) {
+            for (GoalType goalType : service.getGoalTypes()) {
+                Checkbox chk = isStep ? new Radio() : new Checkbox();
+                goalTypes.appendChild(chk);
+                chk.setLabel(goalType.toString());
+                chk.setValue(goalType);
+                chk.setDisabled(actionType == ActionType.REVIEW);
+            }
         }
     }
     
@@ -343,6 +361,10 @@ public class AddEditController extends FrameworkController {
     }
     
     private Radio findRadio(String statusCode) {
+        if (rgStatus == null) {
+            return null;
+        }
+        
         for (Radio radio : rgStatus.getItems()) {
             if (StrUtil.piece(radio.getValue().toString(), ";").equals(statusCode)) {
                 return radio;

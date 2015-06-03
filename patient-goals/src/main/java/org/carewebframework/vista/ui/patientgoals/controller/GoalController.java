@@ -29,6 +29,7 @@ import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.controller.AddEditController.ActionType;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.carewebframework.vista.ui.patientgoals.service.GoalService;
@@ -51,7 +52,7 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static final long serialVersionUID = 1L;
     
-    private static abstract class BaseFilter<T> extends AbstractQueryFilter<T> {
+    private static class QueryFilter<T extends GoalBase> extends AbstractQueryFilter<T> {
         
         protected GoalGroup group;
         
@@ -76,21 +77,9 @@ public class GoalController extends AbstractGridController<Goal> {
             return false;
         }
         
-    }
-    
-    protected static class GoalFilter extends BaseFilter<Goal> {
-        
         @Override
-        public boolean include(Goal goal) {
-            return group == null || goal.getGroup() == group;
-        }
-    }
-    
-    protected static class StepFilter extends BaseFilter<Step> {
-        
-        @Override
-        public boolean include(Step step) {
-            return group == null || step.getGroup() == group;
+        public boolean include(T goalBase) {
+            return group == null || goalBase.getGroup() == group;
         }
         
     }
@@ -151,9 +140,9 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static GrouperGroup groupDeclined = new GrouperGroup("Declined Goals", GoalGroup.DECLINED);
     
-    private static GoalFilter goalFilter = new GoalFilter();
+    private static QueryFilter<Goal> goalFilter = new QueryFilter<>();
     
-    private static StepFilter stepFilter = new StepFilter();
+    private static QueryFilter<Step> stepFilter = new QueryFilter<>();
     
     private Toolbar toolbar;
     
@@ -235,6 +224,10 @@ public class GoalController extends AbstractGridController<Goal> {
     
     public void registerStepController(StepController controller) {
         controller.registerQueryFilter(stepFilter);
+    }
+    
+    public void unregisterStepController(StepController controller) {
+        controller.unregisterQueryFilter(stepFilter);
     }
     
     public void onClick$btnNewGoal() {

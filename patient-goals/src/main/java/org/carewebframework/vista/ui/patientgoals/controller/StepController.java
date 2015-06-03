@@ -24,16 +24,19 @@ import org.zkoss.zul.ListModelList;
  */
 public class StepController extends AbstractGridController<Step> {
     
+    private static final long serialVersionUID = 1L;
+    
+    private GoalController goalController;
+    
     public StepController() {
         super(null, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null);
+        setPaging(false);
     }
-    
-    private static final long serialVersionUID = 1L;
     
     @Override
     protected void initializeController() {
         super.initializeController();
-        GoalController goalController = GoalController.findController(root);
+        goalController = GoalController.findController(root);
         goalController.registerStepController(this);
         List<Step> steps = ((Goal) arg.get("goal")).getSteps();
         setModel(new ListModelList<Step>(steps));
@@ -42,6 +45,11 @@ public class StepController extends AbstractGridController<Step> {
     @Override
     public Date getDateByType(Step step, DateType dateType) {
         return dateType == DateType.UPDATED ? step.getLastUpdated() : step.getFollowupDate();
+    }
+    
+    @Override
+    public void cleanup() {
+        goalController.unregisterStepController(this);
     }
     
 }
