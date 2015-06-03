@@ -13,8 +13,6 @@ import java.util.Date;
 
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
-import org.apache.commons.lang.ObjectUtils;
-
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.domain.IUser;
 import org.carewebframework.api.query.AbstractQueryFilter;
@@ -69,7 +67,7 @@ public class GoalController extends AbstractGridController<Goal> {
             
             this.chkActive = chkActive;
             this.group = group == null ? null : GoalGroup.values()["AID".indexOf(group)];
-            notifyListener();
+            notifyListeners();
         }
         
         @Override
@@ -124,7 +122,7 @@ public class GoalController extends AbstractGridController<Goal> {
         
         @Override
         public int compareElement(Goal goal1, Goal goal2) {
-            return ObjectUtils.compare(goal1.getName(), goal2.getName());
+            return Float.compare(goal1.getNumber(), goal2.getNumber());
         }
         
         @Override
