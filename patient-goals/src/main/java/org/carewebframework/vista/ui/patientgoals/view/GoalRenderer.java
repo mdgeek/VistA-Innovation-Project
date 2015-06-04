@@ -9,7 +9,6 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import java.util.Map;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.HybridModel.GroupHeader;
-import org.carewebframework.ui.zk.RowComparator;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.controller.Constants;
 import org.carewebframework.vista.ui.patientgoals.controller.GoalController.GrouperGroup;
@@ -43,39 +41,17 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     
     private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
     
-    private static final Comparator<Review> reviewComparator = new Comparator<Review>() {
-        
-        @Override
-        public int compare(Review review1, Review review2) {
-            return review1.getNote().compareTo(review2.getNote());
-        }
-    };
-    
-    /**
-     * Custom comparator is required for sorting goal types.
-     */
-    private static final Comparator<List<GoalType>> typeComparator = new Comparator<List<GoalType>>() {
-        
-        @Override
-        public int compare(List<GoalType> types1, List<GoalType> types2) {
-            return typeAsString(types1).compareToIgnoreCase(typeAsString(types2));
-        }
-        
-    };
-    
-    public static final RowComparator reviewComparatorAsc = new RowComparator(true, "getLastReview", reviewComparator);
-    
-    public static final RowComparator reviewComparatorDsc = new RowComparator(false, "getLastReview", reviewComparator);
-    
-    public static final RowComparator typeComparatorAsc = new RowComparator(true, "getTypes", typeComparator);
-    
-    public static final RowComparator typeComparatorDsc = new RowComparator(false, "getTypes", typeComparator);
-    
     public GoalRenderer() {
         super(null, null);
     }
     
-    protected static String typeAsString(List<GoalType> types) {
+    /**
+     * Converts a list of goal types to a comma-delimited string.
+     * 
+     * @param types List of goal types.
+     * @return Comma-delimited string of goal types.
+     */
+    public static String typeAsString(List<GoalType> types) {
         return StrUtil.fromList(types, ", ");
     }
     

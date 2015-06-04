@@ -9,7 +9,9 @@
  */
 package org.carewebframework.vista.ui.patientgoals.controller;
 
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
@@ -29,6 +31,8 @@ import org.carewebframework.vista.ui.patientgoals.controller.AddEditController.A
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
+import org.carewebframework.vista.ui.patientgoals.model.GoalType;
+import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.carewebframework.vista.ui.patientgoals.service.GoalService;
 import org.carewebframework.vista.ui.patientgoals.view.GoalRenderer;
@@ -37,7 +41,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Checkbox;
-import org.zkoss.zul.Column;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
@@ -144,15 +147,31 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static QueryFilter<Step> stepFilter = new QueryFilter<>();
     
+    private static final Comparator<Review> reviewComparator = new Comparator<Review>() {
+        
+        @Override
+        public int compare(Review review1, Review review2) {
+            return review1.getNote().compareTo(review2.getNote());
+        }
+    };
+    
+    /**
+     * Custom comparator is required for sorting goal types.
+     */
+    private static final Comparator<List<GoalType>> typeComparator = new Comparator<List<GoalType>>() {
+        
+        @Override
+        public int compare(List<GoalType> types1, List<GoalType> types2) {
+            return GoalRenderer.typeAsString(types1).compareToIgnoreCase(GoalRenderer.typeAsString(types2));
+        }
+        
+    };
+    
     // Start of auto-wired section
     
     private Toolbar toolbar;
     
     private Tabbox tabbox;
-    
-    private Column colNotes;
-    
-    private Column colType;
     
     // End of auto-wired section
     
@@ -179,14 +198,18 @@ public class GoalController extends AbstractGridController<Goal> {
         return Constants.GROUP_SCLASS[i];
     }
     
+    public Comparator<?> getTypeComparator() {
+        return typeComparator;
+    }
+    
+    public Comparator<?> getReviewComparator() {
+        return reviewComparator;
+    }
+    
     @Override
     protected void initializeController() {
         super.initializeController();
         registerQueryFilter(goalFilter);
-        colNotes.setSortAscending(GoalRenderer.reviewComparatorAsc);
-        colNotes.setSortDescending(GoalRenderer.reviewComparatorDsc);
-        colType.setSortAscending(GoalRenderer.typeComparatorAsc);
-        colType.setSortDescending(GoalRenderer.typeComparatorDsc);
     }
     
     /**
