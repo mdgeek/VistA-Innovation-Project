@@ -9,19 +9,26 @@
  */
 package org.carewebframework.vista.ui.patientgoals.view;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.HybridModel.GroupHeader;
+import org.carewebframework.ui.zk.RowComparator;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.controller.Constants;
 import org.carewebframework.vista.ui.patientgoals.controller.GoalController.GrouperGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
+import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Cell;
@@ -36,8 +43,40 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     
     private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
     
+    private static final Comparator<Review> reviewComparator = new Comparator<Review>() {
+        
+        @Override
+        public int compare(Review review1, Review review2) {
+            return review1.getNote().compareTo(review2.getNote());
+        }
+    };
+    
+    /**
+     * Custom comparator is required for sorting goal types.
+     */
+    private static final Comparator<List<GoalType>> typeComparator = new Comparator<List<GoalType>>() {
+        
+        @Override
+        public int compare(List<GoalType> types1, List<GoalType> types2) {
+            return typeAsString(types1).compareToIgnoreCase(typeAsString(types2));
+        }
+        
+    };
+    
+    public static final RowComparator reviewComparatorAsc = new RowComparator(true, "getLastReview", reviewComparator);
+    
+    public static final RowComparator reviewComparatorDsc = new RowComparator(false, "getLastReview", reviewComparator);
+    
+    public static final RowComparator typeComparatorAsc = new RowComparator(true, "getTypes", typeComparator);
+    
+    public static final RowComparator typeComparatorDsc = new RowComparator(false, "getTypes", typeComparator);
+    
     public GoalRenderer() {
         super(null, null);
+    }
+    
+    protected static String typeAsString(List<GoalType> types) {
+        return StrUtil.fromList(types, ", ");
     }
     
     /**
@@ -48,15 +87,14 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
      */
     @Override
     public Component renderRow(Row row, Goal goal) {
-        GoalGroup group = goal.getGroup();
-        ZKUtil.updateSclass(row, Constants.GROUP_SCLASS[group.ordinal()], false);
+        applyGroupStyle(row, goal);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, "root", "onReviewGroup", goal);
         createCell(row, "").appendChild(anchor);
         Cell cell = createCell(row, "");
         
-        if (group == GoalGroup.ACTIVE) {
+        if (goal.getGroup() == GoalGroup.ACTIVE) {
             anchor = new A();
             anchor.setIconSclass("glyphicon glyphicon-plus");
             anchor.addForward(Events.ON_CLICK, "root", "onAddStep", goal);
@@ -64,25 +102,23 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         }
         
         createCell(row, goal.getLastUpdated());
-        createCell(row, goal.getNumberString());
+        createCell(row, goal.getNumberAsString());
         createCell(row, goal.getName());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());
-        createCell(row, goal.getTypes());
+        createCell(row, typeAsString(goal.getTypes()));
         createCell(row, goal.getFollowupDate());
         createCell(row, goal.getStatusText());
         createCell(row, goal.getProvider());
-        
         Review review = goal.getLastReview();
         String label = review == null ? "" : review.getNote();
         String hint = review == null ? "" : review.toString();
         createCell(row, label).setTooltiptext(hint);
-        
         return row;
     }
     
     @Override
-    protected void renderDetail(final Detail detail, final Goal goal) {
+    protected void renderDetail(Detail detail, Goal goal) {
         if (goal.getSteps().isEmpty()) {
             return;
         }
@@ -99,6 +135,16 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         GroupHeader<Group, GrouperGroup> gh = (GroupHeader<Group, GrouperGroup>) object;
         String sclass = Constants.LABEL_SCLASS[gh.getGroup().getGroup().ordinal()];
         group.setWidgetListener("onBind", "jq(this).find('.z-label').addClass('" + sclass + "')");
+    }
+    
+    /**
+     * Applies the correct style for the goal's group.
+     * 
+     * @param comp Component to receive the style.
+     * @param goal The goal.
+     */
+    protected static void applyGroupStyle(HtmlBasedComponent comp, GoalBase goal) {
+        ZKUtil.updateSclass(comp, Constants.GROUP_SCLASS[goal.getGroup().ordinal()], false);
     }
     
 }

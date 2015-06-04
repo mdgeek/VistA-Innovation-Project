@@ -16,7 +16,6 @@ import java.util.List;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 import org.apache.commons.lang.math.NumberUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.query.IQueryContext;
@@ -136,7 +135,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     goal.setCreatedDate(FMDate.fromString(pcs[2]));
                     goal.setCreatedBy(pcs[3]);
                     goal.setLastUpdated(FMDate.fromString(pcs[4]));
-                    goal.setLocationIEN(pcs[5]);
+                    goal.setFacility(pcs[5]);
                     goal.setProvider(pcs[6]);
                     goal.setStartDate(FMDate.fromString(pcs[7]));
                     goal.setFollowupDate(FMDate.fromString(pcs[8]));
@@ -220,16 +219,12 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * @param goal The goal to add.
      */
     public void addGoal(Goal goal) {
-        if (StringUtils.isEmpty(goal.getLocationIEN())) {
-            goal.setLocationIEN(getLocationIEN());
-        }
-        
         float number = nextGoalNumber(goal);
         List<String> data = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         addPiece(sb, "GOAL");
         addPiece(sb, goal.isDeclined() ? "N" : "S");
-        addPiece(sb, goal.getLocationIEN());
+        addPiece(sb, goal.getFacilityIEN());
         addPiece(sb, NumUtil.toString(number));
         addPiece(sb, goal.getProvider());
         addPiece(sb, goal.getStartDate());

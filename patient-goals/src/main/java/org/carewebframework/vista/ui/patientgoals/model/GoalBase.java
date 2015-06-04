@@ -49,7 +49,9 @@ public class GoalBase implements Comparable<GoalBase> {
     
     private String reason;
     
-    private final List<GoalType> type = new ArrayList<>();
+    private String facility;
+    
+    private final List<GoalType> types = new ArrayList<>();
     
     @Override
     public int compareTo(GoalBase goalBase) {
@@ -69,8 +71,9 @@ public class GoalBase implements Comparable<GoalBase> {
         status = source.status;
         number = source.number;
         reason = source.reason;
-        type.clear();
-        type.addAll(source.type);
+        facility = source.facility;
+        types.clear();
+        types.addAll(source.types);
     }
     
     public GoalGroup getGroup() {
@@ -165,7 +168,7 @@ public class GoalBase implements Comparable<GoalBase> {
         return number;
     }
     
-    public String getNumberString() {
+    public String getNumberAsString() {
         return NumUtil.toString(number);
     }
     
@@ -182,7 +185,19 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public List<GoalType> getTypes() {
-        return type;
+        return types;
+    }
+    
+    public String getFacilityName() {
+        return facility == null ? "" : StrUtil.piece(facility, ";", 2);
+    }
+    
+    public String getFacilityIEN() {
+        return facility == null ? "" : StrUtil.piece(facility, ";");
+    }
+    
+    public void setFacility(String facility) {
+        this.facility = facility;
     }
     
 }

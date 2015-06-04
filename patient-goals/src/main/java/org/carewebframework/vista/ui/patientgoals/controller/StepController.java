@@ -9,11 +9,11 @@
  */
 package org.carewebframework.vista.ui.patientgoals.controller;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
+import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
-import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
@@ -29,7 +29,7 @@ public class StepController extends AbstractGridController<Step> {
     private GoalController goalController;
     
     public StepController() {
-        super(null, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null);
+        super(null, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, false, true, null);
         setPaging(false);
     }
     
@@ -38,7 +38,7 @@ public class StepController extends AbstractGridController<Step> {
         super.initializeController();
         goalController = GoalController.findController(root);
         goalController.registerStepController(this);
-        List<Step> steps = ((Goal) arg.get("goal")).getSteps();
+        Collection<Step> steps = ((Goal) arg.get("goal")).getSteps();
         setModel(new ListModelList<Step>(steps));
     }
     

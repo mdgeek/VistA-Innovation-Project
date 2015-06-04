@@ -10,6 +10,7 @@
 package org.carewebframework.vista.ui.patientgoals.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import ca.uhn.fhir.model.dstu2.resource.Patient;
@@ -21,25 +22,22 @@ public class Goal extends GoalBase {
     
     private boolean declined;
     
-    private String locationIEN;
-    
     private Patient patient;
     
-    private final List<Review> review = new ArrayList<>();
+    private final List<Review> reviews = new ArrayList<>();
     
-    private final List<Step> step = new ArrayList<>();
+    private final List<Step> steps = new ArrayList<>();
     
     @Override
     public void copyFrom(GoalBase source) {
         super.copyFrom(source);
         Goal src = (Goal) source;
         declined = src.declined;
-        locationIEN = src.locationIEN;
         patient = src.patient;
-        review.clear();
-        review.addAll(src.review);
-        step.clear();
-        step.addAll(src.step);
+        reviews.clear();
+        reviews.addAll(src.reviews);
+        steps.clear();
+        steps.addAll(src.steps);
     }
     
     public Patient getPatient() {
@@ -58,24 +56,16 @@ public class Goal extends GoalBase {
         this.declined = declined;
     }
     
-    public String getLocationIEN() {
-        return locationIEN;
-    }
-    
-    public void setLocationIEN(String locationIEN) {
-        this.locationIEN = locationIEN;
-    }
-    
     public List<Review> getReviews() {
-        return review;
+        return reviews;
     }
     
     public Review getLastReview() {
-        return review.isEmpty() ? null : review.get(review.size() - 1);
+        return reviews.isEmpty() ? null : reviews.get(reviews.size() - 1);
     }
     
-    public List<Step> getSteps() {
-        return step;
+    public Collection<Step> getSteps() {
+        return steps;
     }
     
     @Override

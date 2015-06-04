@@ -16,10 +16,10 @@ import ca.uhn.fhir.model.dstu2.resource.Patient;
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.domain.IUser;
 import org.carewebframework.api.query.AbstractQueryFilter;
+import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.api.security.ISecurityDomain;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
-import org.carewebframework.cal.ui.reporting.query.DateQueryFilter.DateType;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.HybridModel.IGrouper;
 import org.carewebframework.ui.zk.PromptDialog;
@@ -31,11 +31,13 @@ import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.carewebframework.vista.ui.patientgoals.service.GoalService;
+import org.carewebframework.vista.ui.patientgoals.view.GoalRenderer;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Checkbox;
+import org.zkoss.zul.Column;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
@@ -142,9 +144,17 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static QueryFilter<Step> stepFilter = new QueryFilter<>();
     
+    // Start of auto-wired section
+    
     private Toolbar toolbar;
     
     private Tabbox tabbox;
+    
+    private Column colNotes;
+    
+    private Column colType;
+    
+    // End of auto-wired section
     
     /**
      * Allows the step controller to find the enclosing goal controller.
@@ -157,7 +167,7 @@ public class GoalController extends AbstractGridController<Goal> {
     }
     
     public GoalController(GoalService service) {
-        super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, goalGrouper);
+        super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, true, goalGrouper);
         setPaging(false);
     }
     
@@ -173,6 +183,10 @@ public class GoalController extends AbstractGridController<Goal> {
     protected void initializeController() {
         super.initializeController();
         registerQueryFilter(goalFilter);
+        colNotes.setSortAscending(GoalRenderer.reviewComparatorAsc);
+        colNotes.setSortDescending(GoalRenderer.reviewComparatorDsc);
+        colType.setSortAscending(GoalRenderer.typeComparatorAsc);
+        colType.setSortDescending(GoalRenderer.typeComparatorDsc);
     }
     
     /**

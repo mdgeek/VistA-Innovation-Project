@@ -3,23 +3,23 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
                         http://www.zkoss.org/2005/zul/zul.xsd">
 
-	<idspace height="100%" width="100%"
+	<idspace vflex="min"
 		apply="${vistaPatientGoalsStepController}">
-		<label id="lblMessage" style="visibility:hidden" />
+		<label id="lblMessage" style="visibility:hidden; padding:0; height:0" />
 		<grid id="grid" vflex="1" oddRowSclass="none"
 			sclass="vistaPatientGoals-grid">
 			<columns>
 				<column align="center" width="50px"
 					label="${labels.vistaPatientGoals.step.column.review.label}" />
-				<column align="center" width="50px"
+				<column id="number" align="center" width="50px"
 					label="${labels.vistaPatientGoals.step.column.number.label}" />
-				<column align="center"
+				<column id="name" align="center"
 					label="${labels.vistaPatientGoals.step.column.step.label}" />
-				<column align="center"
+				<column id="startDate" align="center"
 					label="${labels.vistaPatientGoals.step.column.startdate.label}" />
-				<column align="center"
+				<column id="followupDate" align="center"
 					label="${labels.vistaPatientGoals.step.column.followup.label}" />
-				<column align="center"
+				<column id="statusText" align="center"
 					label="${labels.vistaPatientGoals.step.column.status.label}" />
 			</columns>
 		</grid>

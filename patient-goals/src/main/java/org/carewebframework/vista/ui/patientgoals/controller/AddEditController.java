@@ -62,7 +62,7 @@ public class AddEditController extends FrameworkController {
             Step step = goalBase instanceof Step ? (Step) goalBase : null;
             return StrUtil.formatMessage("@vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
                     + goalBase.getGroup().name().toLowerCase() + "." + this.name().toLowerCase(), goal.getName(),
-                step == null ? null : step.getNumberString());
+                step == null ? null : step.getNumberAsString());
         }
     }
     

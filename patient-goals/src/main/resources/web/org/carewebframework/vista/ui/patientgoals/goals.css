@@ -52,3 +52,15 @@
 	border: 1px solid lightgray;
 	padding: 5px;
 }
+
+.vistaPatientGoals-grid .z-row:hover>.z-row-inner,
+.z-row:hover>.z-cell {
+	background: none;
+}
+
+.vistaPatientGoals-grid .z-row:hover .z-detail-outer,
+.vistaPatientGoals-grid .z-row:hover .z-idspace {
+	background: lightgray;
+}
+
+
