@@ -14,39 +14,50 @@
 			<tabpanels>
 				<tabpanel>
 					<toolbar id="toolbar" mold="panel">
-						<a id="btnNewGoal" label="New Goal"
+						<a id="btnNewGoal"
+							label="${labels.vistaPatientGoals.goal.toolbar.new_goal.label}"
+							forward="root.onAddGoal" sclass="vistaPatientGoals-bold" />
+						<space width="10px" />
+						<a id="btnNewDeclined"
+							label="${labels.vistaPatientGoals.goal.toolbar.new_declined.label}"
+							forward="root.onAddDeclined" sclass="vistaPatientGoals-bold" />
+						<separator bar="true" orient="vertical"
+							hflex="1" vflex="1" />
+						<a id="btnExpandAll"
+							label="${labels.vistaPatientGoals.goal.toolbar.expand_all.label}"
 							sclass="vistaPatientGoals-bold" />
 						<space width="10px" />
-						<a id="btnNewDeclined" label="Declined Goal"
+						<a id="btnCollapseAll"
+							label="${labels.vistaPatientGoals.goal.toolbar.collapse_all.label}"
 							sclass="vistaPatientGoals-bold" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
-						<a id="btnExpandAll" label="Expand All"
-							sclass="vistaPatientGoals-bold" />
-						<space width="10px" />
-						<a id="btnCollapseAll" label="Collapse All"
-							sclass="vistaPatientGoals-bold" />
-						<separator bar="true" orient="vertical"
-							hflex="1" vflex="1" />
-						<label value="Filter Goals On" />
+						<label
+							value="${labels.vistaPatientGoals.goal.toolbar.filter_goals.label}" />
 						<space width="5px" />
-						<checkbox label="Active" value="A"
+						<checkbox value="A"
+							label="${labels.vistaPatientGoals.goal.toolbar.filter_active.label}"
 							sclass="${$composer.getLabelClass(0)}"
 							forward="onCheck=root.onGoalFilterChange" />
-						<checkbox label="Inactive" value="I"
+						<checkbox value="I"
+							label="${labels.vistaPatientGoals.goal.toolbar.filter_inactive.label}"
 							sclass="${$composer.getLabelClass(1)}"
 							forward="onCheck=root.onGoalFilterChange" />
-						<checkbox label="Declined" value="D"
+						<checkbox value="D"
+							label="${labels.vistaPatientGoals.goal.toolbar.filter_declined.label}"
 							sclass="${$composer.getLabelClass(2)}"
 							forward="onCheck=root.onGoalFilterChange" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
-						<label value="Filter Steps On" />
+						<label
+							value="${labels.vistaPatientGoals.goal.toolbar.filter_steps.label}" />
 						<space width="5px" />
-						<checkbox label="Active" value="A"
+						<checkbox value="A"
+							label="${labels.vistaPatientGoals.goal.toolbar.filter_active.label}"
 							sclass="${$composer.getLabelClass(0)}"
 							forward="onCheck=root.onStepFilterChange" />
-						<checkbox label="Inactive" value="I"
+						<checkbox value="I"
+							label="${labels.vistaPatientGoals.goal.toolbar.filter_inactive.label}"
 							sclass="${$composer.getLabelClass(1)}"
 							forward="onCheck=root.onStepFilterChange" />
 						<space hflex="1" />
@@ -75,7 +86,8 @@
 								label="${labels.vistaPatientGoals.goal.column.reason.label}" />
 							<column id="types" align="center"
 								label="${labels.vistaPatientGoals.goal.column.type.label}">
-								<custom-attributes comparator="${$composer.typeComparator}" />
+								<custom-attributes
+									comparator="${$composer.typeComparator}" />
 							</column>
 							<column id="followDate" align="center"
 								label="${labels.vistaPatientGoals.goal.column.followup.label}" />
@@ -86,7 +98,8 @@
 								label="${labels.vistaPatientGoals.goal.column.provider.label}" />
 							<column id="lastReview" hflex="1"
 								label="${labels.vistaPatientGoals.goal.column.notes.label}">
-								<custom-attributes comparator="${$composer.reviewComparator}" />
+								<custom-attributes
+									comparator="${$composer.reviewComparator}" />
 							</column>
 						</columns>
 					</grid>

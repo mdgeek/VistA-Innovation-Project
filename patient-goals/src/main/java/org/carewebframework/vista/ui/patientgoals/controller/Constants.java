@@ -9,7 +9,11 @@
  */
 package org.carewebframework.vista.ui.patientgoals.controller;
 
+import org.carewebframework.ui.zk.ZKUtil;
+
 public class Constants {
+    
+    public static final String RESOURCE_PATH = ZKUtil.getResourcePath(Constants.class, 1);
     
     public static final String PROPERTY_PREFIX = "BEHOPG";
     

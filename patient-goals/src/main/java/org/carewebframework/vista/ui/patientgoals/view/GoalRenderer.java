@@ -66,7 +66,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         applyGroupStyle(row, goal);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        anchor.addForward(Events.ON_CLICK, "root", "onReviewGroup", goal);
+        anchor.addForward(Events.ON_CLICK, "root", "onReviewGoal", goal);
         createCell(row, "").appendChild(anchor);
         Cell cell = createCell(row, "");
         

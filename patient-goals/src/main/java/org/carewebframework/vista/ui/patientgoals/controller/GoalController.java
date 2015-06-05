@@ -55,12 +55,23 @@ public class GoalController extends AbstractGridController<Goal> {
     
     private static final long serialVersionUID = 1L;
     
+    /**
+     * This is the base class for the goal and the step filter.
+     *
+     * @param <T> This will be either the Goal or the Step class.
+     */
     private static class QueryFilter<T extends GoalBase> extends AbstractQueryFilter<T> {
         
         protected GoalGroup group;
         
         protected Checkbox chkActive;
         
+        /**
+         * Accepts an onCheck event from one of the query filter check boxes and updates the filter
+         * state. It also contains logic to uncheck the previously checked option, if any.
+         * 
+         * @param event The onCheck event from a query filter check box.
+         */
         public void updateState(Event event) {
             event = ZKUtil.getEventOrigin(event);
             Checkbox chkActive = (Checkbox) event.getTarget();
@@ -80,6 +91,9 @@ public class GoalController extends AbstractGridController<Goal> {
             return false;
         }
         
+        /**
+         * A goal or step is included if its group belongs to the currently selected filter group.
+         */
         @Override
         public boolean include(T goalBase) {
             return group == null || goalBase.getGroup() == group;
@@ -87,14 +101,18 @@ public class GoalController extends AbstractGridController<Goal> {
         
     }
     
-    public static class GrouperGroup {
+    /**
+     * This class defines the attributes of a single goal group. It is used by the grouper for
+     * displaying and ordering the groups.
+     */
+    public static class GrouperGroup implements Comparable<GrouperGroup> {
         
         private final String label;
         
         private final GoalGroup group;
         
-        public GrouperGroup(String label, GoalGroup group) {
-            this.label = label;
+        public GrouperGroup(GoalGroup group) {
+            this.label = ZKUtil.getLabel(Constants.LABEL_PREFIX + ".goal.group." + group.name().toLowerCase() + ".label");
             this.group = group;
         }
         
@@ -102,8 +120,17 @@ public class GoalController extends AbstractGridController<Goal> {
             return group;
         }
         
+        @Override
+        public int compareTo(GrouperGroup group2) {
+            return group.ordinal() - group2.group.ordinal();
+        }
+        
     }
     
+    /**
+     * This is the grouper that informs the group model how to group goals. It causes goals to be
+     * grouped into one of three categories: active, inactive, declined.
+     */
     private static IGrouper<Goal, GrouperGroup> goalGrouper = new IGrouper<Goal, GrouperGroup>() {
         
         @Override
@@ -127,26 +154,29 @@ public class GoalController extends AbstractGridController<Goal> {
         
         @Override
         public int compareElement(Goal goal1, Goal goal2) {
-            return Float.compare(goal1.getNumber(), goal2.getNumber());
+            return goal1.compareTo(goal2);
         }
         
         @Override
         public int compareGroup(GrouperGroup group1, GrouperGroup group2) {
-            return group1.group.ordinal() - group2.group.ordinal();
+            return group1.compareTo(group2);
         }
         
     };
     
-    private static GrouperGroup groupActive = new GrouperGroup("Active Goals", GoalGroup.ACTIVE);
+    private static GrouperGroup groupActive = new GrouperGroup(GoalGroup.ACTIVE);
     
-    private static GrouperGroup groupInactive = new GrouperGroup("Inactive Goals", GoalGroup.INACTIVE);
+    private static GrouperGroup groupInactive = new GrouperGroup(GoalGroup.INACTIVE);
     
-    private static GrouperGroup groupDeclined = new GrouperGroup("Declined Goals", GoalGroup.DECLINED);
+    private static GrouperGroup groupDeclined = new GrouperGroup(GoalGroup.DECLINED);
     
     private static QueryFilter<Goal> goalFilter = new QueryFilter<>();
     
     private static QueryFilter<Step> stepFilter = new QueryFilter<>();
     
+    /**
+     * Custom comparator used to sort the column displaying the review note.
+     */
     private static final Comparator<Review> reviewComparator = new Comparator<Review>() {
         
         @Override
@@ -156,7 +186,7 @@ public class GoalController extends AbstractGridController<Goal> {
     };
     
     /**
-     * Custom comparator is required for sorting goal types.
+     * Custom comparator used to sort the column display the goal types.
      */
     private static final Comparator<List<GoalType>> typeComparator = new Comparator<List<GoalType>>() {
         
@@ -164,7 +194,6 @@ public class GoalController extends AbstractGridController<Goal> {
         public int compare(List<GoalType> types1, List<GoalType> types2) {
             return GoalRenderer.typeAsString(types1).compareToIgnoreCase(GoalRenderer.typeAsString(types2));
         }
-        
     };
     
     // Start of auto-wired section
@@ -185,27 +214,75 @@ public class GoalController extends AbstractGridController<Goal> {
         return (GoalController) FrameworkController.getController(stepRoot.getParent(), true);
     }
     
+    /**
+     * Creates the controller for the main page (goal list). It uses the following settings:
+     * <ul>
+     * <li>Prefix for label references:
+     * {@value org.carewebframework.vista.ui.patientgoals.controller.Constants#LABEL_PREFIX}</li>
+     * <li>Prefix for property values:
+     * {@value org.carewebframework.vista.ui.patientgoals.controller.Constants#PROPERTY_PREFIX}</li>
+     * <li>No style sheet for printing (for now).</li>
+     * <li>Responds to patient context changes.</li>
+     * <li>Auto-wires comparators to grid columns.</li>
+     * <li>Uses a grouper for organizing goals into three groups (active, inactive, declined).</li>
+     * </ul>
+     * 
+     * @param service The goal service instance that has API's for manipulating goals and steps.
+     */
     public GoalController(GoalService service) {
         super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, true, goalGrouper);
         setPaging(false);
     }
     
+    // Start of EL methods.
+    
+    /**
+     * Returns the style classes to apply to UI text elements representing a given goal group. This
+     * is used by EL expressions in the main zul page.
+     * 
+     * @param i Ordinal value of the {@link GoalGroup}.
+     * @return The CSS style classes.
+     */
     public String getLabelClass(int i) {
         return "vistaPatientGoals-bold " + Constants.LABEL_SCLASS[i];
     }
     
+    /**
+     * Returns the style classes to apply to UI list elements representing a given goal group. This
+     * is used by EL expressions in the main zul page.
+     * 
+     * @param i Ordinal value of the {@link GoalGroup}.
+     * @return The CSS style classes.
+     */
     public String getGroupClass(int i) {
         return Constants.GROUP_SCLASS[i];
     }
     
+    /**
+     * Returns the custom comparator used for sorting the type column in the grid. It allows the
+     * comparator to be referenced using EL expressions in the main zul page.
+     * 
+     * @return A custom comparator.
+     */
     public Comparator<?> getTypeComparator() {
         return typeComparator;
     }
     
+    /**
+     * Returns the custom comparator used for sorting the note column in the grid. It allows the
+     * comparator to be referenced using EL expressions in the main zul page.
+     * 
+     * @return A custom comparator.
+     */
     public Comparator<?> getReviewComparator() {
         return reviewComparator;
     }
     
+    // End of EL methods
+    
+    /**
+     * Register the goal query filter.
+     */
     @Override
     protected void initializeController() {
         super.initializeController();
@@ -230,25 +307,83 @@ public class GoalController extends AbstractGridController<Goal> {
         stepFilter.updateState(event);
     }
     
-    public void onReviewGroup(Event event) {
+    // Start of goal action handlers.
+    
+    /**
+     * Handle request to add a new goal.
+     */
+    public void onAddGoal() {
+        newGoal(ActionType.ADD, GoalGroup.ACTIVE);
+    }
+    
+    /**
+     * Handle a request to add a declined goal.
+     */
+    public void onAddDeclined() {
+        newGoal(ActionType.ADD, GoalGroup.DECLINED);
+    }
+    
+    /**
+     * Handle request to review a goal.
+     * 
+     * @param event The trigger event.
+     */
+    public void onReviewGoal(Event event) {
         Goal goal = (Goal) event.getData();
         AddEditController.execute(tabbox, goal, ActionType.REVIEW);
     }
     
+    /**
+     * Creates a new goal with the specified default values.
+     * 
+     * @param actionType The action type (should always be ADD).
+     * @param goalGroup The group (ACTIVE or DECLINED)
+     */
+    private void newGoal(ActionType actionType, GoalGroup goalGroup) {
+        Goal goal = new Goal();
+        goal.setPatient(getPatient());
+        goal.setDeclined(goalGroup == GoalGroup.DECLINED);
+        goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        goal.setName(ZKUtil.getLabel("vistaPatientGoals.new_" + (goal.isDeclined() ? "declined" : "goal") + ".name"));
+        goal.setStartDate(FMDate.today());
+        AddEditController.execute(tabbox, goal, actionType);
+    }
+    
+    // End of goal action handlers
+    
+    // Start of step action handlers
+    
+    /**
+     * Handle request to add a step.
+     * 
+     * @param event The trigger event.
+     */
     public void onAddStep(Event event) {
         Goal goal = (Goal) event.getData();
         newStep(ActionType.ADD, GoalGroup.ACTIVE, goal);
     }
     
+    /**
+     * Handle request to review a step.
+     * 
+     * @param event The trigger event.
+     */
     public void onReviewStep(Event event) {
         Step step = (Step) event.getData();
         AddEditController.execute(tabbox, step, ActionType.REVIEW);
     }
     
+    /**
+     * Creates a new step with the specified default values.
+     * 
+     * @param actionType The action type (should always be ADD).
+     * @param goalGroup The group (ACTIVE or INACTIVE)
+     * @param goal The parent goal.
+     */
     private void newStep(ActionType actionType, GoalGroup goalGroup, Goal goal) {
         Step step = new Step(goal);
         step.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
-        step.setName(ZKUtil.getLabel("vistaPatientGoals.new_.step.name"));
+        step.setName(ZKUtil.getLabel("vistaPatientGoals.new_step.name"));
         step.setStartDate(FMDate.today());
         IUser user = UserContext.getActiveUser();
         ISecurityDomain domain = user.getSecurityDomain();
@@ -257,40 +392,50 @@ public class GoalController extends AbstractGridController<Goal> {
         AddEditController.execute(tabbox, step, actionType);
     }
     
+    // End of step action handlers
+    
+    /**
+     * The step controller for each detail view calls this after initialization. The action is to
+     * register the step filter (which is shared across step controllers) with the step controller.
+     * 
+     * @param controller The step controller.
+     */
     public void registerStepController(StepController controller) {
         controller.registerQueryFilter(stepFilter);
     }
     
+    /**
+     * The step controller for each detail view calls this during during cleanup. The action is to
+     * unregister the step filter (which is shared across step controllers) from the step
+     * controller.
+     * 
+     * @param controller The step controller.
+     */
     public void unregisterStepController(StepController controller) {
         controller.unregisterQueryFilter(stepFilter);
     }
     
-    public void onClick$btnNewGoal() {
-        newGoal(ActionType.ADD, GoalGroup.ACTIVE);
-    }
+    // Start of view expansion control.
     
-    public void onClick$btnNewDeclined() {
-        newGoal(ActionType.ADD, GoalGroup.DECLINED);
-    }
-    
-    private void newGoal(ActionType actionType, GoalGroup goalGroup) {
-        Goal goal = new Goal();
-        goal.setPatient(getPatient());
-        goal.setDeclined(goalGroup == GoalGroup.DECLINED);
-        goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
-        goal.setName(ZKUtil.getLabel("vistaPatientGoals.new_.goal.name"));
-        goal.setStartDate(FMDate.today());
-        AddEditController.execute(tabbox, goal, actionType);
-    }
-    
+    /**
+     * Expands all groups and details.
+     */
     public void onClick$btnExpandAll() {
         openAll(true);
     }
     
+    /**
+     * Collapses all groups and details.
+     */
     public void onClick$btnCollapseAll() {
         openAll(false);
     }
     
+    /**
+     * Expands or collapses all groups and details in the current view.
+     * 
+     * @param open True = expand operation. False = collapse operation.
+     */
     private void openAll(boolean open) {
         for (Row row : getGrid().getRows().<Row> getChildren()) {
             Detail detail = row.getDetailChild();
@@ -305,8 +450,10 @@ public class GoalController extends AbstractGridController<Goal> {
         }
     }
     
+    // End of view expansion control.
+    
     /**
-     * Receives event from add/edit controller when a commit of a new goal/step has succeeded.
+     * Receives event from the add/edit controller when a commit of changes has succeeded.
      * 
      * @param event For adds, the event data is the goal or step committed. Otherwise, the event
      *            data is null.
@@ -321,18 +468,28 @@ public class GoalController extends AbstractGridController<Goal> {
         applyFilters();
     }
     
+    /**
+     * Extracts the date of the specified type from the goal. This isn't currently used because
+     * there is no filter for date ranges.
+     */
     @Override
     public Date getDateByType(Goal goal, DateType dateType) {
         return dateType == DateType.UPDATED ? goal.getLastUpdated() : goal.getFollowupDate();
     }
     
+    // Start of context change handling.
+    
+    /**
+     * Called when the patient context change is about to occur. Checks to make sure that there are
+     * no pending changes.
+     */
     @Override
-    public String onPatientChanging() {
-        if (pendingChanges()
-                && !PromptDialog.confirm(
-                    "Patient goals has pending changes.  If you continue, all changes will be lost.  Continue?",
-                    "Pending Changes")) {
-            return "Patient goals has pending changes.";
+    public String onPatientChanging(boolean silent) {
+        if (!silent
+                && pendingChanges()
+                && !PromptDialog.confirm("@vistaPatientGoals.changes_pending.message",
+                    "@vistaPatientGoals.changes_pending.title")) {
+            return ZKUtil.getLabel("vistaPatientGoals.changes_pending.response");
         }
         
         return null;
@@ -353,6 +510,9 @@ public class GoalController extends AbstractGridController<Goal> {
         return false;
     }
     
+    /**
+     * Updates the controller state to reflect the context change. Removes any add/edit tabs.
+     */
     @Override
     public void onPatientChanged(Patient patient) {
         super.onPatientChanged(patient);
@@ -364,6 +524,8 @@ public class GoalController extends AbstractGridController<Goal> {
             tabbox.getTabpanels().getChildren().remove(1);
         }
     }
+    
+    // End of context change handling
     
     @Override
     public void refresh() {

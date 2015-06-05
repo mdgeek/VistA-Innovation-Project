@@ -44,13 +44,13 @@ import org.zkoss.zul.Tabpanel;
 import org.zkoss.zul.Textbox;
 
 /**
- * Controller adding or editing goals and steps
+ * Controller for adding or editing goals and steps
  */
 public class AddEditController extends FrameworkController {
     
     private static final long serialVersionUID = 1L;
     
-    private static final String DIALOG = "~./org/carewebframework/vista/ui/patientgoals/add-edit.zul";
+    private static final String DIALOG = Constants.RESOURCE_PATH + "add-edit.zul";
     
     private static final String[] TYPES = { "GOAL", "STEP", "ACTIVE", "INACTIVE", "DECLINED", "ADD", "REVIEW" };
     
