@@ -76,7 +76,9 @@
 								label="${labels.vistaPatientGoals.goal.column.lastupdate.label}" />
 							<column id="number" align="center"
 								width="50px"
-								label="${labels.vistaPatientGoals.goal.column.number.label}" />
+								label="${labels.vistaPatientGoals.goal.column.number.label}">
+								<custom-attributes natural="ascending" />
+							</column>
 							<column id="name" align="center"
 								label="${labels.vistaPatientGoals.goal.column.goal.label}" />
 							<column id="startDate" align="center"
@@ -89,7 +91,7 @@
 								<custom-attributes
 									comparator="${$composer.typeComparator}" />
 							</column>
-							<column id="followDate" align="center"
+							<column id="followupDate" align="center"
 								label="${labels.vistaPatientGoals.goal.column.followup.label}" />
 							<column id="statusText" align="center"
 								width="75px"

@@ -11,6 +11,14 @@
 .vistaPatientGoals-grid .z-column-content {
 	white-space: pre-line;
 	line-height: 15px;
+	padding: 3px;
+}
+
+.vistaPatientGoals-grid .z-column-sorticon {
+	position: inherit;
+	top: inherit;
+	left: inherit;
+	float: right;
 }
 
 .vistaPatientGoals-grid .z-row {
