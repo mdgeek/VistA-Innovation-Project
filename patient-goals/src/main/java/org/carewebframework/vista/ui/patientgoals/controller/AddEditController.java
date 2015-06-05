@@ -57,6 +57,13 @@ public class AddEditController extends FrameworkController {
     public enum ActionType {
         ADD, REVIEW;
         
+        /**
+         * Formats the label to be used for the tab caption based on the action type and the goal or
+         * step.
+         * 
+         * @param goalBase The goal or step.
+         * @return The formatted label.
+         */
         public String getLabel(GoalBase goalBase) {
             Goal goal = goalBase instanceof Goal ? (Goal) goalBase : ((Step) goalBase).getGoal();
             Step step = goalBase instanceof Step ? (Step) goalBase : null;
@@ -82,7 +89,7 @@ public class AddEditController extends FrameworkController {
     
     private final Set<Component> changeSet = new HashSet<>();
     
-    // Auto-wired members
+    // Start of auto-wired members
     
     private Button btnOK;
     
@@ -106,6 +113,17 @@ public class AddEditController extends FrameworkController {
     
     private Radiogroup rgStatus;
     
+    // End of auto-wired members.
+    
+    /**
+     * Creates a new tab for the specified action type. If a tab already exists for the action type
+     * and goal/step, then that tab is revealed and no further action is taken.
+     * 
+     * @param tabbox The tab box.
+     * @param goalBase The step or goal.
+     * @param actionType The type of action.
+     * @return Returns the created tab.
+     */
     public static Tab execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
         Tab tab = findTab(tabbox, goalBase, actionType);
         
@@ -128,6 +146,15 @@ public class AddEditController extends FrameworkController {
         return tab;
     }
     
+    /**
+     * Searches for an existing tab for the action type and step/goal.
+     * 
+     * @param tabbox The tab box.
+     * @param goalBase The step or goal.
+     * @param actionType The type of action.
+     * @return An existing tab corresponding to the action type and step/goal, or null if none
+     *         found.
+     */
     private static Tab findTab(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
         String id = createId(goalBase, actionType);
         List<Tab> tabs = tabbox.getTabs().getChildren();
@@ -141,15 +168,32 @@ public class AddEditController extends FrameworkController {
         return null;
     }
     
+    /**
+     * Returns a unique id to be used to identify a tab servicing an action type for a specific
+     * goal/step.
+     * 
+     * @param goalBase The step or goal.
+     * @param actionType The type of action.
+     * @return A unique id.
+     */
     private static String createId(GoalBase goalBase, ActionType actionType) {
         return actionType + "." + goalBase.getGroup() + "." + goalBase.getIEN()
                 + (goalBase instanceof Step ? "." + ((Step) goalBase).getGoal().getIEN() : "");
     }
     
+    /**
+     * Creates the controller with the goal service to use.
+     * 
+     * @param service The goal service.
+     */
     public AddEditController(GoalService service) {
         this.service = service;
     }
     
+    /**
+     * Populates the goal types and initializes the input elements with values from the step or
+     * goal. Also, wires change events for all input elements.
+     */
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
