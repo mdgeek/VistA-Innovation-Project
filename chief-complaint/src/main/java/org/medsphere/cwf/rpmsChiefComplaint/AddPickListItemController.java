@@ -2,9 +2,6 @@ package org.medsphere.cwf.rpmsChiefComplaint;
 
 import static org.carewebframework.common.StrUtil.U;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.rpms.api.common.BgoUtil;
 import org.carewebframework.rpms.api.common.Params;
@@ -27,17 +24,11 @@ public class AddPickListItemController extends BgoBaseController<Object> {
     
     private Button btnAdd;
     
-    private Button btnCancel;
-    
-    private Window winSymWin;
-    
     private Integer typeOfComplaint;
     
     private Textbox txtValue;
     
     private Checkbox ckBody;
-    
-    private final List<String> complaints = new ArrayList<String>();
     
     public static Boolean execute(Integer idx) {
         Params args = BgoUtil.packageParams(idx);
@@ -51,7 +42,6 @@ public class AddPickListItemController extends BgoBaseController<Object> {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        Params params = (Params) arg;
         typeOfComplaint = (Integer) arg.get(0);
         initForm();
     }

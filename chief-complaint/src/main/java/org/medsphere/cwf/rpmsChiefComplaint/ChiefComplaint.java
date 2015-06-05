@@ -15,8 +15,6 @@ public class ChiefComplaint extends EncounterRelated {
         JSONUtil.registerAlias("ChiefComplaint", ChiefComplaint.class);
     }
     
-    private String narrIEN;
-    
     private Practitioner author;
     
     private String narrative;
@@ -43,10 +41,6 @@ public class ChiefComplaint extends EncounterRelated {
     
     private void setNarrative(String narrative) {
         this.narrative = narrative;
-    }
-    
-    private String getNarrative() {
-        return narrative;
     }
     
     public String getNarrativeFormatted() {

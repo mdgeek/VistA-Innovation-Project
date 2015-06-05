@@ -9,7 +9,6 @@ import java.util.List;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.rpms.ui.common.BgoBaseController;
 import org.carewebframework.rpms.ui.common.PCC;
-import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.AbstractListitemRenderer;
 import org.carewebframework.ui.zk.PopupDialog;
 import org.carewebframework.ui.zk.PromptDialog;
@@ -18,10 +17,8 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Radiogroup;
-import org.zkoss.zul.Window;
 
 public class ManagePickListController extends BgoBaseController<Object> {
     
@@ -36,12 +33,9 @@ public class ManagePickListController extends BgoBaseController<Object> {
         
         @Override
         protected void renderItem(Listitem item, String s) {
-            Listcell lc = createCell(item, StrUtil.piece(s, U, 2) + (StrUtil.piece(s, U, 3).equals("1") ? "*" : ""));
             item.setId(StrUtil.piece(s, U));
         }
     };
-    
-    private Button btnAdd;
     
     private Button btnDelete;
     
@@ -65,10 +59,7 @@ public class ManagePickListController extends BgoBaseController<Object> {
     private final ListModelList<String> complaints = new ListModelList<String>();
     
     public static void execute() {
-        //Params params = new Params(complaint);
-        Window dlg = PopupDialog.popup(DIALOG, true, false, true);
-        ManagePickListController controller = (ManagePickListController) FrameworkController.getController(dlg);
-        return;
+        PopupDialog.popup(DIALOG, true, false, true);
     }
     
     @Override
