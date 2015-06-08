@@ -11,12 +11,15 @@ package org.carewebframework.vista.ui.patientgoals.controller;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
 
+import org.zkoss.zul.Detail;
 import org.zkoss.zul.ListModelList;
 
 /**
@@ -61,6 +64,12 @@ public class StepController extends AbstractGridController<Step> {
         goalController.registerStepController(this);
         Collection<Step> steps = ((Goal) arg.get("goal")).getSteps();
         setModel(new ListModelList<Step>(steps));
+    }
+    
+    @Override
+    protected void modelChanged(List<Step> filteredModel) {
+        ZKUtil.findAncestor(root, Detail.class).invalidate();
+        super.modelChanged(filteredModel);
     }
     
     /**

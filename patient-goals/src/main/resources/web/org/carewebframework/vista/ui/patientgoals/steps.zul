@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
                         http://www.zkoss.org/2005/zul/zul.xsd">
 
-	<idspace vflex="min"
+	<idspace
 		apply="${vistaPatientGoalsStepController}">
 		<label id="lblMessage" style="visibility:hidden; padding:0; height:0" />
-		<grid id="grid" vflex="1" oddRowSclass="none"
+		<grid id="grid" oddRowSclass="none"
 			sclass="vistaPatientGoals-grid">
 			<columns>
 				<column align="center" width="50px"

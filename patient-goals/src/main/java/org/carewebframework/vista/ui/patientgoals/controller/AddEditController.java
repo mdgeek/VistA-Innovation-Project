@@ -232,6 +232,11 @@ public class AddEditController extends FrameworkController {
         tab.setValue(createId(goalBase, actionType));
     }
     
+    /**
+     * Recursively wires input elements to a common event handler for the detection of changes.
+     * 
+     * @param parent The parent component.
+     */
     private void wireChangeEvents(Component parent) {
         for (Component child : parent.getChildren()) {
             String sourceEvent = null;

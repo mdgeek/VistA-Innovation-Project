@@ -16,11 +16,13 @@
 					<toolbar id="toolbar" mold="panel">
 						<a id="btnNewGoal"
 							label="${labels.vistaPatientGoals.goal.toolbar.new_goal.label}"
-							forward="root.onAddGoal" sclass="vistaPatientGoals-bold" />
+							sclass="${$composer.getLabelClass(0)}"
+							forward="root.onAddGoal" />
 						<space width="10px" />
 						<a id="btnNewDeclined"
 							label="${labels.vistaPatientGoals.goal.toolbar.new_declined.label}"
-							forward="root.onAddDeclined" sclass="vistaPatientGoals-bold" />
+							sclass="${$composer.getLabelClass(2)}"
+							forward="root.onAddDeclined" />
 						<separator bar="true" orient="vertical"
 							hflex="1" vflex="1" />
 						<a id="btnExpandAll"
