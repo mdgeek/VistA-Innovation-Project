@@ -7,7 +7,7 @@
 		apply="${vistaPatientGoalsStepController}">
 		<label id="lblMessage" style="visibility:hidden; padding:0; height:0" />
 		<grid id="grid" oddRowSclass="none"
-			sclass="vistaPatientGoals-grid">
+			sclass="vistaPatientGoals-grid cwf-grid-nohover">
 			<columns>
 				<column align="center" width="50px"
 					label="${labels.vistaPatientGoals.step.column.review.label}" />

@@ -33,6 +33,7 @@ import org.zkoss.zul.Cell;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Group;
 import org.zkoss.zul.Row;
+import org.zkoss.zul.Span;
 
 /**
  * Renderer for a goal.
@@ -88,8 +89,15 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         createCell(row, goal.getProvider());
         Review review = goal.getLastReview();
         String label = review == null ? "" : review.getNote();
-        String hint = review == null ? "" : review.toString();
-        createCell(row, label).setTooltiptext(hint);
+        cell = createCell(row, label);
+        
+        if (review != null) {
+            Span info = new Span();
+            info.setSclass("glyphicon glyphicon-info-sign");
+            info.setTooltiptext(StrUtil.fromList(goal.getReviews()));
+            cell.insertBefore(info, cell.getFirstChild());
+        }
+        
         return row;
     }
     

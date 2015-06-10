@@ -37,6 +37,12 @@
 	color: brown;
 }
 
+.vistaPatientGoals-grid .z-cell .glyphicon-info-sign {
+	color: darkblue; 
+	margin: 4px 4px 0 2px; 
+	zoom: 120%;
+}
+
 .vistaPatientGoals-grid .z-detail-outer {
 	padding: 0;
 }
@@ -59,11 +65,6 @@
 .vistaPatientGoals-framed {
 	border: 1px solid lightgray;
 	padding: 5px;
-}
-
-.vistaPatientGoals-grid .z-row:hover>.z-row-inner,
-.z-row:hover>.z-cell {
-	background: none;
 }
 
 .vistaPatientGoals-grid .z-row:hover .z-detail-outer,
