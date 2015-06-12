@@ -402,7 +402,7 @@ public class AddEditController extends FrameworkController {
      */
     public String getLabel(String key) {
         String type = isStep ? "step" : "goal";
-        return ZKUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type);
+        return StrUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type);
     }
     
     private boolean hasRequired() {

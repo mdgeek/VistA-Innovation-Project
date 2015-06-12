@@ -22,6 +22,7 @@ import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.api.security.ISecurityDomain;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.HybridModel.IGrouper;
 import org.carewebframework.ui.zk.PromptDialog;
@@ -112,7 +113,7 @@ public class GoalController extends AbstractGridController<Goal> {
         private final GoalGroup group;
         
         public GrouperGroup(GoalGroup group) {
-            this.label = ZKUtil.getLabel(Constants.LABEL_PREFIX + ".goal.group." + group.name().toLowerCase() + ".label");
+            this.label = StrUtil.getLabel(Constants.LABEL_PREFIX + ".goal.group." + group.name().toLowerCase() + ".label");
             this.group = group;
         }
         
@@ -344,7 +345,7 @@ public class GoalController extends AbstractGridController<Goal> {
         goal.setPatient(getPatient());
         goal.setDeclined(goalGroup == GoalGroup.DECLINED);
         goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
-        goal.setName(ZKUtil.getLabel("vistaPatientGoals.new_" + (goal.isDeclined() ? "declined" : "goal") + ".name"));
+        goal.setName(StrUtil.getLabel("vistaPatientGoals.new_" + (goal.isDeclined() ? "declined" : "goal") + ".name"));
         goal.setStartDate(FMDate.today());
         AddEditController.execute(tabbox, goal, actionType);
     }
@@ -383,7 +384,7 @@ public class GoalController extends AbstractGridController<Goal> {
     private void newStep(ActionType actionType, GoalGroup goalGroup, Goal goal) {
         Step step = new Step(goal);
         step.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
-        step.setName(ZKUtil.getLabel("vistaPatientGoals.new_step.name"));
+        step.setName(StrUtil.getLabel("vistaPatientGoals.new_step.name"));
         step.setStartDate(FMDate.today());
         IUser user = UserContext.getActiveUser();
         ISecurityDomain domain = user.getSecurityDomain();
@@ -489,7 +490,7 @@ public class GoalController extends AbstractGridController<Goal> {
                 && pendingChanges()
                 && !PromptDialog.confirm("@vistaPatientGoals.changes_pending.message",
                     "@vistaPatientGoals.changes_pending.title")) {
-            return ZKUtil.getLabel("vistaPatientGoals.changes_pending.response");
+            return StrUtil.getLabel("vistaPatientGoals.changes_pending.response");
         }
         
         return null;
