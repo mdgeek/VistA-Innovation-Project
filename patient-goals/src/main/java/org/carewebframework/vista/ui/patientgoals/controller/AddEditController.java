@@ -67,7 +67,7 @@ public class AddEditController extends FrameworkController {
         public String getLabel(GoalBase goalBase) {
             Goal goal = goalBase instanceof Goal ? (Goal) goalBase : ((Step) goalBase).getGoal();
             Step step = goalBase instanceof Step ? (Step) goalBase : null;
-            return StrUtil.formatMessage("@vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
+            return StrUtil.getLabel("vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
                     + goalBase.getGroup().name().toLowerCase() + "." + this.name().toLowerCase(), goal.getName(),
                 step == null ? null : step.getNumberAsString());
         }
