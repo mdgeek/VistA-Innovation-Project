@@ -38,6 +38,7 @@ import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
+import org.zkoss.zul.Row;
 import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Tabpanel;
@@ -85,6 +86,8 @@ public class AddEditController extends FrameworkController {
     
     private boolean hasChanged;
     
+    private boolean deleting;
+    
     private final GoalService service;
     
     private final Set<Component> changeSet = new HashSet<>();
@@ -112,6 +115,12 @@ public class AddEditController extends FrameworkController {
     private Radiogroup goalTypes;
     
     private Radiogroup rgStatus;
+    
+    private Radiogroup rgDeleteReason;
+    
+    private Row rowDeleteReason;
+    
+    private Textbox txtDeleteReason;
     
     // End of auto-wired members.
     
@@ -431,6 +440,16 @@ public class AddEditController extends FrameworkController {
     
     public void onClick$btnCancel() {
         close(false);
+    }
+    
+    public void onCheck$rgStatus() {
+        deleting = rgStatus.getSelectedIndex() == 4;
+        rowDeleteReason.setVisible(deleting);
+        onCheck$rgDeleteReason();
+    }
+    
+    public void onCheck$rgDeleteReason() {
+        txtDeleteReason.setVisible(rgDeleteReason.getSelectedIndex() == 2);
     }
     
     public void onCloseTab(Event event) {

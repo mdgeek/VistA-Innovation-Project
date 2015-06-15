@@ -5,7 +5,7 @@
 
 	<idspace height="100%" width="100%"
 		apply="${vistaPatientGoalsAddEditController}">
-		<grid id="form" vflex="1" oddRowSclass="none">
+		<grid id="form" vflex="1" oddRowSclass="none" sclass="cwf-grid-nohover">
 			<columns>
 				<column hflex="min" align="right" />
 				<column hflex="1" />
@@ -54,7 +54,7 @@
 				</row>
 				<row height="20px" />
 				<row valign="middle" unless="${$composer.isType('DECLINED')}">
-					<label value="Status:" />
+					<label value="${$composer.getLabel('status')}" />
 					<cell colspan="3">
 						<radiogroup id="rgStatus"
 							sclass="vistaPatientGoals-framed">
@@ -70,6 +70,21 @@
 								label="${$composer.getLabel('status.deleted')}" />
 						</radiogroup>
 					</cell>
+				</row>
+				<row id="rowDeleteReason" valign="middle" visible="false">
+					<label value="${$composer.getLabel('deleteReason')}" />
+					<cell colspan="2">
+						<radiogroup id="rgDeleteReason"
+							sclass="vistaPatientGoals-framed">
+							<radio value="W;WRONG ${$composer.isType('GOAL') ? 'PATIENT' : 'GOAL' }"
+								label="${$composer.getLabel('reason.wrong')}" />
+							<radio value="D;DUPLICATE"
+								label="${$composer.getLabel('reason.duplicate')}" />
+							<radio value="O;OTHER"
+								label="${$composer.getLabel('reason.other')}" />
+						</radiogroup>
+					</cell>
+					<textbox id="txtDeleteReason" visible="false" hflex="1" maxlength="120" />
 				</row>
 			</rows>
 		</grid>
