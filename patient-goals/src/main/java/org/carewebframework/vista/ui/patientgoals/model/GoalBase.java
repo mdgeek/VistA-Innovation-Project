@@ -51,6 +51,10 @@ public class GoalBase implements Comparable<GoalBase> {
     
     private String facility;
     
+    private String delete;
+    
+    private String deleteReason;
+    
     private final List<GoalType> types = new ArrayList<>();
     
     @Override
@@ -200,4 +204,27 @@ public class GoalBase implements Comparable<GoalBase> {
         this.facility = facility;
     }
     
+    public String getDeleteCode() {
+        return delete == null ? "" : StrUtil.piece(delete, ";");
+    }
+    
+    public String getDeleteText() {
+        return delete == null ? "" : StrUtil.piece(delete, ";", 2);
+    }
+    
+    public void setDelete(String delete) {
+        this.delete = delete;
+    }
+    
+    public String getDeleteReason() {
+        return deleteReason;
+    }
+    
+    public void setDeleteReason(String deleteReason) {
+        this.deleteReason = deleteReason;
+    }
+    
+    public boolean isDeleted() {
+        return "D".equals(getStatusCode());
+    }
 }

@@ -33,9 +33,11 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
 import org.zkoss.zul.Row;
@@ -56,7 +58,7 @@ public class AddEditController extends FrameworkController {
     private static final String[] TYPES = { "GOAL", "STEP", "ACTIVE", "INACTIVE", "DECLINED", "ADD", "REVIEW" };
     
     public enum ActionType {
-        ADD, REVIEW;
+        ADD, REVIEW, DELETE;
         
         /**
          * Formats the label to be used for the tab caption based on the action type and the goal or
@@ -87,6 +89,8 @@ public class AddEditController extends FrameworkController {
     private boolean hasChanged;
     
     private boolean deleting;
+    
+    private String requiredMessage;
     
     private final GoalService service;
     
@@ -121,6 +125,8 @@ public class AddEditController extends FrameworkController {
     private Row rowDeleteReason;
     
     private Textbox txtDeleteReason;
+    
+    private Label lblDeleteReason;
     
     // End of auto-wired members.
     
@@ -208,6 +214,7 @@ public class AddEditController extends FrameworkController {
         super.doAfterCompose(comp);
         populateGoalTypes();
         populateControls();
+        requiredMessage = getLabel("required");
         wireChangeEvents(comp);
         
         if (goalBase.getGroup() == GoalGroup.INACTIVE) {
@@ -289,10 +296,6 @@ public class AddEditController extends FrameworkController {
             datFollowup.setValue(goalBase.getFollowupDate());
         }
         
-        if (rgStatus != null) {
-            findRadio(goalBase.getStatusCode()).setChecked(true);
-        }
-        
         if (goalTypes != null) {
             Checkbox chk = null;
             
@@ -300,6 +303,10 @@ public class AddEditController extends FrameworkController {
                 chk.setChecked(goalBase.getTypes().contains((chk.getValue())));
             }
         }
+        
+        initRadio(rgStatus, goalBase.getStatusCode());
+        initRadio(rgDeleteReason, goalBase.getDeleteCode());
+        txtDeleteReason.setText(goalBase.getDeleteReason());
     }
     
     private void populateGoalBase() {
@@ -339,6 +346,14 @@ public class AddEditController extends FrameworkController {
                 }
             }
         }
+        
+        if (deleting && rgDeleteReason.getSelectedItem() != null) {
+            goalBase.setDelete(rgDeleteReason.getSelectedItem().getValue().toString());
+        }
+        
+        if (deleting && txtDeleteReason.isVisible()) {
+            goalBase.setDeleteReason(txtDeleteReason.getText());
+        }
     }
     
     private void populateGoalTypes() {
@@ -354,7 +369,9 @@ public class AddEditController extends FrameworkController {
     }
     
     public void onChange(Event event) {
-        changeSet.add(ZKUtil.getEventOrigin(event).getTarget());
+        Component target = ZKUtil.getEventOrigin(event).getTarget();
+        changeSet.add(target);
+        Clients.clearWrongValue(target);
         
         if (!hasChanged) {
             hasChanged = true;
@@ -415,21 +432,35 @@ public class AddEditController extends FrameworkController {
     }
     
     private boolean hasRequired() {
+        if (deleting && rgDeleteReason.getSelectedItem() == null) {
+            return isRequired(rgDeleteReason);
+        }
+        
+        if (txtDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
+            return isRequired(txtDeleteReason);
+        }
+        
         return true;
     }
     
-    private Radio findRadio(String statusCode) {
-        if (rgStatus == null) {
-            return null;
+    private boolean isRequired(Component target) {
+        Clients.wrongValue(target, requiredMessage);
+        return false;
+    }
+    
+    private void initRadio(Radiogroup rg, String code) {
+        if (rg == null) {
+            return;
         }
         
-        for (Radio radio : rgStatus.getItems()) {
-            if (StrUtil.piece(radio.getValue().toString(), ";").equals(statusCode)) {
-                return radio;
+        for (Radio radio : rg.getItems()) {
+            if (StrUtil.piece(radio.getValue().toString(), ";").equals(code)) {
+                rg.setSelectedItem(radio);
+                return;
             }
         }
         
-        return rgStatus.getItemAtIndex(0);
+        rg.setSelectedIndex(0);
     }
     
     public void onClick$btnOK() {
@@ -449,7 +480,10 @@ public class AddEditController extends FrameworkController {
     }
     
     public void onCheck$rgDeleteReason() {
-        txtDeleteReason.setVisible(rgDeleteReason.getSelectedIndex() == 2);
+        boolean isOther = rgDeleteReason.getSelectedIndex() == 2;
+        txtDeleteReason.setVisible(isOther);
+        lblDeleteReason.setVisible(isOther);
+        txtDeleteReason.setFocus(isOther);
     }
     
     public void onCloseTab(Event event) {
@@ -458,14 +492,14 @@ public class AddEditController extends FrameworkController {
     }
     
     private boolean commit() {
-        populateGoalBase();
-        
         if (!hasRequired()) {
             return false;
         }
         
+        populateGoalBase();
+        
         try {
-            switch (actionType) {
+            switch (deleting ? ActionType.DELETE : actionType) {
                 case ADD:
                     if (isStep) {
                         service.addStep(step);
@@ -481,6 +515,15 @@ public class AddEditController extends FrameworkController {
                     } else {
                         service.updateGoal(goal, changeSet.contains(txtNote));
                     }
+                    break;
+                
+                case DELETE:
+                    if (isStep) {
+                        service.deleteStep(step);
+                    } else {
+                        service.deleteGoal(goal);
+                    }
+                    break;
             }
             
             if (actionType == ActionType.REVIEW) {

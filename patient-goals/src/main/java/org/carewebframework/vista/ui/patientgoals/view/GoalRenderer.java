@@ -40,7 +40,7 @@ import org.zkoss.zul.Span;
  */
 public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     
-    private static final String STEP_VIEW = "~./org/carewebframework/vista/ui/patientgoals/steps.zul";
+    private static final String STEP_VIEW = ZKUtil.getResourcePath(GoalRenderer.class, 1) + "steps.zul";
     
     public GoalRenderer() {
         super(null, null);
@@ -117,8 +117,11 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         super.renderGroup(group, object);
         @SuppressWarnings("unchecked")
         GroupHeader<Group, GrouperGroup> gh = (GroupHeader<Group, GrouperGroup>) object;
-        String sclass = Constants.LABEL_SCLASS[gh.getGroup().getGroup().ordinal()];
+        GrouperGroup gg = gh.getGroup();
+        String sclass = Constants.LABEL_SCLASS[gg.getGroup().ordinal()];
         group.setWidgetListener("onBind", "jq(this).find('.z-label').addClass('" + sclass + "')");
+        group.setOpen(gg.isOpen());
+        group.addForward(Events.ON_OPEN, "root", "onGroupOpen", gg);
     }
     
     /**

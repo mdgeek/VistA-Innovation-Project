@@ -1,11 +1,13 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:w="client"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
                         http://www.zkoss.org/2005/zul/zul.xsd">
 
 	<idspace height="100%" width="100%"
 		apply="${vistaPatientGoalsAddEditController}">
-		<grid id="form" vflex="1" oddRowSclass="none" sclass="cwf-grid-nohover">
+		<grid id="form" vflex="1" oddRowSclass="none"
+			sclass="cwf-grid-nohover">
 			<columns>
 				<column hflex="min" align="right" />
 				<column hflex="1" />
@@ -15,15 +17,18 @@
 			<rows>
 				<row valign="middle">
 					<label value="${$composer.getLabel('txtName')}" />
-					<cell colspan="2">
-						<textbox id="txtName" hflex="1" maxlength="120" 
-							readonly="${$composer.isType('REVIEW')}"/>
+					<cell colspan="3">
+						<textbox id="txtName" hflex="1" maxlength="120"
+							readonly="${$composer.isType('REVIEW')}" 
+							w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					</cell>
 				</row>
-				<row valign="middle" unless="${$composer.isType('DECLINED')}">
+				<row valign="middle"
+					unless="${$composer.isType('DECLINED')}">
 					<label value="${$composer.getLabel('goalTypes')}" />
 					<cell colspan="3">
-						<div sclass="vistaPatientGoals-types vistaPatientGoals-framed">
+						<div
+							sclass="vistaPatientGoals-types vistaPatientGoals-framed">
 							<radiogroup id="goalTypes" />
 						</div>
 					</cell>
@@ -32,31 +37,35 @@
 					<label value="${$composer.getLabel('txtReason')}" />
 					<cell colspan="3">
 						<textbox id="txtReason" hflex="1"
-							maxlength="120" readonly="${$composer.isType('REVIEW')}" />
+							maxlength="120" readonly="${$composer.isType('REVIEW')}"
+							w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					</cell>
 				</row>
 				<row if="${$composer.isType('GOAL')}" valign="middle">
 					<label value="${$composer.getLabel('txtNote')}" />
-					<textbox id="txtNote" hflex="1" maxlength="120" />
+					<textbox id="txtNote" hflex="1" maxlength="120" 
+						w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					<label
 						value="${$composer.getLabel('txtNoteHistory')}" />
 					<textbox id="txtNoteHistory" hflex="1"
 						height="100px" readonly="true" multiline="true" />
 				</row>
-				<row valign="middle" unless="${$composer.isType('DECLINED')}">
+				<row valign="middle"
+					unless="${$composer.isType('DECLINED')}">
 					<label value="${$composer.getLabel('datStart')}" />
 					<datebox id="datStart" hflex="1" vflex="1"
-						constraint="" readonly="${$composer.isType('REVIEW')}" 
+						constraint="" readonly="${$composer.isType('REVIEW')}"
 						buttonVisible="${$composer.isType('ADD')}" />
 					<label value="${$composer.getLabel('datFollowup')}" />
 					<datebox id="datFollowup" hflex="1" vflex="1"
 						constraint="" />
 				</row>
 				<row height="20px" />
-				<row valign="middle" unless="${$composer.isType('DECLINED')}">
+				<row valign="middle"
+					unless="${$composer.isType('DECLINED')}">
 					<label value="${$composer.getLabel('status')}" />
 					<cell colspan="3">
-						<radiogroup id="rgStatus"
+						<radiogroup id="rgStatus" hflex="1"
 							sclass="vistaPatientGoals-framed">
 							<radio value="A;ACTIVE"
 								label="${$composer.getLabel('status.active')}" />
@@ -71,12 +80,15 @@
 						</radiogroup>
 					</cell>
 				</row>
-				<row id="rowDeleteReason" valign="middle" visible="false">
-					<label value="${$composer.getLabel('deleteReason')}" />
-					<cell colspan="2">
-						<radiogroup id="rgDeleteReason"
+				<row id="rowDeleteReason" valign="middle"
+					visible="false">
+					<label
+						value="${$composer.getLabel('deleteReason')}" />
+					<cell>
+						<radiogroup id="rgDeleteReason" hflex="1"
 							sclass="vistaPatientGoals-framed">
-							<radio value="W;WRONG ${$composer.isType('GOAL') ? 'PATIENT' : 'GOAL' }"
+							<radio
+								value="W;WRONG ${$composer.isType('GOAL') ? 'PATIENT' : 'GOAL' }"
 								label="${$composer.getLabel('reason.wrong')}" />
 							<radio value="D;DUPLICATE"
 								label="${$composer.getLabel('reason.duplicate')}" />
@@ -84,14 +96,19 @@
 								label="${$composer.getLabel('reason.other')}" />
 						</radiogroup>
 					</cell>
-					<textbox id="txtDeleteReason" visible="false" hflex="1" maxlength="120" />
+					<label id="lblDeleteReason" visible="false"
+						value="${$composer.getLabel('otherReason')}" />
+					<textbox id="txtDeleteReason" visible="false"
+						hflex="1" maxlength="120"
+						w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 				</row>
 			</rows>
 		</grid>
 		<toolbar align="end" style="border-top: 1px solid lightgray">
-			<button id="btnOK" label="Ok" disabled="true" zclass="btn"
-				sclass="btn-success" />
-			<button id="btnCancel" label="Cancel" zclass="btn"
+			<button id="btnOK" label="${labels.cwf.btn.ok.label}"
+				disabled="true" zclass="btn" sclass="btn-success" />
+			<button id="btnCancel"
+				label="${labels.cwf.btn.cancel.label}" zclass="btn"
 				sclass="btn-danger" />
 		</toolbar>
 	</idspace>

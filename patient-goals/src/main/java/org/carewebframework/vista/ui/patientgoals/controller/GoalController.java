@@ -40,6 +40,7 @@ import org.carewebframework.vista.ui.patientgoals.view.GoalRenderer;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.OpenEvent;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Detail;
@@ -97,7 +98,7 @@ public class GoalController extends AbstractGridController<Goal> {
          */
         @Override
         public boolean include(T goalBase) {
-            return group == null || goalBase.getGroup() == group;
+            return !goalBase.isDeleted() && (group == null || goalBase.getGroup() == group);
         }
         
     }
@@ -112,13 +113,24 @@ public class GoalController extends AbstractGridController<Goal> {
         
         private final GoalGroup group;
         
+        private boolean open;
+        
         public GrouperGroup(GoalGroup group) {
             this.label = StrUtil.getLabel(Constants.LABEL_PREFIX + ".goal.group." + group.name().toLowerCase() + ".label");
             this.group = group;
+            this.open = true;
         }
         
         public GoalGroup getGroup() {
             return group;
+        }
+        
+        public boolean isOpen() {
+            return open;
+        }
+        
+        public void setOpen(boolean open) {
+            this.open = open;
         }
         
         @Override
@@ -291,6 +303,17 @@ public class GoalController extends AbstractGridController<Goal> {
     }
     
     /**
+     * Called whenever a group is expanded or collapsed.
+     * 
+     * @param event The open event.
+     */
+    public void onGroupOpen(Event event) {
+        GrouperGroup gg = (GrouperGroup) event.getData();
+        OpenEvent openEvent = (OpenEvent) ZKUtil.getEventOrigin(event);
+        gg.setOpen(openEvent.isOpen());
+    }
+    
+    /**
      * Determine goal filter change from onCheck event.
      * 
      * @param event The onCheck event.
@@ -449,6 +472,10 @@ public class GoalController extends AbstractGridController<Goal> {
                 detail.setOpen(open);
             }
         }
+        
+        groupActive.setOpen(open);
+        groupDeclined.setOpen(open);
+        groupInactive.setOpen(open);
     }
     
     // End of view expansion control.
