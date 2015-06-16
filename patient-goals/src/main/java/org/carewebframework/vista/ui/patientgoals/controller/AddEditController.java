@@ -124,9 +124,9 @@ public class AddEditController extends FrameworkController {
     
     private Row rowDeleteReason;
     
-    private Textbox txtDeleteReason;
-    
     private Label lblDeleteReason;
+    
+    private Textbox txtDeleteReason;
     
     // End of auto-wired members.
     
@@ -304,9 +304,10 @@ public class AddEditController extends FrameworkController {
             }
         }
         
-        initRadio(rgStatus, goalBase.getStatusCode());
-        initRadio(rgDeleteReason, goalBase.getDeleteCode());
+        initRadio(rgStatus, goalBase.getStatusCode(), 0);
+        initRadio(rgDeleteReason, goalBase.getDeleteCode(), -1);
         txtDeleteReason.setText(goalBase.getDeleteReason());
+        updateDeleteState();
     }
     
     private void populateGoalBase() {
@@ -366,6 +367,16 @@ public class AddEditController extends FrameworkController {
                 chk.setDisabled(actionType == ActionType.REVIEW);
             }
         }
+    }
+    
+    public void updateDeleteState() {
+        deleting = rgStatus != null && rgStatus.getSelectedIndex() == 4;
+        lblDeleteReason.setVisible(deleting);
+        rgDeleteReason.setVisible(deleting);
+        boolean isOther = rgDeleteReason != null && rgDeleteReason.getSelectedIndex() == 2;
+        rowDeleteReason.setVisible(isOther);
+        txtDeleteReason.setFocus(isOther);
+        Clients.resize(root);
     }
     
     public void onChange(Event event) {
@@ -448,7 +459,7 @@ public class AddEditController extends FrameworkController {
         return false;
     }
     
-    private void initRadio(Radiogroup rg, String code) {
+    private void initRadio(Radiogroup rg, String code, int defaultIndex) {
         if (rg == null) {
             return;
         }
@@ -460,7 +471,7 @@ public class AddEditController extends FrameworkController {
             }
         }
         
-        rg.setSelectedIndex(0);
+        rg.setSelectedIndex(defaultIndex);
     }
     
     public void onClick$btnOK() {
@@ -474,16 +485,11 @@ public class AddEditController extends FrameworkController {
     }
     
     public void onCheck$rgStatus() {
-        deleting = rgStatus.getSelectedIndex() == 4;
-        rowDeleteReason.setVisible(deleting);
-        onCheck$rgDeleteReason();
+        updateDeleteState();
     }
     
     public void onCheck$rgDeleteReason() {
-        boolean isOther = rgDeleteReason.getSelectedIndex() == 2;
-        txtDeleteReason.setVisible(isOther);
-        lblDeleteReason.setVisible(isOther);
-        txtDeleteReason.setFocus(isOther);
+        updateDeleteState();
     }
     
     public void onCloseTab(Event event) {
