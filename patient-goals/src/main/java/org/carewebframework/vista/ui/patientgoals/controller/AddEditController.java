@@ -92,6 +92,8 @@ public class AddEditController extends FrameworkController {
     
     private String requiredMessage;
     
+    private Component wrongValueTarget;
+    
     private final GoalService service;
     
     private final Set<Component> changeSet = new HashSet<>();
@@ -304,9 +306,12 @@ public class AddEditController extends FrameworkController {
             }
         }
         
+        if (txtDeleteReason != null) {
+            txtDeleteReason.setText(goalBase.getDeleteReason());
+        }
+        
         initRadio(rgStatus, goalBase.getStatusCode(), 0);
         initRadio(rgDeleteReason, goalBase.getDeleteCode(), -1);
-        txtDeleteReason.setText(goalBase.getDeleteReason());
         updateDeleteState();
     }
     
@@ -370,19 +375,21 @@ public class AddEditController extends FrameworkController {
     }
     
     public void updateDeleteState() {
-        deleting = rgStatus != null && rgStatus.getSelectedIndex() == 4;
-        lblDeleteReason.setVisible(deleting);
-        rgDeleteReason.setVisible(deleting);
-        boolean isOther = rgDeleteReason != null && rgDeleteReason.getSelectedIndex() == 2;
-        rowDeleteReason.setVisible(isOther);
-        txtDeleteReason.setFocus(isOther);
-        Clients.resize(root);
+        if (rgStatus != null) {
+            deleting = rgStatus.getSelectedIndex() == 4;
+            lblDeleteReason.setVisible(deleting);
+            rgDeleteReason.setVisible(deleting);
+            boolean isOther = rgDeleteReason != null && rgDeleteReason.getSelectedIndex() == 2;
+            rowDeleteReason.setVisible(isOther);
+            txtDeleteReason.setFocus(isOther);
+            Clients.resize(root);
+        }
     }
     
     public void onChange(Event event) {
         Component target = ZKUtil.getEventOrigin(event).getTarget();
         changeSet.add(target);
-        Clients.clearWrongValue(target);
+        wrongValue(null, null);
         
         if (!hasChanged) {
             hasChanged = true;
@@ -435,11 +442,12 @@ public class AddEditController extends FrameworkController {
      * labels.
      * 
      * @param key The label key
+     * @param args Optional arguments
      * @return The label text.
      */
-    public String getLabel(String key) {
+    public String getLabel(String key, Object... args) {
         String type = isStep ? "step" : "goal";
-        return StrUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type);
+        return StrUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type, args);
     }
     
     private boolean hasRequired() {
@@ -447,7 +455,7 @@ public class AddEditController extends FrameworkController {
             return isRequired(rgDeleteReason);
         }
         
-        if (txtDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
+        if (rowDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
             return isRequired(txtDeleteReason);
         }
         
@@ -455,8 +463,20 @@ public class AddEditController extends FrameworkController {
     }
     
     private boolean isRequired(Component target) {
-        Clients.wrongValue(target, requiredMessage);
+        wrongValue(target, requiredMessage);
         return false;
+    }
+    
+    private void wrongValue(Component target, String message) {
+        if (wrongValueTarget != null) {
+            Clients.clearWrongValue(wrongValueTarget);
+        }
+        
+        wrongValueTarget = target;
+        
+        if (target != null && message != null) {
+            Clients.wrongValue(target, message);
+        }
     }
     
     private void initRadio(Radiogroup rg, String code, int defaultIndex) {
@@ -499,6 +519,12 @@ public class AddEditController extends FrameworkController {
     
     private boolean commit() {
         if (!hasRequired()) {
+            return false;
+        }
+        
+        if (deleting
+                && !PromptDialog
+                        .confirm(getLabel("confirmDelete.text"), getLabel("confirmDelete.title", goalBase.getName()))) {
             return false;
         }
         
