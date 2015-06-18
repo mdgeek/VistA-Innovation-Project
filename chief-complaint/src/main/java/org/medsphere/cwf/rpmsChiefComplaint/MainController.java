@@ -30,6 +30,7 @@ import org.carewebframework.cal.api.patient.PatientContext;
 import org.carewebframework.cal.api.patient.PatientContext.IPatientContextEvent;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.rpms.api.common.BgoUtil;
+import org.carewebframework.rpms.api.common.BgoUtil.BgoSecurity;
 import org.carewebframework.rpms.ui.common.BgoBaseController;
 import org.carewebframework.rpms.ui.common.BgoConstants;
 import org.carewebframework.rpms.ui.common.PCC;
@@ -114,9 +115,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     private Encounter encounter;
     
-    private boolean g_bCAC;
-    
-    private boolean g_bInitialized;
+    private BgoSecurity bgoSecurity;
     
     @Override
     public void onAsyncRPCComplete(AsyncRPCCompleteEvent event) {
@@ -138,7 +137,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         @Override
         public void committed() {
             
-            if (g_bInitialized) {
+            if (bgoSecurity != null) {
                 updateSubscriptions();
             }
         }
@@ -158,7 +157,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         
         @Override
         public void committed() {
-            if (g_bInitialized) {
+            if (bgoSecurity != null) {
                 updateSubscriptions();
             }
         }
@@ -244,12 +243,8 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        BgoUtil.initSecurity("BGO DISABLE CC EDITING", null);
-        //g_bCAC = SecurityUtil.isGranted("BGOZ CAC");
-        String s = getBroker().callRPC("BGOUTL CHKSEC", "BGOZ CAC");
-        g_bCAC = StrUtil.toBoolean(StrUtil.extractIntPrefix(s));
-        g_bInitialized = true;
-        
+        bgoSecurity = BgoUtil.initSecurity("BGO DISABLE CC EDITING", null);
+        imgMain.setTooltiptext(bgoSecurity.reason);
         lbCC.setItemRenderer(chiefRenderer);
         
         RowComparator.autowireColumnComparators(lbCC.getListhead().getChildren());
@@ -263,20 +258,17 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     protected void updateControls() {
         ChiefComplaint complaint = getSelectedCComplaint();
-        boolean b = (!EncounterUtil.isPrepared(encounter) || !BgoUtil.checkSecurity(true));
+        boolean b = (!EncounterUtil.isPrepared(encounter) || !bgoSecurity.verifyWriteAccess(true));
         boolean e = encounter == null ? true : EncounterUtil.isLocked(encounter);
         
         btnAdd.setDisabled(b || e);
         btnEdit.setDisabled(e || (!checkAuthor()));
         btnDelete.setDisabled(btnEdit.isDisabled());
-        
         mnuAdd.setDisabled(btnAdd.isDisabled());
-        ;
         mnuEdit.setDisabled(btnEdit.isDisabled());
         mnuDelete.setDisabled(btnDelete.isDisabled());
         mnuVisitDetail.setDisabled(complaint == null);
-        
-        mnuManagePickList.setVisible(g_bCAC);
+        mnuManagePickList.setVisible(bgoSecurity.isCAC);
     }
     
     protected void updateSubscriptions() {
@@ -471,7 +463,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     }
     
     public void doCommand(Command cmd) {
-        if (!BgoUtil.checkSecurity(false)) {
+        if (!bgoSecurity.verifyWriteAccess(false)) {
             return;
         }
         
