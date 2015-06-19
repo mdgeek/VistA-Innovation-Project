@@ -217,6 +217,8 @@ public class GoalController extends AbstractGridController<Goal> {
     
     // End of auto-wired section
     
+    private final GoalService service;
+    
     /**
      * Allows the step controller to find the enclosing goal controller.
      * 
@@ -244,6 +246,7 @@ public class GoalController extends AbstractGridController<Goal> {
      */
     public GoalController(GoalService service) {
         super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, true, goalGrouper);
+        this.service = service;
         setPaging(false);
     }
     
@@ -358,6 +361,20 @@ public class GoalController extends AbstractGridController<Goal> {
     }
     
     /**
+     * Initialize a new goal base instance with default values.
+     * 
+     * @param goalBase Goal base to initialize.
+     */
+    private void initGoalBase(GoalBase goalBase, GoalGroup goalGroup) {
+        IUser user = UserContext.getActiveUser();
+        ISecurityDomain domain = user.getSecurityDomain();
+        goalBase.setFacility(domain.getLogicalId() + ";" + domain.getName());
+        goalBase.setProvider(user.getLogicalId() + ";" + user.getFullName());
+        goalBase.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        goalBase.setStartDate(FMDate.today());
+    }
+    
+    /**
      * Creates a new goal with the specified default values.
      * 
      * @param actionType The action type (should always be ADD).
@@ -365,11 +382,10 @@ public class GoalController extends AbstractGridController<Goal> {
      */
     private void newGoal(ActionType actionType, GoalGroup goalGroup) {
         Goal goal = new Goal();
+        initGoalBase(goal, goalGroup);
         goal.setPatient(getPatient());
         goal.setDeclined(goalGroup == GoalGroup.DECLINED);
-        goal.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
         goal.setName(StrUtil.getLabel("vistaPatientGoals.new_" + (goal.isDeclined() ? "declined" : "goal") + ".name"));
-        goal.setStartDate(FMDate.today());
         AddEditController.execute(tabbox, goal, actionType);
     }
     
@@ -406,13 +422,8 @@ public class GoalController extends AbstractGridController<Goal> {
      */
     private void newStep(ActionType actionType, GoalGroup goalGroup, Goal goal) {
         Step step = new Step(goal);
-        step.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
+        initGoalBase(step, goalGroup);
         step.setName(StrUtil.getLabel("vistaPatientGoals.new_step.name"));
-        step.setStartDate(FMDate.today());
-        IUser user = UserContext.getActiveUser();
-        ISecurityDomain domain = user.getSecurityDomain();
-        step.setFacility(domain.getLogicalId() + ";" + domain.getName());
-        step.setProvider(user.getLogicalId());
         AddEditController.execute(tabbox, step, actionType);
     }
     
@@ -544,7 +555,7 @@ public class GoalController extends AbstractGridController<Goal> {
     @Override
     public void onPatientChanged(Patient patient) {
         super.onPatientChanged(patient);
-        ZKUtil.disableChildren(toolbar, patient == null);
+        ZKUtil.disableChildren(toolbar, patient == null || !service.canModify(patient));
         tabbox.setSelectedIndex(0);
         
         while (tabbox.getTabs().getChildren().size() > 1) {

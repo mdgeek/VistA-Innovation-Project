@@ -219,14 +219,14 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
      * @param goal The goal to add.
      */
     public void addGoal(Goal goal) {
-        float number = nextGoalNumber(goal);
+        float number = nextGoalNumber(goal.getPatient());
         List<String> data = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
         addPiece(sb, "GOAL");
         addPiece(sb, goal.isDeclined() ? "N" : "S");
         addPiece(sb, goal.getFacilityIEN());
         addPiece(sb, NumUtil.toString(number));
-        addPiece(sb, goal.getProvider());
+        addPiece(sb, goal.getProviderIEN());
         addPiece(sb, goal.getStartDate());
         addPiece(sb, goal.getFollowupDate());
         addPiece(sb, UserContext.getActiveUser().getLogicalId());
@@ -270,8 +270,17 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         checkResult(result);
     }
     
-    private float nextGoalNumber(Goal goal) {
-        String result = service.callRPC("BEHOPGAP NEXTGN", goal.getPatient().getId().getIdPart(), getLocationIEN());
+    public boolean canModify(Patient patient) {
+        try {
+            nextGoalNumber(patient);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    private float nextGoalNumber(Patient patient) {
+        String result = service.callRPC("BEHOPGAP NEXTGN", patient.getId().getIdPart(), getLocationIEN());
         return Float.parseFloat(result);
     }
     
@@ -297,7 +306,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         addPiece(sb, step.getTypes().get(0).getName());
         addPiece(sb, step.getStartDate());
         addPiece(sb, step.getFollowupDate());
-        addPiece(sb, step.getProvider());
+        addPiece(sb, step.getProviderIEN());
         addPiece(sb, step.getName());
         String result = service.callRPC("BEHOPGAP ADDSTEP", sb.toString());
         step.setIEN(checkResult(result));

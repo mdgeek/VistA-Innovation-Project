@@ -118,7 +118,9 @@ public class AddEditController extends FrameworkController {
     
     private Datebox datFollowup;
     
-    private Radiogroup goalTypes;
+    private Label lblTypes;
+    
+    private Radiogroup rgTypes;
     
     private Radiogroup rgStatus;
     
@@ -298,10 +300,10 @@ public class AddEditController extends FrameworkController {
             datFollowup.setValue(goalBase.getFollowupDate());
         }
         
-        if (goalTypes != null) {
+        if (rgTypes != null) {
             Checkbox chk = null;
             
-            while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
+            while ((chk = ZKUtil.findChild(rgTypes, Checkbox.class, chk)) != null) {
                 chk.setChecked(goalBase.getTypes().contains((chk.getValue())));
             }
         }
@@ -342,11 +344,11 @@ public class AddEditController extends FrameworkController {
             goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
         }
         
-        if (goalTypes != null) {
+        if (rgTypes != null) {
             goalBase.getTypes().clear();
             Checkbox chk = null;
             
-            while ((chk = ZKUtil.findChild(goalTypes, Checkbox.class, chk)) != null) {
+            while ((chk = ZKUtil.findChild(rgTypes, Checkbox.class, chk)) != null) {
                 if (chk.isChecked()) {
                     goalBase.getTypes().add((GoalType) chk.getValue());
                 }
@@ -363,10 +365,10 @@ public class AddEditController extends FrameworkController {
     }
     
     private void populateGoalTypes() {
-        if (goalTypes != null) {
+        if (rgTypes != null) {
             for (GoalType goalType : service.getGoalTypes()) {
                 Checkbox chk = isStep ? new Radio() : new Checkbox();
-                goalTypes.appendChild(chk);
+                rgTypes.appendChild(chk);
                 chk.setLabel(goalType.toString());
                 chk.setValue(goalType);
                 chk.setDisabled(actionType == ActionType.REVIEW);
@@ -451,6 +453,26 @@ public class AddEditController extends FrameworkController {
     }
     
     private boolean hasRequired() {
+        if (rgTypes != null) {
+            Checkbox chk = null;
+            boolean hasType = false;
+            
+            while ((chk = ZKUtil.findChild(rgTypes, Checkbox.class, chk)) != null) {
+                if (chk.isChecked()) {
+                    hasType = true;
+                    break;
+                }
+            }
+            
+            if (!hasType) {
+                return isRequired(lblTypes);
+            }
+        }
+        
+        if (datFollowup != null && datFollowup.getValue() == null) {
+            return isRequired(datFollowup);
+        }
+        
         if (deleting && rgDeleteReason.getSelectedItem() == null) {
             return isRequired(rgDeleteReason);
         }

@@ -24,11 +24,11 @@
 				</row>
 				<row valign="middle"
 					unless="${$composer.isType('DECLINED')}">
-					<label value="${$composer.getLabel('goalTypes')}" />
+					<label id="lblTypes" value="${$composer.getLabel('goalTypes')}" />
 					<cell colspan="3">
 						<div
 							sclass="vistaPatientGoals-types vistaPatientGoals-framed">
-							<radiogroup id="goalTypes" />
+							<radiogroup id="rgTypes" />
 						</div>
 					</cell>
 				</row>

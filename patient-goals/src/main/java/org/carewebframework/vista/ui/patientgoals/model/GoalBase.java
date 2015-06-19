@@ -132,8 +132,12 @@ public class GoalBase implements Comparable<GoalBase> {
         this.updatedBy = updatedBy;
     }
     
-    public String getProvider() {
-        return provider;
+    public String getProviderIEN() {
+        return getPiece(provider, 1);
+    }
+    
+    public String getProviderName() {
+        return getPiece(provider, 2);
     }
     
     public void setProvider(String provider) {
@@ -157,11 +161,11 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public String getStatusCode() {
-        return status == null ? "" : StrUtil.piece(status, ";");
+        return getPiece(status, 1);
     }
     
     public String getStatusText() {
-        return status == null ? "" : StrUtil.piece(status, ";", 2);
+        return getPiece(status, 2);
     }
     
     public void setStatus(String status) {
@@ -192,12 +196,12 @@ public class GoalBase implements Comparable<GoalBase> {
         return types;
     }
     
-    public String getFacilityName() {
-        return facility == null ? "" : StrUtil.piece(facility, ";", 2);
+    public String getFacilityIEN() {
+        return getPiece(facility, 1);
     }
     
-    public String getFacilityIEN() {
-        return facility == null ? "" : StrUtil.piece(facility, ";");
+    public String getFacilityName() {
+        return getPiece(facility, 2);
     }
     
     public void setFacility(String facility) {
@@ -205,11 +209,11 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public String getDeleteCode() {
-        return delete == null ? "" : StrUtil.piece(delete, ";");
+        return getPiece(delete, 1);
     }
     
     public String getDeleteText() {
-        return delete == null ? "" : StrUtil.piece(delete, ";", 2);
+        return getPiece(delete, 2);
     }
     
     public void setDelete(String delete) {
@@ -226,5 +230,9 @@ public class GoalBase implements Comparable<GoalBase> {
     
     public boolean isDeleted() {
         return "D".equals(getStatusCode());
+    }
+    
+    private String getPiece(String value, int pc) {
+        return value == null ? null : StrUtil.piece(value, ";", pc);
     }
 }
