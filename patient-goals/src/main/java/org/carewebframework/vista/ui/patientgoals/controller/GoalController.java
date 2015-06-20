@@ -22,6 +22,7 @@ import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.api.query.IQueryContext;
 import org.carewebframework.api.security.ISecurityDomain;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.common.DateUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.HybridModel.IGrouper;
@@ -372,6 +373,12 @@ public class GoalController extends AbstractGridController<Goal> {
         goalBase.setProvider(user.getLogicalId() + ";" + user.getFullName());
         goalBase.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
         goalBase.setStartDate(FMDate.today());
+        
+        if (goalGroup == GoalGroup.DECLINED) {
+            goalBase.getTypes().add(service.getGoalType("OTHER"));
+            goalBase.setFollowupDate(new FMDate(DateUtil.addDays(new Date(), 14, true)));
+            goalBase.setReason(StrUtil.getLabel("vistaPatientGoals.new_declined.reason"));
+        }
     }
     
     /**

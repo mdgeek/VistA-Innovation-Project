@@ -65,6 +65,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     @Override
     public Component renderRow(Row row, Goal goal) {
         applyGroupStyle(row, goal);
+        boolean declined = goal.getGroup() == GoalGroup.DECLINED;
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, "root", "onReviewGoal", goal);
@@ -83,9 +84,9 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         createCell(row, goal.getName());
         createCell(row, goal.getStartDate());
         createCell(row, goal.getReason());
-        createCell(row, typeAsString(goal.getTypes()));
-        createCell(row, goal.getFollowupDate());
-        createCell(row, goal.getStatusText());
+        createCell(row, declined ? "" : typeAsString(goal.getTypes()));
+        createCell(row, declined ? "" : goal.getFollowupDate());
+        createCell(row, declined ? "" : goal.getStatusText());
         createCell(row, goal.getProviderName());
         Review review = goal.getLastReview();
         String label = review == null ? "" : review.getNote();

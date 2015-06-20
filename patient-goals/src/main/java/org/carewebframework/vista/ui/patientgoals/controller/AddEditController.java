@@ -282,7 +282,7 @@ public class AddEditController extends FrameworkController {
         txtReason.setText(goalBase.getReason());
         txtName.setText(goalBase.getName());
         
-        if (!isStep) {
+        if (!isStep && txtNoteHistory != null) {
             StringBuilder sb = new StringBuilder();
             
             for (Review review : goal.getReviews()) {
@@ -315,6 +315,10 @@ public class AddEditController extends FrameworkController {
         initRadio(rgStatus, goalBase.getStatusCode(), 0);
         initRadio(rgDeleteReason, goalBase.getDeleteCode(), -1);
         updateDeleteState();
+        
+        if (goalBase.getGroup() == GoalGroup.DECLINED && actionType == ActionType.ADD) {
+            Events.postEvent("onChanging", txtReason, null);
+        }
     }
     
     private void populateGoalBase() {
@@ -492,7 +496,7 @@ public class AddEditController extends FrameworkController {
             return isRequired(rgDeleteReason);
         }
         
-        if (rowDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
+        if (rowDeleteReason != null && rowDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
             return isRequired(txtDeleteReason);
         }
         

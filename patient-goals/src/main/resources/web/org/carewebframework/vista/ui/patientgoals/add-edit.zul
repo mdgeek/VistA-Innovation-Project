@@ -33,7 +33,7 @@
 					</cell>
 				</row>
 				<row valign="middle">
-					<label value="${$composer.getLabel('txtReason')}" />
+					<label value="${$composer.getLabel($composer.isType('DECLINED') ? 'txtReason.declined' : 'txtReason')}" />
 					<cell colspan="3">
 						<textbox id="txtReason" hflex="1"
 							maxlength="120" readonly="${$composer.isType('REVIEW')}"
