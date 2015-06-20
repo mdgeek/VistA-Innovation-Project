@@ -340,7 +340,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
             throw new RuntimeException(pcs[1]);
         }
         
-        return pcs[1];
+        return pcs[0];
     }
     
     private void flush(StringBuilder sb, List<String> data) {
