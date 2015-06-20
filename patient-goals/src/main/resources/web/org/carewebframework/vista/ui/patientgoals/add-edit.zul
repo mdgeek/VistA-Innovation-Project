@@ -40,7 +40,7 @@
 							w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					</cell>
 				</row>
-				<row if="${$composer.isType('GOAL')}" valign="middle">
+				<row if="${$composer.isType('REVIEW GOAL')}" valign="middle">
 					<label value="${$composer.getLabel('txtNote')}" />
 					<textbox id="txtNote" hflex="1" maxlength="120"
 						w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />

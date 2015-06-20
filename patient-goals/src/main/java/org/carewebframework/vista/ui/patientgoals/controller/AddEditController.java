@@ -405,30 +405,45 @@ public class AddEditController extends FrameworkController {
      * Returns true if the goal/step is of one of the specified types. Used by zul page to modify
      * the view.
      * 
-     * @param types Comma-delimited string of types.
+     * @param types Comma-delimited string of types. Each entry in the list may consist of one or
+     *            more space-delimited types all of which must be present for the entry to be
+     *            considered present. In other words, the comma delimiter represents an "OR"
+     *            operation and the space delimiter represents an "AND" operation.
      * @return True if goal/step is one of the specified types.
      */
     public boolean isType(String types) {
         for (String type : types.split("\\,")) {
-            boolean result = false;
-            int idx = Arrays.asList(TYPES).indexOf(type.trim().toUpperCase());
+            boolean result = true;
+            type = type.trim().toUpperCase();
             
-            switch (idx) {
-                case 0: // GOAL
-                case 1: // STEP
-                    result = idx == 0 ? !isStep : isStep;
-                    break;
+            for (String type1 : type.split("\\ ")) {
+                int idx = Arrays.asList(TYPES).indexOf(type1);
                 
-                case 2: // ACTIVE
-                case 3: // INACTIVE
-                case 4: // DECLINED
-                    result = goalBase.getGroup() == GoalGroup.values()[idx - 2];
-                    break;
+                switch (idx) {
+                    case -1: // invalid
+                        result = false;
+                        break;
+                    
+                    case 0: // GOAL
+                    case 1: // STEP
+                        result = idx == 0 ? !isStep : isStep;
+                        break;
+                    
+                    case 2: // ACTIVE
+                    case 3: // INACTIVE
+                    case 4: // DECLINED
+                        result = goalBase.getGroup() == GoalGroup.values()[idx - 2];
+                        break;
+                    
+                    case 5: // ADD
+                    case 6: // REVIEW
+                        result = actionType == ActionType.values()[idx - 5];
+                        break;
+                }
                 
-                case 5: // ADD
-                case 6: // REVIEW
-                    result = actionType == ActionType.values()[idx - 5];
+                if (!result) {
                     break;
+                }
             }
             
             if (result) {
