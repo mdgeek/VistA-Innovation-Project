@@ -1,11 +1,11 @@
-KIDS Distribution saved on Jun 19, 2015@10:44:16
+KIDS Distribution saved on Jun 20, 2015@07:37:50
 PATIENT GOALS 1.0
 **KIDS**:PATIENT GOALS 1.0^
 
 **INSTALL NAME**
 PATIENT GOALS 1.0
 "BLD",8512,0)
-PATIENT GOALS 1.0^^0^3150619^n
+PATIENT GOALS 1.0^^0^3150620^n
 "BLD",8512,4,0)
 ^9.64PA^9001002.4^2
 "BLD",8512,4,9000093,0)
@@ -21,7 +21,7 @@ y^y^f^^n^^y^o^n
 "BLD",8512,4,"B",9001002.4,9001002.4)
 
 "BLD",8512,6.3)
-3
+5
 "BLD",8512,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8512,"KRN",.4,0)
@@ -47,11 +47,11 @@ y^y^f^^n^^y^o^n
 "BLD",8512,"KRN",9.8,"NM",0)
 ^9.68A^3^3
 "BLD",8512,"KRN",9.8,"NM",1,0)
-BEHOPGAP^^0^B53916385
+BEHOPGAP^^0^B57164855
 "BLD",8512,"KRN",9.8,"NM",2,0)
-APCDGAP2^^0^B54987975
+APCDGAP2^^0^B54434496
 "BLD",8512,"KRN",9.8,"NM",3,0)
-APCDGAPI^^0^B49562749
+APCDGAPI^^0^B49512036
 "BLD",8512,"KRN",9.8,"NM","B","APCDGAP2",2)
 
 "BLD",8512,"KRN",9.8,"NM","B","APCDGAPI",3)
@@ -971,11 +971,11 @@ D XPZ2^XPDIQ
 "RTN")
 3
 "RTN","APCDGAP2")
-0^2^B54987975
+0^2^B54434496
 "RTN","APCDGAP2",1,0)
-APCDGAP2 ;IHS/CMI/LAB - PATIENT GOALS APIs;19-Jun-2015 10:00;DKM
+APCDGAP2 ;IHS/CMI/LAB - PATIENT GOALS APIs;20-Jun-2015 07:14;DKM
 "RTN","APCDGAP2",2,0)
- ;;2.0;IHS PCC SUITE;**7**;MAY 14, 2009;Build 3
+ ;;2.0;IHS PCC SUITE;**7**;MAY 14, 2009;Build 5
 "RTN","APCDGAP2",3,0)
  ;
 "RTN","APCDGAP2",4,0)
@@ -1079,7 +1079,7 @@ ADDSTEP(APCDGIEN,SDAT,SRETVAL) ;PEP - add a step to a goal
 "RTN","APCDGAP2",53,0)
  .S SRETVAL(APCDC)=""
 "RTN","APCDGAP2",54,0)
-SREQ .;Required fields
+ .;Required fields
 "RTN","APCDGAP2",55,0)
  .F APCDF=1,3:1:7 I $P(SDAT(APCDC),U,1)="" S SRETVAL(APCDC)="0^"_APCDF_" field value missing, required to create a STEP"
 "RTN","APCDGAP2",56,0)
@@ -1097,261 +1097,259 @@ SREQ .;Required fields
 "RTN","APCDGAP2",62,0)
  .S APCDLOC=X
 "RTN","APCDGAP2",63,0)
- .;
-"RTN","APCDGAP2",64,0)
  .S X=$P(SDAT(APCDC),U,2) I X]"" I +X'=X!(X>9999)!(X<1) S SRETVAL(APCDC)="0^Step number invalid, must be a number between 1-9999" Q
-"RTN","APCDGAP2",65,0)
+"RTN","APCDGAP2",64,0)
  .I X="" S X=$$NEXTSN(APCDGIEN,APCDLOC)
-"RTN","APCDGAP2",66,0)
+"RTN","APCDGAP2",65,0)
  .S APCDSNUM=X
-"RTN","APCDGAP2",67,0)
+"RTN","APCDGAP2",66,0)
  .S Y=$O(^AUPNGOAL(APCDGIEN,21,"B",APCDLOC,0))
-"RTN","APCDGAP2",68,0)
+"RTN","APCDGAP2",67,0)
  .I Y,$D(^AUPNGOAL(APCDGIEN,21,Y,11,"B",APCDSNUM)) S SRETVAL(APCDC)="0^Step number already in use" Q
-"RTN","APCDGAP2",69,0)
+"RTN","APCDGAP2",68,0)
  .;check step type
-"RTN","APCDGAP2",70,0)
+"RTN","APCDGAP2",69,0)
  .S Y=$P(SDAT(APCDC),U,3) I Y?1.N,'$D(^APCDTPGT(Y)) D E("invalid patient goal type") Q
-"RTN","APCDGAP2",71,0)
+"RTN","APCDGAP2",70,0)
  .I Y'?1.N S X=Y,DIC="^APCDTPGT(",DIC(0)="" D ^DIC D  Q:Y=-1
-"RTN","APCDGAP2",72,0)
+"RTN","APCDGAP2",71,0)
  ..I Y=-1 D E("invalid patient goal type") Q
-"RTN","APCDGAP2",73,0)
+"RTN","APCDGAP2",72,0)
  .S APCDSTT=+Y
-"RTN","APCDGAP2",74,0)
+"RTN","APCDGAP2",73,0)
  .;start date
-"RTN","APCDGAP2",75,0)
+"RTN","APCDGAP2",74,0)
  .S X=$P(SDAT(APCDC),U,4)
+"RTN","APCDGAP2",75,0)
+ .S %DT=""
 "RTN","APCDGAP2",76,0)
- .S %DT=""
+ .D ^%DT
 "RTN","APCDGAP2",77,0)
- .D ^%DT
-"RTN","APCDGAP2",78,0)
  .I Y=-1 S SRETVAL(APCDC)="0^start date invalid" Q
-"RTN","APCDGAP2",79,0)
+"RTN","APCDGAP2",78,0)
  .S APCDSD=Y
-"RTN","APCDGAP2",80,0)
+"RTN","APCDGAP2",79,0)
  .;follow up date
-"RTN","APCDGAP2",81,0)
+"RTN","APCDGAP2",80,0)
  .S X=$P(SDAT(APCDC),U,5)
-"RTN","APCDGAP2",82,0)
+"RTN","APCDGAP2",81,0)
  .S %DT=""
-"RTN","APCDGAP2",83,0)
+"RTN","APCDGAP2",82,0)
  .D ^%DT
-"RTN","APCDGAP2",84,0)
+"RTN","APCDGAP2",83,0)
  .I Y=-1 S SRETVAL(APCDC)="0^Goal start date invalid" Q
-"RTN","APCDGAP2",85,0)
+"RTN","APCDGAP2",84,0)
  .I Y<APCDSD S RETVAL="0^Follow up date cannot be prior to start date" Q
-"RTN","APCDGAP2",86,0)
+"RTN","APCDGAP2",85,0)
  .S APCDFUD=Y
-"RTN","APCDGAP2",87,0)
+"RTN","APCDGAP2",86,0)
  .;provider
-"RTN","APCDGAP2",88,0)
+"RTN","APCDGAP2",87,0)
  .S X=$P(SDAT(APCDC),U,6)
-"RTN","APCDGAP2",89,0)
+"RTN","APCDGAP2",88,0)
  .I X=""!(X?1.N) S (APCDPROV,X)=DUZ
-"RTN","APCDGAP2",90,0)
+"RTN","APCDGAP2",89,0)
  .S Y=""
-"RTN","APCDGAP2",91,0)
+"RTN","APCDGAP2",90,0)
  .I X'?1.N D CHK^DIE(9000093.211101,.1,"",X,.Y)
-"RTN","APCDGAP2",92,0)
+"RTN","APCDGAP2",91,0)
  .I Y="^" S SRETVAL(APCDC)="0^Provider value invalid" Q
-"RTN","APCDGAP2",93,0)
+"RTN","APCDGAP2",92,0)
  .I '$G(APCDPROV) S APCDPROV=Y
-"RTN","APCDGAP2",94,0)
+"RTN","APCDGAP2",93,0)
  .;step text
-"RTN","APCDGAP2",95,0)
+"RTN","APCDGAP2",94,0)
  .S X=$P(SDAT(APCDC),U,7)
-"RTN","APCDGAP2",96,0)
+"RTN","APCDGAP2",95,0)
  .D CHK^DIE(9000093.211101,1101,"",X,.Y)
-"RTN","APCDGAP2",97,0)
+"RTN","APCDGAP2",96,0)
  .I Y="^" S RETVAL="0^provider" Q
-"RTN","APCDGAP2",98,0)
+"RTN","APCDGAP2",97,0)
  .S APCDSTEX=Y
-"RTN","APCDGAP2",99,0)
+"RTN","APCDGAP2",98,0)
  .S APCDNIEN=$O(^AUPNGOAL(APCDGIEN,21,"B",APCDLOC,0))
-"RTN","APCDGAP2",100,0)
+"RTN","APCDGAP2",99,0)
  .I APCDNIEN="" S X="`"_APCDLOC,DIC="^AUPNGOAL("_APCDGIEN_",21,",DA(1)=APCDGIEN,DIC(0)="L",DIC("P")=$P(^DD(9000093,2100,0),U,2) D ^DIC K DIC,DA,DR,Y,X S APCDNIEN=$O(^AUPNGOAL(APCDGIEN,21,"B",APCDLOC,0))
-"RTN","APCDGAP2",101,0)
+"RTN","APCDGAP2",100,0)
  .I APCDNIEN="" S SRETVAL(APCDC)="0^ERROR UPDATING STEP LOCATION MULTIPLE" Q
-"RTN","APCDGAP2",102,0)
+"RTN","APCDGAP2",101,0)
  .K DIC
-"RTN","APCDGAP2",103,0)
+"RTN","APCDGAP2",102,0)
  .S X=APCDSNUM,DA(1)=APCDNIEN,DA(2)=APCDGIEN,DIC="^AUPNGOAL("_APCDGIEN_",21,"_APCDNIEN_",11,",DIC("P")=$P(^DD(9000093.21,1101,0),U,2),DIC(0)="L"
-"RTN","APCDGAP2",104,0)
+"RTN","APCDGAP2",103,0)
  .D ^DIC K DA,DR
-"RTN","APCDGAP2",105,0)
+"RTN","APCDGAP2",104,0)
  .I Y=-1 S SRETVAL(APCDC)="0^ERROR when updating step number multiple" Q
-"RTN","APCDGAP2",106,0)
+"RTN","APCDGAP2",105,0)
  .S DIE=DIC K DIC S (APCDSIEN,DA)=+Y
-"RTN","APCDGAP2",107,0)
+"RTN","APCDGAP2",106,0)
  .S DR=".02////^S X=DUZ;.03////^S X=DT;.07////^S X=DUZ;.08////^S X=$$NOW^XLFDT;.04////"_APCDSTT_";.05////"_APCDSD_";.06////"_APCDFUD_";.09////A;.1////^S X=APCDPROV;1101////"_APCDSTEX
-"RTN","APCDGAP2",108,0)
+"RTN","APCDGAP2",107,0)
  .D ^DIE
-"RTN","APCDGAP2",109,0)
+"RTN","APCDGAP2",108,0)
  .I $D(Y) S SRETVAL(APCDC)="0^error updating multiple for step entry" K DIE,DA,DR,Y Q
-"RTN","APCDGAP2",110,0)
+"RTN","APCDGAP2",109,0)
  .S SRETVAL(APCDC)=APCDSIEN
+"RTN","APCDGAP2",110,0)
+ Q
 "RTN","APCDGAP2",111,0)
- Q
-"RTN","APCDGAP2",112,0)
 DELSTEP(APCDGIEN,APCDLIEN,APCDSIEN,APCDSPRV,APCDSDTD,APCDSREA,APCDSOTH,RET) ;PEP - DELETE A STEP
-"RTN","APCDGAP2",113,0)
+"RTN","APCDGAP2",112,0)
  ;delete a step
-"RTN","APCDGAP2",114,0)
+"RTN","APCDGAP2",113,0)
  ;  INP = Problem IEN,Location IEN,Note IEN
-"RTN","APCDGAP2",115,0)
+"RTN","APCDGAP2",114,0)
  ;  OUTPUT = 1 if delete successful or 0^error message
-"RTN","APCDGAP2",116,0)
+"RTN","APCDGAP2",115,0)
  NEW DA
-"RTN","APCDGAP2",117,0)
+"RTN","APCDGAP2",116,0)
  S RET=""
-"RTN","APCDGAP2",118,0)
+"RTN","APCDGAP2",117,0)
  I '$G(APCDGIEN) S RET="0^invalid goal ien" Q
-"RTN","APCDGAP2",119,0)
+"RTN","APCDGAP2",118,0)
  I '$D(^AUPNGOAL(APCDGIEN,0)) S RET="0^invalid goal ien" Q
-"RTN","APCDGAP2",120,0)
+"RTN","APCDGAP2",119,0)
  I '$G(APCDLIEN) S RET="0^invalid location ien" Q
-"RTN","APCDGAP2",121,0)
+"RTN","APCDGAP2",120,0)
  I '$G(APCDSIEN) S RET="0^invalid note ien" Q
-"RTN","APCDGAP2",122,0)
+"RTN","APCDGAP2",121,0)
  S APCDLIEN=$O(^AUPNGOAL(APCDGIEN,21,"B",APCDLIEN,0))
-"RTN","APCDGAP2",123,0)
+"RTN","APCDGAP2",122,0)
  I 'APCDLIEN S RET="0^could not find location entry in multiple" Q
-"RTN","APCDGAP2",124,0)
+"RTN","APCDGAP2",123,0)
  I '$D(^AUPNGOAL(APCDGIEN,21,APCDLIEN,11,APCDSIEN)) S RET="0^invalid step ien, does not exist" Q
-"RTN","APCDGAP2",125,0)
+"RTN","APCDGAP2",124,0)
  S APCDSPRV=$G(APCDSPRV) I 'APCDSPRV S APCDSPRV=DUZ
-"RTN","APCDGAP2",126,0)
+"RTN","APCDGAP2",125,0)
  S APCDSDTD=$G(APCDSDTD) I 'APCDSDTD S APCDSDTD=$$NOW^XLFDT()
-"RTN","APCDGAP2",127,0)
+"RTN","APCDGAP2",126,0)
  S APCDSREA=$G(APCDSREA)
-"RTN","APCDGAP2",128,0)
+"RTN","APCDGAP2",127,0)
  S APCDSOTH=$G(APCDSOTH)
-"RTN","APCDGAP2",129,0)
+"RTN","APCDGAP2",128,0)
  S DA=APCDSIEN
-"RTN","APCDGAP2",130,0)
+"RTN","APCDGAP2",129,0)
  S DA(1)=APCDLIEN
-"RTN","APCDGAP2",131,0)
+"RTN","APCDGAP2",130,0)
  S DA(2)=APCDGIEN
-"RTN","APCDGAP2",132,0)
+"RTN","APCDGAP2",131,0)
  S DIE="^AUPNGOAL("_APCDGIEN_",21,"_APCDLIEN_",11,",DIC("P")=$P(^DD(9000093.21,1101,0),U,2)
-"RTN","APCDGAP2",133,0)
+"RTN","APCDGAP2",132,0)
  S DR=".09////D;2.01////"_APCDSPRV_";2.02////"_APCDSDTD_";2.03///"_APCDSREA_";2.04///"_APCDSOTH D ^DIE K DIE,DR,DA,Y
-"RTN","APCDGAP2",134,0)
+"RTN","APCDGAP2",133,0)
  I $D(Y) S RETVAL="0^error updating step status" Q
+"RTN","APCDGAP2",134,0)
+ S RET=1
 "RTN","APCDGAP2",135,0)
- S RET=1
+ Q
 "RTN","APCDGAP2",136,0)
- Q
-"RTN","APCDGAP2",137,0)
 EDITSTEP(GIEN,LIEN,SIEN,APCDFUD,APCDSTAT,RET) ;PEP - edit a step entry
-"RTN","APCDGAP2",138,0)
+"RTN","APCDGAP2",137,0)
  ;edit a step entry
-"RTN","APCDGAP2",139,0)
+"RTN","APCDGAP2",138,0)
  ;per requirements only the followup date and status can be edited
-"RTN","APCDGAP2",140,0)
+"RTN","APCDGAP2",139,0)
  ;INPUT:  goal ien, location ien, note ien, new f/u date, status
-"RTN","APCDGAP2",141,0)
+"RTN","APCDGAP2",140,0)
  ;OUTPUT:  1 if edit successful, 0^error message if not successful
-"RTN","APCDGAP2",142,0)
+"RTN","APCDGAP2",141,0)
  I '$G(GIEN) S RETVAL="0^invalid ien" Q
-"RTN","APCDGAP2",143,0)
+"RTN","APCDGAP2",142,0)
  I '$D(^AUPNGOAL(GIEN)) S RETVAL="0^invalid ien, not entry" Q
-"RTN","APCDGAP2",144,0)
+"RTN","APCDGAP2",143,0)
  S APCDFUD=$G(APCDFUD)
-"RTN","APCDGAP2",145,0)
+"RTN","APCDGAP2",144,0)
  S APCDSTAT=$G(APCDSTAT)
-"RTN","APCDGAP2",146,0)
+"RTN","APCDGAP2",145,0)
  I '$G(LIEN) S RET="0^invalid location ien" Q
-"RTN","APCDGAP2",147,0)
+"RTN","APCDGAP2",146,0)
  I '$G(SIEN) S RET="0^invalid note ien" Q
-"RTN","APCDGAP2",148,0)
+"RTN","APCDGAP2",147,0)
  S LIEN=$O(^AUPNGOAL(GIEN,21,"B",LIEN,0))
-"RTN","APCDGAP2",149,0)
+"RTN","APCDGAP2",148,0)
  I 'LIEN S RET="0^could not find location entry in multiple" Q
-"RTN","APCDGAP2",150,0)
+"RTN","APCDGAP2",149,0)
  I '$D(^AUPNGOAL(GIEN,21,LIEN,11,SIEN)) S RET="0^invalid note ien, does not exist" Q
-"RTN","APCDGAP2",151,0)
+"RTN","APCDGAP2",150,0)
  ;edit incoming values
-"RTN","APCDGAP2",152,0)
+"RTN","APCDGAP2",151,0)
  NEW DIE,DA,DR,X,Y,%DT,APCDFU,APCDI,APCDRD,APCDIENS,APCDFDA,APCDERR
-"RTN","APCDGAP2",153,0)
+"RTN","APCDGAP2",152,0)
  S X=$G(APCDFUD)
-"RTN","APCDGAP2",154,0)
+"RTN","APCDGAP2",153,0)
  I X="" G S1
-"RTN","APCDGAP2",155,0)
+"RTN","APCDGAP2",154,0)
  S %DT=""
-"RTN","APCDGAP2",156,0)
+"RTN","APCDGAP2",155,0)
  D ^%DT
-"RTN","APCDGAP2",157,0)
+"RTN","APCDGAP2",156,0)
  I Y=-1 S RETVAL="0^Goal followup date invalid" Q
-"RTN","APCDGAP2",158,0)
+"RTN","APCDGAP2",157,0)
  S APCDFU=Y
-"RTN","APCDGAP2",159,0)
+"RTN","APCDGAP2",158,0)
  S X=$P(^AUPNGOAL(GIEN,21,LIEN,11,SIEN,0),U,5) I X>APCDFU S RETVAL="0^STEP followup date cannot be less than start date" Q
-"RTN","APCDGAP2",160,0)
+"RTN","APCDGAP2",159,0)
 S1 ;
-"RTN","APCDGAP2",161,0)
+"RTN","APCDGAP2",160,0)
  S X=$G(APCDSTAT),APCDI=""
-"RTN","APCDGAP2",162,0)
+"RTN","APCDGAP2",161,0)
  D CHK^DIE(9000093,.11,"",X,.APCDI)
-"RTN","APCDGAP2",163,0)
+"RTN","APCDGAP2",162,0)
  I APCDI="^" S RETVAL="0^invalid status value" Q
-"RTN","APCDGAP2",164,0)
+"RTN","APCDGAP2",163,0)
  S DA=SIEN
-"RTN","APCDGAP2",165,0)
+"RTN","APCDGAP2",164,0)
  S DA(1)=LIEN
-"RTN","APCDGAP2",166,0)
+"RTN","APCDGAP2",165,0)
  S DA(2)=GIEN
-"RTN","APCDGAP2",167,0)
+"RTN","APCDGAP2",166,0)
  S DIE="^AUPNGOAL("_GIEN_",21,"_LIEN_",11,",DIC("P")=$P(^DD(9000093.21,1101,0),U,2)
-"RTN","APCDGAP2",168,0)
+"RTN","APCDGAP2",167,0)
  S DR=".09////"_APCDSTAT_";.06////"_APCDFU_";.07////^S X=DUZ;.08////^S X=$$NOW^XLFDT" D ^DIE K DIE,DR,DA,Y
-"RTN","APCDGAP2",169,0)
+"RTN","APCDGAP2",168,0)
  I $D(Y) S RET="0^error updating step status" Q
-"RTN","APCDGAP2",170,0)
+"RTN","APCDGAP2",169,0)
  S RET=1
-"RTN","APCDGAP2",171,0)
+"RTN","APCDGAP2",170,0)
  Q
-"RTN","APCDGAP2",172,0)
+"RTN","APCDGAP2",171,0)
 NEXTSN(I,F) ;PEP - return next step number for this goal, facility
-"RTN","APCDGAP2",173,0)
+"RTN","APCDGAP2",172,0)
  NEW X,Y,J
-"RTN","APCDGAP2",174,0)
+"RTN","APCDGAP2",173,0)
  S J=$O(^AUPNGOAL(I,21,"B",F,0))
-"RTN","APCDGAP2",175,0)
+"RTN","APCDGAP2",174,0)
  I 'J Q 1
-"RTN","APCDGAP2",176,0)
+"RTN","APCDGAP2",175,0)
  S (Y,X)=0 F  S Y=$O(^AUPNGOAL(I,21,J,11,"B",Y)) S:Y X=Y I 'Y S X=X+1 K Y Q
-"RTN","APCDGAP2",177,0)
+"RTN","APCDGAP2",176,0)
  Q X
-"RTN","APCDGAP2",178,0)
+"RTN","APCDGAP2",177,0)
 NEXTGN(P,F) ;PEP - return next available goal number for patient P, facility F
-"RTN","APCDGAP2",179,0)
+"RTN","APCDGAP2",178,0)
  I $G(P)="" Q ""
-"RTN","APCDGAP2",180,0)
+"RTN","APCDGAP2",179,0)
  I $G(F)="" Q ""
-"RTN","APCDGAP2",181,0)
+"RTN","APCDGAP2",180,0)
  I '$D(^DPT(P)) Q ""
-"RTN","APCDGAP2",182,0)
+"RTN","APCDGAP2",181,0)
  I '$D(^AUTTLOC(F)) Q ""
-"RTN","APCDGAP2",183,0)
+"RTN","APCDGAP2",182,0)
  Q $E($O(^AUPNGOAL("AA",P,F,""),-1),2,999)\1+1
-"RTN","APCDGAP2",184,0)
+"RTN","APCDGAP2",183,0)
  ;
-"RTN","APCDGAP2",185,0)
+"RTN","APCDGAP2",184,0)
 E(V) ;
+"RTN","APCDGAP2",185,0)
+ S RETVAL(APCDC)="0^"_V
 "RTN","APCDGAP2",186,0)
- S APCDC=APCDC+1,$P(RETVAL,"|",APCDC)=V
-"RTN","APCDGAP2",187,0)
  Q
 "RTN","APCDGAPI")
-0^3^B49562749
+0^3^B49512036
 "RTN","APCDGAPI",1,0)
-APCDGAPI ;IHS/CMI/LAB - PATIENT GOALS APIs;19-Jun-2015 10:00;DKM
+APCDGAPI ;IHS/CMI/LAB - PATIENT GOALS APIs;19-Jun-2015 13:00;DKM
 "RTN","APCDGAPI",2,0)
- ;;2.0;IHS PCC SUITE;**7,10**;MAY 14, 2009;Build 3
+ ;;2.0;IHS PCC SUITE;**7,10**;MAY 14, 2009;Build 5
 "RTN","APCDGAPI",3,0)
  ;
 "RTN","APCDGAPI",4,0)
@@ -1743,7 +1741,7 @@ NEXTGN(P,F) ;PEP - return next available goal number for patient P, facility F
 "RTN","APCDGAPI",197,0)
  I '$D(^DPT(P)) Q ""
 "RTN","APCDGAPI",198,0)
- I '$D(^AUTTLOC(F)) Q ""
+ I '$D(^DIC(4,F)) Q ""
 "RTN","APCDGAPI",199,0)
  Q $E($O(^AUPNGOAL("AA",P,F,""),-1),2,999)\1+1
 "RTN","APCDGAPI",200,0)
@@ -1755,11 +1753,11 @@ E(V) ;
 "RTN","APCDGAPI",203,0)
  Q
 "RTN","BEHOPGAP")
-0^1^B53916385
+0^1^B57164855
 "RTN","BEHOPGAP",1,0)
-BEHOPGAP ;IHS/MSC/MGH - PATIENT GOALS APIs;15-Jun-2015 21:49;AA
+BEHOPGAP ;IHS/MSC/MGH - PATIENT GOALS APIs;20-Jun-2015 07:32;DKM
 "RTN","BEHOPGAP",2,0)
- ;;1.1;BEH COMPONENTS;**058001**;MAY 14, 2009;Build 3
+ ;;1.1;BEH COMPONENTS;**058001**;MAY 14, 2009;Build 5
 "RTN","BEHOPGAP",3,0)
  ;
 "RTN","BEHOPGAP",4,0)
@@ -1977,278 +1975,290 @@ GETGOAL(RET,DFN,NEWFMT) ;PEP Return a list of a patient's goals
 "RTN","BEHOPGAP",110,0)
  .S GFAC=$G(ARRAY(FILE,IEN,.06,"E"))
 "RTN","BEHOPGAP",111,0)
- .S:$G(NEWFMT) GFAC=$G(ARRAY(FILE,IEN,.06,"E"))_";"_GFAC
+ .S:$G(NEWFMT) GFAC=$G(ARRAY(FILE,IEN,.06,"I"))_";"_GFAC
 "RTN","BEHOPGAP",112,0)
  .S GOALNO=$G(ARRAY(FILE,IEN,.07,"E"))
 "RTN","BEHOPGAP",113,0)
  .S GPROV=$G(ARRAY(FILE,IEN,.08,"E"))
 "RTN","BEHOPGAP",114,0)
- .S GSTART=$G(ARRAY(FILE,IEN,.09,"I"))
+ .S:$G(NEWFMT) GPROV=$G(ARRAY(FILE,IEN,.08,"I"))_";"_GPROV
 "RTN","BEHOPGAP",115,0)
- .S GFUP=$G(ARRAY(FILE,IEN,.1,"I"))
+ .S GSTART=$G(ARRAY(FILE,IEN,.09,"I"))
 "RTN","BEHOPGAP",116,0)
- .S GSTAT=$G(ARRAY(FILE,IEN,.11,"I"))
+ .S GFUP=$G(ARRAY(FILE,IEN,.1,"I"))
 "RTN","BEHOPGAP",117,0)
- .S GSTATE=$G(ARRAY(FILE,IEN,.11,"E"))
+ .S GSTAT=$G(ARRAY(FILE,IEN,.11,"I"))
 "RTN","BEHOPGAP",118,0)
- .I GSTAT'="" S GSTAT=GSTAT_";"_GSTATE
+ .S GSTATE=$G(ARRAY(FILE,IEN,.11,"E"))
 "RTN","BEHOPGAP",119,0)
- .Q:GSTAT="D"
+ .I GSTAT'="" S GSTAT=GSTAT_";"_GSTATE
 "RTN","BEHOPGAP",120,0)
- .;Get the text needed for the 11 and 12 nodes
+ .Q:GSTAT="D"
 "RTN","BEHOPGAP",121,0)
- .S GNAME=$G(ARRAY(FILE,IEN,1101,"E"))
+ .;Get the text needed for the 11 and 12 nodes
 "RTN","BEHOPGAP",122,0)
- .S GREASON=$G(ARRAY(FILE,IEN,1201,"E"))
+ .S GNAME=$G(ARRAY(FILE,IEN,1101,"E"))
 "RTN","BEHOPGAP",123,0)
- .S @RET@(GOALNO,0)=GRIEN_U_GSET_U_GDATE_U_GBY_U_GMOD_U_GFAC_U_GPROV_U_GSTART_U_GFUP_U_GSTAT_U_GOALNO
+ .S GREASON=$G(ARRAY(FILE,IEN,1201,"E"))
 "RTN","BEHOPGAP",124,0)
- .;Get the data from the goal type multiple (goals may have more than 1 type)
+ .S @RET@(GOALNO,0)=GRIEN_U_GSET_U_GDATE_U_GBY_U_GMOD_U_GFAC_U_GPROV_U_GSTART_U_GFUP_U_GSTAT_U_GOALNO
 "RTN","BEHOPGAP",125,0)
- .S GTYPE=""
+ .;Get the data from the goal type multiple (goals may have more than 1 type)
 "RTN","BEHOPGAP",126,0)
- .S TIEN=0 F  S TIEN=$O(^AUPNGOAL(GRIEN,10,TIEN)) Q:'+TIEN  D
+ .S GTYPE=""
 "RTN","BEHOPGAP",127,0)
- ..S GTYP=$G(^AUPNGOAL(GRIEN,10,TIEN,0))
+ .S TIEN=0 F  S TIEN=$O(^AUPNGOAL(GRIEN,10,TIEN)) Q:'+TIEN  D
 "RTN","BEHOPGAP",128,0)
- ..I GTYPE="" S GTYPE=$P($G(^APCDTPGT(GTYP,0)),U,1)
+ ..S GTYP=$G(^AUPNGOAL(GRIEN,10,TIEN,0))
 "RTN","BEHOPGAP",129,0)
- ..E  S GTYPE=GTYPE_U_$P($G(^APCDTPGT(GTYP,0)),U,1)
+ ..I GTYPE="" S GTYPE=$P($G(^APCDTPGT(GTYP,0)),U,1)
 "RTN","BEHOPGAP",130,0)
- .S @RET@(GOALNO,10)=GTYPE
+ ..E  S GTYPE=GTYPE_U_$P($G(^APCDTPGT(GTYP,0)),U,1)
 "RTN","BEHOPGAP",131,0)
- .S @RET@(GOALNO,11)=GNAME
+ .S @RET@(GOALNO,10)=GTYPE
 "RTN","BEHOPGAP",132,0)
- .S @RET@(GOALNO,12)=GREASON
+ .S @RET@(GOALNO,11)=GNAME
 "RTN","BEHOPGAP",133,0)
- .S CNT=0,REV=0 F  S REV=$O(^AUPNGOAL(GRIEN,13,REV)) Q:'+REV  D
+ .S @RET@(GOALNO,12)=GREASON
 "RTN","BEHOPGAP",134,0)
- ..S REVDT=$P($G(^AUPNGOAL(GRIEN,13,REV,0)),U,1)
+ .S CNT=0,REV=0 F  S REV=$O(^AUPNGOAL(GRIEN,13,REV)) Q:'+REV  D
 "RTN","BEHOPGAP",135,0)
- ..S REVTXT=$P($G(^AUPNGOAL(GRIEN,13,REV,0)),U,2)
+ ..S REVDT=$P($G(^AUPNGOAL(GRIEN,13,REV,0)),U,1)
 "RTN","BEHOPGAP",136,0)
- ..S CNT=CNT+1
+ ..S REVTXT=$P($G(^AUPNGOAL(GRIEN,13,REV,0)),U,2)
 "RTN","BEHOPGAP",137,0)
- ..S @RET@(GOALNO,13,CNT)="REVIEW"_U_REVDT_U_REVTXT
+ ..S CNT=CNT+1
 "RTN","BEHOPGAP",138,0)
- .I $G(NEWFMT) D
+ ..S @RET@(GOALNO,13,CNT)="REVIEW"_U_REVDT_U_REVTXT
 "RTN","BEHOPGAP",139,0)
- ..N STEPS,SIEN
+ .I $G(NEWFMT) D
 "RTN","BEHOPGAP",140,0)
- ..S STEPS=$NA(@RET@(GOALNO,99))
+ ..N STEPS,SIEN
 "RTN","BEHOPGAP",141,0)
- ..D GETSTEP(.STEPS,GRIEN)
+ ..S STEPS=$NA(@RET@(GOALNO,99))
 "RTN","BEHOPGAP",142,0)
- ..F SIEN=0:0 S SIEN=$O(@STEPS@(SIEN)) Q:'SIEN  S $P(@STEPS@(SIEN,0),U)="STEP"
+ ..D GETSTEP(.STEPS,GRIEN)
 "RTN","BEHOPGAP",143,0)
- Q
+ ..F SIEN=0:0 S SIEN=$O(@STEPS@(SIEN)) Q:'SIEN  S $P(@STEPS@(SIEN,0),U)="STEP"
 "RTN","BEHOPGAP",144,0)
-GETSTEP(RET,GIEN) ;Get the step data
+ Q
 "RTN","BEHOPGAP",145,0)
- ;Input GIEN=goal IEN
+GETSTEP(RET,GIEN) ;Get the step data
 "RTN","BEHOPGAP",146,0)
- ;Ouptut global array of steps for a particular goal
+ ;Input GIEN=goal IEN
 "RTN","BEHOPGAP",147,0)
- ;format equals
+ ;Ouptut global array of steps for a particular goal
 "RTN","BEHOPGAP",148,0)
- ;zero node=Goal ien [1] ^ facility [2] ^ step ien [3] ^ Step number [4] ^ Created by [5] ^ created date [6] ^
+ ;format equals
 "RTN","BEHOPGAP",149,0)
- ;Step type [7] ^ step start dt [8] ^ step followup date [9] ^ user last modififed [10] ^ last modified date [11]
+ ;zero node=Goal ien [1] ^ facility [2] ^ step ien [3] ^ Step number [4] ^ Created by [5] ^ created date [6] ^
 "RTN","BEHOPGAP",150,0)
- ;^ step status [12] ^ provider [13]
+ ;Step type [7] ^ step start dt [8] ^ step followup date [9] ^ user last modififed [10] ^ last modified date [11]
 "RTN","BEHOPGAP",151,0)
- ;one node= Step text
+ ;^ step status [12] ^ provider [13]
 "RTN","BEHOPGAP",152,0)
- N FILE,SFAC,CNT
+ ;one node= Step text
 "RTN","BEHOPGAP",153,0)
- S FILE=9000093,CNT=0
+ N FILE,SFAC,CNT
 "RTN","BEHOPGAP",154,0)
- S:'$D(RET) RET=$$TMPGBL
+ S FILE=9000093,CNT=0
 "RTN","BEHOPGAP",155,0)
- S SFAC=0 F  S SFAC=$O(^AUPNGOAL(GIEN,21,SFAC)) Q:'+SFAC  D
+ S:'$D(RET) RET=$$TMPGBL
 "RTN","BEHOPGAP",156,0)
- .S FAC=$P($G(^AUPNGOAL(GIEN,21,SFAC,0)),U,1)
+ S SFAC=0 F  S SFAC=$O(^AUPNGOAL(GIEN,21,SFAC)) Q:'+SFAC  D
 "RTN","BEHOPGAP",157,0)
- .S FNAME=$P($G(^DIC(4,FAC,0)),U,1)
+ .S FAC=$P($G(^AUPNGOAL(GIEN,21,SFAC,0)),U,1)
 "RTN","BEHOPGAP",158,0)
- .D STEPS(GIEN,SFAC,FAC,FNAME)
+ .S FNAME=$P($G(^DIC(4,FAC,0)),U,1)
 "RTN","BEHOPGAP",159,0)
- Q
+ .D STEPS(GIEN,SFAC,FAC,FNAME)
 "RTN","BEHOPGAP",160,0)
-STEPS(GOAL,SFAC,FAC,FNAME) ;Get the step data for each goal
+ Q
 "RTN","BEHOPGAP",161,0)
- N SIEN,LKP,GFLDS,FILE1,GDATA,GERR,STATUS
+STEPS(GOAL,SFAC,FAC,FNAME) ;Get the step data for each goal
 "RTN","BEHOPGAP",162,0)
- N STEPNO,SBY,SWHEN,STYPE,SSTART,SFUP,SUPD,SMOD,SSTATUS,SPROV,STEXT
+ N SIEN,IENS,GFLDS,FILE1,GDATA,GERR,STATUS
 "RTN","BEHOPGAP",163,0)
- S SIEN=0 F  S SIEN=$O(^AUPNGOAL(GOAL,21,SFAC,11,SIEN)) Q:'+SIEN  D
+ N STEPNO,SBY,SWHEN,STYPE,SSTART,SFUP,SUPD,SMOD,SSTATUS,SPROV,STEXT
 "RTN","BEHOPGAP",164,0)
- .S LKP=SIEN_","_SFAC_","_GOAL_",",FILE1=9000093.211101
+ S FILE1=9000093.211101
 "RTN","BEHOPGAP",165,0)
- .S STEPNO=$$GET1^DIQ(FILE1,LKP,".01")
+ S SIEN=0 F  S SIEN=$O(^AUPNGOAL(GOAL,21,SFAC,11,SIEN)) Q:'+SIEN  D
 "RTN","BEHOPGAP",166,0)
- .S SBY=$$GET1^DIQ(FILE1,LKP,".02")
+ .N ARRAY,ERRARRY
 "RTN","BEHOPGAP",167,0)
- .S SWHEN=$$GET1^DIQ(FILE1,LKP,".03","I")
+ .S IENS=SIEN_","_SFAC_","_GOAL_","
 "RTN","BEHOPGAP",168,0)
- .S STYPE=$$GET1^DIQ(FILE1,LKP,".04")
+ .D GETS^DIQ(FILE,IENS,"*","IE","ARRAY","ERRARRY")
 "RTN","BEHOPGAP",169,0)
- .S SSTART=$$GET1^DIQ(FILE1,LKP,".05","I")
+ .S STEPNO=$G(ARRAY(FILE1,IENS,.01,"E"))
 "RTN","BEHOPGAP",170,0)
- .S SFUP=$$GET1^DIQ(FILE1,LKP,".06","I")
+ .S SBY=$G(ARRAY(FILE1,IENS,.02,"E"))
 "RTN","BEHOPGAP",171,0)
- .S SUPD=$$GET1^DIQ(FILE1,LKP,".07")
+ .S SWHEN=$G(ARRAY(FILE1,IENS,.03,"I"))
 "RTN","BEHOPGAP",172,0)
- .S SMOD=$$GET1^DIQ(FILE1,LKP,".08","I")
+ .S STYPE=$G(ARRAY(FILE1,IENS,.04,"E"))
 "RTN","BEHOPGAP",173,0)
- .S SSTATUS=$$GET1^DIQ(FILE1,LKP,".09")
+ .S SSTART=$G(ARRAY(FILE1,IENS,.05,"I"))
 "RTN","BEHOPGAP",174,0)
- .Q:SSTATUS="DELETED"
+ .S SFUP=$G(ARRAY(FILE1,IENS,.06,"I"))
 "RTN","BEHOPGAP",175,0)
- .S STATUS=$$GET1^DIQ(FILE1,LKP,".09","I")
+ .S SUPD=$G(ARRAY(FILE1,IENS,.07,"E"))
 "RTN","BEHOPGAP",176,0)
- .S SPROV=$$GET1^DIQ(FILE1,LKP,".1")
+ .S SMOD=$G(ARRAY(FILE1,IENS,.08,"I"))
 "RTN","BEHOPGAP",177,0)
- .S @RET@(SIEN,0)=GIEN_U_FAC_";"_FNAME_U_SIEN_U_STEPNO_U_SBY_U_SWHEN_U_STYPE_U_SSTART_U_SFUP_U_SUPD_U_SMOD_U_STATUS_";"_SSTATUS_U_SPROV
+ .S SSTATUS=$G(ARRAY(FILE1,IENS,.09,"E"))
 "RTN","BEHOPGAP",178,0)
- .S STEXT=$$GET1^DIQ(FILE1,LKP,1101)
+ .Q:SSTATUS="DELETED"
 "RTN","BEHOPGAP",179,0)
- .S @RET@(SIEN,1)=STEXT
+ .S STATUS=$G(ARRAY(FILE1,IENS,.09,"I"))
 "RTN","BEHOPGAP",180,0)
- Q
+ .S SPROV=$G(ARRAY(FILE1,IENS,.1,"E"))
 "RTN","BEHOPGAP",181,0)
-ADDREV(RETVAL,GIEN,REVD,REVT) ;PEP - ADD A REVIEW TO A GOAL 9000093.13
+ .S:$G(NEWFMT) SPROV=$G(ARRAY(FILE1,IENS,.1,"I"))_";"_SPROV
 "RTN","BEHOPGAP",182,0)
- ;INPUT:
+ .S @RET@(SIEN,0)=GIEN_U_FAC_";"_FNAME_U_SIEN_U_STEPNO_U_SBY_U_SWHEN_U_STYPE_U_SSTART_U_SFUP_U_SUPD_U_SMOD_U_STATUS_";"_SSTATUS_U_SPROV
 "RTN","BEHOPGAP",183,0)
- ;GIEN= ien of goal
+ .S STEXT=$G(ARRAY(FILE1,IENS,1101,"E"))
 "RTN","BEHOPGAP",184,0)
- ;REVD= review date
+ .S @RET@(SIEN,1)=STEXT
 "RTN","BEHOPGAP",185,0)
- ;REVT= review text
+ Q
 "RTN","BEHOPGAP",186,0)
- ;OUTPUT:  ien of review entry in multiple or 0^error text
+ADDREV(RETVAL,GIEN,REVD,REVT) ;PEP - ADD A REVIEW TO A GOAL 9000093.13
 "RTN","BEHOPGAP",187,0)
- ;
-"RTN","BEHOPGAP",188,0)
- I '$G(GIEN) S RETVAL="0^invalid ien" Q
-"RTN","BEHOPGAP",189,0)
- D ADDREV^APCDGAP2(GIEN,REVD,REVT,.RETVAL)
-"RTN","BEHOPGAP",190,0)
- Q
-"RTN","BEHOPGAP",191,0)
- ;
-"RTN","BEHOPGAP",192,0)
-ADDSTEP(RETVAL,GIEN,SDAT) ;PEP - add a step to a goal
-"RTN","BEHOPGAP",193,0)
- ;Add a Step to an existing goal
-"RTN","BEHOPGAP",194,0)
- ;  SDAT - array of steps to be added if adding steps
-"RTN","BEHOPGAP",195,0)
- ;      SDAT(n)=facility^step number^step type^step start date^step f/u date^provider^step text
-"RTN","BEHOPGAP",196,0)
- ;              one entry in array for each step being added
-"RTN","BEHOPGAP",197,0)
- ;              step number is optional, if not passed the next available step number will be used
-"RTN","BEHOPGAP",198,0)
- ;              values can be internal or external
-"RTN","BEHOPGAP",199,0)
- ;              user created / user last update fields auto stuffed with DUZ
-"RTN","BEHOPGAP",200,0)
- ;              date created / date last updated fields auto stuffed with DT and NOW^XLFDT
-"RTN","BEHOPGAP",201,0)
- ;
-"RTN","BEHOPGAP",202,0)
- ;              Example:
-"RTN","BEHOPGAP",203,0)
- ;              SDAT(1)="5217^1^NUTRITION^3101029^3101231^1239^EAT LESS THAN 1200 CAAPCDTESTES PER DAY
-"RTN","BEHOPGAP",204,0)
- ;              SDAT(2)="5217^2^PHYSICAL ACTIVITY^3101029^3101231^1239^WALK 60 MINUTES PER DAY
-"RTN","BEHOPGAP",205,0)
- N I,J,SDAT2
-"RTN","BEHOPGAP",206,0)
- S I="" F  S I=$O(SDAT(I)) Q:I=""  D
-"RTN","BEHOPGAP",207,0)
- .S J=I+1
-"RTN","BEHOPGAP",208,0)
- .S SDAT2(J)=SDAT(I)
-"RTN","BEHOPGAP",209,0)
- D ADDSTEP^APCDGAP2(GIEN,.SDAT2,.RETVAL)
-"RTN","BEHOPGAP",210,0)
- S RETVAL=RETVAL(1)
-"RTN","BEHOPGAP",211,0)
- Q
-"RTN","BEHOPGAP",212,0)
-DELSTEP(RET,GIEN,LIEN,SIEN,PRV,SDTE,SREA,SOTHER) ;PEP - DELETE A STEP
-"RTN","BEHOPGAP",213,0)
- ;delete a step
-"RTN","BEHOPGAP",214,0)
- ;  INP =
-"RTN","BEHOPGAP",215,0)
- ;    GIEN=Goal IEN
-"RTN","BEHOPGAP",216,0)
- ;    LINE=Location
-"RTN","BEHOPGAP",217,0)
- ;    SIEN=Step IEN
-"RTN","BEHOPGAP",218,0)
- ;    PRV= Who deleted (defaults to DUZ if not sent)
-"RTN","BEHOPGAP",219,0)
- ;    SDTE= When deleted (defaults to NOW If not sent)
-"RTN","BEHOPGAP",220,0)
- ;    SREA= Reason deleted (set of codes)
-"RTN","BEHOPGAP",221,0)
- ;    SOTHER=Text if reason is other
-"RTN","BEHOPGAP",222,0)
- ;  OUTPUT = 1 if delete successful or 0^error message
-"RTN","BEHOPGAP",223,0)
- S RET=""
-"RTN","BEHOPGAP",224,0)
- I '$G(GIEN) S RET="0^invalid goal ien" Q
-"RTN","BEHOPGAP",225,0)
- S SOTHER=$G(SOTHER)
-"RTN","BEHOPGAP",226,0)
- S X=SDTE D ^%DT S SDTE=Y
-"RTN","BEHOPGAP",227,0)
- I (SREA="O"!(SREA="OTHER")),'$L($G(SOTHER)) S RET="0^Text must be sent with OTHER reason" Q
-"RTN","BEHOPGAP",228,0)
- D DELSTEP^APCDGAP2(GIEN,LIEN,SIEN,.PRV,.SDTE,SREA,.SOTHER,.RET)
-"RTN","BEHOPGAP",229,0)
- Q
-"RTN","BEHOPGAP",230,0)
-EDITSTEP(RETVAL,GIEN,LIEN,SIEN,FUD,STAT) ;PEP - edit a step entry
-"RTN","BEHOPGAP",231,0)
- ;edit a step entry
-"RTN","BEHOPGAP",232,0)
- ;per requirements only the followup date and status can be edited
-"RTN","BEHOPGAP",233,0)
  ;INPUT:
-"RTN","BEHOPGAP",234,0)
- ; GIEN=goal ien
-"RTN","BEHOPGAP",235,0)
- ; LIEN=location ien
-"RTN","BEHOPGAP",236,0)
- ; SIEN=Step ien
-"RTN","BEHOPGAP",237,0)
- ; FUD= new f/u date
-"RTN","BEHOPGAP",238,0)
- ; STAT=status
-"RTN","BEHOPGAP",239,0)
- ;OUTPUT:  1 if edit successful, 0^error message if not successful
-"RTN","BEHOPGAP",240,0)
+"RTN","BEHOPGAP",188,0)
+ ;GIEN= ien of goal
+"RTN","BEHOPGAP",189,0)
+ ;REVD= review date
+"RTN","BEHOPGAP",190,0)
+ ;REVT= review text
+"RTN","BEHOPGAP",191,0)
+ ;OUTPUT:  ien of review entry in multiple or 0^error text
+"RTN","BEHOPGAP",192,0)
+ ;
+"RTN","BEHOPGAP",193,0)
  I '$G(GIEN) S RETVAL="0^invalid ien" Q
+"RTN","BEHOPGAP",194,0)
+ D ADDREV^APCDGAP2(GIEN,REVD,REVT,.RETVAL)
+"RTN","BEHOPGAP",195,0)
+ Q
+"RTN","BEHOPGAP",196,0)
+ ;
+"RTN","BEHOPGAP",197,0)
+ADDSTEP(RETVAL,GIEN,SDAT) ;PEP - add a step to a goal
+"RTN","BEHOPGAP",198,0)
+ ;Add a Step to an existing goal
+"RTN","BEHOPGAP",199,0)
+ ;  SDAT - array of steps to be added if adding steps
+"RTN","BEHOPGAP",200,0)
+ ;      SDAT(n)=facility^step number^step type^step start date^step f/u date^provider^step text
+"RTN","BEHOPGAP",201,0)
+ ;              one entry in array for each step being added
+"RTN","BEHOPGAP",202,0)
+ ;              step number is optional, if not passed the next available step number will be used
+"RTN","BEHOPGAP",203,0)
+ ;              values can be internal or external
+"RTN","BEHOPGAP",204,0)
+ ;              user created / user last update fields auto stuffed with DUZ
+"RTN","BEHOPGAP",205,0)
+ ;              date created / date last updated fields auto stuffed with DT and NOW^XLFDT
+"RTN","BEHOPGAP",206,0)
+ ;
+"RTN","BEHOPGAP",207,0)
+ ;              Example:
+"RTN","BEHOPGAP",208,0)
+ ;              SDAT(1)="5217^1^NUTRITION^3101029^3101231^1239^EAT LESS THAN 1200 CAAPCDTESTES PER DAY
+"RTN","BEHOPGAP",209,0)
+ ;              SDAT(2)="5217^2^PHYSICAL ACTIVITY^3101029^3101231^1239^WALK 60 MINUTES PER DAY
+"RTN","BEHOPGAP",210,0)
+ N I,J,SDAT2
+"RTN","BEHOPGAP",211,0)
+ S I="" F  S I=$O(SDAT(I)) Q:I=""  D
+"RTN","BEHOPGAP",212,0)
+ .S J=I+1
+"RTN","BEHOPGAP",213,0)
+ .S SDAT2(J)=SDAT(I)
+"RTN","BEHOPGAP",214,0)
+ S:SDAT#2 SDAT2($G(J)+1)=SDAT
+"RTN","BEHOPGAP",215,0)
+ D ADDSTEP^APCDGAP2(GIEN,.SDAT2,.RETVAL)
+"RTN","BEHOPGAP",216,0)
+ S RETVAL=$G(RETVAL(1))
+"RTN","BEHOPGAP",217,0)
+ Q
+"RTN","BEHOPGAP",218,0)
+DELSTEP(RET,GIEN,LIEN,SIEN,PRV,SDTE,SREA,SOTHER) ;PEP - DELETE A STEP
+"RTN","BEHOPGAP",219,0)
+ ;delete a step
+"RTN","BEHOPGAP",220,0)
+ ;  INP =
+"RTN","BEHOPGAP",221,0)
+ ;    GIEN=Goal IEN
+"RTN","BEHOPGAP",222,0)
+ ;    LINE=Location
+"RTN","BEHOPGAP",223,0)
+ ;    SIEN=Step IEN
+"RTN","BEHOPGAP",224,0)
+ ;    PRV= Who deleted (defaults to DUZ if not sent)
+"RTN","BEHOPGAP",225,0)
+ ;    SDTE= When deleted (defaults to NOW If not sent)
+"RTN","BEHOPGAP",226,0)
+ ;    SREA= Reason deleted (set of codes)
+"RTN","BEHOPGAP",227,0)
+ ;    SOTHER=Text if reason is other
+"RTN","BEHOPGAP",228,0)
+ ;  OUTPUT = 1 if delete successful or 0^error message
+"RTN","BEHOPGAP",229,0)
+ S RET=""
+"RTN","BEHOPGAP",230,0)
+ I '$G(GIEN) S RET="0^invalid goal ien" Q
+"RTN","BEHOPGAP",231,0)
+ S SOTHER=$G(SOTHER)
+"RTN","BEHOPGAP",232,0)
+ S X=SDTE D ^%DT S SDTE=Y
+"RTN","BEHOPGAP",233,0)
+ I (SREA="O"!(SREA="OTHER")),'$L($G(SOTHER)) S RET="0^Text must be sent with OTHER reason" Q
+"RTN","BEHOPGAP",234,0)
+ D DELSTEP^APCDGAP2(GIEN,LIEN,SIEN,.PRV,.SDTE,SREA,.SOTHER,.RET)
+"RTN","BEHOPGAP",235,0)
+ Q
+"RTN","BEHOPGAP",236,0)
+EDITSTEP(RETVAL,GIEN,LIEN,SIEN,FUD,STAT) ;PEP - edit a step entry
+"RTN","BEHOPGAP",237,0)
+ ;edit a step entry
+"RTN","BEHOPGAP",238,0)
+ ;per requirements only the followup date and status can be edited
+"RTN","BEHOPGAP",239,0)
+ ;INPUT:
+"RTN","BEHOPGAP",240,0)
+ ; GIEN=goal ien
 "RTN","BEHOPGAP",241,0)
- D EDITSTEP^APCDGAP2(GIEN,LIEN,SIEN,FUD,STAT,.RETVAL)
+ ; LIEN=location ien
 "RTN","BEHOPGAP",242,0)
- Q
+ ; SIEN=Step ien
 "RTN","BEHOPGAP",243,0)
-NEXTSN(RET,GIEN,FAC) ;PEP - return next step number for this goal, facility
+ ; FUD= new f/u date
 "RTN","BEHOPGAP",244,0)
- S RET=$$NEXTSN^APCDGAP2(GIEN,FAC)
+ ; STAT=status
 "RTN","BEHOPGAP",245,0)
- Q
+ ;OUTPUT:  1 if edit successful, 0^error message if not successful
 "RTN","BEHOPGAP",246,0)
-TMPGBL() ;EP
+ I '$G(GIEN) S RETVAL="0^invalid ien" Q
 "RTN","BEHOPGAP",247,0)
+ D EDITSTEP^APCDGAP2(GIEN,LIEN,SIEN,FUD,STAT,.RETVAL)
+"RTN","BEHOPGAP",248,0)
+ Q
+"RTN","BEHOPGAP",249,0)
+NEXTSN(RET,GIEN,FAC) ;PEP - return next step number for this goal, facility
+"RTN","BEHOPGAP",250,0)
+ S RET=$$NEXTSN^APCDGAP2(GIEN,FAC)
+"RTN","BEHOPGAP",251,0)
+ Q
+"RTN","BEHOPGAP",252,0)
+TMPGBL() ;EP
+"RTN","BEHOPGAP",253,0)
  K ^TMP("BEHOGOAL",$J) Q $NA(^($J))
 "SEC","^DIC",9000093,9000093,0,"AUDIT")
 @
@@ -2281,7 +2291,7 @@ FIELD^^2.04^21
 "^DD",9000093,9000093,0,"DDA")
 N
 "^DD",9000093,9000093,0,"DT")
-3150608
+3150619
 "^DD",9000093,9000093,0,"IX","AA",9000093,.07)
 
 "^DD",9000093,9000093,0,"IX","AATOO",9000093,.02)
@@ -2455,7 +2465,7 @@ and stuffed when a goal is first added.
 "^DD",9000093,9000093,.05,"DT")
 3101025
 "^DD",9000093,9000093,.06,0)
-FACILITY WHERE GOAL SET^RP9999999.06'I^AUTTLOC(^0;6^Q
+FACILITY WHERE GOAL SET^RP4'I^DIC(4,^0;6^Q
 "^DD",9000093,9000093,.06,1,0)
 ^.1
 "^DD",9000093,9000093,.06,1,1,0)
@@ -2479,7 +2489,7 @@ The facility (Location file entry) where the goal was established.  THis
 "^DD",9000093,9000093,.06,21,2,0)
 is the facility that is monitoring the goal.  Will most likely be DUZ(2).
 "^DD",9000093,9000093,.06,"DT")
-3101025
+3150619
 "^DD",9000093,9000093,.07,0)
 GOAL NUMBER^RNJ6,2X^^0;7^K:+X'=X!(X>999.99)!(X<1)!(X?.E1"."3N.N) X Q:'$D(X)  K:$D(^AUPNGOAL("AA",$P(^AUPNGOAL(DA,0),U,2),$P(^(0),U,6)," "_$E("000",1,4-$L($P(X,".",1))-1)_$P(X,".",1)_"."_$P(X,".",2)_$E("00",1,3-$L($P(X,".",2))-1))) X
 "^DD",9000093,9000093,.07,1,0)
@@ -2619,7 +2629,7 @@ Answer must be 2-120 characters in length.
 "^DD",9000093,9000093.21,0)
 STEP FACILITY SUB-FIELD^^1101^2
 "^DD",9000093,9000093.21,0,"DT")
-3110907
+3150619
 "^DD",9000093,9000093.21,0,"IX","B",9000093.21,.01)
 
 "^DD",9000093,9000093.21,0,"NM","STEP FACILITY")
@@ -2627,7 +2637,7 @@ STEP FACILITY SUB-FIELD^^1101^2
 "^DD",9000093,9000093.21,0,"UP")
 9000093
 "^DD",9000093,9000093.21,.01,0)
-STEP FACILITY^P9999999.06'^AUTTLOC(^0;1^Q
+STEP FACILITY^P4'^DIC(4,^0;1^Q
 "^DD",9000093,9000093.21,.01,1,0)
 ^.1
 "^DD",9000093,9000093.21,.01,1,1,0)
@@ -2641,7 +2651,7 @@ K ^AUPNGOAL(DA(1),21,"B",$E(X,1,30),DA)
 "^DD",9000093,9000093.21,.01,21,1,0)
 This is the facility (most likely DUZ(2)) where this step was created.
 "^DD",9000093,9000093.21,.01,"DT")
-3101013
+3150619
 "^DD",9000093,9000093.21,1101,0)
 STEP NUMBER^9000093.211101A^^11;0
 "^DD",9000093,9000093.211101,0)
