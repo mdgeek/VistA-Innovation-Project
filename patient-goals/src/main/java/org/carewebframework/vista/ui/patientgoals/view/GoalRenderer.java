@@ -87,7 +87,7 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
         createCell(row, declined ? "" : typeAsString(goal.getTypes()));
         createCell(row, declined ? "" : goal.getFollowupDate());
         createCell(row, declined ? "" : goal.getStatusText());
-        createCell(row, goal.getProviderName());
+        createCell(row, goal.getProviderName().replace(",", ", "));
         Review review = goal.getLastReview();
         String label = review == null ? "" : review.getNote();
         cell = createCell(row, label);
