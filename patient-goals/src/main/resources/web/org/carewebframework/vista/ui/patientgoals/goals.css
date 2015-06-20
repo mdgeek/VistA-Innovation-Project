@@ -41,6 +41,7 @@
 	color: darkblue; 
 	margin: 4px 4px 0 2px; 
 	zoom: 120%;
+	float: left;
 }
 
 .vistaPatientGoals-grid .z-detail-outer {

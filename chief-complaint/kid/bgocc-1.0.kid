@@ -1,4 +1,4 @@
-KIDS Distribution saved on Jun 20, 2015@07:37:50
+KIDS Distribution saved on Jun 20, 2015@11:47:14
 CHIEF COMPLAINT 1.0
 **KIDS**:CHIEF COMPLAINT 1.0^
 
@@ -27,7 +27,7 @@ n^y^f^^n^^y^o^n
 "BLD",8513,4,"B",9999999.89,9999999.89)
 
 "BLD",8513,6.3)
-11
+14
 "BLD",8513,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8513,"KRN",.4,0)
@@ -579,7 +579,7 @@ D XPZ2^XPDIQ
 "RTN","BGOCC",1,0)
 BGOCC ; IHS/BAO/TMD - Manage Chief Complaints ;16-Jun-2015 11:36;DKM
 "RTN","BGOCC",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,4,11**;Mar 20, 2007;Build 11
+ ;;1.1;BGO COMPONENTS;**1,3,4,11**;Mar 20, 2007;Build 14
 "RTN","BGOCC",3,0)
  ; Returns chief complaint for current visit context for
 "RTN","BGOCC",4,0)

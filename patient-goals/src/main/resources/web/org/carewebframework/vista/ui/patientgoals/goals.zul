@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
 	<style
-		src="~./org/carewebframework/vista/ui/patientgoals/goals.css?1.0" />
+		src="~./org/carewebframework/vista/ui/patientgoals/goals.css?1.1" />
 
 	<div id="root" zclass="vistaPatientGoals" height="100%" width="100%"
 		apply="${vistaPatientGoalsGoalController}">
@@ -73,34 +73,30 @@
 								label="${labels.vistaPatientGoals.goal.column.review.label}" />
 							<column align="center" width="50px"
 								label="${labels.vistaPatientGoals.goal.column.newstep.label}" />
-							<column id="lastUpdated" align="center"
-								width="75px"
+							<column id="lastUpdated" align="center" width="14ch"
 								label="${labels.vistaPatientGoals.goal.column.lastupdate.label}" />
-							<column id="number" align="center"
-								width="50px"
+							<column id="number" align="center" width="50px"
 								label="${labels.vistaPatientGoals.goal.column.number.label}">
 								<custom-attributes natural="ascending" />
 							</column>
 							<column id="name" align="center"
 								label="${labels.vistaPatientGoals.goal.column.goal.label}" />
-							<column id="startDate" align="center"
+							<column id="startDate" align="center" width="14ch"
 								label="${labels.vistaPatientGoals.goal.column.startdate.label}" />
-							<column id="reason" align="center"
-								width="75px"
+							<column id="reason" align="center" hflex="1"
 								label="${labels.vistaPatientGoals.goal.column.reason.label}" />
 							<column id="types" align="center"
 								label="${labels.vistaPatientGoals.goal.column.type.label}">
 								<custom-attributes
 									comparator="${$composer.typeComparator}" />
 							</column>
-							<column id="followupDate" align="center"
+							<column id="followupDate" align="center" width="14ch"
 								label="${labels.vistaPatientGoals.goal.column.followup.label}" />
-							<column id="statusText" align="center"
-								width="75px"
+							<column id="statusText" align="center" width="75px"
 								label="${labels.vistaPatientGoals.goal.column.status.label}" />
 							<column id="provider" align="center"
 								label="${labels.vistaPatientGoals.goal.column.provider.label}" />
-							<column id="lastReview" hflex="1"
+							<column id="lastReview" align="center" hflex="1"
 								label="${labels.vistaPatientGoals.goal.column.notes.label}">
 								<custom-attributes
 									comparator="${$composer.reviewComparator}" />
