@@ -26,7 +26,11 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public enum GoalStatus {
-        A, ME, S, MA, D;
+        A, // ACTIVE
+        ME, // MET
+        S, // STOPPED
+        MA, // MAINTAINING
+        D; // DELETED/ENTERED IN ERROR
         
         public boolean isInactive() {
             return "SME".contains(name());
@@ -39,7 +43,9 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public enum DeleteReason {
-        W, D, O;
+        W, // WRONG PATIENT/GOAL
+        D, // DUPLICATE
+        O; // OTHER
     }
     
     private String ien;
