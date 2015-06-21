@@ -47,6 +47,7 @@ import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Tabpanel;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.impl.InputElement;
 
 /**
  * Controller for adding or editing goals and steps
@@ -227,6 +228,8 @@ public class AddEditController extends FrameworkController {
         
         if (goalBase.getGroup() == GoalGroup.INACTIVE) {
             ZKUtil.disableChildren(form, true);
+        } else {
+            initFocus(comp);
         }
     }
     
@@ -282,6 +285,9 @@ public class AddEditController extends FrameworkController {
         
     }
     
+    /**
+     * Updates input elements from the goal/step.
+     */
     private void populateControls() {
         txtReason.setText(goalBase.getReason());
         txtName.setText(goalBase.getName());
@@ -325,6 +331,9 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Updates the goal/stop from input elements.
+     */
     private void populateGoalBase() {
         if (!isStep && changeSet.contains(txtNote)) {
             String note = txtNote.getText();
@@ -372,6 +381,9 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Populates radio group of goal types.
+     */
     private void populateGoalTypes() {
         if (rgTypes != null) {
             for (GoalType goalType : service.getGoalTypes()) {
@@ -384,6 +396,9 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Populates radio group of goal statuses.
+     */
     private void populateGoalStatus() {
         if (rgStatus != null) {
             for (GoalStatus goalStatus : GoalStatus.values()) {
@@ -394,6 +409,9 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Populates radio group of delete reasons.
+     */
     private void populateDeleteReason() {
         if (rgDeleteReason != null) {
             for (DeleteReason deleteReason : DeleteReason.values()) {
@@ -404,6 +422,9 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Updates the form to reflect the current deletion state.
+     */
     public void updateDeleteState() {
         if (rgStatus != null) {
             Radio radio = rgStatus.getSelectedItem();
@@ -497,6 +518,11 @@ public class AddEditController extends FrameworkController {
         return StrUtil.getLabel("vistaPatientGoals.addedit." + key + ".label." + type, args);
     }
     
+    /**
+     * Returns true if all required inputs are present.
+     * 
+     * @return True if all required inputs are present.
+     */
     private boolean hasRequired() {
         if (rgTypes != null) {
             Checkbox chk = null;
@@ -510,30 +536,43 @@ public class AddEditController extends FrameworkController {
             }
             
             if (!hasType) {
-                return isRequired(lblTypes);
+                return isMissing(lblTypes);
             }
         }
         
         if (datFollowup != null && datFollowup.getValue() == null) {
-            return isRequired(datFollowup);
+            return isMissing(datFollowup);
         }
         
         if (deleting && rgDeleteReason.getSelectedItem() == null) {
-            return isRequired(rgDeleteReason);
+            return isMissing(rgDeleteReason);
         }
         
         if (rowDeleteText != null && rowDeleteText.isVisible() && txtDeleteText.getText().trim().isEmpty()) {
-            return isRequired(txtDeleteText);
+            return isMissing(txtDeleteText);
         }
         
         return true;
     }
     
-    private boolean isRequired(Component target) {
+    /**
+     * Displays the validation error for a required element.
+     * 
+     * @param target The target input element.
+     * @return Always false.
+     */
+    private boolean isMissing(Component target) {
         wrongValue(target, requiredMessage);
         return false;
     }
     
+    /**
+     * Clears any current validation error and displays a new validation error for the specified
+     * input element.
+     * 
+     * @param target The target input element.
+     * @param message The validation error message.
+     */
     private void wrongValue(Component target, String message) {
         if (wrongValueTarget != null) {
             Clients.clearWrongValue(wrongValueTarget);
@@ -546,6 +585,36 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    /**
+     * Sets focus to first enabled input element (searches recursively).
+     * 
+     * @param parent Parent component.
+     */
+    private boolean initFocus(Component parent) {
+        for (Component child : parent.getChildren()) {
+            if (child instanceof InputElement) {
+                InputElement ele = (InputElement) child;
+                
+                if (!ele.isDisabled() && !ele.isReadonly()) {
+                    ele.focus();
+                    ele.select();
+                    return true;
+                }
+            } else if (initFocus(child)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Sets the initial selection state of a radio group.
+     * 
+     * @param rg The radio group.
+     * @param value The value used to identify the radio button to select.
+     * @param defaultIndex The default selection index to use if match fails.
+     */
     private void initRadio(Radiogroup rg, Object value, int defaultIndex) {
         if (rg == null) {
             return;
@@ -563,29 +632,51 @@ public class AddEditController extends FrameworkController {
         rg.setSelectedIndex(defaultIndex);
     }
     
+    /**
+     * Commit changes and close the form when OK button is clicked.
+     */
     public void onClick$btnOK() {
         if (commit()) {
             close(true);
         }
     }
     
+    /**
+     * Close the form when Cancel button is clicked, ignoring any changes.
+     */
     public void onClick$btnCancel() {
         close(false);
     }
     
+    /**
+     * Update the deletion state when changed.
+     */
     public void onCheck$rgStatus() {
         updateDeleteState();
     }
     
+    /**
+     * Update the deletion state when changed.
+     */
     public void onCheck$rgDeleteReason() {
         updateDeleteState();
     }
     
+    /**
+     * Clicking the close button on the tab is equivalent to clicking the Cancel button.
+     * 
+     * @param event The tab closure event.
+     */
     public void onCloseTab(Event event) {
         ZKUtil.getEventOrigin(event).stopPropagation();
         close(false);
     }
     
+    /**
+     * Commits all changes.
+     * 
+     * @return True if the operation was successful.
+     */
     private boolean commit() {
         if (!hasRequired()) {
             return false;

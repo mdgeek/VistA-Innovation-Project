@@ -63,6 +63,10 @@
 	column-count: 3;
 }
 
+.vistaPatientGoals .z-radiogroup input[checked] + label {
+	font-weight: bold;
+}
+
 .vistaPatientGoals-framed {
 	border: 1px solid lightgray;
 	padding: 5px;

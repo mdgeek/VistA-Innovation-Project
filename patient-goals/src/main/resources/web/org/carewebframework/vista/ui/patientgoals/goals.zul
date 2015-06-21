@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
 	<style
-		src="~./org/carewebframework/vista/ui/patientgoals/goals.css?1.1" />
+		src="~./org/carewebframework/vista/ui/patientgoals/goals.css?1.2" />
 
 	<div id="root" zclass="vistaPatientGoals" height="100%" width="100%"
 		apply="${vistaPatientGoalsGoalController}">

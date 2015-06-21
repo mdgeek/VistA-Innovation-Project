@@ -373,14 +373,12 @@ public class GoalController extends AbstractGridController<Goal> {
         goalBase.setFacility(domain.getLogicalId() + ";" + domain.getName());
         goalBase.setProvider(user.getLogicalId() + ";" + user.getFullName());
         goalBase.setStartDate(FMDate.today());
+        goalBase.setStatus(goalGroup == GoalGroup.INACTIVE ? GoalStatus.S : GoalStatus.A);
         
         if (goalGroup == GoalGroup.DECLINED) {
-            goalBase.setStatus(GoalStatus.D);
             goalBase.getTypes().add(service.getGoalType("OTHER"));
             goalBase.setFollowupDate(new FMDate(DateUtil.addDays(new Date(), 14, true)));
             goalBase.setReason(StrUtil.getLabel("vistaPatientGoals.new_declined.reason"));
-        } else {
-            goalBase.setStatus(goalGroup == GoalGroup.ACTIVE ? GoalStatus.A : GoalStatus.S);
         }
     }
     
