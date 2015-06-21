@@ -43,7 +43,7 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
         createCell(row, step.getName());
         createCell(row, step.getStartDate());
         createCell(row, step.getFollowupDate());
-        createCell(row, step.getStatusText());
+        createCell(row, step.getStatus());
         return null;
     }
     

@@ -23,7 +23,9 @@ import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.DeleteReason;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalStatus;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
@@ -126,11 +128,11 @@ public class AddEditController extends FrameworkController {
     
     private Radiogroup rgDeleteReason;
     
-    private Row rowDeleteReason;
-    
     private Label lblDeleteReason;
     
-    private Textbox txtDeleteReason;
+    private Row rowDeleteText;
+    
+    private Textbox txtDeleteText;
     
     // End of auto-wired members.
     
@@ -217,6 +219,8 @@ public class AddEditController extends FrameworkController {
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
         populateGoalTypes();
+        populateGoalStatus();
+        populateDeleteReason();
         populateControls();
         requiredMessage = getLabel("required");
         wireChangeEvents(comp);
@@ -308,12 +312,12 @@ public class AddEditController extends FrameworkController {
             }
         }
         
-        if (txtDeleteReason != null) {
-            txtDeleteReason.setText(goalBase.getDeleteReason());
+        if (txtDeleteText != null) {
+            txtDeleteText.setText(goalBase.getDeleteText());
         }
         
-        initRadio(rgStatus, goalBase.getStatusCode(), 0);
-        initRadio(rgDeleteReason, goalBase.getDeleteCode(), -1);
+        initRadio(rgStatus, goalBase.getStatus(), 0);
+        initRadio(rgDeleteReason, goalBase.getDeleteReason(), -1);
         updateDeleteState();
         
         if (goalBase.getGroup() == GoalGroup.DECLINED && actionType == ActionType.ADD) {
@@ -345,7 +349,7 @@ public class AddEditController extends FrameworkController {
         }
         
         if (rgStatus != null) {
-            goalBase.setStatus(rgStatus.getSelectedItem().getValue().toString());
+            goalBase.setStatus((GoalStatus) rgStatus.getSelectedItem().getValue());
         }
         
         if (rgTypes != null) {
@@ -360,11 +364,11 @@ public class AddEditController extends FrameworkController {
         }
         
         if (deleting && rgDeleteReason.getSelectedItem() != null) {
-            goalBase.setDelete(rgDeleteReason.getSelectedItem().getValue().toString());
+            goalBase.setDeleteReason((DeleteReason) rgDeleteReason.getSelectedItem().getValue());
         }
         
-        if (deleting && txtDeleteReason.isVisible()) {
-            goalBase.setDeleteReason(txtDeleteReason.getText());
+        if (deleting && txtDeleteText.isVisible()) {
+            goalBase.setDeleteText(txtDeleteText.getText());
         }
     }
     
@@ -380,14 +384,36 @@ public class AddEditController extends FrameworkController {
         }
     }
     
+    private void populateGoalStatus() {
+        if (rgStatus != null) {
+            for (GoalStatus goalStatus : GoalStatus.values()) {
+                Radio radio = new Radio(goalStatus.toString());
+                radio.setValue(goalStatus);
+                rgStatus.appendChild(radio);
+            }
+        }
+    }
+    
+    private void populateDeleteReason() {
+        if (rgDeleteReason != null) {
+            for (DeleteReason deleteReason : DeleteReason.values()) {
+                Radio radio = new Radio(getLabel("reason." + deleteReason.name()));
+                radio.setValue(deleteReason);
+                rgDeleteReason.appendChild(radio);
+            }
+        }
+    }
+    
     public void updateDeleteState() {
         if (rgStatus != null) {
-            deleting = rgStatus.getSelectedIndex() == 4;
+            Radio radio = rgStatus.getSelectedItem();
+            deleting = radio != null && radio.getValue() == GoalStatus.D;
             lblDeleteReason.setVisible(deleting);
             rgDeleteReason.setVisible(deleting);
-            boolean isOther = rgDeleteReason != null && rgDeleteReason.getSelectedIndex() == 2;
-            rowDeleteReason.setVisible(isOther);
-            txtDeleteReason.setFocus(isOther);
+            radio = rgDeleteReason == null ? null : rgDeleteReason.getSelectedItem();
+            boolean isOther = radio != null && radio.getValue() == DeleteReason.O;
+            rowDeleteText.setVisible(isOther);
+            txtDeleteText.setFocus(isOther);
             Clients.resize(root);
         }
     }
@@ -496,8 +522,8 @@ public class AddEditController extends FrameworkController {
             return isRequired(rgDeleteReason);
         }
         
-        if (rowDeleteReason != null && rowDeleteReason.isVisible() && txtDeleteReason.getText().trim().isEmpty()) {
-            return isRequired(txtDeleteReason);
+        if (rowDeleteText != null && rowDeleteText.isVisible() && txtDeleteText.getText().trim().isEmpty()) {
+            return isRequired(txtDeleteText);
         }
         
         return true;
@@ -520,15 +546,17 @@ public class AddEditController extends FrameworkController {
         }
     }
     
-    private void initRadio(Radiogroup rg, String code, int defaultIndex) {
+    private void initRadio(Radiogroup rg, Object value, int defaultIndex) {
         if (rg == null) {
             return;
         }
         
-        for (Radio radio : rg.getItems()) {
-            if (StrUtil.piece(radio.getValue().toString(), ";").equals(code)) {
-                rg.setSelectedItem(radio);
-                return;
+        if (value != null) {
+            for (Radio radio : rg.getItems()) {
+                if (value.equals(radio.getValue())) {
+                    rg.setSelectedItem(radio);
+                    return;
+                }
             }
         }
         

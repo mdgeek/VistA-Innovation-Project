@@ -25,6 +25,7 @@ import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.mbroker.BrokerSession;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalStatus;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
@@ -117,7 +118,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                         step.setFollowupDate(FMDate.fromString(pcs[8]));
                         step.setUpdatedBy(pcs[9]);
                         step.setLastUpdated(FMDate.fromString(pcs[10]));
-                        step.setStatus(pcs[11]);
+                        step.setStatus(toEnum(pcs[11], GoalStatus.class));
                         step.setProvider(pcs[12]);
                         break;
                     }
@@ -139,7 +140,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     goal.setProvider(pcs[6]);
                     goal.setStartDate(FMDate.fromString(pcs[7]));
                     goal.setFollowupDate(FMDate.fromString(pcs[8]));
-                    goal.setStatus(pcs[9]);
+                    goal.setStatus(toEnum(pcs[9], GoalStatus.class));
                     goal.setNumber(NumberUtils.toFloat(pcs[10]));
                     state = 1;
                     break;
@@ -184,6 +185,17 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         }
         
         return null;
+    }
+    
+    /**
+     * Returns the enumeration value corresponding to the code.
+     * 
+     * @param code The code.
+     * @param clazz The enumeration class.
+     * @return The enumeration value.
+     */
+    public <T extends Enum<T>> T toEnum(String code, Class<T> clazz) {
+        return Enum.<T> valueOf(clazz, StrUtil.piece(code, ";"));
     }
     
     public List<GoalType> getGoalTypes() {
@@ -259,14 +271,14 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         Review review = includeReview ? goal.getLastReview() : null;
         FMDate reviewDate = review == null ? null : review.getReviewed();
         String reviewNote = review == null ? null : review.getNote();
-        String result = service.callRPC("BEHOPGAP EDITGOAL", goal.getIEN(), goal.getFollowupDate(), goal.getStatusCode(),
+        String result = service.callRPC("BEHOPGAP EDITGOAL", goal.getIEN(), goal.getFollowupDate(), goal.getStatus().name(),
             reviewDate, reviewNote);
         checkResult(result);
     }
     
     public void deleteGoal(Goal goal) {
-        String result = service.callRPC("BEHOPGAP DELGOAL", goal.getIEN(), service.getUserId(), FMDate.now(),
-            goal.getDeleteCode(), goal.getDeleteReason());
+        String result = service.callRPC("BEHOPGAP DELGOAL", goal.getIEN(), service.getUserId(), FMDate.now(), goal
+                .getDeleteReason().name(), goal.getDeleteText());
         checkResult(result);
     }
     
@@ -318,13 +330,13 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
     
     public void updateStep(Step step) {
         String result = service.callRPC("BEHOPGAP EDITSTEP", step.getGoal().getIEN(), step.getFacilityIEN(), step.getIEN(),
-            step.getFollowupDate(), step.getStatusCode());
+            step.getFollowupDate(), step.getStatus().name());
         checkResult(result);
     }
     
     public void deleteStep(Step step) {
         String result = service.callRPC("BEHOPGAP DELSTEP", step.getGoal().getIEN(), step.getFacilityIEN(), step.getIEN(),
-            service.getUserId(), FMDate.now(), step.getDeleteCode(), step.getDeleteReason());
+            service.getUserId(), FMDate.now(), step.getDeleteReason().name(), step.getDeleteText());
         checkResult(result);
     }
     

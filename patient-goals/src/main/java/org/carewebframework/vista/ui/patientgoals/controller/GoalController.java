@@ -33,6 +33,7 @@ import org.carewebframework.vista.ui.patientgoals.controller.AddEditController.A
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
+import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalStatus;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
@@ -371,13 +372,15 @@ public class GoalController extends AbstractGridController<Goal> {
         ISecurityDomain domain = user.getSecurityDomain();
         goalBase.setFacility(domain.getLogicalId() + ";" + domain.getName());
         goalBase.setProvider(user.getLogicalId() + ";" + user.getFullName());
-        goalBase.setStatus(goalGroup == GoalGroup.ACTIVE ? "A;ACTIVE" : "I;INACTIVE");
         goalBase.setStartDate(FMDate.today());
         
         if (goalGroup == GoalGroup.DECLINED) {
+            goalBase.setStatus(GoalStatus.D);
             goalBase.getTypes().add(service.getGoalType("OTHER"));
             goalBase.setFollowupDate(new FMDate(DateUtil.addDays(new Date(), 14, true)));
             goalBase.setReason(StrUtil.getLabel("vistaPatientGoals.new_declined.reason"));
+        } else {
+            goalBase.setStatus(goalGroup == GoalGroup.ACTIVE ? GoalStatus.A : GoalStatus.S);
         }
     }
     

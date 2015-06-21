@@ -65,39 +65,20 @@
 					<label value="${$composer.getLabel('status')}" />
 					<cell>
 						<radiogroup id="rgStatus" hflex="1"
-							sclass="vistaPatientGoals-framed">
-							<radio value="A;ACTIVE"
-								label="${$composer.getLabel('status.active')}" />
-							<radio value="ME;GOAL MET"
-								label="${$composer.getLabel('status.met')}" />
-							<radio value="S;GOAL STOPPED"
-								label="${$composer.getLabel('status.stopped')}" />
-							<radio value="MA;MAINTAINING GOAL"
-								label="${$composer.getLabel('status.maintaining')}" />
-							<radio value="D;DELETED/ENTERED IN ERROR"
-								label="${$composer.getLabel('status.deleted')}" />
-						</radiogroup>
+							sclass="vistaPatientGoals-framed" />
 					</cell>
 					<label id="lblDeleteReason"
 						value="${$composer.getLabel('deleteReason')}" />
 					<cell>
 						<radiogroup id="rgDeleteReason" hflex="1"
-							sclass="vistaPatientGoals-framed">
-							<radio
-								value="W;WRONG ${$composer.isType('GOAL') ? 'PATIENT' : 'GOAL' }"
-								label="${$composer.getLabel('reason.wrong')}" />
-							<radio value="D;DUPLICATE"
-								label="${$composer.getLabel('reason.duplicate')}" />
-							<radio value="O;OTHER"
-								label="${$composer.getLabel('reason.other')}" />
-						</radiogroup>
+							sclass="vistaPatientGoals-framed" />
 					</cell>
 				</row>
-				<row id="rowDeleteReason" valign="middle"
+				<row id="rowDeleteText" valign="middle"
 					unless="${$composer.isType('DECLINED')}">
 					<cell colspan="2" />
 					<label value="${$composer.getLabel('otherReason')}" />
-					<textbox id="txtDeleteReason" hflex="1"
+					<textbox id="txtDeleteText" hflex="1"
 						maxlength="120"
 						w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 				</row>

@@ -23,7 +23,24 @@ public class GoalBase implements Comparable<GoalBase> {
     
     public enum GoalGroup {
         ACTIVE, INACTIVE, DECLINED
-    };
+    }
+    
+    public enum GoalStatus {
+        A, ME, S, MA, D;
+        
+        public boolean isInactive() {
+            return "SME".contains(name());
+        }
+        
+        @Override
+        public String toString() {
+            return StrUtil.getLabel("vistaPatientGoals.status." + name() + ".label");
+        }
+    }
+    
+    public enum DeleteReason {
+        W, D, O;
+    }
     
     private String ien;
     
@@ -43,7 +60,7 @@ public class GoalBase implements Comparable<GoalBase> {
     
     private FMDate followupDate;
     
-    private String status;
+    private GoalStatus status;
     
     private float number;
     
@@ -51,9 +68,9 @@ public class GoalBase implements Comparable<GoalBase> {
     
     private String facility;
     
-    private String delete;
+    private DeleteReason deleteReason;
     
-    private String deleteReason;
+    private String deleteText;
     
     private final List<GoalType> types = new ArrayList<>();
     
@@ -81,7 +98,7 @@ public class GoalBase implements Comparable<GoalBase> {
     }
     
     public GoalGroup getGroup() {
-        return "SME".contains(getStatusCode()) ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
+        return status == null || status.isInactive() ? GoalGroup.INACTIVE : GoalGroup.ACTIVE;
     }
     
     public String getIEN() {
@@ -160,15 +177,11 @@ public class GoalBase implements Comparable<GoalBase> {
         this.followupDate = followupDate;
     }
     
-    public String getStatusCode() {
-        return getPiece(status, 1);
+    public GoalStatus getStatus() {
+        return status;
     }
     
-    public String getStatusText() {
-        return getPiece(status, 2);
-    }
-    
-    public void setStatus(String status) {
+    public void setStatus(GoalStatus status) {
         this.status = status;
     }
     
@@ -208,28 +221,24 @@ public class GoalBase implements Comparable<GoalBase> {
         this.facility = facility;
     }
     
-    public String getDeleteCode() {
-        return getPiece(delete, 1);
-    }
-    
-    public String getDeleteText() {
-        return getPiece(delete, 2);
-    }
-    
-    public void setDelete(String delete) {
-        this.delete = delete;
-    }
-    
-    public String getDeleteReason() {
+    public DeleteReason getDeleteReason() {
         return deleteReason;
     }
     
-    public void setDeleteReason(String deleteReason) {
+    public void setDeleteReason(DeleteReason deleteReason) {
         this.deleteReason = deleteReason;
     }
     
+    public String getDeleteText() {
+        return deleteText;
+    }
+    
+    public void setDeleteText(String deleteText) {
+        this.deleteText = deleteText;
+    }
+    
     public boolean isDeleted() {
-        return "D".equals(getStatusCode());
+        return status == GoalStatus.D;
     }
     
     private String getPiece(String value, int pc) {
