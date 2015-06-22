@@ -47,7 +47,6 @@ import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Tabpanel;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.impl.InputElement;
 
 /**
  * Controller for adding or editing goals and steps
@@ -229,7 +228,7 @@ public class AddEditController extends FrameworkController {
         if (goalBase.getGroup() == GoalGroup.INACTIVE) {
             ZKUtil.disableChildren(form, true);
         } else {
-            initFocus(comp);
+            ZKUtil.focusFirst(comp, true);
         }
     }
     
@@ -583,29 +582,6 @@ public class AddEditController extends FrameworkController {
         if (target != null && message != null) {
             Clients.wrongValue(target, message);
         }
-    }
-    
-    /**
-     * Sets focus to first enabled input element (searches recursively).
-     * 
-     * @param parent Parent component.
-     */
-    private boolean initFocus(Component parent) {
-        for (Component child : parent.getChildren()) {
-            if (child instanceof InputElement) {
-                InputElement ele = (InputElement) child;
-                
-                if (!ele.isDisabled() && !ele.isReadonly()) {
-                    ele.focus();
-                    ele.select();
-                    return true;
-                }
-            } else if (initFocus(child)) {
-                return true;
-            }
-        }
-        
-        return false;
     }
     
     /**
