@@ -34,6 +34,7 @@ public class ManagePickListController extends BgoBaseController<Object> {
         @Override
         protected void renderItem(Listitem item, String s) {
             item.setId(StrUtil.piece(s, U));
+            item.setLabel(StrUtil.piece(s, U, 2));
         }
     };
     
@@ -73,9 +74,9 @@ public class ManagePickListController extends BgoBaseController<Object> {
      * Loads form data from the current chief complaint
      */
     private void loadForm() {
-        lstItems.setModel(complaints);
+        lstItems.setModel((ListModelList<?>) null);
         getComplaints(complaints);
-        //lstItems.setModel(complaints);
+        lstItems.setModel(complaints);
         updateControls();
     }
     

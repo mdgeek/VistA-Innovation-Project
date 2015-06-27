@@ -20,7 +20,7 @@
 				</radiogroup>
 			</hlayout>
 			<hlayout hflex="1">
-				<listbox id="lstItems" width="300px" vflex="1" />
+				<listbox id="lstItems" width="300px" height="500px" vflex="1" />
 				<toolbar mold="panel" orient="vertical" hflex="1"
 					vflex="1" style="border-left: solid 0px; padding-left: 15px">
 					<button id="btnAdd" label="Add" width="60px" />

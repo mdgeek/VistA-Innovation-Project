@@ -3,7 +3,7 @@
 	xmlns:w="http://www.zkoss.org/2005/zk/client"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
-	<window id="addSymWin" title="Add Symptom" width="310px" height="500px" mold="bootstrap"
+	<window id="addSymWin" title="Add Symptom" width="310px" mold="bootstrap"
 		apply="${rpmsAddCCPLSymptomController}">
 		<vlayout>
 			<hlayout hflex="1">
