@@ -5,7 +5,7 @@
 	<style
 		src="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.0" />
 
-	<menupopup id="contextMenu">
+	<menupopup id="contextMenu" sclass="cwf-menupopup-noimages">
 		<menuitem id="mnuAdd" label="Add"
 			forward="onClick=btnAdd.onClick" />
 		<menuitem id="mnuEdit" label="Edit"
@@ -18,19 +18,17 @@
 
 	<panel id="panel" height="100%" width="100%"
 		apply="${vistaFamilyHistoryMemberController}" context="contextMenu">
-		<toolbar id="toolbar" align="center" style="background:lightblue">
-			<span style="float:left">
-				<image id="imgMain" height="32px"
-					src="~./org/carewebframework/vista/ui/familyhistory/familyhistory.png" />
-				<label value="Family History" id="lblInfo"
-					style="font-size:16px;font-weight:bold;color:purple" />
-			</span>
+		<toolbar id="toolbar" sclass="alert-info">
+			<image id="imgMain" height="32px" style="padding: 0 5px 0 5px;"
+				src="~./org/carewebframework/vista/ui/familyhistory/familyhistory.png" />
+			<label value="Family History" id="lblInfo"
+				style="font-size:1.5em;font-weight:bold;" />
 			<span style="float:right;">
-				<button id="btnAdd" label="Add"
+				<button id="btnAdd" label="Add" zclass="btn" sclass="btn-default btn-sm"
 					tooltiptext="${labels.vistaFamilyHistory.button.add.tooltip}" />
-				<button id="btnEdit" label="Edit"
+				<button id="btnEdit" label="Edit" zclass="btn" sclass="btn-default btn-sm"
 					tooltiptext="${labels.vistaFamilyHistory.button.edit.tooltip}" />
-				<button id="btnDelete" label="Delete"
+				<button id="btnDelete" label="Delete" zclass="btn" sclass="btn-default btn-sm"
 					tooltiptext="${labels.vistaFamilyHistory.button.delete.tooltip}" />
 			</span>
 		</toolbar>
