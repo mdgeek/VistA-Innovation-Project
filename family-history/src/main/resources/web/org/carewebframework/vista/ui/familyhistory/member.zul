@@ -1,0 +1,57 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<style
+		src="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.0" />
+
+	<menupopup id="contextMenu">
+		<menuitem id="mnuAdd" label="Add"
+			forward="onClick=btnAdd.onClick" />
+		<menuitem id="mnuEdit" label="Edit"
+			forward="onClick=btnEdit.onClick" />
+		<menuitem id="mnuDelete" label="Delete"
+			forward="onClick=btnDelete.onClick" />
+		<menuseparator />
+		<menuitem id="mnuRefresh" label="Refresh" />
+	</menupopup>
+
+	<panel id="panel" height="100%" width="100%"
+		apply="${vistaFamilyHistoryMemberController}" context="contextMenu">
+		<toolbar id="toolbar" align="center" style="background:lightblue">
+			<span style="float:left">
+				<image id="imgMain" height="32px"
+					src="~./org/carewebframework/vista/ui/familyhistory/familyhistory.png" />
+				<label value="Family History" id="lblInfo"
+					style="font-size:16px;font-weight:bold;color:purple" />
+			</span>
+			<span style="float:right;">
+				<button id="btnAdd" label="Add"
+					tooltiptext="${labels.vistaFamilyHistory.button.add.tooltip}" />
+				<button id="btnEdit" label="Edit"
+					tooltiptext="${labels.vistaFamilyHistory.button.edit.tooltip}" />
+				<button id="btnDelete" label="Delete"
+					tooltiptext="${labels.vistaFamilyHistory.button.delete.tooltip}" />
+			</span>
+		</toolbar>
+		<panelchildren>
+			<div height="100%" width="100%">
+				<label id="lblMessage" />
+				<grid id="grid" vflex="1" oddRowSclass="none"
+					sclass="vistaFamilyHistory-grid cwf-grid-nohover">
+					<columns>
+						<column width="30px" />
+						<column id="" align="center" label="Relation" />
+						<column id="" align="center" label="Name" />
+						<column id="" align="center" label="Status" />
+						<column id="" align="center" label="Age at Death" />
+						<column id="" align="center" label="Cause of Death" />
+						<column id="" align="center" label="Multiple Birth" />
+						<column id="" align="center" label="Multiple Birth Type" />
+					</columns>
+					<rows></rows>
+				</grid>
+			</div>
+		</panelchildren>
+	</panel>
+</zk>

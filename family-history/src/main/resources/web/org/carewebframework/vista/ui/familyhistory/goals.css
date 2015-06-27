@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+.vistaPatientGoals .z-toolbar label {
+	margin-bottom: 0;
+}
+
+.vistaPatientGoals .z-toolbar .z-separator {
+	margin-right: 5px;
+}
+
+.vistaPatientGoals-grid .z-column-content {
+	white-space: pre-line;
+	line-height: 15px;
+	padding: 3px;
+}
+
+.vistaPatientGoals-grid .z-column-sorticon {
+	position: inherit;
+	top: inherit;
+	left: inherit;
+	float: right;
+}
+
+.vistaPatientGoals-grid .z-row {
+	border-bottom: 1px solid lightgray;
+}
+
+.vistaPatientGoals-grid .z-grid {
+	margin-left: 49px;
+}
+
+.vistaPatientGoals-grid .z-cell .glyphicon-plus {
+	color: green;
+}
+
+.vistaPatientGoals-grid .z-cell .glyphicon-pencil {
+	color: brown;
+}
+
+.vistaPatientGoals-grid .z-cell .glyphicon-info-sign {
+	color: darkblue; 
+	margin: 4px 4px 0 2px; 
+	zoom: 120%;
+	float: left;
+}
+
+.vistaPatientGoals-grid .z-detail-outer {
+	padding: 0;
+}
+
+.vistaPatientGoals-bold,
+.vistaPatientGoals-bold * {
+	font-weight: bold!important;
+}
+
+.vistaPatientGoals-types span {
+	 display: block;
+}
+.vistaPatientGoals-types {
+	overflow: auto; 
+	-webkit-column-count: 3; 
+	-moz-column-count: 3; 
+	column-count: 3;
+}
+
+.vistaPatientGoals .z-radiogroup input[checked] + label {
+	font-weight: bold;
+}
+
+.vistaPatientGoals-framed {
+	border: 1px solid lightgray;
+	padding: 5px;
+}
+
+.vistaPatientGoals-grid .z-row:hover .z-detail-outer,
+.vistaPatientGoals-grid .z-row:hover .z-idspace {
+	background: lightgray;
+}
+
+

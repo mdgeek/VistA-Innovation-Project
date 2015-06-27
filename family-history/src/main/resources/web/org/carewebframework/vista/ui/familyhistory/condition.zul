@@ -1,0 +1,19 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n="native"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
+                        http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<idspace
+		apply="${vistaFamilyHistoryConditionController}">
+		<label id="lblMessage" style="visibility:hidden; padding:0; height:0" />
+		<grid id="grid" oddRowSclass="none"
+			sclass="vistaFamilyHistory-grid cwf-grid-nohover">
+			<columns>
+				<column hflex="1" align="center" label="Condition" />
+				<column hflex="min" align="center" label="Age at Dx" />
+				<column hflex="min" align="center" label="Last Modified" />
+				<column hflex="min" align="center" label="ICD9" />
+			</columns>
+		</grid>
+	</idspace>
+</zk>

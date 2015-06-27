@@ -10,11 +10,11 @@
 	<beans profile="root">
 
 		<cwp:plugin id="vistaFamilyHistory" name="Family History"
-			url="~./org/carewebframework/vista/ui/familyhistory/main.zul">
+			url="~./org/carewebframework/vista/ui/familyhistory/member.zul">
 			<cwp:serialization>
 			</cwp:serialization>
 			<cwp:resource>
-				<cwp:help-resource module="vistaFamilyHistorylHelp" />
+				<cwp:help-resource module="vistaFamilyHistoryHelp" />
 			</cwp:resource>
 		</cwp:plugin>
 
@@ -22,8 +22,26 @@
 
 	<beans profile="desktop">
 
-		<bean name="vistaFamilyHistoryController"
-			class="org.carewebframework.vista.ui.familyhistory.MainController" scope="prototype" />
+		<bean id="vistaFamilyHistoryService" lazy-init="true"
+			class="org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService">
+			<constructor-arg ref="fhirClient" />
+			<constructor-arg ref="brokerSession" />
+		</bean>
+
+		<bean name="vistaFamilyHistoryMemberController"
+			class="org.carewebframework.vista.ui.familyhistory.controller.MemberController" scope="prototype">
+			<constructor-arg ref="vistaFamilyHistoryService" />
+			<property name="rowRenderer">
+				<bean class="org.carewebframework.vista.ui.familyhistory.view.MemberRenderer" />
+			</property>
+		</bean>
+
+		<bean name="vistaFamilyHistoryConditionController"
+			class="org.carewebframework.vista.ui.familyhistory.controller.ConditionController" scope="prototype">
+			<property name="rowRenderer">
+				<bean class="org.carewebframework.vista.ui.familyhistory.view.ConditionRenderer" />
+			</property>
+		</bean>
 
 	</beans>
 </beans>

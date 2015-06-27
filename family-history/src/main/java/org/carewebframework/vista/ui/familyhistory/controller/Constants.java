@@ -7,15 +7,21 @@
  * Disclaimer of Warranty and Limitation of Liability available at
  * http://www.carewebframework.org/licensing/disclaimer.
  */
-package org.carewebframework.vista.ui.familyhistory;
+package org.carewebframework.vista.ui.familyhistory.controller;
 
-import org.carewebframework.shell.plugins.PluginController;
+import org.carewebframework.ui.zk.ZKUtil;
 
-/**
- * Controller for Family History main display.
- */
-public class MainController extends PluginController {
+public class Constants {
     
-    private static final long serialVersionUID = 1L;
+    public static final String RESOURCE_PATH = ZKUtil.getResourcePath(Constants.class, 1);
     
+    public static final String PROPERTY_PREFIX = "BGOFH";
+    
+    public static final String LABEL_PREFIX = "vistaFamilyHistory";
+    
+    /**
+     * Enforce static class.
+     */
+    private Constants() {
+    };
 }
