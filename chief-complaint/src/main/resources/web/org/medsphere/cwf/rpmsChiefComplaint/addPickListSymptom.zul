@@ -3,7 +3,7 @@
 	xmlns:w="http://www.zkoss.org/2005/zk/client"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
-	<window id="addSymWin" title="Add Symptom" width="310px"
+	<window id="addSymWin" title="Add Symptom" width="310px" height="500px" mold="bootstrap"
 		apply="${rpmsAddCCPLSymptomController}">
 		<vlayout>
 			<hlayout hflex="1">
@@ -11,10 +11,8 @@
 					<separator height="8px" />
 					<div
 						style="text-align: center; display:inline:inline-block">
-						<label id="lbl" pre="true" />
-						<zscript>
-							lbl.setValue("Chief\nComplaint");
-						</zscript>
+						<label id="lbl" pre="true" 
+							value="${labels.rpmschiefcomplaint.addpicklistsymptom.label}"/>
 					</div>
 				</div>
 				<div>

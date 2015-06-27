@@ -2,52 +2,51 @@
 <?taglib uri="http://www.carewebframework.org/tld/core" prefix="rc"?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul"
-	xmlns:h="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://www.w3.org/1999/xhtml"
 	xmlns:w="http://www.zkoss.org/2005/zk/client"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
-	
-	<menupopup id="contextMenu">
-		<menuitem id="mnuAdd" label="Add" forward="onClick=btnAdd.onClick"/>
-		<menuitem id="mnuEdit" label="Edit" forward="onClick=btnEdit.onClick"/>
-		<menuitem id="mnuDelete" label="Delete" forward="onClick=btnDelete.onClick"/>
-		<menuseparator/>
-		<menuitem id="mnuVisitDetail" label="Visit Detail"/>
+
+	<menupopup id="contextMenu" sclass="cwf-menupopup-noimages">
+		<menuitem id="mnuAdd" label="Add"
+			forward="onClick=btnAdd.onClick" />
+		<menuitem id="mnuEdit" label="Edit"
+			forward="onClick=btnEdit.onClick" />
+		<menuitem id="mnuDelete" label="Delete"
+			forward="onClick=btnDelete.onClick" />
+		<menuseparator />
+		<menuitem id="mnuVisitDetail" label="Visit Detail" />
 		<menuitem id="mnuManagePickList" label="Manage Pick Lists" />
-		<menuseparator/>
-		<menuitem id="mnuRefresh" label="Refresh"/>
+		<menuseparator />
+		<menuitem id="mnuRefresh" label="Refresh" />
 	</menupopup>
 
-	<panel id="panel" height="100%" width="100%" apply="${rpmsChiefComplaintController}" context="contextMenu">
-		<toolbar align="center"  style="background:lightblue">
-			<span style="float:left">
-			<image id="imgMain" src="~./org/medsphere/cwf/rpmsChiefComplaint/pain.ico"/>
-			<label value="Chief Complaint" id="lblInfo" style="font-size:16px;font-weight:bold;color:purple"/>
-                       </span>
+	<panel id="panel" height="100%" width="100%"
+		apply="${rpmsChiefComplaintController}" context="contextMenu">
+		<toolbar sclass="alert-info">
+				<image id="imgMain" height="32px" style="padding: 0 5px 0 5px;"
+					src="~./org/medsphere/cwf/rpmsChiefComplaint/pain.png" />
+				<label value="Chief Complaint" id="lblInfo"
+					style="font-size:1.5em;font-weight:bold;" />
 			<span style="float:right;">
-				<button id="btnAdd" label="Add"
-					tooltiptext="${labels.rpmschiefcomplaint.plugin.button.add.tooltip}" />
-				<button id="btnEdit" label="Edit"
-					tooltiptext="${labels.rpmschiefcomplaint.plugin.button.edit.tooltip}" />
-				<button id="btnDelete" label="Delete"
-					tooltiptext="${labels.rpmschiefcomplaint.plugin.button.delete.tooltip}" />	
+				<button id="btnAdd" label="Add" zclass="btn" sclass="btn-default btn-sm"
+					tooltiptext="${labels.rpmschiefcomplaint.button.add.tooltip}" />
+				<button id="btnEdit" label="Edit" zclass="btn" sclass="btn-default btn-sm"
+					tooltiptext="${labels.rpmschiefcomplaint.button.edit.tooltip}" />
+				<button id="btnDelete" label="Delete" zclass="btn" sclass="btn-default btn-sm"
+					tooltiptext="${labels.rpmschiefcomplaint.button.delete.tooltip}" />
 			</span>
 		</toolbar>
 		<panelchildren>
 			<div height="100%" width="100%">
-				<label id="lblMessage" visible="false" />
-				<listbox id="lbCC" sizedByContent="false"
-					hflex="1" vflex="1"
-					sclass="chiefComplaint-list"
-					multiple="false" 
-					emptyMessage="No complaints found for this patient.">
+				<label id="lblMessage" visible="false" zclass="z-toolbar" style="text-align: center"/>
+				<listbox id="lbCC" sizedByContent="false" hflex="1"
+					vflex="1" sclass="chiefComplaint-list" multiple="false">
 					<listhead sizable="true">
 						<listheader width="18%" label="Author"
-							id="author" 
-							forward="onSort=lbCC.onSort"/>
+							id="author" forward="onSort=lbCC.onSort" />
 						<listheader label="Chief Complaint"
-							id="chiefComplaint" 
-							forward="onSort=lbCC.onSort"/>
+							id="chiefComplaint" forward="onSort=lbCC.onSort" />
 					</listhead>
 				</listbox>
 			</div>
@@ -55,12 +54,13 @@
 	</panel>
 
 	<style>
-		.chiefComplaint-list .z-listcell {
-			border-right: solid lightgray 1px;
-			white-space: pre;
-		}
-		.chiefComplaint-list-current {
-			color: blue;
+		.chiefComplaint-list .z-listcell { 
+			border-right: solid lightgray 1px; 
+			white-space: pre; 
+		} 
+		
+		.chiefComplaint-list-current { 
+			color: blue; 
 		}
 
 	</style>

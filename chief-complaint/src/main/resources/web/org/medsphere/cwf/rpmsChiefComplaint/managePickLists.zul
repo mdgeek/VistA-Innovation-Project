@@ -4,20 +4,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 	<window title="Manage Chief Complaint Pick Lists" width="400px"
-		apply="${rpmsManageCCPickListsController}">
+		mold="bootstrap" apply="${rpmsManageCCPickListsController}">
 		<vlayout>
 			<hlayout hflex="1">
 				<radiogroup id="rgComplaints">
-					<space spacing="5px" />
-					<radio label="Symptoms" selected="true" forward="onClick=parent.onClick"/>
-					<space spacing="10px" />
-					<radio label="Diagnosis" forward="onClick=parent.onClick"/>
-					<space spacing="10px" />
-					<radio label="Patient Request" forward="onClick=parent.onClick"/>
+					<space width="5px" />
+					<radio label="Symptoms" selected="true"
+						forward="onClick=parent.onClick" />
+					<space width="10px" />
+					<radio label="Diagnosis"
+						forward="onClick=parent.onClick" />
+					<space width="10px" />
+					<radio label="Patient Request"
+						forward="onClick=parent.onClick" />
 				</radiogroup>
 			</hlayout>
 			<hlayout hflex="1">
-				<listbox id="lstItems" width="300px" rows="12"/>
+				<listbox id="lstItems" width="300px" vflex="1" />
 				<toolbar mold="panel" orient="vertical" hflex="1"
 					vflex="1" style="border-left: solid 0px; padding-left: 15px">
 					<button id="btnAdd" label="Add" width="60px" />

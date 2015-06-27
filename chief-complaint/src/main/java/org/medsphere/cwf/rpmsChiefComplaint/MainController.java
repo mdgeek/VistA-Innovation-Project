@@ -21,7 +21,6 @@ import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.event.EventManager;
-import org.carewebframework.api.event.EventUtil;
 import org.carewebframework.api.event.IEventManager;
 import org.carewebframework.api.event.IGenericEvent;
 import org.carewebframework.cal.api.encounter.EncounterContext;
@@ -41,6 +40,7 @@ import org.carewebframework.ui.zk.ListUtil;
 import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ReportBox;
 import org.carewebframework.ui.zk.RowComparator;
+import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.api.encounter.EncounterFlag;
 import org.carewebframework.vista.ui.encounter.EncounterUtil;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCCompleteEvent;
@@ -50,6 +50,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listheader;
@@ -88,6 +89,8 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     private Menuitem mnuVisitDetail;
     
     private Menuitem mnuManagePickList;
+    
+    private Label lblMessage;
     
     private String pccEvent = "";
     
@@ -275,6 +278,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         IEventManager eventManager = EventManager.getInstance();
         encounter = EncounterContext.getActiveEncounter();
         patient = PatientContext.getActivePatient();
+        
         if (patient != null) {
             
             String sHandle = encounter == null ? "" : encounter.getId().getIdPart();
@@ -369,7 +373,12 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     @Override
     public void refresh() {
-        if (!noRefresh && !(EncounterContext.getActiveEncounter() == null)) {
+        if (PatientContext.getActivePatient() == null) {
+            showMessage("@reporting.plugin.patient.selection.required");
+        } else if (EncounterContext.getActiveEncounter() == null) {
+            showMessage("You must first select an encounter.");
+        } else if (!noRefresh) {
+            showMessage(null);
             saveGridState();
             loadChiefComplaints(true);
             restoreGridState();
@@ -431,7 +440,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     private void loadChiefComplaints(List<String> data) {
         String t = "";
         chiefList.clear();
-        EventUtil.status("Loading Chief Complaint Data");
+        showMessage("Loading Chief Complaint Data");
         
         try {
             if (data == null || data.isEmpty()) {
@@ -458,7 +467,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         } finally {
             refreshList();
         }
-        EventUtil.status();
+        showMessage(null);
         
     }
     
@@ -565,6 +574,30 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     public void onClick$mnuRefresh() {
         doCommand(Command.REFRESH);
+    }
+    
+    /**
+     * Displays a message to client.
+     *
+     * @param message Message to display to client. If null, message label is hidden.
+     */
+    public void showMessage(String message) {
+        showMessage(message, false);
+    }
+    
+    /**
+     * Displays a message to client.
+     *
+     * @param message Message to display to client. If null, message label is hidden.
+     * @param isError If true, highlight the message to indicate an error.
+     */
+    public void showMessage(String message, boolean isError) {
+        message = StrUtil.formatMessage(message);
+        boolean show = message != null;
+        lblMessage.setVisible(show);
+        lblMessage.setValue(show ? message : "");
+        ZKUtil.toggleSclass(lblMessage, "alert-danger", "alert-warning", isError);
+        lbCC.setVisible(!show);
     }
     
 }
