@@ -29,6 +29,14 @@
 	margin-left: 49px;
 }
 
+.vistaFamilyHistory-grid .z-cell .glyphicon-plus {
+	color: green;
+}
+
+.vistaFamilyHistory-grid .z-cell .glyphicon-pencil {
+	color: brown;
+}
+
 .vistaFamilyHistory-grid .z-detail-outer {
 	padding: 0;
 }

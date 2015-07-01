@@ -25,7 +25,7 @@ import org.zkoss.zul.ListModelList;
 /**
  * Controller for goal steps.
  */
-public class StepController extends AbstractGridController<Step> {
+public class StepController extends AbstractGridController<Step, Step> {
     
     private static final long serialVersionUID = 1L;
     
@@ -89,6 +89,11 @@ public class StepController extends AbstractGridController<Step> {
     public void cleanup() {
         super.cleanup();
         goalController.unregisterStepController(this);
+    }
+    
+    @Override
+    protected List<Step> toModel(List<Step> results) {
+        return results;
     }
     
 }

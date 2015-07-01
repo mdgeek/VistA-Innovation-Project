@@ -13,8 +13,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import ca.uhn.fhir.model.dstu2.resource.Patient;
-
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.domain.IUser;
 import org.carewebframework.api.query.AbstractQueryFilter;
@@ -45,17 +43,16 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.OpenEvent;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Checkbox;
-import org.zkoss.zul.Detail;
-import org.zkoss.zul.Group;
-import org.zkoss.zul.Row;
 import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Toolbar;
 
+import ca.uhn.fhir.model.dstu2.resource.Patient;
+
 /**
  * Controller for patient goals list.
  */
-public class GoalController extends AbstractGridController<Goal> {
+public class GoalController extends AbstractGridController<Goal, Goal> {
     
     private static final long serialVersionUID = 1L;
     
@@ -201,7 +198,7 @@ public class GoalController extends AbstractGridController<Goal> {
     };
     
     /**
-     * Custom comparator used to sort the column display the goal types.
+     * Custom comparator used to sort the column displaying the goal types.
      */
     private static final Comparator<List<GoalType>> typeComparator = new Comparator<List<GoalType>>() {
         
@@ -480,18 +477,7 @@ public class GoalController extends AbstractGridController<Goal> {
      * @param open True = expand operation. False = collapse operation.
      */
     private void openAll(boolean open) {
-        for (Row row : getGrid().getRows().<Row> getChildren()) {
-            Detail detail = row.getDetailChild();
-            
-            if (row instanceof Group) {
-                ((Group) row).setOpen(open);
-            }
-            
-            if (detail != null) {
-                detail.setOpen(open);
-            }
-        }
-        
+        GoalRenderer.expandAll(getGrid(), open, open);
         groupActive.setOpen(open);
         groupDeclined.setOpen(open);
         groupInactive.setOpen(open);
@@ -532,10 +518,8 @@ public class GoalController extends AbstractGridController<Goal> {
      */
     @Override
     public String onPatientChanging(boolean silent) {
-        if (!silent
-                && pendingChanges()
-                && !PromptDialog.confirm("@vistaPatientGoals.changes_pending.message",
-                    "@vistaPatientGoals.changes_pending.title")) {
+        if (!silent && pendingChanges() && !PromptDialog.confirm("@vistaPatientGoals.changes_pending.message",
+            "@vistaPatientGoals.changes_pending.title")) {
             return StrUtil.getLabel("vistaPatientGoals.changes_pending.response");
         }
         
@@ -578,6 +562,11 @@ public class GoalController extends AbstractGridController<Goal> {
     public void refresh() {
         super.refresh();
         Clients.resize(root);
+    }
+    
+    @Override
+    protected List<Goal> toModel(List<Goal> results) {
+        return results;
     }
     
 }

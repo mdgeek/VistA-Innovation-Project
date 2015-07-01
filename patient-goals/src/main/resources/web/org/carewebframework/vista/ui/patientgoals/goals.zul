@@ -13,7 +13,7 @@
 			</tabs>
 			<tabpanels>
 				<tabpanel>
-					<toolbar id="toolbar" mold="panel">
+					<toolbar id="toolbar" mold="panel" sclass="alert-info">
 						<a id="btnNewGoal"
 							label="${labels.vistaPatientGoals.goal.toolbar.new_goal.label}"
 							sclass="${$composer.getLabelClass(0)}"

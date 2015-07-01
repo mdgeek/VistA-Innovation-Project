@@ -9,24 +9,22 @@
  */
 package org.carewebframework.vista.ui.familyhistory.controller;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import org.carewebframework.api.query.DateQueryFilter.DateType;
+import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.vista.ui.familyhistory.model.ConditionModel;
+
+import org.zkoss.zul.ListModelList;
 
 import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
 import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory.Condition;
 
-import org.carewebframework.api.query.DateQueryFilter.DateType;
-import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
-import org.carewebframework.ui.zk.ZKUtil;
-
-import org.zkoss.zul.Detail;
-import org.zkoss.zul.ListModelList;
-
 /**
  * Controller for goal steps.
  */
-public class ConditionController extends AbstractGridController<Condition> {
+public class ConditionController extends AbstractGridController<Condition, ConditionModel> {
     
     private static final long serialVersionUID = 1L;
     
@@ -39,7 +37,8 @@ public class ConditionController extends AbstractGridController<Condition> {
      * <li>Prefix for label references:
      * {@value org.carewebframework.vista.ui.familyhistory.controller.Constants#LABEL_PREFIX}</li>
      * <li>Prefix for property values:
-     * {@value org.carewebframework.vista.ui.familyhistory.controller.Constants#PROPERTY_PREFIX}</li>
+     * {@value org.carewebframework.vista.ui.familyhistory.controller.Constants#PROPERTY_PREFIX}
+     * </li>
      * <li>No style sheet for printing (for now).</li>
      * <li>Does not respond to patient context changes.</li>
      * <li>Auto-wires comparators to grid columns.</li>
@@ -62,24 +61,31 @@ public class ConditionController extends AbstractGridController<Condition> {
     protected void initializeController() {
         super.initializeController();
         memberController = MemberController.findController(root);
-        Collection<Condition> conditions = ((FamilyMemberHistory) arg.get("member")).getCondition();
-        setModel(new ListModelList<Condition>(conditions));
-    }
-    
-    @Override
-    protected void modelChanged(List<Condition> filteredModel) {
-        ZKUtil.findAncestor(root, Detail.class).invalidate();
-        super.modelChanged(filteredModel);
+        List<Condition> conditions = ((FamilyMemberHistory) arg.get("member")).getCondition();
+        setModel(toModel(conditions));
     }
     
     /**
      * Extracts the date of the specified type from the condition. This isn't currently used because
      * there is no filter for date ranges.
      */
-    
     @Override
-    public Date getDateByType(Condition condition, DateType dateType) {
+    public Date getDateByType(ConditionModel model, DateType dateType) {
         return null;
+    }
+    
+    /**
+     * Converts query results to model.
+     */
+    @Override
+    protected ListModelList<ConditionModel> toModel(List<Condition> results) {
+        ListModelList<ConditionModel> model = new ListModelList<>();
+        
+        for (Condition condition : results) {
+            model.add(new ConditionModel(condition));
+        }
+        
+        return model;
     }
     
 }

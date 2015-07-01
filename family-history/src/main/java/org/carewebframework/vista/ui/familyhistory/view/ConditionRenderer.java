@@ -9,21 +9,18 @@
  */
 package org.carewebframework.vista.ui.familyhistory.view;
 
-import ca.uhn.fhir.model.dstu2.composite.AgeDt;
-import ca.uhn.fhir.model.dstu2.composite.CodingDt;
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory.Condition;
-import ca.uhn.fhir.model.primitive.StringDt;
-
-import org.carewebframework.fhir.common.FhirUtil;
 import org.carewebframework.ui.zk.AbstractRowRenderer;
+import org.carewebframework.vista.ui.familyhistory.model.ConditionModel;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Row;
 
 /**
  * Renderer for a goal.
  */
-public class ConditionRenderer extends AbstractRowRenderer<Condition, Object> {
+public class ConditionRenderer extends AbstractRowRenderer<ConditionModel, Object> {
     
     public ConditionRenderer() {
         super(null, null);
@@ -33,17 +30,18 @@ public class ConditionRenderer extends AbstractRowRenderer<Condition, Object> {
      * Render the row for the specified family member condition.
      *
      * @param row Row to render.
-     * @param condition A family member condition.
+     * @param model A family member condition.
      */
     @Override
-    public Component renderRow(Row row, Condition condition) {
-        createCell(row, condition.getNote()); // provider narrative
-        AgeDt age = FhirUtil.getTyped(condition.getOnset(), AgeDt.class);
-        StringDt ageStr = FhirUtil.getTyped(condition.getOnset(), StringDt.class);
-        createCell(row, age != null ? age.getValue() : ageStr != null ? ageStr.getValue() : null); // age at diagnosis
+    public Component renderRow(Row row, ConditionModel model) {
+        A anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-pencil");
+        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onReviewCondition", model.getCondition());
+        createCell(row, null).appendChild(anchor);
+        createCell(row, model.getNote()); // provider narrative
+        createCell(row, model.getOnsetAge()); // age at diagnosis
         createCell(row, ""); // date modified
-        CodingDt coding = FhirUtil.getCoding(condition.getType().getCoding(), "http://hl7.org/fhir/sid/icd-9");
-        createCell(row, coding == null ? null : coding.getCode()); // icd
+        createCell(row, model.getICD9()); // icd
         row.setSclass("alert-warning");
         return null;
     }

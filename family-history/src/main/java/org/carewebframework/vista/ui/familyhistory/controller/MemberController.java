@@ -9,24 +9,31 @@
  */
 package org.carewebframework.vista.ui.familyhistory.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
-import ca.uhn.fhir.model.dstu2.resource.Patient;
+import java.util.List;
 
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.familyhistory.model.MemberModel;
 import org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService;
+import org.carewebframework.vista.ui.familyhistory.view.MemberRenderer;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Toolbar;
+
+import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
+import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory.Condition;
+import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 /**
  * Controller for Family History main display.
  */
-public class MemberController extends AbstractGridController<FamilyMemberHistory> {
+public class MemberController extends AbstractGridController<FamilyMemberHistory, MemberModel> {
     
     private static final long serialVersionUID = 1L;
     
@@ -54,18 +61,63 @@ public class MemberController extends AbstractGridController<FamilyMemberHistory
         setPaging(false);
     }
     
-    public void onClick$mnuRefresh() {
-        refresh();
+    @Override
+    public void initializeController() {
+        super.initializeController();
+        MemberRenderer.setExpandDetail(getGrid(), true);
+    }
+    
+    /**
+     * Expands all details.
+     */
+    public void onClick$btnExpandAll() {
+        MemberRenderer.expandAll(getGrid(), true, null);
+    }
+    
+    /**
+     * Collapses all details.
+     */
+    public void onClick$btnCollapseAll() {
+        MemberRenderer.expandAll(getGrid(), false, null);
+    }
+    
+    public void onReviewMember(Event event) {
+        FamilyMemberHistory fhx = (FamilyMemberHistory) event.getData();
+    }
+    
+    public void onAddCondition(Event event) {
+        FamilyMemberHistory fhx = (FamilyMemberHistory) event.getData();
+    }
+    
+    public void onReviewCondition(Event event) {
+        Condition condition = (Condition) event.getData();
     }
     
     @Override
-    public Date getDateByType(FamilyMemberHistory fhx, DateType dateType) {
-        return fhx.getDate();
+    public Date getDateByType(MemberModel member, DateType dateType) {
+        return member.getMember().getDate();
     }
     
     @Override
     public void onPatientChanged(Patient patient) {
         super.onPatientChanged(patient);
         ZKUtil.disableChildren(toolbar, patient == null);
+    }
+    
+    @Override
+    public void refresh() {
+        super.refresh();
+        Clients.resize(root);
+    }
+    
+    @Override
+    protected List<MemberModel> toModel(List<FamilyMemberHistory> results) {
+        List<MemberModel> model = new ArrayList<>();
+        
+        for (FamilyMemberHistory fhx : results) {
+            model.add(new MemberModel(fhx));
+        }
+        
+        return model;
     }
 }

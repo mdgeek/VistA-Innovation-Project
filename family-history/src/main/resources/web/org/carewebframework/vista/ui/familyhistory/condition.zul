@@ -3,15 +3,17 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
                         http://www.zkoss.org/2005/zul/zul.xsd">
 
-	<idspace
-		apply="${vistaFamilyHistoryConditionController}">
-		<label id="lblMessage" style="visibility:hidden; padding:0; height:0" />
+	<idspace apply="${vistaFamilyHistoryConditionController}">
+		<label id="lblMessage"
+			style="visibility:hidden; padding:0; height:0" />
 		<grid id="grid" oddRowSclass="none"
 			sclass="vistaFamilyHistory-grid cwf-grid-nohover">
 			<columns>
-				<column hflex="1" align="center" label="Condition" />
+				<column align="center" width="50px" label="Review" />
+				<column hflex="1" align="left" label="Condition" />
 				<column hflex="min" align="center" label="Age at Dx" />
-				<column hflex="min" align="center" label="Last Modified" />
+				<column hflex="min" align="center"
+					label="Last Modified" />
 				<column hflex="min" align="center" label="ICD9" />
 			</columns>
 		</grid>

@@ -10,39 +10,24 @@
 package org.carewebframework.vista.ui.familyhistory.view;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import ca.uhn.fhir.model.dstu2.composite.CodingDt;
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.familyhistory.model.MemberModel;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Row;
 
 /**
  * Renderer for a goal.
  */
-public class MemberRenderer extends AbstractRowRenderer<FamilyMemberHistory, Object> {
+public class MemberRenderer extends AbstractRowRenderer<MemberModel, Object> {
     
     private static final String CONDITION_VIEW = ZKUtil.getResourcePath(MemberRenderer.class, 1) + "condition.zul";
-    
-    public static String concatCoding(List<CodingDt> codings) {
-        StringBuilder sb = new StringBuilder();
-        
-        for (CodingDt coding : codings) {
-            if (sb.length() > 0) {
-                sb.append(", ");
-            }
-            
-            sb.append(coding.getDisplay());
-        }
-        
-        return sb.toString();
-    }
     
     public MemberRenderer() {
         super(null, null);
@@ -52,12 +37,20 @@ public class MemberRenderer extends AbstractRowRenderer<FamilyMemberHistory, Obj
      * Render the row for the specified family member history.
      *
      * @param row Row to render.
-     * @param member A family member history.
+     * @param model A family member history.
      */
     @Override
-    public Component renderRow(Row row, FamilyMemberHistory member) {
-        createCell(row, concatCoding(member.getRelationship().getCoding()));
-        createCell(row, member.getName());
+    public Component renderRow(Row row, MemberModel model) {
+        A anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-pencil");
+        anchor.addForward(Events.ON_CLICK, "root", "onReviewMember", model.getMember());
+        createCell(row, "").appendChild(anchor);
+        anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-plus");
+        anchor.addForward(Events.ON_CLICK, "root", "onAddCondition", model.getMember());
+        createCell(row, "").appendChild(anchor);
+        createCell(row, model.getRelationships());
+        createCell(row, model.getName());
         createCell(row, ""); // status (deceased/living)
         createCell(row, ""); // age at death (range)
         createCell(row, ""); // cause of death
@@ -68,12 +61,11 @@ public class MemberRenderer extends AbstractRowRenderer<FamilyMemberHistory, Obj
     }
     
     @Override
-    protected void renderDetail(Detail detail, FamilyMemberHistory member) {
-        if (!member.getCondition().isEmpty()) {
+    protected void renderDetail(Detail detail, MemberModel model) {
+        if (!model.getMember().getCondition().isEmpty()) {
             Map<Object, Object> args = new HashMap<>();
-            args.put("member", member);
+            args.put("member", model.getMember());
             ZKUtil.loadZulPage(CONDITION_VIEW, detail, args);
-            detail.setOpen(true);
         }
     }
 }
