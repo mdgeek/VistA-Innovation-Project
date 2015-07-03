@@ -1,0 +1,58 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window title="Add/Edit Relation" mold="bootstrap" width="500px"
+		apply="${vistaFamilyHistoryAddEditMemberController}">
+		<grid id="grid" sclass="cwf-grid-nohover" oddRowSclass="none">
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row sclass="vistaFamilyHistory-row-header">
+					<label value="Relation:" />
+					<label value="Name:" />
+				</row>
+				<row>
+					<combobox id="cboRelationship" hflex="1" />
+					<textbox id="txtName" hflex="1" />
+				</row>
+				<row sclass="vistaFamilyHistory-row-header">
+					<label value="Status:" />
+					<label value="Cause of Death:" />
+				</row>
+				<row>
+					<combobox id="cboStatus" hflex="1" />
+					<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
+				</row>
+				<row visible="false"
+					sclass="vistaFamilyHistory-row-header">
+					<label />
+					<label value="Age at Death:" />
+				</row>
+				<row visible="false">
+					<span />
+					<combobox id="cboAgeAtDeath" hflex="1" />
+				</row>
+				<row sclass="vistaFamilyHistory-row-header">
+					<label value="Multiple Birth:" />
+					<label value="Multiple Birth Type:" />
+				</row>
+				<row>
+					<combobox id="cboMultipleBirth" hflex="1" />
+					<combobox id="cboMultipleBirthType" hflex="1" />
+				</row>
+				<row>
+					<span />
+				</row>
+			</rows>
+		</grid>
+		<toolbar align="end">
+			<button id="btnSave" label="Save" zclass="btn"
+				sclass="btn-success btn-sm" disabled="true" />
+			<button id="btnCancel" label="Cancel" zclass="btn"
+				sclass="btn-danger btn-sm" />
+		</toolbar>
+	</window>
+</zk>

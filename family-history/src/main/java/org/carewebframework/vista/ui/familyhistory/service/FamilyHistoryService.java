@@ -11,23 +11,38 @@ package org.carewebframework.vista.ui.familyhistory.service;
 
 import java.util.List;
 
+import org.carewebframework.api.query.AbstractQueryService;
+import org.carewebframework.api.query.IQueryContext;
+import org.carewebframework.api.query.IQueryResult;
+import org.carewebframework.api.query.QueryUtil;
+import org.carewebframework.fhir.common.FhirUtil;
+import org.carewebframework.vista.api.util.FileEntry;
+import org.carewebframework.vista.mbroker.BrokerSession;
+
 import ca.uhn.fhir.model.api.Bundle;
 import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 import ca.uhn.fhir.rest.client.GenericClient;
 import ca.uhn.fhir.rest.gclient.IQuery;
 
-import org.carewebframework.api.query.AbstractQueryService;
-import org.carewebframework.api.query.IQueryContext;
-import org.carewebframework.api.query.IQueryResult;
-import org.carewebframework.api.query.QueryUtil;
-import org.carewebframework.fhir.common.FhirUtil;
-import org.carewebframework.vista.mbroker.BrokerSession;
-
 /**
  * Data service for patient goals.
  */
 public class FamilyHistoryService extends AbstractQueryService<FamilyMemberHistory> {
+    
+    private static volatile boolean initChoices = true;
+    
+    private static final Object mutex = new Object();
+    
+    private static List<FileEntry> relationshipChoices;
+    
+    private static List<FileEntry> statusChoices;
+    
+    private static List<FileEntry> ageAtDeathChoices;
+    
+    private static List<FileEntry> multipleBirthChoices;
+    
+    private static List<FileEntry> multipleBirthTypeChoices;
     
     private final GenericClient fhirClient;
     
@@ -53,4 +68,48 @@ public class FamilyHistoryService extends AbstractQueryService<FamilyMemberHisto
         return QueryUtil.packageResult(list);
     }
     
+    public List<FileEntry> getStatusChoices() {
+        initChoices();
+        return statusChoices;
+    }
+    
+    public List<FileEntry> getRelationshipChoices() {
+        initChoices();
+        return relationshipChoices;
+    }
+    
+    public List<FileEntry> getAgeAtDeathChoices() {
+        initChoices();
+        return ageAtDeathChoices;
+    }
+    
+    public List<FileEntry> getMultipleBirthChoices() {
+        initChoices();
+        return multipleBirthChoices;
+    }
+    
+    public List<FileEntry> getMultipleBirthTypeChoices() {
+        initChoices();
+        return multipleBirthTypeChoices;
+    }
+    
+    private void initChoices() {
+        if (initChoices) {
+            synchronized (mutex) {
+                if (initChoices) {
+                    relationshipChoices = FileEntry.fromList(brokerSession.callRPCList("RGUTRPC FILENT", null, "9999999.36"),
+                        true);
+                    statusChoices = FileEntry.fromList(brokerSession.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".04"),
+                        true);
+                    ageAtDeathChoices = FileEntry.fromList(brokerSession.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".05"),
+                        true);
+                    multipleBirthChoices = FileEntry
+                            .fromList(brokerSession.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".07"), true);
+                    multipleBirthTypeChoices = FileEntry
+                            .fromList(brokerSession.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".08"), true);
+                    initChoices = false;
+                }
+            }
+        }
+    }
 }

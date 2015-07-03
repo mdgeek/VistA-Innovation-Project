@@ -81,16 +81,23 @@ public class MemberController extends AbstractGridController<FamilyMemberHistory
         MemberRenderer.expandAll(getGrid(), false, null);
     }
     
+    public void onClick$btnNewMember() {
+        AddEditMemberController.execute(null, service);
+    }
+    
     public void onReviewMember(Event event) {
         FamilyMemberHistory fhx = (FamilyMemberHistory) event.getData();
+        AddEditMemberController.execute(fhx, service);
     }
     
     public void onAddCondition(Event event) {
         FamilyMemberHistory fhx = (FamilyMemberHistory) event.getData();
+        AddEditConditionController.execute(null, service);
     }
     
     public void onReviewCondition(Event event) {
         Condition condition = (Condition) event.getData();
+        AddEditConditionController.execute(condition, service);
     }
     
     @Override

@@ -1,0 +1,21 @@
+<window title="Health Condition" width="400px" mold="bootstrap"
+	contentStyle="padding:5px" apply="${vistaFamilyHistoryAddEditConditionController}">
+	<vlayout>
+		<label value="Coded Description:" />
+		<bandbox id="txtCondition" readonly="true" hflex="1" />
+		<space />
+		<label value="Provider Narrative:" />
+		<textbox id="txtNarrative" hflex="1" />
+		<toolbar>
+			<label value="Age at Diagnosis:" />
+			<intbox id="intAgeAtDiagnosis" width="30px" />
+			<checkbox id="chkAgeApproximate" label="Approximate" />
+			<span style="float:right">
+				<button id="btnSave" label="Save" zclass="btn"
+					sclass="btn-success btn-sm" />
+				<button id="btnCancel" label="Cancel" zclass="btn"
+					sclass="btn-danger btn-sm" />
+			</span>
+		</toolbar>
+	</vlayout>
+</window>

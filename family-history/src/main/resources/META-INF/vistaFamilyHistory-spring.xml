@@ -15,6 +15,7 @@
 			</cwp:serialization>
 			<cwp:resource>
 				<cwp:help-resource module="vistaFamilyHistoryHelp" />
+				<cwp:css-resource url="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.2" />
 			</cwp:resource>
 		</cwp:plugin>
 
@@ -28,20 +29,26 @@
 			<constructor-arg ref="brokerSession" />
 		</bean>
 
-		<bean name="vistaFamilyHistoryMemberController"
-			class="org.carewebframework.vista.ui.familyhistory.controller.MemberController" scope="prototype">
+		<bean name="vistaFamilyHistoryMemberController" scope="prototype"
+			class="org.carewebframework.vista.ui.familyhistory.controller.MemberController">
 			<constructor-arg ref="vistaFamilyHistoryService" />
 			<property name="rowRenderer">
 				<bean class="org.carewebframework.vista.ui.familyhistory.view.MemberRenderer" />
 			</property>
 		</bean>
 
-		<bean name="vistaFamilyHistoryConditionController"
-			class="org.carewebframework.vista.ui.familyhistory.controller.ConditionController" scope="prototype">
+		<bean name="vistaFamilyHistoryConditionController" scope="prototype"
+			class="org.carewebframework.vista.ui.familyhistory.controller.ConditionController">
 			<property name="rowRenderer">
 				<bean class="org.carewebframework.vista.ui.familyhistory.view.ConditionRenderer" />
 			</property>
 		</bean>
+		
+		<bean name="vistaFamilyHistoryAddEditMemberController" scope="prototype" 
+			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditMemberController" />
+
+		<bean name="vistaFamilyHistoryAddEditConditionController" scope="prototype" 
+			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditConditionController" />
 
 	</beans>
 </beans>
