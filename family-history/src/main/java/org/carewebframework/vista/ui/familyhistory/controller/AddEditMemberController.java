@@ -14,23 +14,27 @@ import java.util.List;
 import java.util.Map;
 
 import org.carewebframework.ui.FrameworkController;
+import org.carewebframework.ui.zk.ListUtil;
 import org.carewebframework.ui.zk.PopupDialog;
 import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.api.util.FileEntry;
+import org.carewebframework.vista.ui.common.FileEntryRenderer;
+import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 import org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Grid;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Row;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
-
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
 
 /**
  * Controller for adding new members.
@@ -40,6 +44,8 @@ public class AddEditMemberController extends FrameworkController {
     private static final long serialVersionUID = 1L;
     
     private static final String DIALOG = Constants.RESOURCE_PATH + "addEditMember.zul";
+    
+    private static final FileEntryRenderer renderer = new FileEntryRenderer();
     
     // Start of auto-wire section
     
@@ -53,7 +59,15 @@ public class AddEditMemberController extends FrameworkController {
     
     private Combobox cboMultipleBirthType;
     
+    private Label lblMultipleBirthType;
+    
     private Textbox txtName;
+    
+    private Textbox txtCauseOfDeath;
+    
+    private Row rowDeath1;
+    
+    private Row rowDeath2;
     
     private Button btnSave;
     
@@ -61,7 +75,7 @@ public class AddEditMemberController extends FrameworkController {
     
     // End of auto-wire section
     
-    private FamilyMemberHistory member;
+    private FamilyMember member;
     
     private boolean cancelled;
     
@@ -69,7 +83,7 @@ public class AddEditMemberController extends FrameworkController {
     
     private FamilyHistoryService service;
     
-    public static FamilyMemberHistory execute(FamilyMemberHistory fhx, FamilyHistoryService service) {
+    public static FamilyMember execute(FamilyMember fhx, FamilyHistoryService service) {
         Map<Object, Object> args = new HashMap<>();
         args.put("member", fhx);
         args.put("service", service);
@@ -81,38 +95,84 @@ public class AddEditMemberController extends FrameworkController {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        member = (FamilyMemberHistory) arg.get("member");
+        member = (FamilyMember) arg.get("member");
+        
+        if (member == null) {
+            member = new FamilyMember();
+        }
+        
         service = (FamilyHistoryService) arg.get("service");
+        populateComboboxes();
+        Events.postEvent("onDeferredInit", comp, null);
+    }
+    
+    /**
+     * Deferred to allow combo boxes to fully render.
+     */
+    public void onDeferredInit() {
         populateControls();
-        ZKUtil.wireChangeEvents(grid.getRows(), comp, Events.ON_CHANGE);
+    }
+    
+    private void updateControls() {
+        FileEntry status = getFileEntry(cboStatus);
+        boolean deceased = status != null && "D".equals(status.getInternalValue());
+        rowDeath1.setVisible(deceased);
+        rowDeath2.setVisible(deceased);
+        txtCauseOfDeath.setVisible(deceased);
+        FileEntry multipleBirth = getFileEntry(cboMultipleBirth);
+        boolean multiple = multipleBirth != null && "Y".equals(multipleBirth.getInternalValue());
+        lblMultipleBirthType.setVisible(multiple);
+        cboMultipleBirthType.setVisible(multiple);
+    }
+    
+    private void populateComboboxes() {
+        populateCombobox(cboRelationship, service.getRelationshipChoices());
+        populateCombobox(cboStatus, service.getStatusChoices());
+        populateCombobox(cboAgeAtDeath, service.getAgeAtDeathChoices());
+        populateCombobox(cboMultipleBirth, service.getMultipleBirthChoices());
+        populateCombobox(cboMultipleBirthType, service.getMultipleBirthTypeChoices());
+    }
+    
+    private void populateCombobox(Combobox cbo, List<FileEntry> choices) {
+        cbo.setItemRenderer(renderer);
+        cbo.setModel(new ListModelList<>(choices, false));
+        cbo.setReadonly(true);
     }
     
     private void populateControls() {
-        populateCombobox(cboRelationship, service.getRelationshipChoices(),
-            member.getRelationship().getCodingFirstRep().getDisplay());
-        populateCombobox(cboStatus, service.getStatusChoices(), null);
-        populateCombobox(cboAgeAtDeath, service.getAgeAtDeathChoices(), null);
-        populateCombobox(cboMultipleBirth, service.getMultipleBirthChoices(), null);
-        populateCombobox(cboMultipleBirthType, service.getMultipleBirthTypeChoices(), null);
+        ListUtil.selectComboboxData(cboRelationship, member.getRelationship());
+        ListUtil.selectComboboxData(cboStatus, member.getStatus());
+        ListUtil.selectComboboxData(cboAgeAtDeath, member.getAgeAtDeath());
+        ListUtil.selectComboboxData(cboMultipleBirth, member.getMultipleBirth());
+        ListUtil.selectComboboxData(cboMultipleBirthType, member.getMultipleBirthType());
         txtName.setText(member.getName());
+        txtCauseOfDeath.setText(member.getCauseOfDeath());
+        updateControls();
+        ZKUtil.wireChangeEvents(grid.getRows(), root, Events.ON_CHANGE);
     }
     
-    private void populateCombobox(Combobox cbo, List<FileEntry> choices, String current) {
-        cbo.setModel(new ListModelList<>(choices, false));
-        cbo.setReadonly(true);
-        
-        if (current != null) {
-            for (Comboitem item : cbo.getItems()) {
-                if (item.<FileEntry> getValue().getInternalValue().equals(current)) {
-                    cbo.setSelectedItem(item);
-                    break;
-                }
-            }
-        }
+    /**
+     * Allows combobox to fully render before setting current value.
+     * 
+     * @param event
+     */
+    public void onComboInit(Event event) {
+        Combobox cbo = (Combobox) event.getData();
+        ListUtil.selectComboboxData(cbo, cbo.getAttribute("current"));
     }
     
     private void populateFamilyMember() {
+        member.setRelationship(getFileEntry(cboRelationship));
+        member.setStatus(getFileEntry(cboStatus));
+        member.setAgeAtDeath(getFileEntry(cboAgeAtDeath));
+        member.setMultipleBirth(getFileEntry(cboMultipleBirth));
+        member.setMultipleBirthType(getFileEntry(cboMultipleBirthType));
+        member.setName(txtName.getText().trim());
+    }
     
+    private FileEntry getFileEntry(Combobox cbo) {
+        Comboitem item = cbo.getSelectedItem();
+        return item == null ? null : (FileEntry) item.getValue();
     }
     
     private boolean confirmCancel() {
@@ -139,6 +199,14 @@ public class AddEditMemberController extends FrameworkController {
     
     public void onClick$btnCancel() {
         close(true);
+    }
+    
+    public void onSelect$cboStatus() {
+        updateControls();
+    }
+    
+    public void onSelect$cboMultipleBirth() {
+        updateControls();
     }
     
     private void close(boolean cancelled) {

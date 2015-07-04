@@ -14,7 +14,7 @@ import java.util.Map;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.ui.zk.ZKUtil;
-import org.carewebframework.vista.ui.familyhistory.model.MemberModel;
+import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Events;
@@ -25,7 +25,7 @@ import org.zkoss.zul.Row;
 /**
  * Renderer for a goal.
  */
-public class MemberRenderer extends AbstractRowRenderer<MemberModel, Object> {
+public class MemberRenderer extends AbstractRowRenderer<FamilyMember, Object> {
     
     private static final String CONDITION_VIEW = ZKUtil.getResourcePath(MemberRenderer.class, 1) + "condition.zul";
     
@@ -37,34 +37,34 @@ public class MemberRenderer extends AbstractRowRenderer<MemberModel, Object> {
      * Render the row for the specified family member history.
      *
      * @param row Row to render.
-     * @param model A family member history.
+     * @param member A family member history.
      */
     @Override
-    public Component renderRow(Row row, MemberModel model) {
+    public Component renderRow(Row row, FamilyMember member) {
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        anchor.addForward(Events.ON_CLICK, "root", "onReviewMember", model.getMember());
+        anchor.addForward(Events.ON_CLICK, "root", "onReviewMember", member);
         createCell(row, "").appendChild(anchor);
         anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-plus");
-        anchor.addForward(Events.ON_CLICK, "root", "onAddCondition", model.getMember());
+        anchor.addForward(Events.ON_CLICK, "root", "onAddCondition", member);
         createCell(row, "").appendChild(anchor);
-        createCell(row, model.getRelationships());
-        createCell(row, model.getName());
-        createCell(row, ""); // status (deceased/living)
-        createCell(row, ""); // age at death (range)
-        createCell(row, ""); // cause of death
-        createCell(row, ""); // multiple birth
-        createCell(row, ""); // multiple birth type
+        createCell(row, member.getRelationship());
+        createCell(row, member.getName());
+        createCell(row, member.getStatus());
+        createCell(row, member.getAgeAtDeath());
+        createCell(row, member.getCauseOfDeath());
+        createCell(row, member.getMultipleBirth());
+        createCell(row, member.getMultipleBirthType());
         row.setSclass("alert-info");
         return row;
     }
     
     @Override
-    protected void renderDetail(Detail detail, MemberModel model) {
-        if (!model.getMember().getCondition().isEmpty()) {
+    protected void renderDetail(Detail detail, FamilyMember member) {
+        if (!member.getConditions().isEmpty()) {
             Map<Object, Object> args = new HashMap<>();
-            args.put("member", model.getMember());
+            args.put("member", member);
             ZKUtil.loadZulPage(CONDITION_VIEW, detail, args);
         }
     }

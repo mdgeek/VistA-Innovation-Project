@@ -25,7 +25,6 @@
 
 		<bean id="vistaFamilyHistoryService" lazy-init="true"
 			class="org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService">
-			<constructor-arg ref="fhirClient" />
 			<constructor-arg ref="brokerSession" />
 		</bean>
 

@@ -14,17 +14,15 @@ import java.util.List;
 
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
-import org.carewebframework.vista.ui.familyhistory.model.ConditionModel;
+import org.carewebframework.vista.ui.familyhistory.model.Condition;
+import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 
 import org.zkoss.zul.ListModelList;
-
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory;
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory.Condition;
 
 /**
  * Controller for goal steps.
  */
-public class ConditionController extends AbstractGridController<Condition, ConditionModel> {
+public class ConditionController extends AbstractGridController<Condition, Condition> {
     
     private static final long serialVersionUID = 1L;
     
@@ -61,7 +59,7 @@ public class ConditionController extends AbstractGridController<Condition, Condi
     protected void initializeController() {
         super.initializeController();
         memberController = MemberController.findController(root);
-        List<Condition> conditions = ((FamilyMemberHistory) arg.get("member")).getCondition();
+        List<Condition> conditions = ((FamilyMember) arg.get("member")).getConditions();
         setModel(toModel(conditions));
     }
     
@@ -70,22 +68,16 @@ public class ConditionController extends AbstractGridController<Condition, Condi
      * there is no filter for date ranges.
      */
     @Override
-    public Date getDateByType(ConditionModel model, DateType dateType) {
-        return null;
+    public Date getDateByType(Condition condition, DateType dateType) {
+        return condition.getDateModified();
     }
     
     /**
      * Converts query results to model.
      */
     @Override
-    protected ListModelList<ConditionModel> toModel(List<Condition> results) {
-        ListModelList<ConditionModel> model = new ListModelList<>();
-        
-        for (Condition condition : results) {
-            model.add(new ConditionModel(condition));
-        }
-        
-        return model;
+    protected ListModelList<Condition> toModel(List<Condition> results) {
+        return new ListModelList<>(results);
     }
     
 }

@@ -14,11 +14,10 @@ import java.util.Map;
 
 import org.carewebframework.ui.FrameworkController;
 import org.carewebframework.ui.zk.PopupDialog;
+import org.carewebframework.vista.ui.familyhistory.model.Condition;
 import org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService;
 
 import org.zkoss.zul.Window;
-
-import ca.uhn.fhir.model.dstu2.resource.FamilyMemberHistory.Condition;
 
 /**
  * Controller for adding new conditions.

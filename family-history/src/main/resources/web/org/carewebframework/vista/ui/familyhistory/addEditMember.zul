@@ -20,24 +20,22 @@
 				</row>
 				<row sclass="vistaFamilyHistory-row-header">
 					<label value="Status:" />
-					<label value="Cause of Death:" />
 				</row>
 				<row>
 					<combobox id="cboStatus" hflex="1" />
-					<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
 				</row>
-				<row visible="false"
+				<row id="rowDeath1"
 					sclass="vistaFamilyHistory-row-header">
-					<label />
+					<label value="Cause of Death:" />
 					<label value="Age at Death:" />
 				</row>
-				<row visible="false">
-					<span />
+				<row id="rowDeath2">
+					<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
 					<combobox id="cboAgeAtDeath" hflex="1" />
 				</row>
 				<row sclass="vistaFamilyHistory-row-header">
 					<label value="Multiple Birth:" />
-					<label value="Multiple Birth Type:" />
+					<label id="lblMultipleBirthType" value="Multiple Birth Type:" />
 				</row>
 				<row>
 					<combobox id="cboMultipleBirth" hflex="1" />
