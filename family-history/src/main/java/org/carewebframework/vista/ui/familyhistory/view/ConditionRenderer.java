@@ -10,7 +10,6 @@
 package org.carewebframework.vista.ui.familyhistory.view;
 
 import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.vista.ui.familyhistory.model.Condition;
@@ -47,8 +46,8 @@ public class ConditionRenderer extends AbstractRowRenderer<Condition, Object> {
         anchor.setIconSclass("glyphicon glyphicon-remove");
         anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onDeleteCondition", condition);
         cell.appendChild(anchor);
-        String note = StringUtils.trimToNull(condition.getNote());
-        createCell(row, condition.getSCTText() + (note == null ? "" : ", " + note));
+        createCell(row, condition.getSCTText());
+        createCell(row, condition.getNote());
         boolean approxAge = BooleanUtils.toBoolean(condition.isAgeApproximate());
         String onsetAge = condition.getAgeAtOnset() == null ? "" : (approxAge ? "~" : "") + condition.getAgeAtOnset();
         createCell(row, onsetAge);

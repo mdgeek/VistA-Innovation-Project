@@ -11,14 +11,20 @@
 			<columns>
 				<column width="50px" align="center"
 					label="${labels.vistaFamilyHistory.condition.column.review.label}" />
-				<column hflex="1" align="left"
+				<column id="sCTText" hflex="1" align="left"
 					label="${labels.vistaFamilyHistory.condition.column.condition.label}" />
-				<column hflex="min" align="center"
+				<column id="note" hflex="1" align="left"
+					label="${labels.vistaFamilyHistory.condition.column.note.label}" />
+				<column id="ageAtOnset" hflex="min" align="center"
 					label="${labels.vistaFamilyHistory.condition.column.age_at_dx.label}" />
-				<column hflex="min" align="center"
+				<column id="dateModified" hflex="min" align="center"
 					label="${labels.vistaFamilyHistory.condition.column.last_modified.label}" />
-				<column hflex="min" align="center"
+				<column id="iCD9" hflex="min" align="center"
 					label="${labels.vistaFamilyHistory.condition.column.icd9.label}" />
+				<column visible="false">
+					<custom-attributes getter="getIEN"
+						natural="ascending" />
+				</column>
 			</columns>
 			<rows />
 		</grid>

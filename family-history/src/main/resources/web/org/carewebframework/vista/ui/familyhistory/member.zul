@@ -33,10 +33,7 @@
 				<grid id="grid" vflex="1" oddRowSclass="none"
 					sclass="vistaFamilyHistory-grid cwf-grid-nohover">
 					<columns>
-						<column width="30px">
-							<custom-attributes getter="getIEN"
-								natural="ascending" />
-						</column>
+						<column width="30px" />
 						<column align="center" width="50px"
 							label="${labels.vistaFamilyHistory.member.column.review.label}" />
 						<column align="center" width="50px"
@@ -55,6 +52,10 @@
 							label="${labels.vistaFamilyHistory.member.column.multiple_birth.label}" />
 						<column align="center" id="multipleBirthType"
 							label="${labels.vistaFamilyHistory.member.column.multiple_birth_type.label}" />
+						<column visible="false">
+							<custom-attributes getter="getIEN"
+								natural="ascending" />
+						</column>
 					</columns>
 					<rows />
 				</grid>
