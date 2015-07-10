@@ -9,12 +9,16 @@
  */
 package org.carewebframework.vista.ui.familyhistory.view;
 
+import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
+
 import org.carewebframework.ui.zk.AbstractRowRenderer;
 import org.carewebframework.vista.ui.familyhistory.model.Condition;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
+import org.zkoss.zul.Cell;
 import org.zkoss.zul.Row;
 
 /**
@@ -34,12 +38,20 @@ public class ConditionRenderer extends AbstractRowRenderer<Condition, Object> {
      */
     @Override
     public Component renderRow(Row row, Condition condition) {
+        Cell cell = createCell(row, null);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onReviewCondition", condition);
-        createCell(row, null).appendChild(anchor);
-        createCell(row, condition.getNote());
-        createCell(row, condition.getAgeAtOnset());
+        cell.appendChild(anchor);
+        anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-remove");
+        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onDeleteCondition", condition);
+        cell.appendChild(anchor);
+        String note = StringUtils.trimToNull(condition.getNote());
+        createCell(row, condition.getSCTText() + (note == null ? "" : ", " + note));
+        boolean approxAge = BooleanUtils.toBoolean(condition.isAgeApproximate());
+        String onsetAge = condition.getAgeAtOnset() == null ? "" : (approxAge ? "~" : "") + condition.getAgeAtOnset();
+        createCell(row, onsetAge);
         createCell(row, condition.getDateModified());
         createCell(row, condition.getICD9());
         row.setSclass("alert-warning");

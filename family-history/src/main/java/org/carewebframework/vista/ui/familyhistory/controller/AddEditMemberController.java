@@ -9,37 +9,26 @@
  */
 package org.carewebframework.vista.ui.familyhistory.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.carewebframework.ui.FrameworkController;
+import org.carewebframework.ui.FormController;
+import org.carewebframework.ui.zk.LabeledElement;
 import org.carewebframework.ui.zk.ListUtil;
-import org.carewebframework.ui.zk.PopupDialog;
-import org.carewebframework.ui.zk.PromptDialog;
-import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.api.util.FileEntry;
 import org.carewebframework.vista.ui.common.FileEntryRenderer;
 import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 import org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService;
 
-import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Comboitem;
-import org.zkoss.zul.Grid;
-import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Window;
 
 /**
  * Controller for adding new members.
  */
-public class AddEditMemberController extends FrameworkController {
+public class AddEditMemberController extends FormController<FamilyMember> {
     
     private static final long serialVersionUID = 1L;
     
@@ -59,73 +48,46 @@ public class AddEditMemberController extends FrameworkController {
     
     private Combobox cboMultipleBirthType;
     
-    private Label lblMultipleBirthType;
+    private LabeledElement lblMultipleBirthType;
     
     private Textbox txtName;
     
     private Textbox txtCauseOfDeath;
     
-    private Row rowDeath1;
-    
-    private Row rowDeath2;
-    
-    private Button btnSave;
-    
-    private Grid grid;
+    private Row rowDeath;
     
     // End of auto-wire section
     
-    private FamilyMember member;
+    private final FamilyHistoryService service;
     
-    private boolean cancelled;
-    
-    private boolean changed;
-    
-    private FamilyHistoryService service;
-    
-    public static FamilyMember execute(FamilyMember fhx, FamilyHistoryService service) {
-        Map<Object, Object> args = new HashMap<>();
-        args.put("member", fhx);
-        args.put("service", service);
-        Window dlg = PopupDialog.popup(DIALOG, args, true, true, true);
-        AddEditMemberController controller = (AddEditMemberController) FrameworkController.getController(dlg);
-        return controller == null || controller.cancelled ? null : controller.member;
+    public static boolean execute(FamilyMember fhx) {
+        return execute(DIALOG, fhx);
     }
     
-    @Override
-    public void doAfterCompose(Component comp) throws Exception {
-        super.doAfterCompose(comp);
-        member = (FamilyMember) arg.get("member");
-        
-        if (member == null) {
-            member = new FamilyMember();
-        }
-        
-        service = (FamilyHistoryService) arg.get("service");
-        populateComboboxes();
-        Events.postEvent("onDeferredInit", comp, null);
-    }
-    
-    /**
-     * Deferred to allow combo boxes to fully render.
-     */
-    public void onDeferredInit() {
-        populateControls();
+    public AddEditMemberController(FamilyHistoryService service) {
+        this.service = service;
     }
     
     private void updateControls() {
-        FileEntry status = getFileEntry(cboStatus);
-        boolean deceased = status != null && "D".equals(status.getInternalValue());
-        rowDeath1.setVisible(deceased);
-        rowDeath2.setVisible(deceased);
+        boolean deceased = isDeceased();
+        rowDeath.setVisible(deceased);
         txtCauseOfDeath.setVisible(deceased);
-        FileEntry multipleBirth = getFileEntry(cboMultipleBirth);
-        boolean multiple = multipleBirth != null && "Y".equals(multipleBirth.getInternalValue());
+        boolean multiple = isMultipleBirth();
         lblMultipleBirthType.setVisible(multiple);
-        cboMultipleBirthType.setVisible(multiple);
     }
     
-    private void populateComboboxes() {
+    private boolean isDeceased() {
+        FileEntry status = getFileEntry(cboStatus);
+        return status != null && "D".equals(status.getInternalValue());
+    }
+    
+    private boolean isMultipleBirth() {
+        FileEntry multipleBirth = getFileEntry(cboMultipleBirth);
+        return multipleBirth != null && "Y".equals(multipleBirth.getInternalValue());
+    }
+    
+    @Override
+    protected void initControls() {
         populateCombobox(cboRelationship, service.getRelationshipChoices());
         populateCombobox(cboStatus, service.getStatusChoices());
         populateCombobox(cboAgeAtDeath, service.getAgeAtDeathChoices());
@@ -139,7 +101,8 @@ public class AddEditMemberController extends FrameworkController {
         cbo.setReadonly(true);
     }
     
-    private void populateControls() {
+    @Override
+    protected void populateControls(FamilyMember member) {
         ListUtil.selectComboboxData(cboRelationship, member.getRelationship());
         ListUtil.selectComboboxData(cboStatus, member.getStatus());
         ListUtil.selectComboboxData(cboAgeAtDeath, member.getAgeAtDeath());
@@ -148,26 +111,35 @@ public class AddEditMemberController extends FrameworkController {
         txtName.setText(member.getName());
         txtCauseOfDeath.setText(member.getCauseOfDeath());
         updateControls();
-        ZKUtil.wireChangeEvents(grid.getRows(), root, Events.ON_CHANGE);
     }
     
-    /**
-     * Allows combobox to fully render before setting current value.
-     * 
-     * @param event
-     */
-    public void onComboInit(Event event) {
-        Combobox cbo = (Combobox) event.getData();
-        ListUtil.selectComboboxData(cbo, cbo.getAttribute("current"));
-    }
-    
-    private void populateFamilyMember() {
+    @Override
+    protected void populateDomainObject(FamilyMember member) {
         member.setRelationship(getFileEntry(cboRelationship));
         member.setStatus(getFileEntry(cboStatus));
-        member.setAgeAtDeath(getFileEntry(cboAgeAtDeath));
+        boolean deceased = isDeceased();
+        member.setAgeAtDeath(deceased ? getFileEntry(cboAgeAtDeath) : null);
+        member.setCauseOfDeath(deceased ? txtCauseOfDeath.getText() : null);
         member.setMultipleBirth(getFileEntry(cboMultipleBirth));
-        member.setMultipleBirthType(getFileEntry(cboMultipleBirthType));
+        member.setMultipleBirthType(isMultipleBirth() ? getFileEntry(cboMultipleBirthType) : null);
         member.setName(txtName.getText().trim());
+    }
+    
+    @Override
+    protected boolean hasRequired() {
+        if (cboRelationship.getSelectedItem() == null) {
+            return isMissing(cboRelationship);
+        }
+        
+        if (txtName.getText().trim().isEmpty()) {
+            return isMissing(txtName);
+        }
+        
+        if (cboStatus.getSelectedItem() == null) {
+            return isMissing(cboStatus);
+        }
+        
+        return true;
     }
     
     private FileEntry getFileEntry(Combobox cbo) {
@@ -175,30 +147,9 @@ public class AddEditMemberController extends FrameworkController {
         return item == null ? null : (FileEntry) item.getValue();
     }
     
-    private boolean confirmCancel() {
-        return !changed || PromptDialog.confirm(
-            "If you continue, your unsaved changes will be lost.  Are you sure you want to do this?", "Unsaved Changes");
-    }
-    
-    private boolean commit() {
-        return true;
-    }
-    
-    public void onClose() {
-        close(true);
-    }
-    
-    public void onChange() {
-        changed = true;
-        btnSave.setDisabled(false);
-    }
-    
-    public void onClick$btnSave() {
-        close(false);
-    }
-    
-    public void onClick$btnCancel() {
-        close(true);
+    @Override
+    public void commit(FamilyMember member) {
+        service.addEditMember(member);
     }
     
     public void onSelect$cboStatus() {
@@ -209,16 +160,4 @@ public class AddEditMemberController extends FrameworkController {
         updateControls();
     }
     
-    private void close(boolean cancelled) {
-        if (cancelled && !confirmCancel()) {
-            return;
-        }
-        
-        if (!cancelled && !commit()) {
-            return;
-        }
-        
-        this.cancelled = cancelled;
-        root.detach();
-    }
 }

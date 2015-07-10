@@ -16,10 +16,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.carewebframework.api.query.IQueryContext;
+import org.carewebframework.cal.api.patient.PatientContext;
 import org.carewebframework.common.DateUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.vista.api.mbroker.AbstractBrokerQueryService;
 import org.carewebframework.vista.api.util.FileEntry;
+import org.carewebframework.vista.api.util.VistAUtil;
 import org.carewebframework.vista.mbroker.BrokerSession;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.familyhistory.model.Condition;
@@ -73,6 +75,10 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
         List<FamilyMember> results = new ArrayList<>();
         List<String> list = StrUtil.toList(data, "\r");
         
+        if (list.size() == 1 && !list.get(0).contains(StrUtil.U)) {
+            return results;
+        }
+        
         for (String line : list) {
             String[] pcs = StrUtil.split(line, StrUtil.U, 18);
             FamilyMember member = map.get(pcs[0]);
@@ -81,7 +87,7 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
                 member = new FamilyMember();
                 map.put(pcs[0], member);
                 results.add(member);
-                member.setIEN(pcs[0]);
+                member.setIEN(Long.parseLong(pcs[0]));
                 member.setRelationship(FileEntry.find(relationshipChoices, pcs[1]));
                 member.setStatus(FileEntry.find(statusChoices, pcs[2]));
                 member.setAgeAtDeath(FileEntry.find(ageAtDeathChoices, pcs[3]));
@@ -91,18 +97,22 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
                 member.setName(pcs[11]);
             }
             
-            Condition condition = new Condition();
-            member.getConditions().add(condition);
-            condition.setICD9(pcs[7]);
-            condition.setNote(pcs[8].replace("|", ""));
-            Date date = DateUtil.parseDate(pcs[10]);
-            condition.setDateModified(date == null ? null : new FMDate(date));
-            condition.setIEN(pcs[12]);
-            condition.setAgeAtOnset(pcs[13].isEmpty() ? null : Integer.parseInt(pcs[13]));
-            condition.setAgeApproximate(pcs[14].isEmpty() ? null : StrUtil.toBoolean(pcs[14]));
-            condition.setSCTCode(pcs[15]);
-            condition.setSCTDx(pcs[16]);
-            condition.setICD9Other(pcs[17]);
+            if (!pcs[12].isEmpty()) {
+                Condition condition = new Condition(member);
+                member.getConditions().add(condition);
+                condition.setICD9(pcs[7]);
+                String[] note = pcs[8].split("\\|", 2);
+                condition.setSCTText(note[0].trim());
+                condition.setNote(note[1].trim());
+                Date date = DateUtil.parseDate(pcs[10]);
+                condition.setDateModified(date == null ? null : new FMDate(date));
+                condition.setIEN(Long.parseLong(pcs[12]));
+                condition.setAgeAtOnset(pcs[13].isEmpty() ? null : Integer.parseInt(pcs[13]));
+                condition.setAgeApproximate(pcs[14].isEmpty() ? null : StrUtil.toBoolean(pcs[14]));
+                condition.setSCTCode(pcs[15]);
+                condition.setSCTDx(pcs[16]);
+                condition.setICD9Other(pcs[17]);
+            }
         }
         return results;
     }
@@ -141,12 +151,12 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
         if (initChoices) {
             synchronized (mutex) {
                 if (initChoices) {
-                    relationshipChoices = FileEntry.fromList(service.callRPCList("RGUTRPC FILENT", null, "9999999.36"),
-                        true);
+                    relationshipChoices = FileEntry.fromList(
+                        service.callRPCList("RGUTRPC FILGET", null, "9999999.36", null, null, "I $P($G(^(21)),U)"), true);
                     statusChoices = FileEntry.fromList(service.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".04"),
                         true);
                     ageAtDeathChoices = FileEntry.fromList(service.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".05"),
-                        true);
+                        false);
                     multipleBirthChoices = FileEntry
                             .fromList(service.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".07"), true);
                     multipleBirthTypeChoices = FileEntry
@@ -155,6 +165,68 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
                 }
             }
         }
+    }
+    
+    public void deleteMember(FamilyMember member) {
+        service.callRPC("BGOFHX DEL", member.getIEN());
+    }
+    
+    public void addEditMember(FamilyMember member) {
+        doAddEdit(member, null);
+    }
+    
+    public void deleteCondition(Condition condition) {
+        String result = service.callRPC("BGOFHX DEL", StrUtil.U + condition.getIEN());
+        checkResult(result);
+        condition.getMember().getConditions().remove(condition);
+    }
+    
+    public void addEditCondition(Condition condition) {
+        doAddEdit(null, condition);
+    }
+    
+    private void doAddEdit(FamilyMember member, Condition condition) {
+        List<String> params = new ArrayList<>();
+        
+        if (condition == null) {
+            params.add(VistAUtil.concatParams("REL", member.getIEN(), member.getRelationship(), member.getName(),
+                member.getStatus(), member.getAgeAtDeath(), member.getCauseOfDeath(), member.getMultipleBirth(),
+                member.getMultipleBirthType()));
+        } else {
+            String ageApproximate = condition.isAgeApproximate() == null ? "@" : condition.isAgeApproximate() ? "1" : "0";
+            params.add(VistAUtil.concatParams("REL", condition.getMember().getIEN()));
+            params.add(VistAUtil.concatParams("FHX", condition.getIEN(), condition.getICD9(), condition.getNote(),
+                condition.getAgeAtOnset(), ageApproximate, condition.getSCTCode(), condition.getSCTDx()));
+        }
+        
+        String result = service.callRPC("BGOFHX SET", PatientContext.getActivePatient().getId().getIdPart(), params);
+        result = checkResult(result);
+        
+        if (member != null) {
+            if (member.getIEN() == null) {
+                member.setIEN(Long.parseLong(StrUtil.piece(result, ";R")));
+            }
+        }
+        
+        if (condition != null) {
+            if (condition.getIEN() == null) {
+                condition.setIEN(Long.parseLong(StrUtil.piece(result, ";F")));
+                condition.getMember().getConditions().add(condition);
+            }
+            
+            condition.setDateModified(FMDate.today());
+        }
+        
+    }
+    
+    private String checkResult(String result) {
+        String[] pcs = StrUtil.split(result, StrUtil.U, 2);
+        
+        if (pcs[0].startsWith("-")) {
+            throw new RuntimeException(pcs[1]);
+        }
+        
+        return pcs[0].isEmpty() ? pcs[1] : pcs[0];
     }
     
 }

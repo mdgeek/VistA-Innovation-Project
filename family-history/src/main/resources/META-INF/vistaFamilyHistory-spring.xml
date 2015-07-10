@@ -15,7 +15,7 @@
 			</cwp:serialization>
 			<cwp:resource>
 				<cwp:help-resource module="vistaFamilyHistoryHelp" />
-				<cwp:css-resource url="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.2" />
+				<cwp:css-resource url="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.3" />
 			</cwp:resource>
 		</cwp:plugin>
 
@@ -44,10 +44,14 @@
 		</bean>
 		
 		<bean name="vistaFamilyHistoryAddEditMemberController" scope="prototype" 
-			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditMemberController" />
+			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditMemberController">
+			<constructor-arg ref="vistaFamilyHistoryService" />
+		</bean>
 
 		<bean name="vistaFamilyHistoryAddEditConditionController" scope="prototype" 
-			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditConditionController" />
-
+			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditConditionController">
+			<constructor-arg ref="vistaFamilyHistoryService" />
+		</bean>
+	
 	</beans>
 </beans>

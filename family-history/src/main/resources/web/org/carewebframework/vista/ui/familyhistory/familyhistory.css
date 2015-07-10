@@ -33,6 +33,11 @@
 	color: green;
 }
 
+.vistaFamilyHistory-grid .z-cell .glyphicon-remove {
+	color: red;
+	margin-left: 10px;
+}
+
 .vistaFamilyHistory-grid .z-cell .glyphicon-pencil {
 	color: brown;
 }
@@ -50,12 +55,4 @@
 .vistaFamilyHistory-grid .z-row:hover .z-idspace {
 	background: lightgray;
 }
-
-.vistaFamilyHistory-row-header .z-row-content { 
-	line-height: 10px; 
-	padding-bottom: 0; 
-	padding-top: 20px; 
-}
-
-
 

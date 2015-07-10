@@ -24,22 +24,28 @@
 	<panel id="panel" height="100%" width="100%"
 		apply="${rpmsChiefComplaintController}" context="contextMenu">
 		<toolbar sclass="alert-info">
-				<image id="imgMain" height="32px" style="padding: 0 5px 0 5px;"
+			<labeledelement position="right" align="center"
+				label="Chief Complaint"
+				labelStyle="font-size:1.5em;font-weight:bold;">
+				<image id="imgMain" height="32px" width="32px"
 					src="~./org/medsphere/cwf/rpmsChiefComplaint/pain.png" />
-				<label value="Chief Complaint" id="lblInfo"
-					style="font-size:1.5em;font-weight:bold;" />
+			</labeledelement>
 			<span style="float:right;">
-				<button id="btnAdd" label="Add" zclass="btn" sclass="btn-default btn-sm"
+				<button id="btnAdd" label="Add" zclass="btn"
+					sclass="btn-default btn-sm"
 					tooltiptext="${labels.rpmschiefcomplaint.button.add.tooltip}" />
-				<button id="btnEdit" label="Edit" zclass="btn" sclass="btn-default btn-sm"
+				<button id="btnEdit" label="Edit" zclass="btn"
+					sclass="btn-default btn-sm"
 					tooltiptext="${labels.rpmschiefcomplaint.button.edit.tooltip}" />
-				<button id="btnDelete" label="Delete" zclass="btn" sclass="btn-default btn-sm"
+				<button id="btnDelete" label="Delete" zclass="btn"
+					sclass="btn-default btn-sm"
 					tooltiptext="${labels.rpmschiefcomplaint.button.delete.tooltip}" />
 			</span>
 		</toolbar>
 		<panelchildren>
 			<div height="100%" width="100%">
-				<label id="lblMessage" visible="false" zclass="z-toolbar" style="text-align: center"/>
+				<label id="lblMessage" visible="false"
+					zclass="z-toolbar" style="text-align: center" />
 				<listbox id="lbCC" sizedByContent="false" hflex="1"
 					vflex="1" sclass="chiefComplaint-list" multiple="false">
 					<listhead sizable="true">
@@ -54,14 +60,10 @@
 	</panel>
 
 	<style>
-		.chiefComplaint-list .z-listcell { 
-			border-right: solid lightgray 1px; 
-			white-space: pre; 
-		} 
-		
-		.chiefComplaint-list-current { 
-			color: blue; 
-		}
+		.chiefComplaint-list .z-listcell { border-right: solid lightgray
+		1px; white-space: pre; }
+
+		.chiefComplaint-list-current { color: blue; }
 
 	</style>
 </zk>

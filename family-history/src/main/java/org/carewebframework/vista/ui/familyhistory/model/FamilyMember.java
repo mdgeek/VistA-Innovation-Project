@@ -10,7 +10,7 @@ import org.carewebframework.vista.api.util.FileEntry;
  */
 public class FamilyMember {
     
-    private String ien;
+    private Long ien;
     
     private String name;
     
@@ -28,11 +28,11 @@ public class FamilyMember {
     
     private final List<Condition> conditions = new ArrayList<>();
     
-    public String getIEN() {
+    public Long getIEN() {
         return ien;
     }
     
-    public void setIEN(String ien) {
+    public void setIEN(Long ien) {
         this.ien = ien;
     }
     

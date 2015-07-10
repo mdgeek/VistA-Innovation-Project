@@ -7,7 +7,7 @@ import org.carewebframework.vista.mbroker.FMDate;
  */
 public class Condition {
     
-    private String ien;
+    private Long ien;
     
     private String note;
     
@@ -19,21 +19,30 @@ public class Condition {
     
     private String icd9Other;
     
+    private String sctText;
+    
     private String sctCode;
     
     private String sctDx;
     
     private FMDate dateModified;
     
-    public String getIEN() {
+    private final FamilyMember member;
+    
+    public Long getIEN() {
         return ien;
     }
     
-    public void setIEN(String ien) {
+    public void setIEN(Long ien) {
         this.ien = ien;
     }
     
-    public Condition() {
+    public Condition(FamilyMember member) {
+        this.member = member;
+    }
+    
+    public FamilyMember getMember() {
+        return member;
     }
     
     public String getNote() {
@@ -82,6 +91,14 @@ public class Condition {
     
     public void setSCTCode(String sctCode) {
         this.sctCode = sctCode;
+    }
+    
+    public String getSCTText() {
+        return sctText;
+    }
+    
+    public void setSCTText(String sctText) {
+        this.sctText = sctText;
     }
     
     public String getSCTDx() {

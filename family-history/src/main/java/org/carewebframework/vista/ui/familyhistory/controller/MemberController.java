@@ -14,7 +14,9 @@ import java.util.List;
 
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
+import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.FrameworkController;
+import org.carewebframework.ui.zk.PromptDialog;
 import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.ui.familyhistory.model.Condition;
 import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
@@ -54,7 +56,7 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
     }
     
     public MemberController(FamilyHistoryService service) {
-        super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null);
+        super(service, Constants.LABEL_PREFIX, Constants.PROPERTY_PREFIX, null, true, true, null);
         this.service = service;
         setPaging(false);
     }
@@ -80,22 +82,55 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
     }
     
     public void onClick$btnNewMember() {
-        AddEditMemberController.execute(null, service);
+        FamilyMember member = new FamilyMember();
+        
+        if (AddEditMemberController.execute(member)) {
+            getModel().add(member);
+        }
     }
     
     public void onReviewMember(Event event) {
-        FamilyMember fhx = (FamilyMember) event.getData();
-        AddEditMemberController.execute(fhx, service);
+        FamilyMember member = (FamilyMember) event.getData();
+        
+        if (AddEditMemberController.execute(member)) {
+            rerender();
+        }
+    }
+    
+    public void onDeleteMember(Event event) {
+        FamilyMember member = (FamilyMember) event.getData();
+        String message = StrUtil.getLabel("vistaFamilyHistory.delete.member.prompt", member.getName());
+        
+        if (PromptDialog.confirm(message, "@vistaFamilyHistory.delete.member.title")) {
+            service.deleteMember(member);
+            getModel().remove(member);
+            rerender();
+        }
     }
     
     public void onAddCondition(Event event) {
-        FamilyMember fhx = (FamilyMember) event.getData();
-        AddEditConditionController.execute(null, service);
+        FamilyMember member = (FamilyMember) event.getData();
+        addEditCondition(new Condition(member));
     }
     
     public void onReviewCondition(Event event) {
+        addEditCondition((Condition) event.getData());
+    }
+    
+    public void onDeleteCondition(Event event) {
         Condition condition = (Condition) event.getData();
-        AddEditConditionController.execute(condition, service);
+        String message = StrUtil.getLabel("vistaFamilyHistory.delete.condition.prompt", condition.getNote());
+        
+        if (PromptDialog.confirm(message, "@vistaFamilyHistory.delete.condition.title")) {
+            service.deleteCondition(condition);
+            rerender();
+        }
+    }
+    
+    private void addEditCondition(Condition condition) {
+        if (AddEditConditionController.execute(condition)) {
+            rerender();
+        }
     }
     
     @Override

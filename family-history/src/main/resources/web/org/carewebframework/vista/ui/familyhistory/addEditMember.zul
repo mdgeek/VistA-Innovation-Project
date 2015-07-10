@@ -10,36 +10,34 @@
 				<column />
 			</columns>
 			<rows>
-				<row sclass="vistaFamilyHistory-row-header">
-					<label value="Relation:" />
-					<label value="Name:" />
+				<row>
+					<labeledelement label="Relation:" position="top" hflex="1">
+						<combobox id="cboRelationship" hflex="1" />
+					</labeledelement>
+					<labeledelement label="Name:" position="top" hflex="1">
+						<textbox id="txtName" hflex="1" />
+					</labeledelement>
 				</row>
 				<row>
-					<combobox id="cboRelationship" hflex="1" />
-					<textbox id="txtName" hflex="1" />
+					<labeledelement label="Status:" position="top" hflex="1">
+						<combobox id="cboStatus" hflex="1" />
+					</labeledelement>
 				</row>
-				<row sclass="vistaFamilyHistory-row-header">
-					<label value="Status:" />
-				</row>
-				<row>
-					<combobox id="cboStatus" hflex="1" />
-				</row>
-				<row id="rowDeath1"
-					sclass="vistaFamilyHistory-row-header">
-					<label value="Cause of Death:" />
-					<label value="Age at Death:" />
-				</row>
-				<row id="rowDeath2">
-					<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
-					<combobox id="cboAgeAtDeath" hflex="1" />
-				</row>
-				<row sclass="vistaFamilyHistory-row-header">
-					<label value="Multiple Birth:" />
-					<label id="lblMultipleBirthType" value="Multiple Birth Type:" />
+				<row id="rowDeath">
+					<labeledelement label="Cause of Death:" position="top" hflex="1">
+						<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
+					</labeledelement>
+					<labeledelement label="Age at Death:" position="top" hflex="1">
+						<combobox id="cboAgeAtDeath" hflex="1" />
+					</labeledelement>
 				</row>
 				<row>
-					<combobox id="cboMultipleBirth" hflex="1" />
-					<combobox id="cboMultipleBirthType" hflex="1" />
+					<labeledelement label="Multiple Birth:" position="top" hflex="1">
+						<combobox id="cboMultipleBirth" hflex="1" />
+					</labeledelement>
+					<labeledelement id="lblMultipleBirthType" label="Multiple Birth Type:" position="top" hflex="1">
+						<combobox id="cboMultipleBirthType" hflex="1" />
+					</labeledelement>
 				</row>
 				<row>
 					<span />
@@ -47,8 +45,8 @@
 			</rows>
 		</grid>
 		<toolbar align="end">
-			<button id="btnSave" label="Save" zclass="btn"
-				sclass="btn-success btn-sm" disabled="true" />
+			<button id="btnOK" label="Save" zclass="btn"
+				sclass="btn-success btn-sm" />
 			<button id="btnCancel" label="Cancel" zclass="btn"
 				sclass="btn-danger btn-sm" />
 		</toolbar>

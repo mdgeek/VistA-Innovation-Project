@@ -72,9 +72,10 @@ public class AddEditController extends FrameworkController {
         public String getLabel(GoalBase goalBase) {
             Goal goal = goalBase instanceof Goal ? (Goal) goalBase : ((Step) goalBase).getGoal();
             Step step = goalBase instanceof Step ? (Step) goalBase : null;
-            return StrUtil.getLabel("vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
-                    + goalBase.getGroup().name().toLowerCase() + "." + this.name().toLowerCase(), goal.getName(),
-                step == null ? null : step.getNumberAsString());
+            return StrUtil.getLabel(
+                "vistaPatientGoals.addedit.tab.label." + (step != null ? "step" : "goal") + "."
+                        + goalBase.getGroup().name().toLowerCase() + "." + this.name().toLowerCase(),
+                goal.getName(), step == null ? null : step.getNumberAsString());
         }
     }
     
@@ -223,7 +224,7 @@ public class AddEditController extends FrameworkController {
         populateDeleteReason();
         populateControls();
         requiredMessage = getLabel("required");
-        wireChangeEvents(comp);
+        ZKUtil.wireChangeEvents(comp, comp, Events.ON_CHANGE);
         
         if (goalBase.getGroup() == GoalGroup.INACTIVE) {
             ZKUtil.disableChildren(form, true);
@@ -256,32 +257,6 @@ public class AddEditController extends FrameworkController {
         
         tab.setLabel(actionType.getLabel(goalBase));
         tab.setValue(createId(goalBase, actionType));
-    }
-    
-    /**
-     * Recursively wires input elements to a common event handler for the detection of changes.
-     * 
-     * @param parent The parent component.
-     */
-    private void wireChangeEvents(Component parent) {
-        for (Component child : parent.getChildren()) {
-            String sourceEvent = null;
-            
-            if (child instanceof Datebox) {
-                sourceEvent = Events.ON_CHANGE;
-            } else if (child instanceof Textbox) {
-                sourceEvent = Events.ON_CHANGING;
-            } else if (child instanceof Checkbox) {
-                sourceEvent = Events.ON_CHECK;
-            }
-            
-            if (sourceEvent != null) {
-                child.addForward(sourceEvent, root, Events.ON_CHANGE);
-            }
-            
-            wireChangeEvents(child);
-        }
-        
     }
     
     /**
@@ -473,18 +448,18 @@ public class AddEditController extends FrameworkController {
                     case -1: // invalid
                         result = false;
                         break;
-                    
+                        
                     case 0: // GOAL
                     case 1: // STEP
                         result = idx == 0 ? !isStep : isStep;
                         break;
-                    
+                        
                     case 2: // ACTIVE
                     case 3: // INACTIVE
                     case 4: // DECLINED
                         result = goalBase.getGroup() == GoalGroup.values()[idx - 2];
                         break;
-                    
+                        
                     case 5: // ADD
                     case 6: // REVIEW
                         result = actionType == ActionType.values()[idx - 5];
@@ -658,9 +633,8 @@ public class AddEditController extends FrameworkController {
             return false;
         }
         
-        if (deleting
-                && !PromptDialog
-                        .confirm(getLabel("confirmDelete.text"), getLabel("confirmDelete.title", goalBase.getName()))) {
+        if (deleting && !PromptDialog.confirm(getLabel("confirmDelete.text"),
+            getLabel("confirmDelete.title", goalBase.getName()))) {
             return false;
         }
         
@@ -676,7 +650,7 @@ public class AddEditController extends FrameworkController {
                         service.addGoal(goal);
                     }
                     break;
-                
+                    
                 case REVIEW:
                     if (isStep) {
                         service.updateStep(step);
@@ -684,7 +658,7 @@ public class AddEditController extends FrameworkController {
                         service.updateGoal(goal, changeSet.contains(txtNote));
                     }
                     break;
-                
+                    
                 case DELETE:
                     if (isStep) {
                         service.deleteStep(step);
@@ -710,10 +684,8 @@ public class AddEditController extends FrameworkController {
     }
     
     private void close(boolean force) {
-        if (!force
-                && !changeSet.isEmpty()
-                && !PromptDialog.confirm("If you continue, you will lose unsaved changes.  Continue?",
-                    "Closing " + tab.getLabel())) {
+        if (!force && !changeSet.isEmpty() && !PromptDialog
+                .confirm("If you continue, you will lose unsaved changes.  Continue?", "Closing " + tab.getLabel())) {
             return;
         }
         

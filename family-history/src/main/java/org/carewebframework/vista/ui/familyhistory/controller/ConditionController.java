@@ -20,13 +20,11 @@ import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 import org.zkoss.zul.ListModelList;
 
 /**
- * Controller for goal steps.
+ * Controller for family member conditions..
  */
 public class ConditionController extends AbstractGridController<Condition, Condition> {
     
     private static final long serialVersionUID = 1L;
-    
-    private MemberController memberController;
     
     /**
      * Creates the controller for the detail view (step list). It uses the following settings:
@@ -58,7 +56,6 @@ public class ConditionController extends AbstractGridController<Condition, Condi
     @Override
     protected void initializeController() {
         super.initializeController();
-        memberController = MemberController.findController(root);
         List<Condition> conditions = ((FamilyMember) arg.get("member")).getConditions();
         setModel(toModel(conditions));
     }

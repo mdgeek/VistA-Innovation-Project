@@ -18,7 +18,9 @@ import org.carewebframework.vista.ui.familyhistory.model.FamilyMember;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.A;
+import org.zkoss.zul.Cell;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Row;
 
@@ -41,10 +43,15 @@ public class MemberRenderer extends AbstractRowRenderer<FamilyMember, Object> {
      */
     @Override
     public Component renderRow(Row row, FamilyMember member) {
+        Cell cell = createCell(row, null);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, "root", "onReviewMember", member);
-        createCell(row, "").appendChild(anchor);
+        cell.appendChild(anchor);
+        anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-remove");
+        anchor.addForward(Events.ON_CLICK, "root", "onDeleteMember", member);
+        cell.appendChild(anchor);
         anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-plus");
         anchor.addForward(Events.ON_CLICK, "root", "onAddCondition", member);
@@ -66,6 +73,7 @@ public class MemberRenderer extends AbstractRowRenderer<FamilyMember, Object> {
             Map<Object, Object> args = new HashMap<>();
             args.put("member", member);
             ZKUtil.loadZulPage(CONDITION_VIEW, detail, args);
+            Clients.resize(detail);
         }
     }
 }
