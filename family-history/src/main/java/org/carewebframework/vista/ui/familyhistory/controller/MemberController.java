@@ -86,6 +86,7 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
         
         if (AddEditMemberController.execute(member)) {
             getModel().add(member);
+            rerender();
         }
     }
     
