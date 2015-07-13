@@ -1,15 +1,15 @@
-KIDS Distribution saved on Jun 20, 2015@11:47:14
+KIDS Distribution saved on Jul 12, 2015@20:26:14
 BGO COMMON 1.0
 **KIDS**:BGO COMMON 1.0^
 
 **INSTALL NAME**
 BGO COMMON 1.0
 "BLD",8514,0)
-BGO COMMON 1.0^^0^3150620^n
+BGO COMMON 1.0^^0^3150712^n
 "BLD",8514,4,0)
 ^9.64PA^^
 "BLD",8514,6.3)
-11
+4
 "BLD",8514,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8514,"KRN",.4,0)
@@ -24,8 +24,448 @@ BGO COMMON 1.0^^0^3150620^n
 .5
 "BLD",8514,"KRN",.84,0)
 .84
+"BLD",8514,"KRN",.84,"NM",0)
+^9.68A^109^109
+"BLD",8514,"KRN",.84,"NM",1,0)
+903621001^^0
+"BLD",8514,"KRN",.84,"NM",2,0)
+903621002^^0
+"BLD",8514,"KRN",.84,"NM",3,0)
+903621003^^0
+"BLD",8514,"KRN",.84,"NM",4,0)
+903621004^^0
+"BLD",8514,"KRN",.84,"NM",5,0)
+903621005^^0
+"BLD",8514,"KRN",.84,"NM",6,0)
+903621006^^0
+"BLD",8514,"KRN",.84,"NM",7,0)
+903621007^^0
+"BLD",8514,"KRN",.84,"NM",8,0)
+903621008^^0
+"BLD",8514,"KRN",.84,"NM",9,0)
+903621009^^0
+"BLD",8514,"KRN",.84,"NM",10,0)
+903621010^^0
+"BLD",8514,"KRN",.84,"NM",11,0)
+903621011^^0
+"BLD",8514,"KRN",.84,"NM",12,0)
+903621012^^0
+"BLD",8514,"KRN",.84,"NM",13,0)
+903621013^^0
+"BLD",8514,"KRN",.84,"NM",14,0)
+903621014^^0
+"BLD",8514,"KRN",.84,"NM",15,0)
+903621015^^0
+"BLD",8514,"KRN",.84,"NM",16,0)
+903621016^^0
+"BLD",8514,"KRN",.84,"NM",17,0)
+903621017^^0
+"BLD",8514,"KRN",.84,"NM",18,0)
+903621018^^0
+"BLD",8514,"KRN",.84,"NM",19,0)
+903621019^^0
+"BLD",8514,"KRN",.84,"NM",20,0)
+903621020^^0
+"BLD",8514,"KRN",.84,"NM",21,0)
+903621021^^0
+"BLD",8514,"KRN",.84,"NM",22,0)
+903621022^^0
+"BLD",8514,"KRN",.84,"NM",23,0)
+903621023^^0
+"BLD",8514,"KRN",.84,"NM",24,0)
+903621024^^0
+"BLD",8514,"KRN",.84,"NM",25,0)
+903621025^^0
+"BLD",8514,"KRN",.84,"NM",26,0)
+903621026^^0
+"BLD",8514,"KRN",.84,"NM",27,0)
+903621027^^0
+"BLD",8514,"KRN",.84,"NM",28,0)
+903621028^^0
+"BLD",8514,"KRN",.84,"NM",29,0)
+903621029^^0
+"BLD",8514,"KRN",.84,"NM",30,0)
+903621030^^0
+"BLD",8514,"KRN",.84,"NM",31,0)
+903621031^^0
+"BLD",8514,"KRN",.84,"NM",32,0)
+903621032^^0
+"BLD",8514,"KRN",.84,"NM",33,0)
+903621033^^0
+"BLD",8514,"KRN",.84,"NM",34,0)
+903621034^^0
+"BLD",8514,"KRN",.84,"NM",35,0)
+903621035^^0
+"BLD",8514,"KRN",.84,"NM",36,0)
+903621036^^0
+"BLD",8514,"KRN",.84,"NM",37,0)
+903621037^^0
+"BLD",8514,"KRN",.84,"NM",38,0)
+903621038^^0
+"BLD",8514,"KRN",.84,"NM",39,0)
+903621039^^0
+"BLD",8514,"KRN",.84,"NM",40,0)
+903621040^^0
+"BLD",8514,"KRN",.84,"NM",41,0)
+903621041^^0
+"BLD",8514,"KRN",.84,"NM",42,0)
+903621042^^0
+"BLD",8514,"KRN",.84,"NM",43,0)
+903621043^^0
+"BLD",8514,"KRN",.84,"NM",44,0)
+903621044^^0
+"BLD",8514,"KRN",.84,"NM",45,0)
+903621045^^0
+"BLD",8514,"KRN",.84,"NM",46,0)
+903621046^^0
+"BLD",8514,"KRN",.84,"NM",47,0)
+903621047^^0
+"BLD",8514,"KRN",.84,"NM",48,0)
+903621048^^0
+"BLD",8514,"KRN",.84,"NM",49,0)
+903621049^^0
+"BLD",8514,"KRN",.84,"NM",50,0)
+903621050^^0
+"BLD",8514,"KRN",.84,"NM",51,0)
+903621051^^0
+"BLD",8514,"KRN",.84,"NM",52,0)
+903621052^^0
+"BLD",8514,"KRN",.84,"NM",53,0)
+903621053^^0
+"BLD",8514,"KRN",.84,"NM",54,0)
+903621054^^0
+"BLD",8514,"KRN",.84,"NM",55,0)
+903621055^^0
+"BLD",8514,"KRN",.84,"NM",56,0)
+903621056^^0
+"BLD",8514,"KRN",.84,"NM",57,0)
+903621057^^0
+"BLD",8514,"KRN",.84,"NM",58,0)
+903621058^^0
+"BLD",8514,"KRN",.84,"NM",59,0)
+903621059^^0
+"BLD",8514,"KRN",.84,"NM",60,0)
+903621060^^0
+"BLD",8514,"KRN",.84,"NM",61,0)
+903621061^^0
+"BLD",8514,"KRN",.84,"NM",62,0)
+903621062^^0
+"BLD",8514,"KRN",.84,"NM",63,0)
+903621063^^0
+"BLD",8514,"KRN",.84,"NM",64,0)
+903621064^^0
+"BLD",8514,"KRN",.84,"NM",65,0)
+903621065^^0
+"BLD",8514,"KRN",.84,"NM",66,0)
+903621066^^0
+"BLD",8514,"KRN",.84,"NM",67,0)
+903621067^^0
+"BLD",8514,"KRN",.84,"NM",68,0)
+903621068^^0
+"BLD",8514,"KRN",.84,"NM",69,0)
+903621069^^0
+"BLD",8514,"KRN",.84,"NM",70,0)
+903621070^^0
+"BLD",8514,"KRN",.84,"NM",71,0)
+903621071^^0
+"BLD",8514,"KRN",.84,"NM",72,0)
+903621072^^0
+"BLD",8514,"KRN",.84,"NM",73,0)
+903621073^^0
+"BLD",8514,"KRN",.84,"NM",74,0)
+903621074^^0
+"BLD",8514,"KRN",.84,"NM",75,0)
+903621075^^0
+"BLD",8514,"KRN",.84,"NM",76,0)
+903621076^^0
+"BLD",8514,"KRN",.84,"NM",77,0)
+903621077^^0
+"BLD",8514,"KRN",.84,"NM",78,0)
+903621078^^0
+"BLD",8514,"KRN",.84,"NM",79,0)
+903621079^^0
+"BLD",8514,"KRN",.84,"NM",80,0)
+903621080^^0
+"BLD",8514,"KRN",.84,"NM",81,0)
+903621081^^0
+"BLD",8514,"KRN",.84,"NM",82,0)
+903621082^^0
+"BLD",8514,"KRN",.84,"NM",83,0)
+903621083^^0
+"BLD",8514,"KRN",.84,"NM",84,0)
+903621084^^0
+"BLD",8514,"KRN",.84,"NM",85,0)
+903621085^^0
+"BLD",8514,"KRN",.84,"NM",86,0)
+903621086^^0
+"BLD",8514,"KRN",.84,"NM",87,0)
+903621087^^0
+"BLD",8514,"KRN",.84,"NM",88,0)
+903621088^^0
+"BLD",8514,"KRN",.84,"NM",89,0)
+903621089^^0
+"BLD",8514,"KRN",.84,"NM",90,0)
+903621090^^0
+"BLD",8514,"KRN",.84,"NM",91,0)
+903621091^^0
+"BLD",8514,"KRN",.84,"NM",92,0)
+903621092^^0
+"BLD",8514,"KRN",.84,"NM",93,0)
+903621093^^0
+"BLD",8514,"KRN",.84,"NM",94,0)
+903621094^^0
+"BLD",8514,"KRN",.84,"NM",95,0)
+903621095^^0
+"BLD",8514,"KRN",.84,"NM",96,0)
+903621096^^0
+"BLD",8514,"KRN",.84,"NM",97,0)
+903621097^^0
+"BLD",8514,"KRN",.84,"NM",98,0)
+903621098^^0
+"BLD",8514,"KRN",.84,"NM",99,0)
+903621099^^0
+"BLD",8514,"KRN",.84,"NM",100,0)
+903621100^^0
+"BLD",8514,"KRN",.84,"NM",101,0)
+903621101^^0
+"BLD",8514,"KRN",.84,"NM",102,0)
+903621102^^0
+"BLD",8514,"KRN",.84,"NM",103,0)
+903621103^^0
+"BLD",8514,"KRN",.84,"NM",104,0)
+903621104^^0
+"BLD",8514,"KRN",.84,"NM",105,0)
+903621105^^0
+"BLD",8514,"KRN",.84,"NM",106,0)
+903621106^^0
+"BLD",8514,"KRN",.84,"NM",107,0)
+903621107^^0
+"BLD",8514,"KRN",.84,"NM",108,0)
+903621108^^0
+"BLD",8514,"KRN",.84,"NM",109,0)
+903621109^^0
+"BLD",8514,"KRN",.84,"NM","B",903621001,1)
+
+"BLD",8514,"KRN",.84,"NM","B",903621002,2)
+
+"BLD",8514,"KRN",.84,"NM","B",903621003,3)
+
+"BLD",8514,"KRN",.84,"NM","B",903621004,4)
+
+"BLD",8514,"KRN",.84,"NM","B",903621005,5)
+
+"BLD",8514,"KRN",.84,"NM","B",903621006,6)
+
+"BLD",8514,"KRN",.84,"NM","B",903621007,7)
+
+"BLD",8514,"KRN",.84,"NM","B",903621008,8)
+
+"BLD",8514,"KRN",.84,"NM","B",903621009,9)
+
+"BLD",8514,"KRN",.84,"NM","B",903621010,10)
+
+"BLD",8514,"KRN",.84,"NM","B",903621011,11)
+
+"BLD",8514,"KRN",.84,"NM","B",903621012,12)
+
+"BLD",8514,"KRN",.84,"NM","B",903621013,13)
+
+"BLD",8514,"KRN",.84,"NM","B",903621014,14)
+
+"BLD",8514,"KRN",.84,"NM","B",903621015,15)
+
+"BLD",8514,"KRN",.84,"NM","B",903621016,16)
+
+"BLD",8514,"KRN",.84,"NM","B",903621017,17)
+
+"BLD",8514,"KRN",.84,"NM","B",903621018,18)
+
+"BLD",8514,"KRN",.84,"NM","B",903621019,19)
+
+"BLD",8514,"KRN",.84,"NM","B",903621020,20)
+
+"BLD",8514,"KRN",.84,"NM","B",903621021,21)
+
+"BLD",8514,"KRN",.84,"NM","B",903621022,22)
+
+"BLD",8514,"KRN",.84,"NM","B",903621023,23)
+
+"BLD",8514,"KRN",.84,"NM","B",903621024,24)
+
+"BLD",8514,"KRN",.84,"NM","B",903621025,25)
+
+"BLD",8514,"KRN",.84,"NM","B",903621026,26)
+
+"BLD",8514,"KRN",.84,"NM","B",903621027,27)
+
+"BLD",8514,"KRN",.84,"NM","B",903621028,28)
+
+"BLD",8514,"KRN",.84,"NM","B",903621029,29)
+
+"BLD",8514,"KRN",.84,"NM","B",903621030,30)
+
+"BLD",8514,"KRN",.84,"NM","B",903621031,31)
+
+"BLD",8514,"KRN",.84,"NM","B",903621032,32)
+
+"BLD",8514,"KRN",.84,"NM","B",903621033,33)
+
+"BLD",8514,"KRN",.84,"NM","B",903621034,34)
+
+"BLD",8514,"KRN",.84,"NM","B",903621035,35)
+
+"BLD",8514,"KRN",.84,"NM","B",903621036,36)
+
+"BLD",8514,"KRN",.84,"NM","B",903621037,37)
+
+"BLD",8514,"KRN",.84,"NM","B",903621038,38)
+
+"BLD",8514,"KRN",.84,"NM","B",903621039,39)
+
+"BLD",8514,"KRN",.84,"NM","B",903621040,40)
+
+"BLD",8514,"KRN",.84,"NM","B",903621041,41)
+
+"BLD",8514,"KRN",.84,"NM","B",903621042,42)
+
+"BLD",8514,"KRN",.84,"NM","B",903621043,43)
+
+"BLD",8514,"KRN",.84,"NM","B",903621044,44)
+
+"BLD",8514,"KRN",.84,"NM","B",903621045,45)
+
+"BLD",8514,"KRN",.84,"NM","B",903621046,46)
+
+"BLD",8514,"KRN",.84,"NM","B",903621047,47)
+
+"BLD",8514,"KRN",.84,"NM","B",903621048,48)
+
+"BLD",8514,"KRN",.84,"NM","B",903621049,49)
+
+"BLD",8514,"KRN",.84,"NM","B",903621050,50)
+
+"BLD",8514,"KRN",.84,"NM","B",903621051,51)
+
+"BLD",8514,"KRN",.84,"NM","B",903621052,52)
+
+"BLD",8514,"KRN",.84,"NM","B",903621053,53)
+
+"BLD",8514,"KRN",.84,"NM","B",903621054,54)
+
+"BLD",8514,"KRN",.84,"NM","B",903621055,55)
+
+"BLD",8514,"KRN",.84,"NM","B",903621056,56)
+
+"BLD",8514,"KRN",.84,"NM","B",903621057,57)
+
+"BLD",8514,"KRN",.84,"NM","B",903621058,58)
+
+"BLD",8514,"KRN",.84,"NM","B",903621059,59)
+
+"BLD",8514,"KRN",.84,"NM","B",903621060,60)
+
+"BLD",8514,"KRN",.84,"NM","B",903621061,61)
+
+"BLD",8514,"KRN",.84,"NM","B",903621062,62)
+
+"BLD",8514,"KRN",.84,"NM","B",903621063,63)
+
+"BLD",8514,"KRN",.84,"NM","B",903621064,64)
+
+"BLD",8514,"KRN",.84,"NM","B",903621065,65)
+
+"BLD",8514,"KRN",.84,"NM","B",903621066,66)
+
+"BLD",8514,"KRN",.84,"NM","B",903621067,67)
+
+"BLD",8514,"KRN",.84,"NM","B",903621068,68)
+
+"BLD",8514,"KRN",.84,"NM","B",903621069,69)
+
+"BLD",8514,"KRN",.84,"NM","B",903621070,70)
+
+"BLD",8514,"KRN",.84,"NM","B",903621071,71)
+
+"BLD",8514,"KRN",.84,"NM","B",903621072,72)
+
+"BLD",8514,"KRN",.84,"NM","B",903621073,73)
+
+"BLD",8514,"KRN",.84,"NM","B",903621074,74)
+
+"BLD",8514,"KRN",.84,"NM","B",903621075,75)
+
+"BLD",8514,"KRN",.84,"NM","B",903621076,76)
+
+"BLD",8514,"KRN",.84,"NM","B",903621077,77)
+
+"BLD",8514,"KRN",.84,"NM","B",903621078,78)
+
+"BLD",8514,"KRN",.84,"NM","B",903621079,79)
+
+"BLD",8514,"KRN",.84,"NM","B",903621080,80)
+
+"BLD",8514,"KRN",.84,"NM","B",903621081,81)
+
+"BLD",8514,"KRN",.84,"NM","B",903621082,82)
+
+"BLD",8514,"KRN",.84,"NM","B",903621083,83)
+
+"BLD",8514,"KRN",.84,"NM","B",903621084,84)
+
+"BLD",8514,"KRN",.84,"NM","B",903621085,85)
+
+"BLD",8514,"KRN",.84,"NM","B",903621086,86)
+
+"BLD",8514,"KRN",.84,"NM","B",903621087,87)
+
+"BLD",8514,"KRN",.84,"NM","B",903621088,88)
+
+"BLD",8514,"KRN",.84,"NM","B",903621089,89)
+
+"BLD",8514,"KRN",.84,"NM","B",903621090,90)
+
+"BLD",8514,"KRN",.84,"NM","B",903621091,91)
+
+"BLD",8514,"KRN",.84,"NM","B",903621092,92)
+
+"BLD",8514,"KRN",.84,"NM","B",903621093,93)
+
+"BLD",8514,"KRN",.84,"NM","B",903621094,94)
+
+"BLD",8514,"KRN",.84,"NM","B",903621095,95)
+
+"BLD",8514,"KRN",.84,"NM","B",903621096,96)
+
+"BLD",8514,"KRN",.84,"NM","B",903621097,97)
+
+"BLD",8514,"KRN",.84,"NM","B",903621098,98)
+
+"BLD",8514,"KRN",.84,"NM","B",903621099,99)
+
+"BLD",8514,"KRN",.84,"NM","B",903621100,100)
+
+"BLD",8514,"KRN",.84,"NM","B",903621101,101)
+
+"BLD",8514,"KRN",.84,"NM","B",903621102,102)
+
+"BLD",8514,"KRN",.84,"NM","B",903621103,103)
+
+"BLD",8514,"KRN",.84,"NM","B",903621104,104)
+
+"BLD",8514,"KRN",.84,"NM","B",903621105,105)
+
+"BLD",8514,"KRN",.84,"NM","B",903621106,106)
+
+"BLD",8514,"KRN",.84,"NM","B",903621107,107)
+
+"BLD",8514,"KRN",.84,"NM","B",903621108,108)
+
+"BLD",8514,"KRN",.84,"NM","B",903621109,109)
+
 "BLD",8514,"KRN",3.6,0)
 3.6
+"BLD",8514,"KRN",3.6,"NM",0)
+^9.68A^^
 "BLD",8514,"KRN",3.8,0)
 3.8
 "BLD",8514,"KRN",9.2,0)
@@ -33,22 +473,26 @@ BGO COMMON 1.0^^0^3150620^n
 "BLD",8514,"KRN",9.8,0)
 9.8
 "BLD",8514,"KRN",9.8,"NM",0)
-^9.68A^4^4
+^9.68A^5^5
 "BLD",8514,"KRN",9.8,"NM",1,0)
-BGOUTL^^0^B120584069
+BGOUTL^^0^B124931362
 "BLD",8514,"KRN",9.8,"NM",2,0)
-BGOUTL2^^0^B72128497
+BGOUTL2^^0^B71594988
 "BLD",8514,"KRN",9.8,"NM",3,0)
 BGOUTL3^^0^B3068906
 "BLD",8514,"KRN",9.8,"NM",4,0)
-BGOUTL4^^0^B2220385
+AUPNVUTL^^0^B14090601
+"BLD",8514,"KRN",9.8,"NM",5,0)
+AUPNSICD^^0^B84082146
+"BLD",8514,"KRN",9.8,"NM","B","AUPNSICD",5)
+
+"BLD",8514,"KRN",9.8,"NM","B","AUPNVUTL",4)
+
 "BLD",8514,"KRN",9.8,"NM","B","BGOUTL",1)
 
 "BLD",8514,"KRN",9.8,"NM","B","BGOUTL2",2)
 
 "BLD",8514,"KRN",9.8,"NM","B","BGOUTL3",3)
-
-"BLD",8514,"KRN",9.8,"NM","B","BGOUTL4",4)
 
 "BLD",8514,"KRN",19,0)
 19
@@ -194,6 +638,934 @@ BGOUTL3 GETSET^^0
 
 "BLD",8514,"KRN","B",9002226,9002226)
 
+"KRN",.84,903621001,-1)
+0^1
+"KRN",.84,903621001,0)
+903621001^1^^^Unknown patient
+"KRN",.84,903621001,2,0)
+^^1^1^3061222.171124
+"KRN",.84,903621001,2,1,0)
+Unknown patient specified
+"KRN",.84,903621002,-1)
+0^2
+"KRN",.84,903621002,0)
+903621002^1^^^Visit not specified
+"KRN",.84,903621002,2,0)
+^^1^1^3061222.171354
+"KRN",.84,903621002,2,1,0)
+Visit not specified 
+"KRN",.84,903621003,-1)
+0^3
+"KRN",.84,903621003,0)
+903621003^1^^^Visit does not exist
+"KRN",.84,903621003,2,0)
+^^1^1^3061222.171519
+"KRN",.84,903621003,2,1,0)
+Visit does not exist.
+"KRN",.84,903621004,-1)
+0^4
+"KRN",.84,903621004,0)
+903621004^1^^^Cannot create narrative type
+"KRN",.84,903621004,2,0)
+^^1^1^3061222.171638
+"KRN",.84,903621004,2,1,0)
+Unable to create a narrative type for chief complaint.
+"KRN",.84,903621005,-1)
+0^5
+"KRN",.84,903621005,0)
+903621005^1^y^^Chief complaint only editable by author
+"KRN",.84,903621005,2,0)
+^^1^1^3061222.171736
+"KRN",.84,903621005,2,1,0)
+The chief complaint can only be edited by the author (|1|).
+"KRN",.84,903621005,3,0)
+^.845^1^1
+"KRN",.84,903621005,3,1,0)
+1^Author name
+"KRN",.84,903621006,-1)
+0^6
+"KRN",.84,903621006,0)
+903621006^1^^^Type not specified
+"KRN",.84,903621006,2,0)
+^^1^1^3061222.171909
+"KRN",.84,903621006,2,1,0)
+Type not specified.
+"KRN",.84,903621007,-1)
+0^7
+"KRN",.84,903621007,0)
+903621007^1^^^Name not specified
+"KRN",.84,903621007,2,0)
+^^1^1^3061222.171935
+"KRN",.84,903621007,2,1,0)
+Name not specified.
+"KRN",.84,903621008,-1)
+0^8
+"KRN",.84,903621008,0)
+903621008^1^^^Missing input data
+"KRN",.84,903621008,2,0)
+^^1^1^3061222.172155
+"KRN",.84,903621008,2,1,0)
+At least one required data element was not specified.
+"KRN",.84,903621009,-1)
+0^9
+"KRN",.84,903621009,0)
+903621009^1^^^Invalid category
+"KRN",.84,903621009,2,0)
+^^1^1^3061222.172216
+"KRN",.84,903621009,2,1,0)
+Invalid category.
+"KRN",.84,903621010,-1)
+0^10
+"KRN",.84,903621010,0)
+903621010^1^^^Missing item node
+"KRN",.84,903621010,2,0)
+^^1^1^3061222.172235
+"KRN",.84,903621010,2,1,0)
+Missing item node.
+"KRN",.84,903621011,-1)
+0^11
+"KRN",.84,903621011,0)
+903621011^1^^^CPT preference node not defined
+"KRN",.84,903621011,2,0)
+^^1^1^3061222.172336
+"KRN",.84,903621011,2,1,0)
+CPT preference node not defined.
+"KRN",.84,903621012,-1)
+0^12
+"KRN",.84,903621012,0)
+903621012^1^^^Unknown data type
+"KRN",.84,903621012,2,0)
+^^1^1^3061222.172431
+"KRN",.84,903621012,2,1,0)
+Unknown data type specified.
+"KRN",.84,903621013,-1)
+0^13
+"KRN",.84,903621013,0)
+903621013^1^^^Value not specified
+"KRN",.84,903621013,2,0)
+^^1^1^3061222.172522
+"KRN",.84,903621013,2,1,0)
+Value not specified.
+"KRN",.84,903621014,-1)
+0^14
+"KRN",.84,903621014,0)
+903621014^1^^^CPT preference entry not found
+"KRN",.84,903621014,2,0)
+^^1^1^3061222.1727
+"KRN",.84,903621014,2,1,0)
+CPT preference entry not found.
+"KRN",.84,903621015,-1)
+0^15
+"KRN",.84,903621015,0)
+903621015^1^^^Invalid column number
+"KRN",.84,903621015,2,0)
+^^1^1^3061222.172754
+"KRN",.84,903621015,2,1,0)
+Invalid column number specified.
+"KRN",.84,903621016,-1)
+0^16
+"KRN",.84,903621016,0)
+903621016^1^^^Data value not specified
+"KRN",.84,903621016,2,0)
+^^1^1^3061222.172851
+"KRN",.84,903621016,2,1,0)
+Data value not specified.
+"KRN",.84,903621017,-1)
+0^17
+"KRN",.84,903621017,0)
+903621017^1^^^CPT category not specified
+"KRN",.84,903621017,2,0)
+^^1^1^3061222.172926
+"KRN",.84,903621017,2,1,0)
+CPT category not specified.
+"KRN",.84,903621018,-1)
+0^18
+"KRN",.84,903621018,0)
+903621018^1^^^Preference category not specified
+"KRN",.84,903621018,2,0)
+^^1^1^3061222.172956
+"KRN",.84,903621018,2,1,0)
+Preference category not specified.
+"KRN",.84,903621019,-1)
+0^19
+"KRN",.84,903621019,0)
+903621019^1^^^Unknown category specified
+"KRN",.84,903621019,2,0)
+^^1^1^3061222.173852
+"KRN",.84,903621019,2,1,0)
+Unknown category specified.
+"KRN",.84,903621020,-1)
+0^20
+"KRN",.84,903621020,0)
+903621020^1^y^^CPT code not valid
+"KRN",.84,903621020,2,0)
+^^1^1^3061222.173233
+"KRN",.84,903621020,2,1,0)
+CPT code is not valid: |1|.
+"KRN",.84,903621020,3,0)
+^.845^1^1
+"KRN",.84,903621020,3,1,0)
+1^CPT code
+"KRN",.84,903621021,-1)
+0^21
+"KRN",.84,903621021,0)
+903621021^1^^^CPT code not specified
+"KRN",.84,903621021,2,0)
+^^1^1^3061222.173308
+"KRN",.84,903621021,2,1,0)
+CPT code not specified.
+"KRN",.84,903621022,-1)
+0^22
+"KRN",.84,903621022,0)
+903621022^1^^^Missing query criteria
+"KRN",.84,903621022,2,0)
+^^1^1^3061222.17354
+"KRN",.84,903621022,2,1,0)
+Missing query criteria: either provider, clinic, or discipline is required.
+"KRN",.84,903621023,-1)
+0^23
+"KRN",.84,903621023,0)
+903621023^1^^^Education topic not specified
+"KRN",.84,903621023,2,0)
+^^1^1^3061222.173609
+"KRN",.84,903621023,2,1,0)
+Education topic not specified.
+"KRN",.84,903621024,-1)
+0^24
+"KRN",.84,903621024,0)
+903621024^1^^^Education topic not recognized
+"KRN",.84,903621024,2,0)
+^^1^1^3061222.173646
+"KRN",.84,903621024,2,1,0)
+Education topic not recognized.
+"KRN",.84,903621025,-1)
+0^25
+"KRN",.84,903621025,0)
+903621025^1^^^Education topic inactive
+"KRN",.84,903621025,2,0)
+^^1^1^3061222.17372
+"KRN",.84,903621025,2,1,0)
+Education topic is inactive.
+"KRN",.84,903621026,-1)
+0^26
+"KRN",.84,903621026,0)
+903621026^1^y^^Unrecognized input
+"KRN",.84,903621026,2,0)
+^.844^1^1^3061223^
+"KRN",.84,903621026,2,1,0)
+Unrecognized input: |1|
+"KRN",.84,903621026,3,0)
+^.845^1^1
+"KRN",.84,903621026,3,1,0)
+1^Input parameter
+"KRN",.84,903621027,-1)
+0^27
+"KRN",.84,903621027,0)
+903621027^1^^^Provider not specified
+"KRN",.84,903621027,2,0)
+^^1^1^3061222.173935
+"KRN",.84,903621027,2,1,0)
+Provider not specified.
+"KRN",.84,903621028,-1)
+0^28
+"KRN",.84,903621028,0)
+903621028^1^^^Provider not in preference file
+"KRN",.84,903621028,2,0)
+^^1^1^3061222.174059
+"KRN",.84,903621028,2,1,0)
+The specified provider is not in the preference file.
+"KRN",.84,903621029,-1)
+0^29
+"KRN",.84,903621029,0)
+903621029^1^y^^ICD9 code not valid
+"KRN",.84,903621029,2,0)
+^^1^1^3061222.174324
+"KRN",.84,903621029,2,1,0)
+The specified ICD9 code is not recognized: |1|.
+"KRN",.84,903621029,3,0)
+^.845^1^1
+"KRN",.84,903621029,3,1,0)
+1^ICD9 code
+"KRN",.84,903621030,-1)
+0^30
+"KRN",.84,903621030,0)
+903621030^1^^^ICD9 code not specified
+"KRN",.84,903621030,2,0)
+^^1^1^3061222.174418
+"KRN",.84,903621030,2,1,0)
+ICD9 code not specified.
+"KRN",.84,903621031,-1)
+0^31
+"KRN",.84,903621031,0)
+903621031^1^^^Manager not specified
+"KRN",.84,903621031,2,0)
+^^1^1^3061222.17462
+"KRN",.84,903621031,2,1,0)
+Manager not specified.
+"KRN",.84,903621032,-1)
+0^32
+"KRN",.84,903621032,0)
+903621032^1^^^Add/delete flag not specified
+"KRN",.84,903621032,2,0)
+^^1^1^3061222.174702
+"KRN",.84,903621032,2,1,0)
+Add/delete flag was not specified.
+"KRN",.84,903621033,-1)
+0^33
+"KRN",.84,903621033,0)
+903621033^1^^^Item not specified
+"KRN",.84,903621033,2,0)
+^^1^1^3061222.174806
+"KRN",.84,903621033,2,1,0)
+Item not specified.
+"KRN",.84,903621034,-1)
+0^34
+"KRN",.84,903621034,0)
+903621034^1^^^Display name not specified
+"KRN",.84,903621034,2,0)
+^^1^1^3061222.174836
+"KRN",.84,903621034,2,1,0)
+Display name not specified.
+"KRN",.84,903621035,-1)
+0^35
+"KRN",.84,903621035,0)
+903621035^1^^^Item not found
+"KRN",.84,903621035,2,0)
+^^1^1^3061222.174915
+"KRN",.84,903621035,2,1,0)
+Item not found.
+"KRN",.84,903621036,-1)
+0^36
+"KRN",.84,903621036,0)
+903621036^1^^^Unknown file specified
+"KRN",.84,903621036,2,0)
+^^1^1^3061222.175006
+"KRN",.84,903621036,2,1,0)
+Unknown file specified.
+"KRN",.84,903621037,-1)
+0^37
+"KRN",.84,903621037,0)
+903621037^1^^^Item field not found
+"KRN",.84,903621037,2,0)
+^^1^1^3061222.175033
+"KRN",.84,903621037,2,1,0)
+Item field not found.
+"KRN",.84,903621038,-1)
+0^38
+"KRN",.84,903621038,0)
+903621038^1^^^Source category not specified
+"KRN",.84,903621038,2,0)
+^^1^1^3061222.17512
+"KRN",.84,903621038,2,1,0)
+Source category was not specified.
+"KRN",.84,903621039,-1)
+0^39
+"KRN",.84,903621039,0)
+903621039^1^^^Source category does not exist
+"KRN",.84,903621039,2,0)
+^^1^1^3061222.175156
+"KRN",.84,903621039,2,1,0)
+Source category does not exist.
+"KRN",.84,903621040,-1)
+0^40
+"KRN",.84,903621040,0)
+903621040^1^^^Destination category not specified.
+"KRN",.84,903621040,2,0)
+^^1^1^3061222.175321
+"KRN",.84,903621040,2,1,0)
+Destination category not specified.
+"KRN",.84,903621041,-1)
+0^41
+"KRN",.84,903621041,0)
+903621041^1^^^Destination category does not exist
+"KRN",.84,903621041,2,0)
+^^1^1^3061222.175654
+"KRN",.84,903621041,2,1,0)
+Destination category does not exist.
+"KRN",.84,903621042,-1)
+0^42
+"KRN",.84,903621042,0)
+903621042^1^^^Must be category owner
+"KRN",.84,903621042,2,0)
+^.844^1^1^3061222^
+"KRN",.84,903621042,2,1,0)
+You must be the owner to edit a category.
+"KRN",.84,903621043,-1)
+0^43
+"KRN",.84,903621043,0)
+903621043^1^^^Category name in use
+"KRN",.84,903621043,2,0)
+^^1^1^3061222.180202
+"KRN",.84,903621043,2,1,0)
+This category name is in use by another user.
+"KRN",.84,903621044,-1)
+0^44
+"KRN",.84,903621044,0)
+903621044^1^^^Query in progress
+"KRN",.84,903621044,2,0)
+^^1^1^3061222.180358
+"KRN",.84,903621044,2,1,0)
+A query is already in progress for this category.
+"KRN",.84,903621045,-1)
+0^45
+"KRN",.84,903621045,0)
+903621045^1^^^Unable to create problem note
+"KRN",.84,903621045,2,0)
+^^1^1^3061222.181132
+"KRN",.84,903621045,2,1,0)
+Unable to create the problem note.
+"KRN",.84,903621046,-1)
+0^46
+"KRN",.84,903621046,0)
+903621046^1^^^Note not found
+"KRN",.84,903621046,2,0)
+^^1^1^3061222.18123
+"KRN",.84,903621046,2,1,0)
+The problem note was not found.
+"KRN",.84,903621047,-1)
+0^47
+"KRN",.84,903621047,0)
+903621047^1^^^Problem ID in use
+"KRN",.84,903621047,2,0)
+^^1^1^3061222.224943
+"KRN",.84,903621047,2,1,0)
+The problem ID is already in use.
+"KRN",.84,903621048,-1)
+0^48
+"KRN",.84,903621048,0)
+903621048^1^^^Diagnosis code not recognized
+"KRN",.84,903621048,2,0)
+^^1^1^3061222.225126
+"KRN",.84,903621048,2,1,0)
+Diagnosis code not recognized.
+"KRN",.84,903621049,-1)
+0^49
+"KRN",.84,903621049,0)
+903621049^1^^^Unknown location
+"KRN",.84,903621049,2,0)
+^^1^1^3061222.225228
+"KRN",.84,903621049,2,1,0)
+The specified location is unknown.
+"KRN",.84,903621050,-1)
+0^50
+"KRN",.84,903621050,0)
+903621050^1^^^Patient not specified
+"KRN",.84,903621050,2,0)
+^^1^1^3061222.225629
+"KRN",.84,903621050,2,1,0)
+Patient not specified.
+"KRN",.84,903621051,-1)
+0^51
+"KRN",.84,903621051,0)
+903621051^1^y^^Unrecognized item
+"KRN",.84,903621051,2,0)
+^^1^1^3061222.230214
+"KRN",.84,903621051,2,1,0)
+Unrecognized item: |1|.
+"KRN",.84,903621051,3,0)
+^.845^1^1
+"KRN",.84,903621051,3,1,0)
+1^Item name
+"KRN",.84,903621052,-1)
+0^52
+"KRN",.84,903621052,0)
+903621052^1^^^Patient not female
+"KRN",.84,903621052,2,0)
+^^1^1^3061222.2303
+"KRN",.84,903621052,2,1,0)
+This patient is not female.
+"KRN",.84,903621053,-1)
+0^53
+"KRN",.84,903621053,0)
+903621053^1^^^User Id does not match
+"KRN",.84,903621053,2,0)
+^^1^1^3061222.230424
+"KRN",.84,903621053,2,1,0)
+Your user id (DUZ) does not match that of the user currently logged in.
+"KRN",.84,903621054,-1)
+0^54
+"KRN",.84,903621054,0)
+903621054^1^^^Missing parameter identifier
+"KRN",.84,903621054,2,0)
+^^1^1^3061222.230459
+"KRN",.84,903621054,2,1,0)
+The parameter identifier is missing.
+"KRN",.84,903621055,-1)
+0^55
+"KRN",.84,903621055,0)
+903621055^1^^^Parameter value missing
+"KRN",.84,903621055,2,0)
+^^1^1^3061222.230604
+"KRN",.84,903621055,2,1,0)
+The parameter value was not specified.
+"KRN",.84,903621056,-1)
+0^56
+"KRN",.84,903621056,0)
+903621056^1^^^Unknown file specified for lock
+"KRN",.84,903621056,2,0)
+^^1^1^3061222.230656
+"KRN",.84,903621056,2,1,0)
+An unknown file was specified for a record lock.
+"KRN",.84,903621057,-1)
+0^57
+"KRN",.84,903621057,0)
+903621057^1^^^Invalid record # for lock
+"KRN",.84,903621057,2,0)
+^^1^1^3061222.230737
+"KRN",.84,903621057,2,1,0)
+An invalid record number was specified for the lock request.
+"KRN",.84,903621058,-1)
+0^58
+"KRN",.84,903621058,0)
+903621058^1^^^Another user editing entry
+"KRN",.84,903621058,2,0)
+^^1^1^3061222.230809
+"KRN",.84,903621058,2,1,0)
+Another user is editing this entry.
+"KRN",.84,903621059,-1)
+0^59
+"KRN",.84,903621059,0)
+903621059^1^y^^Routine missing
+"KRN",.84,903621059,2,0)
+^^1^1^3061222.230901
+"KRN",.84,903621059,2,1,0)
+A required routine is missing: |1|.
+"KRN",.84,903621059,3,0)
+^.845^1^1
+"KRN",.84,903621059,3,1,0)
+1^Routine name
+"KRN",.84,903621060,-1)
+0^60
+"KRN",.84,903621060,0)
+903621060^1^y^^Failed to delete entry
+"KRN",.84,903621060,2,0)
+^^1^1^3061222.231037
+"KRN",.84,903621060,2,1,0)
+Failed to delete entry in file |1|.
+"KRN",.84,903621060,3,0)
+^.845^1^1
+"KRN",.84,903621060,3,1,0)
+1^File name
+"KRN",.84,903621061,-1)
+0^61
+"KRN",.84,903621061,0)
+903621061^1^^^Visit is locked
+"KRN",.84,903621061,2,0)
+^^1^1^3061222.231137
+"KRN",.84,903621061,2,1,0)
+The data associated with this visit may no longer be modified.
+"KRN",.84,903621062,-1)
+0^62
+"KRN",.84,903621062,0)
+903621062^1^^^Visit belongs to another patient
+"KRN",.84,903621062,2,0)
+^^1^1^3061222.23123
+"KRN",.84,903621062,2,1,0)
+This visit does not belong to the specified patient.
+"KRN",.84,903621063,-1)
+0^63
+"KRN",.84,903621063,0)
+903621063^1^^^Visit deleted
+"KRN",.84,903621063,2,0)
+^^1^1^3061222.23131
+"KRN",.84,903621063,2,1,0)
+This visit has been marked as deleted.
+"KRN",.84,903621064,-1)
+0^64
+"KRN",.84,903621064,0)
+903621064^1^y^^Operation not valid for visit
+"KRN",.84,903621064,2,0)
+^^1^1^3061222.231359
+"KRN",.84,903621064,2,1,0)
+This operation is not valid for a visit category of |1|.
+"KRN",.84,903621064,3,0)
+^.845^1^1
+"KRN",.84,903621064,3,1,0)
+1^Service category
+"KRN",.84,903621065,-1)
+0^65
+"KRN",.84,903621065,0)
+903621065^1^^^No primary provider for visit
+"KRN",.84,903621065,2,0)
+^^1^1^3061222.231506
+"KRN",.84,903621065,2,1,0)
+There is no designated primary provider for this visit.
+"KRN",.84,903621066,-1)
+0^66
+"KRN",.84,903621066,0)
+903621066^1^^^Visit date cannot be in future
+"KRN",.84,903621066,2,0)
+^^1^1^3061222.23154
+"KRN",.84,903621066,2,1,0)
+The visit date cannot be in the future.
+"KRN",.84,903621067,-1)
+0^67
+"KRN",.84,903621067,0)
+903621067^1^^^Unknown refusal type
+"KRN",.84,903621067,2,0)
+^^1^1^3061225.193248
+"KRN",.84,903621067,2,1,0)
+The specified refusal type was not recognized.
+"KRN",.84,903621068,-1)
+0^68
+"KRN",.84,903621068,0)
+903621068^1^y^^Entity already included in visit
+"KRN",.84,903621068,2,0)
+^^1^1^3061223.08201
+"KRN",.84,903621068,2,1,0)
+|1| already recorded for this visit.
+"KRN",.84,903621068,3,0)
+^.845^1^1
+"KRN",.84,903621068,3,1,0)
+1^Entity
+"KRN",.84,903621069,-1)
+0^69
+"KRN",.84,903621069,0)
+903621069^1^^^Unknown V file
+"KRN",.84,903621069,2,0)
+^^1^1^3061225.19342
+"KRN",.84,903621069,2,1,0)
+The specified V file was not recognized.
+"KRN",.84,903621070,-1)
+0^70
+"KRN",.84,903621070,0)
+903621070^1^^^Unknown file entry
+"KRN",.84,903621070,2,0)
+^^1^1^3061223.082356
+"KRN",.84,903621070,2,1,0)
+The specified record does not exist.
+"KRN",.84,903621071,-1)
+0^71
+"KRN",.84,903621071,0)
+903621071^1^^^Patient not in asthma registry
+"KRN",.84,903621071,2,0)
+^^1^1^3061223.082628
+"KRN",.84,903621071,2,1,0)
+The patient is not in the Asthma Registry.
+"KRN",.84,903621072,-1)
+0^72
+"KRN",.84,903621072,0)
+903621072^1^y^^Unknown record type
+"KRN",.84,903621072,2,0)
+^^1^1^3061223.082843
+"KRN",.84,903621072,2,1,0)
+The specified record type is not recognized: |1|.
+"KRN",.84,903621072,3,0)
+^.845^1^1
+"KRN",.84,903621072,3,1,0)
+1^Record type
+"KRN",.84,903621073,-1)
+0^73
+"KRN",.84,903621073,0)
+903621073^1^^^Not a valid CPT record
+"KRN",.84,903621073,2,0)
+^^1^1^3061223.082944
+"KRN",.84,903621073,2,1,0)
+The specified CPT record is not valid.
+"KRN",.84,903621074,-1)
+0^74
+"KRN",.84,903621074,0)
+903621074^1^^^CPT code inactive
+"KRN",.84,903621074,2,0)
+^^1^1^3061223.083015
+"KRN",.84,903621074,2,1,0)
+The specified CPT code is marked as inactive.
+"KRN",.84,903621075,-1)
+0^75
+"KRN",.84,903621075,0)
+903621075^1^^^CPT code deleted
+"KRN",.84,903621075,2,0)
+^^1^1^3061223.083044
+"KRN",.84,903621075,2,1,0)
+The specified CPT code is marked as deleted.
+"KRN",.84,903621076,-1)
+0^76
+"KRN",.84,903621076,0)
+903621076^1^^^Visit not emergency room
+"KRN",.84,903621076,2,0)
+^^1^1^3061223.083222
+"KRN",.84,903621076,2,1,0)
+The current visit location is not emergency room.
+"KRN",.84,903621077,-1)
+0^77
+"KRN",.84,903621077,0)
+903621077^1^^^Missing exam type
+"KRN",.84,903621077,2,0)
+^^1^1^3061223.083303
+"KRN",.84,903621077,2,1,0)
+The exam type was not specified.
+"KRN",.84,903621078,-1)
+0^78
+"KRN",.84,903621078,0)
+903621078^1^^^Refusal item not specified
+"KRN",.84,903621078,2,0)
+^^1^1^3061223.08351
+"KRN",.84,903621078,2,1,0)
+The refusal item was not specified.
+"KRN",.84,903621079,-1)
+0^79
+"KRN",.84,903621079,0)
+903621079^1^^^Infant feeding option not specified
+"KRN",.84,903621079,2,0)
+^^1^1^3061223.083545
+"KRN",.84,903621079,2,1,0)
+The infant feeding option was not specified.
+"KRN",.84,903621080,-1)
+0^80
+"KRN",.84,903621080,0)
+903621080^1^^^Immunization not found
+"KRN",.84,903621080,2,0)
+^.844^1^1^3061223^
+"KRN",.84,903621080,2,1,0)
+The specified immunization was not recognized.
+"KRN",.84,903621081,-1)
+0^81
+"KRN",.84,903621081,0)
+903621081^1^y^^Immunization already recorded
+"KRN",.84,903621081,2,0)
+^^1^1^3061223.083713
+"KRN",.84,903621081,2,1,0)
+A |1| has already been recorded for this date.
+"KRN",.84,903621081,3,0)
+^.845^1^1
+"KRN",.84,903621081,3,1,0)
+1^Immunization type
+"KRN",.84,903621082,-1)
+0^82
+"KRN",.84,903621082,0)
+903621082^1^y^^Immunization package error
+"KRN",.84,903621082,2,0)
+^^1^1^3061223.084504
+"KRN",.84,903621082,2,1,0)
+The immunization package has reported an error: |1|
+"KRN",.84,903621082,3,0)
+^.845^1^1
+"KRN",.84,903621082,3,1,0)
+1^Error text
+"KRN",.84,903621083,-1)
+0^83
+"KRN",.84,903621083,0)
+903621083^1^^^Patient not in immunization registry
+"KRN",.84,903621083,2,0)
+^^1^1^3061223.085121
+"KRN",.84,903621083,2,1,0)
+The specified patient is not registered in the immunization package.
+"KRN",.84,903621084,-1)
+0^84
+"KRN",.84,903621084,0)
+903621084^1^^^Vaccine not recognized
+"KRN",.84,903621084,2,0)
+^^1^1^3061223.085159
+"KRN",.84,903621084,2,1,0)
+The specified vaccine is not recognized.
+"KRN",.84,903621085,-1)
+0^85
+"KRN",.84,903621085,0)
+903621085^1^^^Contraindication not on file
+"KRN",.84,903621085,2,0)
+^^1^1^3061223.085251
+"KRN",.84,903621085,2,1,0)
+The specified contraindication is not on file.
+"KRN",.84,903621086,-1)
+0^86
+"KRN",.84,903621086,0)
+903621086^1^y^^Measurement only editable by author
+"KRN",.84,903621086,2,0)
+^^1^1^3061223.085339
+"KRN",.84,903621086,2,1,0)
+This measurement can only be edited by the author (|1|).
+"KRN",.84,903621086,3,0)
+^.845^1^1
+"KRN",.84,903621086,3,1,0)
+1^Author name
+"KRN",.84,903621087,-1)
+0^87
+"KRN",.84,903621087,0)
+903621087^1^^^Invalid measurement type
+"KRN",.84,903621087,2,0)
+^^1^1^3061223.085415
+"KRN",.84,903621087,2,1,0)
+The specified measurement type is invalid.
+"KRN",.84,903621088,-1)
+0^88
+"KRN",.84,903621088,0)
+903621088^1^^^Unknown education topic
+"KRN",.84,903621088,2,0)
+^^1^1^3061223.085504
+"KRN",.84,903621088,2,1,0)
+The specified education topic does not exist.
+"KRN",.84,903621089,-1)
+0^89
+"KRN",.84,903621089,0)
+903621089^1^^^Not primary provider
+"KRN",.84,903621089,2,0)
+^^1^1^3061223.085632
+"KRN",.84,903621089,2,1,0)
+You are not the primary provider for this visit.
+"KRN",.84,903621090,-1)
+0^90
+"KRN",.84,903621090,0)
+903621090^1^^^No primary provider note
+"KRN",.84,903621090,2,0)
+^^1^1^3061223.085723
+"KRN",.84,903621090,2,1,0)
+There is no note signed by the primary provider.
+"KRN",.84,903621091,-1)
+0^91
+"KRN",.84,903621091,0)
+903621091^1^^^Missing V POV record
+"KRN",.84,903621091,2,0)
+^^1^1^3061223.085749
+"KRN",.84,903621091,2,1,0)
+The specified V POV record is missing.
+"KRN",.84,903621092,-1)
+0^92
+"KRN",.84,903621092,0)
+903621092^1^^^Invalid ICD9 code
+"KRN",.84,903621092,2,0)
+^^1^1^3061223.085945
+"KRN",.84,903621092,2,1,0)
+The specified ICD9 code is not recognized.
+"KRN",.84,903621093,-1)
+0^93
+"KRN",.84,903621093,0)
+903621093^1^^^ICD9 code not active
+"KRN",.84,903621093,2,0)
+^^1^1^3061223.090045
+"KRN",.84,903621093,2,1,0)
+The specified ICD9 code is not active.
+"KRN",.84,903621094,-1)
+0^94
+"KRN",.84,903621094,0)
+903621094^1^^^Unknown POV
+"KRN",.84,903621094,2,0)
+^^1^1^3061223.090157
+"KRN",.84,903621094,2,1,0)
+The specified purpose of visit code is not recognized.
+"KRN",.84,903621095,-1)
+0^95
+"KRN",.84,903621095,0)
+903621095^1^^^ICD9 code does not apply
+"KRN",.84,903621095,2,0)
+^^1^1^3061223.090322
+"KRN",.84,903621095,2,1,0)
+The specified ICD9 code does not apply to this patient's gender.
+"KRN",.84,903621096,-1)
+0^96
+"KRN",.84,903621096,0)
+903621096^1^^^Unknown procedure type
+"KRN",.84,903621096,2,0)
+^^1^1^3061223.090358
+"KRN",.84,903621096,2,1,0)
+The specified procedure type is not recognized.
+"KRN",.84,903621097,-1)
+0^97
+"KRN",.84,903621097,0)
+903621097^1^^^Procedure inactive
+"KRN",.84,903621097,2,0)
+^^1^1^3061223.090434
+"KRN",.84,903621097,2,1,0)
+The specified procedure type is marked as inactive.
+"KRN",.84,903621098,-1)
+0^98
+"KRN",.84,903621098,0)
+903621098^1^y^^Already has primary provider
+"KRN",.84,903621098,2,0)
+^^1^1^3061223.090537
+"KRN",.84,903621098,2,1,0)
+|1| is already designated as the primary provider.
+"KRN",.84,903621098,3,0)
+^.845^1^1
+"KRN",.84,903621098,3,1,0)
+1^Provider name
+"KRN",.84,903621099,-1)
+0^99
+"KRN",.84,903621099,0)
+903621099^1^^^Trans code not specified
+"KRN",.84,903621099,2,0)
+^^1^1^3061223.090706
+"KRN",.84,903621099,2,1,0)
+A transaction code was not specified.
+"KRN",.84,903621100,-1)
+0^100
+"KRN",.84,903621100,0)
+903621100^1^^^Unknown trans code
+"KRN",.84,903621100,2,0)
+^.844^1^1^3061223^
+"KRN",.84,903621100,2,1,0)
+The specified transaction code is not recognized.
+"KRN",.84,903621101,-1)
+0^101
+"KRN",.84,903621101,0)
+903621101^1^^^Trans code inactive
+"KRN",.84,903621101,2,0)
+^^1^1^3061223.090908
+"KRN",.84,903621101,2,1,0)
+The specified transaction code is marked as inactive.
+"KRN",.84,903621102,-1)
+0^102
+"KRN",.84,903621102,0)
+903621102^1^^^User not specified
+"KRN",.84,903621102,2,0)
+^^1^1^3061223.090946
+"KRN",.84,903621102,2,1,0)
+A user was not specified.
+"KRN",.84,903621103,-1)
+0^103
+"KRN",.84,903621103,0)
+903621103^1^^^Unknown user
+"KRN",.84,903621103,2,0)
+^^1^1^3061223.091019
+"KRN",.84,903621103,2,1,0)
+The specified user was not recognized.
+"KRN",.84,903621104,-1)
+0^104
+"KRN",.84,903621104,0)
+903621104^1^^^Activity time record not on file
+"KRN",.84,903621104,2,0)
+^^1^1^3061223.091053
+"KRN",.84,903621104,2,1,0)
+The specified activity time record does not exist.
+"KRN",.84,903621105,-1)
+0^105
+"KRN",.84,903621105,0)
+903621105^1^^^Provider does not match activity record
+"KRN",.84,903621105,2,0)
+^^1^1^3061223.091242
+"KRN",.84,903621105,2,1,0)
+The specified provider does not match this activity record.
+"KRN",.84,903621106,-1)
+0^106
+"KRN",.84,903621106,0)
+903621106^1^^^Must be primary to delete
+"KRN",.84,903621106,2,0)
+^^1^1^3061223.091406
+"KRN",.84,903621106,2,1,0)
+To delete this record, you must either be the person that entered it or be designated as the primary provider for the visit.
+"KRN",.84,903621107,-1)
+0^107
+"KRN",.84,903621107,0)
+903621107^1^^^Cannot delete link
+"KRN",.84,903621107,2,0)
+^^1^1^3061223.091501
+"KRN",.84,903621107,2,1,0)
+This link was created by another user.  You may not delete it.
+"KRN",.84,903621108,-1)
+0^108
+"KRN",.84,903621108,0)
+903621108^1^^^Unrecognized link type specifier
+"KRN",.84,903621108,2,0)
+^^1^1^3061223.091546
+"KRN",.84,903621108,2,1,0)
+The link type specifier was not recognized.
+"KRN",.84,903621109,-1)
+0^109
+"KRN",.84,903621109,0)
+903621109^1^^^Missing pointer value
+"KRN",.84,903621109,2,0)
+^^1^1^3061223.091613
+"KRN",.84,903621109,2,1,0)
+The pointer value for the link was not specified.
 "KRN",19.1,514,-1)
 0^1
 "KRN",19.1,514,0)
@@ -814,6 +2186,10 @@ SNOMED Concept ID
 19.1;3;;;KEY^XPDTA1;KEYF1^XPDIA1;KEYE1^XPDIA1;KEYF2^XPDIA1;;KEYDEL^XPDIA1
 "ORD",3,19.1,0)
 SECURITY KEY
+"ORD",9,.84)
+.84;9;;;EDEOUT^DIFROMSO(.84,DA,"",XPDA);FPRE^DIFROMSI(.84,"",XPDA);EPRE^DIFROMSI(.84,DA,"",XPDA,"",OLDA);;EPOST^DIFROMSI(.84,DA,"",XPDA);DEL^DIFROMSK(.84,"",%)
+"ORD",9,.84,0)
+DIALOG
 "ORD",16,8994)
 8994;16;1;;;;;;;RPCDEL^XPDIA1
 "ORD",16,8994,0)
@@ -889,13 +2265,943 @@ NO
 "QUES","XPZ2","M")
 D XPZ2^XPDIQ
 "RTN")
-4
+5
+"RTN","AUPNSICD")
+0^5^B84082146
+"RTN","AUPNSICD",1,0)
+AUPNSICD ; IHS/CMI/LAB - Screen Purpose of Visit/ICD9 codes 24-MAY-1993 ; 
+"RTN","AUPNSICD",2,0)
+ ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 4
+"RTN","AUPNSICD",3,0)
+ ;IHS/TUCSON/LAB - added checks for filegram and CHS, do not
+"RTN","AUPNSICD",4,0)
+ ;execute screen if in chs or filegrams 03/18/96 PATCH 4
+"RTN","AUPNSICD",5,0)
+ I $$CHK(Y)
+"RTN","AUPNSICD",6,0)
+ Q:$D(^ICD9(Y))
+"RTN","AUPNSICD",7,0)
+ Q
+"RTN","AUPNSICD",8,0)
+IMP(D) ;PEP - which coding system should be used:
+"RTN","AUPNSICD",9,0)
+ ;RETURN IEN of entry in ^ICDS
+"RTN","AUPNSICD",10,0)
+ ;1 = ICD9
+"RTN","AUPNSICD",11,0)
+ ;30 = ICD10
+"RTN","AUPNSICD",12,0)
+ ;will need to add subroutines for ICD11 when we have that.
+"RTN","AUPNSICD",13,0)
+ I $G(D)="" S D=DT
+"RTN","AUPNSICD",14,0)
+ NEW X,Y,Z
+"RTN","AUPNSICD",15,0)
+ I '$O(^ICDS("F",80,0)) Q 1
+"RTN","AUPNSICD",16,0)
+ S Y=""
+"RTN","AUPNSICD",17,0)
+ S X=0 F  S X=$O(^ICDS("F",80,X)) Q:X'=+X  D
+"RTN","AUPNSICD",18,0)
+ .I $P(^ICDS(X,0),U,4)="" Q   ;NO IMPLEMENTATION DATE?? SKIP IT
+"RTN","AUPNSICD",19,0)
+ .S Z($P(^ICDS(X,0),U,4))=X
+"RTN","AUPNSICD",20,0)
+ ;now go through and get the last one before it imp date is greater than the visit date
+"RTN","AUPNSICD",21,0)
+ S X=0 F  S X=$O(Z(X)) Q:X=""  D
+"RTN","AUPNSICD",22,0)
+ .I D<X Q
+"RTN","AUPNSICD",23,0)
+ .I D>X S Y=Z(X) Q
+"RTN","AUPNSICD",24,0)
+ I Y="" S Y=$O(Z(0)) Q Z(Y)
+"RTN","AUPNSICD",25,0)
+ Q Y
+"RTN","AUPNSICD",26,0)
+IMPOP(D) ;PEP - which coding system should be used:
+"RTN","AUPNSICD",27,0)
+ ;RETURN IEN of entry in ^ICDS
+"RTN","AUPNSICD",28,0)
+ ;1 = ICD9
+"RTN","AUPNSICD",29,0)
+ ;30 = ICD10
+"RTN","AUPNSICD",30,0)
+ ;will need to add subroutines for ICD11 when we have that.
+"RTN","AUPNSICD",31,0)
+ I $G(D)="" S D=DT
+"RTN","AUPNSICD",32,0)
+ NEW X,Y,Z
+"RTN","AUPNSICD",33,0)
+ I '$O(^ICDS("F",80.1,0)) Q 2
+"RTN","AUPNSICD",34,0)
+ S Y=""
+"RTN","AUPNSICD",35,0)
+ S X=0 F  S X=$O(^ICDS("F",80.1,X)) Q:X'=+X  D
+"RTN","AUPNSICD",36,0)
+ .I $P(^ICDS(X,0),U,4)="" Q   ;NO IMPLEMENTATION DATE?? SKIP IT
+"RTN","AUPNSICD",37,0)
+ .S Z($P(^ICDS(X,0),U,4))=X
+"RTN","AUPNSICD",38,0)
+ ;now go through and get the last one before it imp date is greater than the visit date
+"RTN","AUPNSICD",39,0)
+ S X=0 F  S X=$O(Z(X)) Q:X=""  D
+"RTN","AUPNSICD",40,0)
+ .I D<X Q
+"RTN","AUPNSICD",41,0)
+ .I D>X S Y=Z(X) Q
+"RTN","AUPNSICD",42,0)
+ I Y="" S Y=$O(Z(0)) Q Z(Y)
+"RTN","AUPNSICD",43,0)
+ Q Y
+"RTN","AUPNSICD",44,0)
+ ;
+"RTN","AUPNSICD",45,0)
+CHK(Y) ;EP - SCREEN OUT E CODES AND INACTIVE CODES
+"RTN","AUPNSICD",46,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",47,0)
+ I $D(DIFGLINE) Q 1   ;in filegrams so take code and accept it
+"RTN","AUPNSICD",48,0)
+ I $D(ACHSDIEN) Q 1   ;in CHS so take code and accept it
+"RTN","AUPNSICD",49,0)
+ I $G(DUZ("AG"))'="I" Q 1
+"RTN","AUPNSICD",50,0)
+ ;use date if available
+"RTN","AUPNSICD",51,0)
+ ;get visit date if known, if not known, use DT to determine whether to use
+"RTN","AUPNSICD",52,0)
+ ;ICD9 vs ICD10
+"RTN","AUPNSICD",53,0)
+ S D=""
+"RTN","AUPNSICD",54,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",55,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",56,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",57,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",58,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",59,0)
+ S I=$$IMP(D)  ;get ien of coding system
+"RTN","AUPNSICD",60,0)
+ S %=$$ICDDX^AUPNVUTL(Y,D) I 1
+"RTN","AUPNSICD",61,0)
+ I $P(%,U,20)]"",$P(%,U,20)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",62,0)
+ S I="CHKDX"_I
+"RTN","AUPNSICD",63,0)
+ G @I
+"RTN","AUPNSICD",64,0)
+ ;Q
+"RTN","AUPNSICD",65,0)
+CHKDX1 ;CODING SYSTEM 1 - ICD9
+"RTN","AUPNSICD",66,0)
+ I $E($P(%,U,2),1)="E" Q 0  ;no E codes
+"RTN","AUPNSICD",67,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",68,0)
+ ;
+"RTN","AUPNSICD",69,0)
+CSEX ; IF 'USE WITH SEX' FIELD HAS A VALUE CHECK THAT VALUE AGAINST AUPNSEX
+"RTN","AUPNSICD",70,0)
+ I '$D(AUPNSEX) Q 1
+"RTN","AUPNSICD",71,0)
+ I $P(%,U,11)]"",$P(%,U,11)'=AUPNSEX Q 0
+"RTN","AUPNSICD",72,0)
+ Q 1
+"RTN","AUPNSICD",73,0)
+ ;
+"RTN","AUPNSICD",74,0)
+CHKDX30 ;coding system 30 - ICD10
+"RTN","AUPNSICD",75,0)
+ I $E($P(%,U,2),1)="V" Q 0  ;no codes V00-Y99 per Leslie Racine.
+"RTN","AUPNSICD",76,0)
+ I $E($P(%,U,2),1)="W" Q 0
+"RTN","AUPNSICD",77,0)
+ I $E($P(%,U,2),1)="X" Q 0
+"RTN","AUPNSICD",78,0)
+ I $E($P(%,U,2),1)="Y" Q 0
+"RTN","AUPNSICD",79,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",80,0)
+ ;
+"RTN","AUPNSICD",81,0)
+CSEX30 ; IF 'USE WITH SEX' FIELD HAS A VALUE CHECK THAT VALUE AGAINST AUPNSEX
+"RTN","AUPNSICD",82,0)
+ I '$D(AUPNSEX) Q 1
+"RTN","AUPNSICD",83,0)
+ I $P(%,U,11)]"",$P(%,U,11)'=AUPNSEX Q 0
+"RTN","AUPNSICD",84,0)
+ Q 1
+"RTN","AUPNSICD",85,0)
+CPT ;EP - screen on CPT from V CPT .01 and V Procedure
+"RTN","AUPNSICD",86,0)
+ ;note:  DATE ADDED in the CPT table reflects the date the code was added to the local table and thus can't be used.  It should be the date added to the CPT file, AFTER CSV will be able to use it
+"RTN","AUPNSICD",87,0)
+ I $$CHKCPT(Y)
+"RTN","AUPNSICD",88,0)
+ Q:$D(^ICPT(Y))
+"RTN","AUPNSICD",89,0)
+ Q
+"RTN","AUPNSICD",90,0)
+ ;
+"RTN","AUPNSICD",91,0)
+CHKCPT(Y) ;check CPT for valid date, inactive flag
+"RTN","AUPNSICD",92,0)
+ I $D(APCDOVR) Q 1  ;override for something
+"RTN","AUPNSICD",93,0)
+ I $D(DIFGLINE) Q 1  ;if in MFI accept all cpt codes
+"RTN","AUPNSICD",94,0)
+ I $D(ACHSDIEN) Q 1  ;if in CHS link accept all cpt codes
+"RTN","AUPNSICD",95,0)
+ I $G(DUZ("AG"))'="I" Q 1  ;if not an IHS facility accept all cpt codes
+"RTN","AUPNSICD",96,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",97,0)
+ ;get date if available
+"RTN","AUPNSICD",98,0)
+ S D=""
+"RTN","AUPNSICD",99,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",100,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",101,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",102,0)
+ ;check date if have date
+"RTN","AUPNSICD",103,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",104,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",105,0)
+ ;
+"RTN","AUPNSICD",106,0)
+ S %=$$CPT^ICPTCOD(Y,D)
+"RTN","AUPNSICD",107,0)
+ I $$VERSION^XPDUTL("BCSV")]"" Q $P(%,U,7)
+"RTN","AUPNSICD",108,0)
+ S A="",I=$P(^ICPT(Y,0),U,7)
+"RTN","AUPNSICD",109,0)
+ I D]"",I]"",D>I Q 0
+"RTN","AUPNSICD",110,0)
+ Q 1
+"RTN","AUPNSICD",111,0)
+ ;
+"RTN","AUPNSICD",112,0)
+ ;
+"RTN","AUPNSICD",113,0)
+ICDOPCHK ;EP called from input tx on V PROCEDURE .01 SCREEN OUT E CODES AND INACTIVE CODES
+"RTN","AUPNSICD",114,0)
+ I $$CHKOP(Y)
+"RTN","AUPNSICD",115,0)
+ Q:$D(^ICD0(Y))
+"RTN","AUPNSICD",116,0)
+ Q
+"RTN","AUPNSICD",117,0)
+ ;
+"RTN","AUPNSICD",118,0)
+CHKOP(Y) ;EP
+"RTN","AUPNSICD",119,0)
+ ;new subroutine for CSV
+"RTN","AUPNSICD",120,0)
+ I $D(DIFGLINE) Q 1  ;in MFI
+"RTN","AUPNSICD",121,0)
+ I $D(ACHSDIEN) Q 1  ;in CHS
+"RTN","AUPNSICD",122,0)
+ I $G(DUZ("AG"))'="I" Q 1   ;not IHS
+"RTN","AUPNSICD",123,0)
+ ;use date if available
+"RTN","AUPNSICD",124,0)
+ ;get visit date if known, if not known, use DT to determine whether to use
+"RTN","AUPNSICD",125,0)
+ ;ICD9 vs ICD10
+"RTN","AUPNSICD",126,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",127,0)
+ S D=""
+"RTN","AUPNSICD",128,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",129,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",130,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",131,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",132,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",133,0)
+ S I=$$IMPOP(D)  ;get ien of coding system
+"RTN","AUPNSICD",134,0)
+ S %=$$ICDOP^AUPNVUTL(Y,D)
+"RTN","AUPNSICD",135,0)
+ I $P(%,U,15)]"",$P(%,U,15)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",136,0)
+ S I="CHKOP"_I G @I
+"RTN","AUPNSICD",137,0)
+ ;Q
+"RTN","AUPNSICD",138,0)
+CHKOP2 ;CODING SYSTEM 2 - ICD9
+"RTN","AUPNSICD",139,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",140,0)
+OPSEX ; IF 'USE WITH SEX' FIELD HAS A VALUE CHECK THAT VALUE AGAINST AUPNSEX
+"RTN","AUPNSICD",141,0)
+ I '$D(AUPNSEX) Q 1
+"RTN","AUPNSICD",142,0)
+ I $P(%,U,11)]"",$P(%,U,11)'=AUPNSEX Q 0
+"RTN","AUPNSICD",143,0)
+ Q 1
+"RTN","AUPNSICD",144,0)
+ ;
+"RTN","AUPNSICD",145,0)
+CHKOP31 ;coding system 31 - ICD10
+"RTN","AUPNSICD",146,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",147,0)
+ ;
+"RTN","AUPNSICD",148,0)
+CSEX31 ; IF 'USE WITH SEX' FIELD HAS A VALUE CHECK THAT VALUE AGAINST AUPNSEX
+"RTN","AUPNSICD",149,0)
+ I '$D(AUPNSEX) Q 1
+"RTN","AUPNSICD",150,0)
+ I $P(%,U,11)]"",$P(%,U,11)'=AUPNSEX Q 0
+"RTN","AUPNSICD",151,0)
+ Q 1
+"RTN","AUPNSICD",152,0)
+CHKFH(Y) ;EP - SCREEN OUT E CODES AND INACTIVE CODES
+"RTN","AUPNSICD",153,0)
+ I $D(DIFGLINE) Q 1  ;take whatever mfi gives us
+"RTN","AUPNSICD",154,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",155,0)
+ S D=""
+"RTN","AUPNSICD",156,0)
+ S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",157,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",158,0)
+ S I=$$IMP(D)  ;get ien of coding system
+"RTN","AUPNSICD",159,0)
+ S %=$$ICDDX^AUPNVUTL(Y,D)
+"RTN","AUPNSICD",160,0)
+ I $P(%,U,20)]"",$P(%,U,20)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",161,0)
+ S I="CHKFH"_I G @I
+"RTN","AUPNSICD",162,0)
+ ;
+"RTN","AUPNSICD",163,0)
+CHKFH1 ;
+"RTN","AUPNSICD",164,0)
+ S A=0 D
+"RTN","AUPNSICD",165,0)
+ .I $E($P(%,U,2),1,3)="V16" S A=1
+"RTN","AUPNSICD",166,0)
+ .I $E($P(%,U,2),1,3)="V17" S A=1
+"RTN","AUPNSICD",167,0)
+ .I $E($P(%,U,2),1,3)="V18" S A=1
+"RTN","AUPNSICD",168,0)
+ .I $E($P(%,U,2),1,3)="V19" S A=1
+"RTN","AUPNSICD",169,0)
+ .I $P(%,U,2)=".9999" S A=1
+"RTN","AUPNSICD",170,0)
+ I 'A Q 0
+"RTN","AUPNSICD",171,0)
+ I $$VERSION^XPDUTL("BCSV")]"" Q $P(%,U,10)
+"RTN","AUPNSICD",172,0)
+ S A=$P($G(^ICD9(Y,9999999)),U,4),I=$P(^ICD9(Y,0),U,11)
+"RTN","AUPNSICD",173,0)
+ I D]"",I]"",D>I Q 0
+"RTN","AUPNSICD",174,0)
+ I D]"",A]"",D<A Q 0
+"RTN","AUPNSICD",175,0)
+ Q 1
+"RTN","AUPNSICD",176,0)
+CHKFH30 ;
+"RTN","AUPNSICD",177,0)
+ S A=0 D
+"RTN","AUPNSICD",178,0)
+ .I $E($P(%,U,2),1,3)="Z80" S A=1
+"RTN","AUPNSICD",179,0)
+ .I $E($P(%,U,2),1,3)="Z81" S A=1
+"RTN","AUPNSICD",180,0)
+ .I $E($P(%,U,2),1,3)="Z82" S A=1
+"RTN","AUPNSICD",181,0)
+ .I $E($P(%,U,2),1,3)="Z83" S A=1
+"RTN","AUPNSICD",182,0)
+ .I $E($P(%,U,2),1,3)="Z84" S A=1
+"RTN","AUPNSICD",183,0)
+ .I $P(%,U,2)="ZZZ.999" S A=1
+"RTN","AUPNSICD",184,0)
+ I 'A Q 0
+"RTN","AUPNSICD",185,0)
+ I $$VERSION^XPDUTL("BCSV")]"" Q $P(%,U,10)
+"RTN","AUPNSICD",186,0)
+ S A=$P($G(^ICD9(Y,9999999)),U,4),I=$P(^ICD9(Y,0),U,11)
+"RTN","AUPNSICD",187,0)
+ I D]"",I]"",D>I Q 0
+"RTN","AUPNSICD",188,0)
+ I D]"",A]"",D<A Q 0
+"RTN","AUPNSICD",189,0)
+ Q 1
+"RTN","AUPNSICD",190,0)
+CHKE ;EP - ECODE SCREEN
+"RTN","AUPNSICD",191,0)
+ I $$CHKE1(Y)
+"RTN","AUPNSICD",192,0)
+ Q:$D(^ICD9(Y))
+"RTN","AUPNSICD",193,0)
+ Q
+"RTN","AUPNSICD",194,0)
+CHKE1(Y) ;EP SCREEN OUT E CODES AND INACTIVE CODES
+"RTN","AUPNSICD",195,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",196,0)
+ I $D(DIFGLINE) Q 1   ;in filegrams so take code and accept it
+"RTN","AUPNSICD",197,0)
+ I $D(ACHSDIEN) Q 1   ;in CHS so take code and accept it
+"RTN","AUPNSICD",198,0)
+ I $G(DUZ("AG"))'="I" Q 1
+"RTN","AUPNSICD",199,0)
+ ;use date if available
+"RTN","AUPNSICD",200,0)
+ ;get visit date if known, if not known, use DT to determine whether to use
+"RTN","AUPNSICD",201,0)
+ ;ICD9 vs ICD10
+"RTN","AUPNSICD",202,0)
+ S D=""
+"RTN","AUPNSICD",203,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",204,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",205,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",206,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",207,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",208,0)
+ S I=$$IMP(D)  ;get ien of coding system
+"RTN","AUPNSICD",209,0)
+ S %=$$ICDDX^AUPNVUTL(Y,D)
+"RTN","AUPNSICD",210,0)
+ I $P(%,U,20)]"",$P(%,U,20)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",211,0)
+ S I="CHKEX"_I G @I
+"RTN","AUPNSICD",212,0)
+ ;Q
+"RTN","AUPNSICD",213,0)
+CHKEX1 ;CODING SYSTEM 1 - ICD9
+"RTN","AUPNSICD",214,0)
+ I $E($P(%,U,2),1)'="E" Q 0  ;only E codes
+"RTN","AUPNSICD",215,0)
+ I $$VERSION^XPDUTL("BCSV")]"",'$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",216,0)
+ I $$VERSION^XPDUTL("BCSV")]"" G CSEX
+"RTN","AUPNSICD",217,0)
+ S A=$P($G(^ICD9(Y,9999999)),U,4),I=$P(^ICD9(Y,0),U,11)
+"RTN","AUPNSICD",218,0)
+ I D]"",I]"",D>I Q 0
+"RTN","AUPNSICD",219,0)
+ I D]"",A]"",D<A Q 0
+"RTN","AUPNSICD",220,0)
+ Q 1
+"RTN","AUPNSICD",221,0)
+ ;
+"RTN","AUPNSICD",222,0)
+CHKEX30 ;coding system 30 - ICD10
+"RTN","AUPNSICD",223,0)
+ NEW J
+"RTN","AUPNSICD",224,0)
+ S J=0
+"RTN","AUPNSICD",225,0)
+ I $E($P(%,U,2),1)="V" S J=1  ;only codes V00-Y99 per Leslie Racine.
+"RTN","AUPNSICD",226,0)
+ I $E($P(%,U,2),1)="W" S J=1
+"RTN","AUPNSICD",227,0)
+ I $E($P(%,U,2),1)="X" S J=1
+"RTN","AUPNSICD",228,0)
+ I $E($P(%,U,2),1)="Y" S J=1
+"RTN","AUPNSICD",229,0)
+ I 'J Q 0
+"RTN","AUPNSICD",230,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",231,0)
+ Q 1
+"RTN","AUPNSICD",232,0)
+FHCHK ;PEP - called from input tx on FAMILY HISTORY .01 field
+"RTN","AUPNSICD",233,0)
+ ;screen out all codes but V16-V19 and make sure it is active as of date being entered
+"RTN","AUPNSICD",234,0)
+ ;IHS/CMI/LAB - AUPN*99.1*7 - begin mods 02/15/2002
+"RTN","AUPNSICD",235,0)
+ I $$CHKFH(Y)
+"RTN","AUPNSICD",236,0)
+ Q:$D(^ICD9(Y))
+"RTN","AUPNSICD",237,0)
+ Q
+"RTN","AUPNSICD",238,0)
+HELP ;EP
+"RTN","AUPNSICD",239,0)
+ D HELP^AUPNSICH
+"RTN","AUPNSICD",240,0)
+ Q
+"RTN","AUPNSICD",241,0)
+HELPFH ;EP
+"RTN","AUPNSICD",242,0)
+ D HELPFH^AUPNSICH
+"RTN","AUPNSICD",243,0)
+ Q
+"RTN","AUPNSICD",244,0)
+HELPE ;EP
+"RTN","AUPNSICD",245,0)
+ D HELPE^AUPNSICH
+"RTN","AUPNSICD",246,0)
+ Q
+"RTN","AUPNSICD",247,0)
+RFBH ;EP
+"RTN","AUPNSICD",248,0)
+ D HELPRFB^AUPNSICH
+"RTN","AUPNSICD",249,0)
+ Q
+"RTN","AUPNSICD",250,0)
+EOP ;
+"RTN","AUPNSICD",251,0)
+ S AUPNQ=0
+"RTN","AUPNSICD",252,0)
+ NEW DIR
+"RTN","AUPNSICD",253,0)
+ NEW DIRUT,DFOUT,DLOUT,DTOUT,DUOUT
+"RTN","AUPNSICD",254,0)
+ S DIR(0)="E" D ^DIR K DIR
+"RTN","AUPNSICD",255,0)
+ I $D(DUOUT) S AUPNQ=1 Q
+"RTN","AUPNSICD",256,0)
+ W:$D(IOF) @IOF
+"RTN","AUPNSICD",257,0)
+ Q
+"RTN","AUPNSICD",258,0)
+ ;
+"RTN","AUPNSICD",259,0)
+HELPPL ;EP
+"RTN","AUPNSICD",260,0)
+ D HELPPL^AUPNSICH
+"RTN","AUPNSICD",261,0)
+ Q
+"RTN","AUPNSICD",262,0)
+PLACE ;EP - ECODE SCREEN
+"RTN","AUPNSICD",263,0)
+ I $$CHKPL(Y)
+"RTN","AUPNSICD",264,0)
+ Q:$D(^ICD9(Y))
+"RTN","AUPNSICD",265,0)
+ Q
+"RTN","AUPNSICD",266,0)
+CHKPL(Y) ; SCREEN OUT E CODES AND INACTIVE CODES
+"RTN","AUPNSICD",267,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",268,0)
+ I $D(DIFGLINE) Q 1   ;in filegrams so take code and accept it
+"RTN","AUPNSICD",269,0)
+ I $D(ACHSDIEN) Q 1   ;in CHS so take code and accept it
+"RTN","AUPNSICD",270,0)
+ I $G(DUZ("AG"))'="I" Q 1
+"RTN","AUPNSICD",271,0)
+ ;use date if available
+"RTN","AUPNSICD",272,0)
+ ;get visit date if known, if not known, use DT to determine whether to use
+"RTN","AUPNSICD",273,0)
+ ;ICD9 vs ICD10
+"RTN","AUPNSICD",274,0)
+ S D=""
+"RTN","AUPNSICD",275,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",276,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",277,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",278,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",279,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",280,0)
+ ;;S D=3140101
+"RTN","AUPNSICD",281,0)
+ S I=$$IMP(D)  ;get ien of coding system
+"RTN","AUPNSICD",282,0)
+ S %=$$ICDDX^AUPNVUTL(Y,D)
+"RTN","AUPNSICD",283,0)
+ I $P(%,U,20)]"",$P(%,U,20)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",284,0)
+ S I="CHKPL"_I G @I
+"RTN","AUPNSICD",285,0)
+ ;Q
+"RTN","AUPNSICD",286,0)
+CHKPL1 ;CODING SYSTEM 1 - ICD9
+"RTN","AUPNSICD",287,0)
+ I $E($P(%,U,2),1,4)'="E849" Q 0  ;only place of occurence
+"RTN","AUPNSICD",288,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",289,0)
+ Q 1
+"RTN","AUPNSICD",290,0)
+ ;
+"RTN","AUPNSICD",291,0)
+CHKPL30 ;coding system 30 - ICD10
+"RTN","AUPNSICD",292,0)
+ NEW J
+"RTN","AUPNSICD",293,0)
+ S J=0
+"RTN","AUPNSICD",294,0)
+ I $E($P(%,U,2),1,3)="Y92" S J=1  ;only codes XXX per Leslie Racine.
+"RTN","AUPNSICD",295,0)
+ I 'J Q 0
+"RTN","AUPNSICD",296,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",297,0)
+ Q 1
+"RTN","AUPNSICD",298,0)
+HELPOP ;EP
+"RTN","AUPNSICD",299,0)
+ D HELPOP^AUPNSICH
+"RTN","AUPNSICD",300,0)
+ Q
+"RTN","AUPNSICD",301,0)
+RFB ;EP - ECODE SCREEN
+"RTN","AUPNSICD",302,0)
+ I $$CHKRFB(Y)
+"RTN","AUPNSICD",303,0)
+ Q:$D(^ICD9(Y))
+"RTN","AUPNSICD",304,0)
+ Q
+"RTN","AUPNSICD",305,0)
+CHKRFB(Y) ; SCREEN Z18-Z18.9
+"RTN","AUPNSICD",306,0)
+ NEW A,I,D,%
+"RTN","AUPNSICD",307,0)
+ I $D(DIFGLINE) Q 1   ;in filegrams so take code and accept it
+"RTN","AUPNSICD",308,0)
+ I $D(ACHSDIEN) Q 1   ;in CHS so take code and accept it
+"RTN","AUPNSICD",309,0)
+ I $G(DUZ("AG"))'="I" Q 1
+"RTN","AUPNSICD",310,0)
+ ;use date if available
+"RTN","AUPNSICD",311,0)
+ ;get visit date if known, if not known, use DT to determine whether to use
+"RTN","AUPNSICD",312,0)
+ ;ICD9 vs ICD10
+"RTN","AUPNSICD",313,0)
+ S D=""
+"RTN","AUPNSICD",314,0)
+ I $G(APCDVSIT),$D(^AUPNVSIT(APCDVSIT)) D
+"RTN","AUPNSICD",315,0)
+ .I $P(^AUPNVSIT(APCDVSIT,0),U,7)="H",$$DSCHDATE^APCLV(APCDVSIT)]"" S D=$$DSCHDATE^APCLV(APCDVSIT) Q
+"RTN","AUPNSICD",316,0)
+ .S D=$P($P(^AUPNVSIT(APCDVSIT,0),U),".")
+"RTN","AUPNSICD",317,0)
+ I D="" S D=$P($G(APCDDATE),".")
+"RTN","AUPNSICD",318,0)
+ I D="" S D=DT
+"RTN","AUPNSICD",319,0)
+ S I=$$IMP(D)  ;get ien of coding system
+"RTN","AUPNSICD",320,0)
+ I I'=30 Q 0
+"RTN","AUPNSICD",321,0)
+ S %=$$ICDDX^AUPNVUTL(Y,D)
+"RTN","AUPNSICD",322,0)
+ I $P(%,U,20)'=I Q 0   ;not correct coding system
+"RTN","AUPNSICD",323,0)
+ S I="CHKRFB"_I G @I
+"RTN","AUPNSICD",324,0)
+ ;Q
+"RTN","AUPNSICD",325,0)
+CHKRFB1 ;CODING SYSTEM 1 - ICD9
+"RTN","AUPNSICD",326,0)
+ ;
+"RTN","AUPNSICD",327,0)
+CHKRFB30 ;coding system 30 - ICD10
+"RTN","AUPNSICD",328,0)
+ NEW J
+"RTN","AUPNSICD",329,0)
+ S J=0
+"RTN","AUPNSICD",330,0)
+ I $E($P(%,U,2),1,3)="Z18" S J=1  ;only codes Z18 per Leslie Racine.
+"RTN","AUPNSICD",331,0)
+ I 'J Q 0
+"RTN","AUPNSICD",332,0)
+ I '$P(%,U,10) Q 0  ;STATUS IS INACTIVE
+"RTN","AUPNSICD",333,0)
+ Q 1
+"RTN","AUPNVUTL")
+0^4^B14090601
+"RTN","AUPNVUTL",1,0)
+AUPNVUTL ; IHS/CMI/LAB - AUPN UTILITIES ; 
+"RTN","AUPNVUTL",2,0)
+ ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 4
+"RTN","AUPNVUTL",3,0)
+SNOMED(N) ;PEP - called from various dds provider narrative
+"RTN","AUPNVUTL",4,0)
+ ;TRANSFORM TO ADD DESCRIPTIVE TEXT FOR SNOMED CODE IF THERE IS A "|" PIECE
+"RTN","AUPNVUTL",5,0)
+ I $G(N)="" Q N
+"RTN","AUPNVUTL",6,0)
+ S N=$P($G(^AUTNPOV(N,0)),U,1)
+"RTN","AUPNVUTL",7,0)
+ I N'["|" Q N  ; no vertical equals no snomed desc id
+"RTN","AUPNVUTL",8,0)
+ I N["| " Q N  ;prenatal v1.0
+"RTN","AUPNVUTL",9,0)
+ I $T(DESC^BSTSAPI)="" Q N  ;no snomed stuff installed
+"RTN","AUPNVUTL",10,0)
+ NEW SDI,SDIT
+"RTN","AUPNVUTL",11,0)
+ S SDI=$P(N,"|",2)  ;snomed descriptive id is in piece 2
+"RTN","AUPNVUTL",12,0)
+ S SDIT=$P($$DESC^BSTSAPI(SDI_"^^1"),U,2)
+"RTN","AUPNVUTL",13,0)
+ I SDIT="" Q "*"_$P(N,"|",1)  ;not snomed text??  somebody stored a bad descriptive id return "* | " per Susan
+"RTN","AUPNVUTL",14,0)
+ Q SDIT_" | "_$P(N,"|",1)
+"RTN","AUPNVUTL",15,0)
+PNPROB(N) ;PEP - called from various dds provider narrative
+"RTN","AUPNVUTL",16,0)
+ ;TRANSFORM TO ADD DESCRIPTIVE TEXT FOR SNOMED CODE IF THERE IS A "|" PIECE
+"RTN","AUPNVUTL",17,0)
+ ;N must be a valid IEN in AUTNPOV (provider narrative)
+"RTN","AUPNVUTL",18,0)
+ I $G(N)="" Q N
+"RTN","AUPNVUTL",19,0)
+ S N=$P($G(^AUTNPOV(N,0)),U,1)
+"RTN","AUPNVUTL",20,0)
+ I N'["|" Q "*"_N  ; no vertical equals no snomed desc id
+"RTN","AUPNVUTL",21,0)
+ I N["| " Q N  ;prenatal v1.0
+"RTN","AUPNVUTL",22,0)
+ I $T(DESC^BSTSAPI)="" Q "*"_N  ;no snomed stuff installed
+"RTN","AUPNVUTL",23,0)
+ NEW SDI,SDIT
+"RTN","AUPNVUTL",24,0)
+ S SDI=$P(N,"|",2)  ;snomed descriptive id is in piece 2
+"RTN","AUPNVUTL",25,0)
+ S SDIT=$P($$DESC^BSTSAPI(SDI_"^^1"),U,2)
+"RTN","AUPNVUTL",26,0)
+ I SDIT="" Q "*"_$P(N,"|",1)  ;not snomed text??  somebody stored a bad descriptive id return "* | " per Susan
+"RTN","AUPNVUTL",27,0)
+ Q SDIT_" | "_$P(N,"|",1)
+"RTN","AUPNVUTL",28,0)
+EDNAME(I) ;PEP - RETURN EDUCATION TOPIC TEXT
+"RTN","AUPNVUTL",29,0)
+ ;if the topic contains a snomed display preferred term and then subtopic
+"RTN","AUPNVUTL",30,0)
+ NEW N
+"RTN","AUPNVUTL",31,0)
+ I $G(I)="" Q I
+"RTN","AUPNVUTL",32,0)
+ S N=$P($G(^AUTTEDT(I,0)),U,1)
+"RTN","AUPNVUTL",33,0)
+ I $P($G(^AUTTEDT(I,0)),U,12)="" Q N
+"RTN","AUPNVUTL",34,0)
+ I $T(CONC^BSTSAPI)="" Q N  ;no snomed stuff installed
+"RTN","AUPNVUTL",35,0)
+ NEW SDI,SDIT
+"RTN","AUPNVUTL",36,0)
+ S SDI=$P(N,"-",1)  ;snomed descriptive id is in piece 2
+"RTN","AUPNVUTL",37,0)
+ S SDIT=$$CONCPT(SDI)
+"RTN","AUPNVUTL",38,0)
+ I SDIT="" Q N  ;not snomed text??  somebody stored a bad descriptive id return "* | " per Susan
+"RTN","AUPNVUTL",39,0)
+ Q SDIT_"-"_$P(N,"-",2)
+"RTN","AUPNVUTL",40,0)
+FSOT(X) ;PEP - FINDING SITE OUTPUT TX/COMPUTED FIELD
+"RTN","AUPNVUTL",41,0)
+ ;get each | piece, then each ":" piece and get perferred term
+"RTN","AUPNVUTL",42,0)
+ I $T(CONC^BSTSAPI)="" Q ""
+"RTN","AUPNVUTL",43,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",44,0)
+ NEW A,B,V,D,E
+"RTN","AUPNVUTL",45,0)
+ S V=""
+"RTN","AUPNVUTL",46,0)
+ F A=1:1 S B=$P(X,"|",A) Q:B=""  D
+"RTN","AUPNVUTL",47,0)
+ .;S D=$P(B,":",1)
+"RTN","AUPNVUTL",48,0)
+ .S E=$P(B,":",2)
+"RTN","AUPNVUTL",49,0)
+ .I V]"" S V=V_", "
+"RTN","AUPNVUTL",50,0)
+ .; V=V_$$CONCPT(D)_":"_$$CONCPT(E)
+"RTN","AUPNVUTL",51,0)
+ .S V=V_$$CONCPT(E)
+"RTN","AUPNVUTL",52,0)
+ Q V
+"RTN","AUPNVUTL",53,0)
+TESTFS ;
+"RTN","AUPNVUTL",54,0)
+ ;
+"RTN","AUPNVUTL",55,0)
+ S X="272741003:7771000|363698007:56459004"
+"RTN","AUPNVUTL",56,0)
+ W $$FSOT(X)
+"RTN","AUPNVUTL",57,0)
+ Q
+"RTN","AUPNVUTL",58,0)
+CONC(X) ;EP 22
+"RTN","AUPNVUTL",59,0)
+ ;CALLED FROM VARIOUS PCC ROUTINES TO GET CONCEPT ID IF BSTS IS INSTALLED
+"RTN","AUPNVUTL",60,0)
+ I $T(CONC^BSTSAPI)="" Q ""
+"RTN","AUPNVUTL",61,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",62,0)
+ Q $$CONC^BSTSAPI(X_"^^^1")
+"RTN","AUPNVUTL",63,0)
+CONCPT(X) ;PEP - GET CONCEPT PREFERRED TERM
+"RTN","AUPNVUTL",64,0)
+ ;CALLED FROM VARIOUS PCC ROUTINES TO GET CONCEPT ID PREFERRED TERM IF BSTS IS INSTALLED
+"RTN","AUPNVUTL",65,0)
+ I $T(CONC^BSTSAPI)="" Q ""
+"RTN","AUPNVUTL",66,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",67,0)
+ NEW D,B,E,V,A,B
+"RTN","AUPNVUTL",68,0)
+ Q $P($$CONC^BSTSAPI(X_"^^^1"),U,4)
+"RTN","AUPNVUTL",69,0)
+DESCPT(X) ;PEP - GET DESC ID
+"RTN","AUPNVUTL",70,0)
+ I $T(DESC^BSTSAPI)="" Q ""
+"RTN","AUPNVUTL",71,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",72,0)
+ Q $P($$DESC^BSTSAPI(X_"^^1"),U,2)
+"RTN","AUPNVUTL",73,0)
+LOINCT(X) ;EP
+"RTN","AUPNVUTL",74,0)
+ ;put api in here when get it from apelon group
+"RTN","AUPNVUTL",75,0)
+ Q ""
+"RTN","AUPNVUTL",76,0)
+LOINCPT(X) ;EP
+"RTN","AUPNVUTL",77,0)
+ ;put api in here when get it from apelon group
+"RTN","AUPNVUTL",78,0)
+ Q ""
+"RTN","AUPNVUTL",79,0)
+ICD(X,Y,Z) ;PEP - CHECK FOR ICD10
+"RTN","AUPNVUTL",80,0)
+ I $T(ICD^ATXAPI)]"" Q $$ICD^ATXAPI(X,Y,Z)
+"RTN","AUPNVUTL",81,0)
+ Q $$ICD^ATXCHK(X,Y,Z)
+"RTN","AUPNVUTL",82,0)
+ ;
+"RTN","AUPNVUTL",83,0)
+ICDDX(C,D,I) ;PEP - CHECK FOR ICD10
+"RTN","AUPNVUTL",84,0)
+ I $T(ICDDX^ICDEX)]"" Q $$ICDDX^ICDEX(C,$G(D))
+"RTN","AUPNVUTL",85,0)
+ Q $$ICDDX^ICDCODE(C,$G(D),$G(I))
+"RTN","AUPNVUTL",86,0)
+ ;
+"RTN","AUPNVUTL",87,0)
+ICDOP(C,D,I) ;PEP - CHECK FOR ICD10
+"RTN","AUPNVUTL",88,0)
+ I $T(ICDOP^ICDEX)]"" Q $$ICDOP^ICDEX(C,$G(D))
+"RTN","AUPNVUTL",89,0)
+ Q $$ICDOP^ICDCODE(C,$G(D),$G(I))
+"RTN","AUPNVUTL",90,0)
+ ;
+"RTN","AUPNVUTL",91,0)
+VSTD(C,D) ;EP - CHECK FOR ICD10
+"RTN","AUPNVUTL",92,0)
+ I $T(VSTD^ICDEX)]"" Q $$VSTD^ICDEX(C,$G(D))
+"RTN","AUPNVUTL",93,0)
+ Q $$VSTD^ICDCODE(C,$G(D))
+"RTN","AUPNVUTL",94,0)
+ ;
+"RTN","AUPNVUTL",95,0)
+VSTP(C,D) ;EP - CHECK FOR ICD10
+"RTN","AUPNVUTL",96,0)
+ I $T(VSTP^ICDEX)]"" Q $$VSTP^ICDEX(C,$G(D))
+"RTN","AUPNVUTL",97,0)
+ Q $$VSTP^ICDCODE(C,$G(D))
+"RTN","AUPNVUTL",98,0)
+ ;
+"RTN","AUPNVUTL",99,0)
+ICDD(C,A,D) ;EP - CHECK FOR ICD10
+"RTN","AUPNVUTL",100,0)
+ I $T(ICDD^ICDEX)]"" Q $$ICDD^ICDEX(C,A,$G(D))
+"RTN","AUPNVUTL",101,0)
+ Q $$ICDD^ICDCODE(C,A,$G(D))
+"RTN","AUPNVUTL",102,0)
+CONFSN(C) ;EP - FSN
+"RTN","AUPNVUTL",103,0)
+ ;CALLED FROM VARIOUS PCC ROUTINES TO GET CONCEPT ID FSN IF BSTS IS INSTALLED
+"RTN","AUPNVUTL",104,0)
+ I $T(CONC^BSTSAPI)="" Q ""
+"RTN","AUPNVUTL",105,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",106,0)
+ Q $P($$CONC^BSTSAPI(X_"^^^1"),U,2)
+"RTN","AUPNVUTL",107,0)
+MC(X) ;EP - called from cross ref
+"RTN","AUPNVUTL",108,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",109,0)
+ NEW A,B,C
+"RTN","AUPNVUTL",110,0)
+ S A=$O(^AUTTREFR("B",X,0))
+"RTN","AUPNVUTL",111,0)
+ I 'A Q ""
+"RTN","AUPNVUTL",112,0)
+ Q $P($G(^AUTTREFR(A,0)),U,4)
+"RTN","AUPNVUTL",113,0)
+M07(X) ;EP - map .07 to 1.01
+"RTN","AUPNVUTL",114,0)
+ I $G(X)="" Q ""
+"RTN","AUPNVUTL",115,0)
+ NEW A
+"RTN","AUPNVUTL",116,0)
+ S A=$O(^AUTTREFR("AM",X,0))
+"RTN","AUPNVUTL",117,0)
+ I 'A Q ""
+"RTN","AUPNVUTL",118,0)
+ Q $P(^AUTTREFR(A,0),U,1)
+"RTN","AUPNVUTL",119,0)
+ ;
+"RTN","AUPNVUTL",120,0)
+IMP(%) ;EP
+"RTN","AUPNVUTL",121,0)
+ I $T(IMP^ICDEX)]"" Q $$IMP^ICDEX(%)
+"RTN","AUPNVUTL",122,0)
+ Q 3141001
+"RTN","AUPNVUTL",123,0)
+REFR(%) ;PEP - REFUSAL REASON TEXT FORM
+"RTN","AUPNVUTL",124,0)
+ I '$G(%) Q ""
+"RTN","AUPNVUTL",125,0)
+ I '$D(^AUPNPREF(%,0)) Q ""
+"RTN","AUPNVUTL",126,0)
+ NEW A,B,C
+"RTN","AUPNVUTL",127,0)
+ S A=$$VAL^XBDIQ1(9000022,%,1.01)
+"RTN","AUPNVUTL",128,0)
+ I A]"" S A=$$CONCPT(A)
+"RTN","AUPNVUTL",129,0)
+ I A]"" Q A
+"RTN","AUPNVUTL",130,0)
+ Q $$VAL^XBDIQ1(9000022,%,.07)
 "RTN","BGOUTL")
-0^1^B120584069
+0^1^B124931362
 "RTN","BGOUTL",1,0)
-BGOUTL ; IHS/BAO/TMD - Utilities ;18-Jun-2015 17:13;DKM
+BGOUTL ; IHS/BAO/TMD - Utilities ;12-Jul-2015 19:27;DKM
 "RTN","BGOUTL",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,4,5,6,13**;Mar 20, 2007;Build 11
+ ;;1.1;BGO COMPONENTS;**1,3,4,5,6,13**;Mar 20, 2007;Build 4
 "RTN","BGOUTL",3,0)
  ; Compute patient's age
 "RTN","BGOUTL",4,0)
@@ -967,7 +3273,7 @@ CHKSEC(RET,INP) ;EP
 "RTN","BGOUTL",37,0)
  I USER,USER'=DUZ S RET=$$ERR(1053) Q
 "RTN","BGOUTL",38,0)
- F C=1:1 S X=$P(KEYS,"|",C) Q:X=""  S $P(KEYS,"|",C)=$$HASKEY^BGOUTL4(X)
+ F C=1:1 S X=$P(KEYS,"|",C) Q:X=""  S $P(KEYS,"|",C)=$$HASKEY^BEHOUSCX(X)
 "RTN","BGOUTL",39,0)
  F C=1:1 S PARM=$P(PARAMS,"|",C) Q:PARM=""  D
 "RTN","BGOUTL",40,0)
@@ -1013,745 +3319,759 @@ GETCLN(RET,IEN) ;EP
 "RTN","BGOUTL",60,0)
  Q
 "RTN","BGOUTL",61,0)
- ; Return a BGO parameter value
+ ;
 "RTN","BGOUTL",62,0)
- ;  PID = Parameter identifier
+ ; RPC to retrieve visit detail report
 "RTN","BGOUTL",63,0)
- ;  RET = Parameter value
+GETRPT(RET,VIEN) ;EP
 "RTN","BGOUTL",64,0)
-GETPARM(RET,PID) ;EP
+ D GETRPT^BEHOENPS(.RET,VIEN)
 "RTN","BGOUTL",65,0)
- I $G(PID)="" S RET=$$ERR(1054)
+ Q
 "RTN","BGOUTL",66,0)
- E  S RET=$$GET^XPAR("ALL","BGO PARAMETER",PID)
+ ; Return a BGO parameter value
 "RTN","BGOUTL",67,0)
- Q
+ ;  PID = Parameter identifier
 "RTN","BGOUTL",68,0)
- ; Set a BGO parameter value
+ ;  RET = Parameter value
 "RTN","BGOUTL",69,0)
- ;  INP = Parameter ID ^ Parameter Value ^ Entity (optional)
+GETPARM(RET,PID) ;EP
 "RTN","BGOUTL",70,0)
-SETPARM(RET,INP) ;EP
+ I $G(PID)="" S RET=$$ERR(1054)
 "RTN","BGOUTL",71,0)
- N PID,VAL,ENT,ERR
+ E  S RET=$$GET^XPAR("ALL","BGO PARAMETER",PID)
 "RTN","BGOUTL",72,0)
- S PID=$P(INP,U)
+ Q
 "RTN","BGOUTL",73,0)
- I PID="" S RET=$$ERR(1054) Q
+ ; Set a BGO parameter value
 "RTN","BGOUTL",74,0)
- S VAL=$P(INP,U,2)
+ ;  INP = Parameter ID ^ Parameter Value ^ Entity (optional)
 "RTN","BGOUTL",75,0)
- I VAL="" S RET=$$ERR(1055) Q
+SETPARM(RET,INP) ;EP
 "RTN","BGOUTL",76,0)
- S ENT=$P(INP,U,3)
+ N PID,VAL,ENT,ERR
 "RTN","BGOUTL",77,0)
- S:'$L(ENT) ENT="USR"
+ S PID=$P(INP,U)
 "RTN","BGOUTL",78,0)
- D PUT^XPAR(ENT,"BGO PARAMETER",PID,VAL,.RET)
+ I PID="" S RET=$$ERR(1054) Q
 "RTN","BGOUTL",79,0)
- S:RET RET="-"_RET
+ S VAL=$P(INP,U,2)
 "RTN","BGOUTL",80,0)
- Q
+ I VAL="" S RET=$$ERR(1055) Q
 "RTN","BGOUTL",81,0)
- ; Lock/unlock a file entry
+ S ENT=$P(INP,U,3)
 "RTN","BGOUTL",82,0)
- ;  INP = File # ^ IEN ^ Unlock Flag
+ S:'$L(ENT) ENT="USR"
 "RTN","BGOUTL",83,0)
-LOCK(RET,INP) ;EP
+ D PUT^XPAR(ENT,"BGO PARAMETER",PID,VAL,.RET)
 "RTN","BGOUTL",84,0)
- N GBL,FNUM,IEN,FLG
+ S:RET RET="-"_RET
 "RTN","BGOUTL",85,0)
- S FNUM=+INP
+ Q
 "RTN","BGOUTL",86,0)
- S IEN=+$P(INP,U,2)
+ ; Lock/unlock a file entry
 "RTN","BGOUTL",87,0)
- S FLG=+$P(INP,U,3)
+ ;  INP = File # ^ IEN ^ Unlock Flag
 "RTN","BGOUTL",88,0)
- S GBL=$$ROOT^DILFD(FNUM,,1)
+LOCK(RET,INP) ;EP
 "RTN","BGOUTL",89,0)
- I GBL="" S RET=$$ERR(1056) Q
+ N GBL,FNUM,IEN,FLG
 "RTN","BGOUTL",90,0)
- I IEN'>0 S RET=$$ERR(1057) Q
+ S FNUM=+INP
 "RTN","BGOUTL",91,0)
- S GBL=$NA(@GBL@(IEN))
+ S IEN=+$P(INP,U,2)
 "RTN","BGOUTL",92,0)
- D LOCK^BGOUTL4(.RET,GBL):FLG,LOCK^BGOUTL4(.RET,GBL,0):'FLG
+ S FLG=+$P(INP,U,3)
 "RTN","BGOUTL",93,0)
- I 'RET,'FLG S RET=$$ERR(1058)
+ S GBL=$$ROOT^DILFD(FNUM,,1)
 "RTN","BGOUTL",94,0)
- Q
+ I GBL="" S RET=$$ERR(1056) Q
 "RTN","BGOUTL",95,0)
- ; Fileman Lookup utility
+ I IEN'>0 S RET=$$ERR(1057) Q
 "RTN","BGOUTL",96,0)
- ;  INP = GBL [1] ^ Lookup Value [2] ^ FROM [3] ^ DIR [4] ^ MAX [5] ^ XREF [6] ^ SCRN [7] ^ ALL [8] ^ FLDS [9]
+ S GBL=$NA(@GBL@(IEN))
 "RTN","BGOUTL",97,0)
- ;   GBL  = File global root (open or closed, without leading ^) or file #
+ D LOCK^CIANBRPC(.RET,GBL):FLG,LOCK^CIANBRPC(.RET,GBL,0):'FLG
 "RTN","BGOUTL",98,0)
- ;   FROM = Text from which to start search
+ I 'RET,'FLG S RET=$$ERR(1058)
 "RTN","BGOUTL",99,0)
- ;   DIR  = Search direction (defaults to 1)
+ Q
 "RTN","BGOUTL",100,0)
- ;   MAX  = Maximum # to return (defaults to 44)
+ ; Fileman Lookup utility
 "RTN","BGOUTL",101,0)
- ;   XREF = Cross ref to use (defaults to "B")
-"RTN","BGOUTL",102,0)
- ;   SCRN = Screening logic (e.g. => .04="TEST";.07=83)
-"RTN","BGOUTL",103,0)
- ;   ALL  = Return all records, maximum of 9999
-"RTN","BGOUTL",104,0)
- ;   FLDS = Fields to return
-"RTN","BGOUTL",105,0)
- ;   VDT  = Visit Date for ICD0
-"RTN","BGOUTL",106,0)
-DICLKUP(RET,INP) ;EP
-"RTN","BGOUTL",107,0)
- N GBL,LKP,FROM,DIR,MAX,VDT,XREF,XREFS,SCRN,ALL,FLDS,FNUM,CNT,IMP
-"RTN","BGOUTL",108,0)
- S RET=$$TMPGBL
-"RTN","BGOUTL",109,0)
- S GBL=$P(INP,U)
-"RTN","BGOUTL",110,0)
- I GBL=9999999.88,$$CSVACT^BGOUTL2 S GBL=81.3
-"RTN","BGOUTL",111,0)
- I GBL=+GBL S GBL=$$ROOT^DILFD(GBL,,1)
-"RTN","BGOUTL",112,0)
- E  S GBL=$$CREF^DILF(U_GBL)
-"RTN","BGOUTL",113,0)
- S FNUM=$P($G(@GBL@(0)),U,2),FNUM(0)=FNUM["P",FNUM=+FNUM
-"RTN","BGOUTL",114,0)
- Q:'FNUM
-"RTN","BGOUTL",115,0)
- S LKP=$P(INP,U,2)
-"RTN","BGOUTL",116,0)
- S FROM=$P(INP,U,3)
-"RTN","BGOUTL",117,0)
- S DIR=$P(INP,U,4)
-"RTN","BGOUTL",118,0)
- S MAX=$P(INP,U,5)
-"RTN","BGOUTL",119,0)
- S XREF=$P(INP,U,6)
-"RTN","BGOUTL",120,0)
- S SCRN=$TR($P(INP,U,7),"~",U)
-"RTN","BGOUTL",121,0)
- S ALL=$P(INP,U,8)
-"RTN","BGOUTL",122,0)
- S FLDS=$P(INP,U,9)
-"RTN","BGOUTL",123,0)
- S VDT=$P(INP,U,10)
-"RTN","BGOUTL",124,0)
- S:FLDS="" FLDS=".01"
-"RTN","BGOUTL",125,0)
- I LKP'="",FROM="" S FROM=LKP
-"RTN","BGOUTL",126,0)
- S CNT=0,MAX=$S(ALL:9999,MAX>0:+MAX,1:100),DIR=$S(DIR'=-1:1,1:-1)
-"RTN","BGOUTL",127,0)
- I GBL="^ICD0" S SCRN="",FLDS=".01",XREF="D"       ;Patch 14 for old terms
-"RTN","BGOUTL",128,0)
- I XREF'="" D  Q
-"RTN","BGOUTL",129,0)
- .S XREFS=XREF
-"RTN","BGOUTL",130,0)
- .F  S XREF=$P(XREFS,"~"),XREFS=$P(XREFS,"~",2,999) D DL1 Q:(XREFS="")!CNT
-"RTN","BGOUTL",131,0)
- S XREF="B"
-"RTN","BGOUTL",132,0)
- I LKP="" D DL1 Q
-"RTN","BGOUTL",133,0)
- F  D DL1 S XREF=$O(@GBL@(XREF)) Q:($E(XREF)'="B")!CNT
-"RTN","BGOUTL",134,0)
- Q
-"RTN","BGOUTL",135,0)
- ; Check specified xref
-"RTN","BGOUTL",136,0)
-DL1 N NEXT,IEN
-"RTN","BGOUTL",137,0)
- S NEXT=FROM
-"RTN","BGOUTL",138,0)
- I LKP'="",XREF="B" D  Q:IEN
-"RTN","BGOUTL",139,0)
- .S IEN=$O(@GBL@(XREF,LKP,0))
-"RTN","BGOUTL",140,0)
- .I IEN,$$XSCRN(IEN,SCRN) D DL2
-"RTN","BGOUTL",141,0)
- F  Q:CNT'<MAX  D:$L(NEXT)  Q:'$D(NEXT)  S NEXT=$O(@GBL@(XREF,NEXT),DIR) Q:'$L(NEXT)
-"RTN","BGOUTL",142,0)
- .I LKP'="",$E(NEXT,1,$L(LKP))'=LKP K NEXT Q
-"RTN","BGOUTL",143,0)
- .S IEN=0
-"RTN","BGOUTL",144,0)
- .F  S IEN=$O(@GBL@(XREF,NEXT,IEN)) Q:'IEN  D
-"RTN","BGOUTL",145,0)
- ..N S,X,Y,I,J,FLD,OPR,VAL,N,P
-"RTN","BGOUTL",146,0)
- ..I SCRN'="" D  Q:'X
-"RTN","BGOUTL",147,0)
- ...I $E(SCRN,1,2)="I " S Y=IEN X SCRN S X=$T Q
-"RTN","BGOUTL",148,0)
- ...F I=1:1 S S=$P(SCRN,"&",I) Q:S=""  D  Q:'X
-"RTN","BGOUTL",149,0)
- ....S FLD=+S,X=0
-"RTN","BGOUTL",150,0)
- ....Q:'FLD
-"RTN","BGOUTL",151,0)
- ....S OPR=""
-"RTN","BGOUTL",152,0)
- ....F J=1:1:3 Q:"=<>'[]"'[$E(S,$L(FLD)+J)  S OPR=OPR_$E(S,$L(FLD)+J)
-"RTN","BGOUTL",153,0)
- ....Q:OPR=""
-"RTN","BGOUTL",154,0)
- ....S VAL=$P(S,OPR,2,999)
-"RTN","BGOUTL",155,0)
- ....S N=$P($G(^DD(FNUM,FLD,0)),U,4),P=$P(N,";",2),N=$P(N,";")
-"RTN","BGOUTL",156,0)
- ....Q:N=""!(P="")
-"RTN","BGOUTL",157,0)
- ....X "S X=$P($G(@GBL@(IEN,N)),U,P)"_OPR_"VAL"
-"RTN","BGOUTL",158,0)
- ..D DL2
-"RTN","BGOUTL",159,0)
- Q
-"RTN","BGOUTL",160,0)
- ; Add to output list
-"RTN","BGOUTL",161,0)
-DL2 N VAL,TGT,FLD,IENS,I,X,ICDNAME,XVAL
-"RTN","BGOUTL",162,0)
- S IENS=IEN_","
-"RTN","BGOUTL",163,0)
- S VAL=""
-"RTN","BGOUTL",164,0)
- D GETS^DIQ(FNUM,IENS,FLDS,"I","TGT")
-"RTN","BGOUTL",165,0)
- I GBL="^ICD0" D
-"RTN","BGOUTL",166,0)
- .I $$AICD^BGOUTL2 D
-"RTN","BGOUTL",167,0)
- ..S XVAL=$$ICDOP^ICDEX(IEN,"","","I")
-"RTN","BGOUTL",168,0)
- ..S IMP=$$IMP^ICDEX("10P",VDT)
-"RTN","BGOUTL",169,0)
- ..I IMP<VDT D
-"RTN","BGOUTL",170,0)
- ...I $P(XVAL,U,15)=31 S VAL=IEN
-"RTN","BGOUTL",171,0)
- ..E  I $P(XVAL,U,15)=2 S VAL=IEN
-"RTN","BGOUTL",172,0)
- .E  D
-"RTN","BGOUTL",173,0)
- ..S XVAL=$$ICDOP^ICDCODE(IEN,"","","I")
-"RTN","BGOUTL",174,0)
- ..I $P(XVAL,U,15)=2 S VAL=IEN
-"RTN","BGOUTL",175,0)
- E  S VAL=IEN_U_NEXT
-"RTN","BGOUTL",176,0)
- F I=1:1 S FLD=$P(FLDS,";",I) Q:'$L(FLD)  D
-"RTN","BGOUTL",177,0)
- .S X=$G(TGT(FNUM,IENS,FLD,"I"))
-"RTN","BGOUTL",178,0)
- .I FNUM(0),FLD=.01 S X=$$EXTERNAL^DILFD(FNUM,FLD,,X)
-"RTN","BGOUTL",179,0)
- .I VAL'="" D
-"RTN","BGOUTL",180,0)
- ..I GBL="^ICD0" S VAL=VAL_U_X_U_$P(XVAL,U,5)
-"RTN","BGOUTL",181,0)
- ..E  S VAL=VAL_U_X
-"RTN","BGOUTL",182,0)
- I VAL'="" S CNT=CNT+1,@RET@(CNT)=VAL
-"RTN","BGOUTL",183,0)
- Q
-"RTN","BGOUTL",184,0)
- ; Fileman Lookup utility (uses FIND^DIC)
-"RTN","BGOUTL",185,0)
  ;  INP = GBL [1] ^ Lookup Value [2] ^ FROM [3] ^ DIR [4] ^ MAX [5] ^ XREF [6] ^ SCRN [7] ^ ALL [8] ^ FLDS [9]
-"RTN","BGOUTL",186,0)
+"RTN","BGOUTL",102,0)
  ;   GBL  = File global root (open or closed, without leading ^) or file #
-"RTN","BGOUTL",187,0)
+"RTN","BGOUTL",103,0)
  ;   FROM = Text from which to start search
-"RTN","BGOUTL",188,0)
- ;   DIR  = Search direction (not supported)
-"RTN","BGOUTL",189,0)
+"RTN","BGOUTL",104,0)
+ ;   DIR  = Search direction (defaults to 1)
+"RTN","BGOUTL",105,0)
  ;   MAX  = Maximum # to return (defaults to 44)
-"RTN","BGOUTL",190,0)
+"RTN","BGOUTL",106,0)
  ;   XREF = Cross ref to use (defaults to "B")
-"RTN","BGOUTL",191,0)
+"RTN","BGOUTL",107,0)
  ;   SCRN = Screening logic (e.g. => .04="TEST";.07=83)
-"RTN","BGOUTL",192,0)
+"RTN","BGOUTL",108,0)
  ;   ALL  = Return all records, maximum of 9999
-"RTN","BGOUTL",193,0)
+"RTN","BGOUTL",109,0)
  ;   FLDS = Fields to return
-"RTN","BGOUTL",194,0)
-DICLKUP2(RET,INP) ;EP
-"RTN","BGOUTL",195,0)
- N GBL,LKP,FROM,DIR,MAX,XREF,XREFS,SCRN,ALL,FLDS,FNUM,LP,X
-"RTN","BGOUTL",196,0)
+"RTN","BGOUTL",110,0)
+ ;   VDT  = Visit Date for ICD0
+"RTN","BGOUTL",111,0)
+DICLKUP(RET,INP) ;EP
+"RTN","BGOUTL",112,0)
+ N GBL,LKP,FROM,DIR,MAX,VDT,XREF,XREFS,SCRN,ALL,FLDS,FNUM,CNT,IMP
+"RTN","BGOUTL",113,0)
  S RET=$$TMPGBL
-"RTN","BGOUTL",197,0)
+"RTN","BGOUTL",114,0)
  S GBL=$P(INP,U)
-"RTN","BGOUTL",198,0)
+"RTN","BGOUTL",115,0)
+ I GBL=9999999.88,$$CSVACT^BGOUTL2 S GBL=81.3
+"RTN","BGOUTL",116,0)
  I GBL=+GBL S GBL=$$ROOT^DILFD(GBL,,1)
-"RTN","BGOUTL",199,0)
+"RTN","BGOUTL",117,0)
  E  S GBL=$$CREF^DILF(U_GBL)
-"RTN","BGOUTL",200,0)
+"RTN","BGOUTL",118,0)
  S FNUM=$P($G(@GBL@(0)),U,2),FNUM(0)=FNUM["P",FNUM=+FNUM
-"RTN","BGOUTL",201,0)
+"RTN","BGOUTL",119,0)
  Q:'FNUM
-"RTN","BGOUTL",202,0)
+"RTN","BGOUTL",120,0)
  S LKP=$P(INP,U,2)
-"RTN","BGOUTL",203,0)
+"RTN","BGOUTL",121,0)
  S FROM=$P(INP,U,3)
-"RTN","BGOUTL",204,0)
- S DIR=$P(INP,U,4)                                                     ; ignored
-"RTN","BGOUTL",205,0)
+"RTN","BGOUTL",122,0)
+ S DIR=$P(INP,U,4)
+"RTN","BGOUTL",123,0)
  S MAX=$P(INP,U,5)
-"RTN","BGOUTL",206,0)
- S XREF=$TR($P(INP,U,6),"~",U)
-"RTN","BGOUTL",207,0)
+"RTN","BGOUTL",124,0)
+ S XREF=$P(INP,U,6)
+"RTN","BGOUTL",125,0)
  S SCRN=$TR($P(INP,U,7),"~",U)
-"RTN","BGOUTL",208,0)
+"RTN","BGOUTL",126,0)
  S ALL=$P(INP,U,8)
-"RTN","BGOUTL",209,0)
+"RTN","BGOUTL",127,0)
  S FLDS=$P(INP,U,9)
-"RTN","BGOUTL",210,0)
+"RTN","BGOUTL",128,0)
+ S VDT=$P(INP,U,10)
+"RTN","BGOUTL",129,0)
  S:FLDS="" FLDS=".01"
-"RTN","BGOUTL",211,0)
- F LP=1:1:$L(FLDS,";") D
-"RTN","BGOUTL",212,0)
- .S X=$P(FLDS,";",LP)
-"RTN","BGOUTL",213,0)
- .S $P(FLDS,";",LP)=X_$S(X=.01&FNUM(0):"E",1:"I")
-"RTN","BGOUTL",214,0)
+"RTN","BGOUTL",130,0)
  I LKP'="",FROM="" S FROM=LKP
+"RTN","BGOUTL",131,0)
+ S CNT=0,MAX=$S(ALL:9999,MAX>0:+MAX,1:100),DIR=$S(DIR'=-1:1,1:-1)
+"RTN","BGOUTL",132,0)
+ I GBL="^ICD0" S SCRN="",FLDS=".01",XREF="D"       ;Patch 14 for old terms
+"RTN","BGOUTL",133,0)
+ I XREF'="" D  Q
+"RTN","BGOUTL",134,0)
+ .S XREFS=XREF
+"RTN","BGOUTL",135,0)
+ .F  S XREF=$P(XREFS,"~"),XREFS=$P(XREFS,"~",2,999) D DL1 Q:(XREFS="")!CNT
+"RTN","BGOUTL",136,0)
+ S XREF="B"
+"RTN","BGOUTL",137,0)
+ I LKP="" D DL1 Q
+"RTN","BGOUTL",138,0)
+ F  D DL1 S XREF=$O(@GBL@(XREF)) Q:($E(XREF)'="B")!CNT
+"RTN","BGOUTL",139,0)
+ Q
+"RTN","BGOUTL",140,0)
+ ; Check specified xref
+"RTN","BGOUTL",141,0)
+DL1 N NEXT,IEN
+"RTN","BGOUTL",142,0)
+ S NEXT=FROM
+"RTN","BGOUTL",143,0)
+ I LKP'="",XREF="B" D  Q:IEN
+"RTN","BGOUTL",144,0)
+ .S IEN=$O(@GBL@(XREF,LKP,0))
+"RTN","BGOUTL",145,0)
+ .I IEN,$$XSCRN(IEN,SCRN) D DL2
+"RTN","BGOUTL",146,0)
+ F  Q:CNT'<MAX  D:$L(NEXT)  Q:'$D(NEXT)  S NEXT=$O(@GBL@(XREF,NEXT),DIR) Q:'$L(NEXT)
+"RTN","BGOUTL",147,0)
+ .I LKP'="",$E(NEXT,1,$L(LKP))'=LKP K NEXT Q
+"RTN","BGOUTL",148,0)
+ .S IEN=0
+"RTN","BGOUTL",149,0)
+ .F  S IEN=$O(@GBL@(XREF,NEXT,IEN)) Q:'IEN  D
+"RTN","BGOUTL",150,0)
+ ..N S,X,Y,I,J,FLD,OPR,VAL,N,P
+"RTN","BGOUTL",151,0)
+ ..I SCRN'="" D  Q:'X
+"RTN","BGOUTL",152,0)
+ ...I $E(SCRN,1,2)="I " S Y=IEN X SCRN S X=$T Q
+"RTN","BGOUTL",153,0)
+ ...F I=1:1 S S=$P(SCRN,"&",I) Q:S=""  D  Q:'X
+"RTN","BGOUTL",154,0)
+ ....S FLD=+S,X=0
+"RTN","BGOUTL",155,0)
+ ....Q:'FLD
+"RTN","BGOUTL",156,0)
+ ....S OPR=""
+"RTN","BGOUTL",157,0)
+ ....F J=1:1:3 Q:"=<>'[]"'[$E(S,$L(FLD)+J)  S OPR=OPR_$E(S,$L(FLD)+J)
+"RTN","BGOUTL",158,0)
+ ....Q:OPR=""
+"RTN","BGOUTL",159,0)
+ ....S VAL=$P(S,OPR,2,999)
+"RTN","BGOUTL",160,0)
+ ....S N=$P($G(^DD(FNUM,FLD,0)),U,4),P=$P(N,";",2),N=$P(N,";")
+"RTN","BGOUTL",161,0)
+ ....Q:N=""!(P="")
+"RTN","BGOUTL",162,0)
+ ....X "S X=$P($G(@GBL@(IEN,N)),U,P)"_OPR_"VAL"
+"RTN","BGOUTL",163,0)
+ ..D DL2
+"RTN","BGOUTL",164,0)
+ Q
+"RTN","BGOUTL",165,0)
+ ; Add to output list
+"RTN","BGOUTL",166,0)
+DL2 N VAL,TGT,FLD,IENS,I,X,ICDNAME,XVAL
+"RTN","BGOUTL",167,0)
+ S IENS=IEN_","
+"RTN","BGOUTL",168,0)
+ S VAL=""
+"RTN","BGOUTL",169,0)
+ D GETS^DIQ(FNUM,IENS,FLDS,"I","TGT")
+"RTN","BGOUTL",170,0)
+ I GBL="^ICD0" D
+"RTN","BGOUTL",171,0)
+ .I $$AICD^BGOUTL2 D
+"RTN","BGOUTL",172,0)
+ ..S XVAL=$$ICDOP^ICDEX(IEN,"","","I")
+"RTN","BGOUTL",173,0)
+ ..S IMP=$$IMP^ICDEX("10P",VDT)
+"RTN","BGOUTL",174,0)
+ ..I IMP<VDT D
+"RTN","BGOUTL",175,0)
+ ...I $P(XVAL,U,15)=31 S VAL=IEN
+"RTN","BGOUTL",176,0)
+ ..E  I $P(XVAL,U,15)=2 S VAL=IEN
+"RTN","BGOUTL",177,0)
+ .E  D
+"RTN","BGOUTL",178,0)
+ ..S XVAL=$$ICDOP^ICDCODE(IEN,"","","I")
+"RTN","BGOUTL",179,0)
+ ..I $P(XVAL,U,15)=2 S VAL=IEN
+"RTN","BGOUTL",180,0)
+ E  S VAL=IEN_U_NEXT
+"RTN","BGOUTL",181,0)
+ F I=1:1 S FLD=$P(FLDS,";",I) Q:'$L(FLD)  D
+"RTN","BGOUTL",182,0)
+ .S X=$G(TGT(FNUM,IENS,FLD,"I"))
+"RTN","BGOUTL",183,0)
+ .I FNUM(0),FLD=.01 S X=$$EXTERNAL^DILFD(FNUM,FLD,,X)
+"RTN","BGOUTL",184,0)
+ .I VAL'="" D
+"RTN","BGOUTL",185,0)
+ ..I GBL="^ICD0" S VAL=VAL_U_X_U_$P(XVAL,U,5)
+"RTN","BGOUTL",186,0)
+ ..E  S VAL=VAL_U_X
+"RTN","BGOUTL",187,0)
+ I VAL'="" S CNT=CNT+1,@RET@(CNT)=VAL
+"RTN","BGOUTL",188,0)
+ Q
+"RTN","BGOUTL",189,0)
+ ; Fileman Lookup utility (uses FIND^DIC)
+"RTN","BGOUTL",190,0)
+ ;  INP = GBL [1] ^ Lookup Value [2] ^ FROM [3] ^ DIR [4] ^ MAX [5] ^ XREF [6] ^ SCRN [7] ^ ALL [8] ^ FLDS [9]
+"RTN","BGOUTL",191,0)
+ ;   GBL  = File global root (open or closed, without leading ^) or file #
+"RTN","BGOUTL",192,0)
+ ;   FROM = Text from which to start search
+"RTN","BGOUTL",193,0)
+ ;   DIR  = Search direction (not supported)
+"RTN","BGOUTL",194,0)
+ ;   MAX  = Maximum # to return (defaults to 44)
+"RTN","BGOUTL",195,0)
+ ;   XREF = Cross ref to use (defaults to "B")
+"RTN","BGOUTL",196,0)
+ ;   SCRN = Screening logic (e.g. => .04="TEST";.07=83)
+"RTN","BGOUTL",197,0)
+ ;   ALL  = Return all records, maximum of 9999
+"RTN","BGOUTL",198,0)
+ ;   FLDS = Fields to return
+"RTN","BGOUTL",199,0)
+DICLKUP2(RET,INP) ;EP
+"RTN","BGOUTL",200,0)
+ N GBL,LKP,FROM,DIR,MAX,XREF,XREFS,SCRN,ALL,FLDS,FNUM,LP,X
+"RTN","BGOUTL",201,0)
+ S RET=$$TMPGBL
+"RTN","BGOUTL",202,0)
+ S GBL=$P(INP,U)
+"RTN","BGOUTL",203,0)
+ I GBL=+GBL S GBL=$$ROOT^DILFD(GBL,,1)
+"RTN","BGOUTL",204,0)
+ E  S GBL=$$CREF^DILF(U_GBL)
+"RTN","BGOUTL",205,0)
+ S FNUM=$P($G(@GBL@(0)),U,2),FNUM(0)=FNUM["P",FNUM=+FNUM
+"RTN","BGOUTL",206,0)
+ Q:'FNUM
+"RTN","BGOUTL",207,0)
+ S LKP=$P(INP,U,2)
+"RTN","BGOUTL",208,0)
+ S FROM=$P(INP,U,3)
+"RTN","BGOUTL",209,0)
+ S DIR=$P(INP,U,4)                                                     ; ignored
+"RTN","BGOUTL",210,0)
+ S MAX=$P(INP,U,5)
+"RTN","BGOUTL",211,0)
+ S XREF=$TR($P(INP,U,6),"~",U)
+"RTN","BGOUTL",212,0)
+ S SCRN=$TR($P(INP,U,7),"~",U)
+"RTN","BGOUTL",213,0)
+ S ALL=$P(INP,U,8)
+"RTN","BGOUTL",214,0)
+ S FLDS=$P(INP,U,9)
 "RTN","BGOUTL",215,0)
- S MAX=$S(ALL:9999,MAX>0:+MAX,1:100),DIR=$S(DIR'=-1:1,1:-1)
+ S:FLDS="" FLDS=".01"
 "RTN","BGOUTL",216,0)
- D FIND^DIC(FNUM,,"@;IX;"_FLDS,"BP",LKP,MAX,XREF,SCRN,,RET)
+ F LP=1:1:$L(FLDS,";") D
 "RTN","BGOUTL",217,0)
- K @RET@("DILIST",0)
+ .S X=$P(FLDS,";",LP)
 "RTN","BGOUTL",218,0)
- Q
+ .S $P(FLDS,";",LP)=X_$S(X=.01&FNUM(0):"E",1:"I")
 "RTN","BGOUTL",219,0)
- ; Returns true if active hospital location
+ I LKP'="",FROM="" S FROM=LKP
 "RTN","BGOUTL",220,0)
- ;  LOC = IEN of hospital location
+ S MAX=$S(ALL:9999,MAX>0:+MAX,1:100),DIR=$S(DIR'=-1:1,1:-1)
 "RTN","BGOUTL",221,0)
- ;  DAT = optional date to check (defaults to today)
+ D FIND^DIC(FNUM,,"@;IX;"_FLDS,"BP",LKP,MAX,XREF,SCRN,,RET)
 "RTN","BGOUTL",222,0)
-ACTHLOC(LOC,DAT) ;
+ K @RET@("DILIST",0)
 "RTN","BGOUTL",223,0)
- Q $$ACTLOC^BGOUTL4(LOC,.DAT)
+ Q
 "RTN","BGOUTL",224,0)
- ; Returns true if user is a provider and is active
+ ; Returns true if active hospital location
 "RTN","BGOUTL",225,0)
-ACTPRV(IEN,DAT) ;
+ ;  LOC = IEN of hospital location
 "RTN","BGOUTL",226,0)
- Q $$ACTIVE^BGOUTL4(IEN,.DAT)&$$HASKEY^BGOUTL4("PROVIDER")
+ ;  DAT = optional date to check (defaults to today)
 "RTN","BGOUTL",227,0)
- ; Returns true if routine exists
+ACTHLOC(LOC,DAT) ;
 "RTN","BGOUTL",228,0)
- ;  X = Routine or routine^tag
+ Q $$ACTLOC^BEHOENCX(LOC,.DAT)
 "RTN","BGOUTL",229,0)
- ; .Y error message returned if not found
+ ; Returns true if user is a provider and is active
 "RTN","BGOUTL",230,0)
-TEST(X,Y) ;EP
+ACTPRV(IEN,DAT) ;
 "RTN","BGOUTL",231,0)
- S:X[U X=$P(X,U,2)
+ Q $$ACTIVE^BEHOUSCX(IEN,.DAT)&$$HASKEY^BEHOUSCX("PROVIDER")
 "RTN","BGOUTL",232,0)
- Q:'$L(X)!(X'?.1"%"1.AN) 0
+ ; Returns true if routine exists
 "RTN","BGOUTL",233,0)
- X ^%ZOSF("TEST")
+ ;  X = Routine or routine^tag
 "RTN","BGOUTL",234,0)
- Q:$T 1
+ ; .Y error message returned if not found
 "RTN","BGOUTL",235,0)
- S Y=$$ERR(1059,X)
+TEST(X,Y) ;EP
 "RTN","BGOUTL",236,0)
- Q 0
+ S:X[U X=$P(X,U,2)
 "RTN","BGOUTL",237,0)
- ; Get CPT modifiers for a CPT code
+ Q:'$L(X)!(X'?.1"%"1.AN) 0
 "RTN","BGOUTL",238,0)
-CPTMODS(RET,INP) ;EP
+ X ^%ZOSF("TEST")
 "RTN","BGOUTL",239,0)
- Q:'$$TEST("CPTMODS^ORWPCE",.RET)
+ Q:$T 1
 "RTN","BGOUTL",240,0)
- D CPTMODS^ORWPCE(.RET,INP)
+ S Y=$$ERR(1059,X)
 "RTN","BGOUTL",241,0)
- Q
+ Q 0
 "RTN","BGOUTL",242,0)
- ; Perform lookup in lexicon
+ ; Get CPT modifiers for a CPT code
 "RTN","BGOUTL",243,0)
- ;  INP = Term ^ Type (ICD/CHP)
+CPTMODS(RET,INP) ;EP
 "RTN","BGOUTL",244,0)
-LEXLKUP(RET,INP) ;EP
+ Q:'$$TEST("CPTMODS^ORWPCE",.RET)
 "RTN","BGOUTL",245,0)
- N TERM,TYPE,VDT
+ D CPTMODS^ORWPCE(.RET,INP)
 "RTN","BGOUTL",246,0)
- Q:'$$TEST("LEX^ORWPCE",.RET)
+ Q
 "RTN","BGOUTL",247,0)
- S TERM=$P(INP,U)
+ ; Perform lookup in lexicon
 "RTN","BGOUTL",248,0)
- Q:TERM=""
+ ;  INP = Term ^ Type (ICD/CHP)
 "RTN","BGOUTL",249,0)
- S TYPE=$P(INP,U,2)
+LEXLKUP(RET,INP) ;EP
 "RTN","BGOUTL",250,0)
- Q:TYPE=""
+ N TERM,TYPE,VDT
 "RTN","BGOUTL",251,0)
- S VDT=$P(INP,U,3)
+ Q:'$$TEST("LEX^ORWPCE",.RET)
 "RTN","BGOUTL",252,0)
- D LEX^ORWPCE(.RET,TERM,TYPE,VDT)
+ S TERM=$P(INP,U)
 "RTN","BGOUTL",253,0)
- Q
+ Q:TERM=""
 "RTN","BGOUTL",254,0)
- ; Lexicon ICD lookup
+ S TYPE=$P(INP,U,2)
 "RTN","BGOUTL",255,0)
- ;  TERM = Term to lookup
+ Q:TYPE=""
 "RTN","BGOUTL",256,0)
-ICDLEX(RET,TERM) ;EP
+ S VDT=$P(INP,U,3)
 "RTN","BGOUTL",257,0)
- S $P(TERM,U,2)="ICD"
+ D LEX^ORWPCE(.RET,TERM,TYPE,VDT)
 "RTN","BGOUTL",258,0)
- D LEXLKUP(.RET,TERM)
+ Q
 "RTN","BGOUTL",259,0)
- Q
+ ; Lexicon ICD lookup
 "RTN","BGOUTL",260,0)
- ; Return IEN of ICD code
+ ;  TERM = Term to lookup
 "RTN","BGOUTL",261,0)
-ICDIEN(RET,ICD) ;EP
+ICDLEX(RET,TERM) ;EP
 "RTN","BGOUTL",262,0)
- S RET=$S($L(ICD):$O(^ICD9("AB",ICD,"")),1:"")
+ S $P(TERM,U,2)="ICD"
 "RTN","BGOUTL",263,0)
- Q
+ D LEXLKUP(.RET,TERM)
 "RTN","BGOUTL",264,0)
- ; Get ICD IEN from lexicon IEN
+ Q
 "RTN","BGOUTL",265,0)
-ICDLEXCD(RET,LEX) ;EP
+ ; Return IEN of ICD code
 "RTN","BGOUTL",266,0)
- Q:'$$TEST("LEXCODE^ORWPCE",.RET)
+ICDIEN(RET,ICD) ;EP
 "RTN","BGOUTL",267,0)
- D LEXCODE^ORWPCE(.RET,LEX,"ICD"),ICDIEN(.RET,RET)
+ S RET=$S($L(ICD):$O(^ICD9("AB",ICD,"")),1:"")
 "RTN","BGOUTL",268,0)
  Q
 "RTN","BGOUTL",269,0)
- ; Get CPT IEN from lexicon IEN
+ ; Get ICD IEN from lexicon IEN
 "RTN","BGOUTL",270,0)
-CPTLEXCD(RET,LEX) ;EP
+ICDLEXCD(RET,LEX) ;EP
 "RTN","BGOUTL",271,0)
  Q:'$$TEST("LEXCODE^ORWPCE",.RET)
 "RTN","BGOUTL",272,0)
- D LEXCODE^ORWPCE(.RET,LEX,"CHP")
+ D LEXCODE^ORWPCE(.RET,LEX,"ICD"),ICDIEN(.RET,RET)
 "RTN","BGOUTL",273,0)
- S:$L(RET) RET=$O(^ICPT("B",RET,""))
+ Q
 "RTN","BGOUTL",274,0)
- Q
+ ; Get CPT IEN from lexicon IEN
 "RTN","BGOUTL",275,0)
- ; Returns the clinic stop associated with a visit
+CPTLEXCD(RET,LEX) ;EP
 "RTN","BGOUTL",276,0)
- ;  VIEN = Visit IEN
+ Q:'$$TEST("LEXCODE^ORWPCE",.RET)
 "RTN","BGOUTL",277,0)
-VCLN(RET,VIEN) ;EP
+ D LEXCODE^ORWPCE(.RET,LEX,"CHP")
 "RTN","BGOUTL",278,0)
- I '$G(VIEN) S RET=$$ERR(1002)
+ S:$L(RET) RET=$O(^ICPT("B",RET,""))
 "RTN","BGOUTL",279,0)
- E  I '$D(^AUPNVSIT(VIEN,0)) S RET=$$ERR(1003)
+ Q
 "RTN","BGOUTL",280,0)
- E  S RET=$P(^AUPNVSIT(VIEN,0),U,8),RET=$P($G(^DIC(40.7,+RET,0)),U,2)
+ ; Returns the clinic stop associated with a visit
 "RTN","BGOUTL",281,0)
- Q
+ ;  VIEN = Visit IEN
 "RTN","BGOUTL",282,0)
- ; Returns 1 if a visit exists for current day
+VCLN(RET,VIEN) ;EP
 "RTN","BGOUTL",283,0)
- ;  DFN = Patient IEN
+ I '$G(VIEN) S RET=$$ERR(1002)
 "RTN","BGOUTL",284,0)
-FIRVIS(RET,DFN) ;EP
+ E  I '$D(^AUPNVSIT(VIEN,0)) S RET=$$ERR(1003)
 "RTN","BGOUTL",285,0)
- I '$G(DFN) S RET=$$ERR(1050)
+ E  S RET=$P(^AUPNVSIT(VIEN,0),U,8),RET=$P($G(^DIC(40.7,+RET,0)),U,2)
 "RTN","BGOUTL",286,0)
- E  I '$D(^DPT(DFN,0)) S RET=$$ERR(1001)
-"RTN","BGOUTL",287,0)
- E  I $O(^AUPNVSIT("AA",DFN,9999999-DT+.2359)) S RET=0
-"RTN","BGOUTL",288,0)
- E  S RET=1
-"RTN","BGOUTL",289,0)
  Q
+"RTN","BGOUTL",287,0)
+ ; Returns 1 if a visit exists for current day
+"RTN","BGOUTL",288,0)
+ ;  DFN = Patient IEN
+"RTN","BGOUTL",289,0)
+FIRVIS(RET,DFN) ;EP
 "RTN","BGOUTL",290,0)
- ; Delete a V file entry
+ I '$G(DFN) S RET=$$ERR(1050)
 "RTN","BGOUTL",291,0)
- ;  INP = V File # ^ V File IEN
+ E  I '$D(^DPT(DFN,0)) S RET=$$ERR(1001)
 "RTN","BGOUTL",292,0)
-VFDEL(RET,INP) ;EP
+ E  I $O(^AUPNVSIT("AA",DFN,9999999-DT+.2359)) S RET=0
 "RTN","BGOUTL",293,0)
- D VFDEL^BGOUTL2(.RET,+INP,+$P(INP,U,2))
+ E  S RET=1
 "RTN","BGOUTL",294,0)
  Q
 "RTN","BGOUTL",295,0)
- ; Fetch a record from a file
+ ; Delete a V file entry
 "RTN","BGOUTL",296,0)
-GETREC(FNUM,IEN,FLDS) ;EP
+ ;  INP = V File # ^ V File IEN
 "RTN","BGOUTL",297,0)
- N RET,FLD,IENS,VAL,I,X,Y
+VFDEL(RET,INP) ;EP
 "RTN","BGOUTL",298,0)
- S IENS=IEN_",",RET=IEN
+ D VFDEL^BGOUTL2(.RET,+INP,+$P(INP,U,2))
 "RTN","BGOUTL",299,0)
- D GETS^DIQ(FNUM,IENS,FLDS,"IE","VAL")
+ Q
 "RTN","BGOUTL",300,0)
- F I=1:1:$L(FLDS,";") D
+ ; Fetch a record from a file
 "RTN","BGOUTL",301,0)
- .S FLD=$P(FLDS,";",I)
+GETREC(FNUM,IEN,FLDS) ;EP
 "RTN","BGOUTL",302,0)
- .S X=$G(VAL(FNUM,IENS,FLD,"E")),Y=$G(VAL(FNUM,IENS,FLD,"I"))
+ N RET,FLD,IENS,VAL,I,X,Y
 "RTN","BGOUTL",303,0)
- .S:X'=Y X=X_"|"_Y
+ S IENS=IEN_",",RET=IEN
 "RTN","BGOUTL",304,0)
- .S $P(RET,U,I+1)=X
+ D GETS^DIQ(FNUM,IENS,FLDS,"IE","VAL")
 "RTN","BGOUTL",305,0)
- Q RET
+ F I=1:1:$L(FLDS,";") D
 "RTN","BGOUTL",306,0)
- ; Add/edit a file entry
+ .S FLD=$P(FLDS,";",I)
 "RTN","BGOUTL",307,0)
-UPDATE(FDA,FLG,IEN) ;EP
+ .S X=$G(VAL(FNUM,IENS,FLD,"E")),Y=$G(VAL(FNUM,IENS,FLD,"I"))
 "RTN","BGOUTL",308,0)
- N ERR,DFN,X
+ .S:X'=Y X=X_"|"_Y
 "RTN","BGOUTL",309,0)
- I $G(FLG)["@" S FLG=$TR(FLG,"@")
+ .S $P(RET,U,I+1)=X
 "RTN","BGOUTL",310,0)
- E  D
+ Q RET
 "RTN","BGOUTL",311,0)
- .S X="FDA"
+ ; Add/edit a file entry
 "RTN","BGOUTL",312,0)
- .F  S X=$Q(@X) Q:'$L(X)  K:'$L(@X) @X
+UPDATE(FDA,FLG,IEN) ;EP
 "RTN","BGOUTL",313,0)
- Q:$D(FDA)'>1 ""
+ N ERR,DFN,X
 "RTN","BGOUTL",314,0)
- D UPDATE^DIE(.FLG,"FDA","IEN","ERR")
+ I $G(FLG)["@" S FLG=$TR(FLG,"@")
 "RTN","BGOUTL",315,0)
- K FDA
+ E  D
 "RTN","BGOUTL",316,0)
- Q $S($G(ERR("DIERR",1)):-ERR("DIERR",1)_U_ERR("DIERR",1,"TEXT",1),1:"")
+ .S X="FDA"
 "RTN","BGOUTL",317,0)
- ; Delete an entry from a file
+ .F  S X=$Q(@X) Q:'$L(X)  K:'$L(@X) @X
 "RTN","BGOUTL",318,0)
-DELETE(DIK,DA) ;EP
+ Q:$D(FDA)'>1 ""
 "RTN","BGOUTL",319,0)
- N CREF,X,Y
+ D UPDATE^DIE(.FLG,"FDA","IEN","ERR")
 "RTN","BGOUTL",320,0)
- S:DIK=+DIK DIK=$$ROOT^DILFD(DIK)
+ K FDA
 "RTN","BGOUTL",321,0)
- S CREF=$$CREF^DILF(DIK)
+ Q $S($G(ERR("DIERR",1)):-ERR("DIERR",1)_U_ERR("DIERR",1,"TEXT",1),1:"")
 "RTN","BGOUTL",322,0)
- D ^DIK
+ ; Delete an entry from a file
 "RTN","BGOUTL",323,0)
- Q $S($D(@CREF@(DA)):$$ERR(1060,$P($G(@CREF@(0),"UNKNOWN"),U)),1:"")
+DELETE(DIK,DA) ;EP
 "RTN","BGOUTL",324,0)
- ; Check and validate visit
+ N CREF,X,Y
 "RTN","BGOUTL",325,0)
-CHKVISIT(VIEN,DFN,CAT) ;EP
+ S:DIK=+DIK DIK=$$ROOT^DILFD(DIK)
 "RTN","BGOUTL",326,0)
- N RET,X0
+ S CREF=$$CREF^DILF(DIK)
 "RTN","BGOUTL",327,0)
- S RET=$$ISLOCKED^BGOUTL4(VIEN)
+ D ^DIK
 "RTN","BGOUTL",328,0)
- Q:RET $S(RET<0:$$ERR(1003),1:$$ERR(1061))
+ Q $S($D(@CREF@(DA)):$$ERR(1060,$P($G(@CREF@(0),"UNKNOWN"),U)),1:"")
 "RTN","BGOUTL",329,0)
- S X0=$G(^AUPNVSIT(VIEN,0))
+ ; Check and validate visit
 "RTN","BGOUTL",330,0)
- I $G(DFN),$P(X0,U,5)'=DFN S RET=$$ERR(1062)
+CHKVISIT(VIEN,DFN,CAT) ;EP
 "RTN","BGOUTL",331,0)
- E  I $P(X0,U,11) S RET=$$ERR(1063)
+ N RET,X0
 "RTN","BGOUTL",332,0)
- E  I $L($G(CAT)),CAT'[$P(X0,U,7) S RET=$$ERR(1064,$$EXTERNAL^DILFD(9000010,.07,,$P(X0,U,7)))
+ S RET=$$ISLOCKED^BEHOENCX(VIEN)
 "RTN","BGOUTL",333,0)
- Q RET
+ Q:RET $S(RET<0:$$ERR(1003),1:$$ERR(1061))
 "RTN","BGOUTL",334,0)
- ; Get primary provider for a visit
+ S X0=$G(^AUPNVSIT(VIEN,0))
 "RTN","BGOUTL",335,0)
- ;  VIEN = Visit IEN
+ I $G(DFN),$P(X0,U,5)'=DFN S RET=$$ERR(1062)
 "RTN","BGOUTL",336,0)
- ;  Returns Provider IEN ^ Provider Name ^ V Provider IEN
+ E  I $P(X0,U,11) S RET=$$ERR(1063)
 "RTN","BGOUTL",337,0)
-PRIPRV(VIEN) ;EP
+ E  I $L($G(CAT)),CAT'[$P(X0,U,7) S RET=$$ERR(1064,$$EXTERNAL^DILFD(9000010,.07,,$P(X0,U,7)))
 "RTN","BGOUTL",338,0)
- N X,RET
-"RTN","BGOUTL",339,0)
- Q:'VIEN $$ERR(1002)
-"RTN","BGOUTL",340,0)
- S X=0,RET=$$ERR(1065)
-"RTN","BGOUTL",341,0)
- F  S X=$O(^AUPNVPRV("AD",VIEN,X)) Q:'X  D  Q:RET>0
-"RTN","BGOUTL",342,0)
- .S Y=$G(^AUPNVPRV(X,0))
-"RTN","BGOUTL",343,0)
- .S:$P(Y,U,4)="P" RET=$P(Y,U)_U_$P($G(^VA(200,+Y,0)),U)_U_X
-"RTN","BGOUTL",344,0)
  Q RET
+"RTN","BGOUTL",339,0)
+ ; Get primary provider for a visit
+"RTN","BGOUTL",340,0)
+ ;  VIEN = Visit IEN
+"RTN","BGOUTL",341,0)
+ ;  Returns Provider IEN ^ Provider Name ^ V Provider IEN
+"RTN","BGOUTL",342,0)
+PRIPRV(VIEN) ;EP
+"RTN","BGOUTL",343,0)
+ N X,RET
+"RTN","BGOUTL",344,0)
+ Q:'VIEN $$ERR(1002)
 "RTN","BGOUTL",345,0)
- ; Create an historical visit
+ S X=0,RET=$$ERR(1065)
 "RTN","BGOUTL",346,0)
-MAKEHIST(DFN,EVNTDT,LOC,VIEN) ;EP
+ F  S X=$O(^AUPNVPRV("AD",VIEN,X)) Q:'X  D  Q:RET>0
 "RTN","BGOUTL",347,0)
- S EVNTDT=$$CVTDATE(EVNTDT)
+ .S Y=$G(^AUPNVPRV(X,0))
 "RTN","BGOUTL",348,0)
- S:EVNTDT#100\1=0 EVNTDT=EVNTDT+1
+ .S:$P(Y,U,4)="P" RET=$P(Y,U)_U_$P($G(^VA(200,+Y,0)),U)_U_X
 "RTN","BGOUTL",349,0)
- Q:EVNTDT\1>DT $$ERR(1066)
+ Q RET
 "RTN","BGOUTL",350,0)
- I $G(VIEN) D  Q:VIEN VIEN
+ ; Create an historical visit
 "RTN","BGOUTL",351,0)
- .N X,V,L
+MAKEHIST(DFN,EVNTDT,LOC,VIEN) ;EP
 "RTN","BGOUTL",352,0)
- .S X=$G(^AUPNVSIT(VIEN,0)),L=$G(^(21)),V=VIEN,VIEN=0
+ S EVNTDT=$$CVTDATE(EVNTDT)
 "RTN","BGOUTL",353,0)
- .Q:DFN'=$P(X,U,5)
+ S:EVNTDT#100\1=0 EVNTDT=EVNTDT+1
 "RTN","BGOUTL",354,0)
- .Q:$P(X,U,7)'="E"
+ Q:EVNTDT\1>DT $$ERR(1066)
 "RTN","BGOUTL",355,0)
- .I X\1'=EVNTDT,+X'=EVNTDT Q
+ I $G(VIEN) D  Q:VIEN VIEN
 "RTN","BGOUTL",356,0)
- .I LOC=+LOC Q:$P(X,U,6)'=LOC
+ .N X,V,L
 "RTN","BGOUTL",357,0)
- .E  I $L(LOC),$P(L,U)'=LOC,$$GET1^DIQ(4,$P(X,U,6),.01)'=LOC Q
+ .S X=$G(^AUPNVSIT(VIEN,0)),L=$G(^(21)),V=VIEN,VIEN=0
 "RTN","BGOUTL",358,0)
- .S VIEN=V
+ .Q:DFN'=$P(X,U,5)
 "RTN","BGOUTL",359,0)
- Q $$FNDVIS^BGOUTL4(DFN,EVNTDT,"E","",-1,,LOC)
+ .Q:$P(X,U,7)'="E"
 "RTN","BGOUTL",360,0)
- ; Convert date to internal format
+ .I X\1'=EVNTDT,+X'=EVNTDT Q
 "RTN","BGOUTL",361,0)
-CVTDATE(X) ;EP
+ .I LOC=+LOC Q:$P(X,U,6)'=LOC
 "RTN","BGOUTL",362,0)
- Q:"@"[X X
+ .E  I $L(LOC),$P(L,U)'=LOC,$$GET1^DIQ(4,$P(X,U,6),.01)'=LOC Q
 "RTN","BGOUTL",363,0)
- S:X?1.E1" "1.2N1":"2N.E X=$P(X," ")_"@"_$P(X," ",2,99)
+ .S VIEN=V
 "RTN","BGOUTL",364,0)
- D DT^DILF("PT",X,.X)
+ Q $$FNDVIS^BEHOENCX(DFN,EVNTDT,"E","",-1,,LOC)
 "RTN","BGOUTL",365,0)
- Q $S(X>0:X,1:"")
+ ; Convert date to internal format
 "RTN","BGOUTL",366,0)
- ; Convert date to MM/DD/YYYY format
+CVTDATE(X) ;EP
 "RTN","BGOUTL",367,0)
- ; If TM is nonzero, include time portion
+ Q:"@"[X X
 "RTN","BGOUTL",368,0)
-FMTDATE(X,TM) ;EP
+ S:X?1.E1" "1.2N1":"2N.E X=$P(X," ")_"@"_$P(X," ",2,99)
 "RTN","BGOUTL",369,0)
- Q:'X ""
+ D DT^DILF("PT",X,.X)
 "RTN","BGOUTL",370,0)
- N M,D,V
+ Q $S(X>0:X,1:"")
 "RTN","BGOUTL",371,0)
- S V=$TR($$FMTE^XLFDT(X,$S($G(TM):"5ZM",1:"5ZD")),"@"," ")
+ ; Convert date to MM/DD/YYYY format
 "RTN","BGOUTL",372,0)
- Q V
+ ; If TM is nonzero, include time portion
 "RTN","BGOUTL",373,0)
- ;S M=$E(X,4,5),D=$E(X,6,7),V=$E(X,1,3)+1700
+FMTDATE(X,TM) ;EP
 "RTN","BGOUTL",374,0)
- ;S:M&D V=D_"/"_V
+ Q:'X ""
 "RTN","BGOUTL",375,0)
- ;S:M V=M_"/"_V
+ N M,D,V
 "RTN","BGOUTL",376,0)
- ;I $G(TM) D
+ S V=$TR($$FMTE^XLFDT(X,$S($G(TM):"5ZM",1:"5ZD")),"@"," ")
 "RTN","BGOUTL",377,0)
- ;.S X=X#1
+ Q V
 "RTN","BGOUTL",378,0)
- ;.Q:'X
+ ;S M=$E(X,4,5),D=$E(X,6,7),V=$E(X,1,3)+1700
 "RTN","BGOUTL",379,0)
- ;.S X=$TR($J(X*10000\1,4),0)
+ ;S:M&D V=D_"/"_V
 "RTN","BGOUTL",380,0)
- ;.S V=V_" "_$E(X,1,2)_":"_$E(X,3,4)
+ ;S:M V=M_"/"_V
 "RTN","BGOUTL",381,0)
- ;Q V
+ ;I $G(TM) D
 "RTN","BGOUTL",382,0)
- ; Convert a string to WP format
+ ;.S X=X#1
 "RTN","BGOUTL",383,0)
-TOWP(X) ;EP
+ ;.Q:'X
 "RTN","BGOUTL",384,0)
- N I,L,L2,Y,Z
+ ;.S X=$TR($J(X*10000\1,4),0)
 "RTN","BGOUTL",385,0)
- S Y=@X
+ ;.S V=V_" "_$E(X,1,2)_":"_$E(X,3,4)
 "RTN","BGOUTL",386,0)
- K @X
+ ;Q V
 "RTN","BGOUTL",387,0)
- S:Y="@" Y=""
+ ; Convert a string to WP format
 "RTN","BGOUTL",388,0)
- F I=1:1 Q:'$L(Y)  D
+TOWP(X) ;EP
 "RTN","BGOUTL",389,0)
- .S L=$F(Y,$C(13))
+ N I,L,L2,Y,Z
 "RTN","BGOUTL",390,0)
- .I 'L!(L>242) D
+ S Y=@X
 "RTN","BGOUTL",391,0)
- ..S L=$S($L(Y)'>240:999,1:0)
+ K @X
 "RTN","BGOUTL",392,0)
- ..F  S L2=$F(Y," ",L) Q:'L2!(L2>242)  S L=L2
+ S:Y="@" Y=""
 "RTN","BGOUTL",393,0)
- .I 'L S Z=$E(Y,1,240),Y=$E(Y,241,99999)
+ F I=1:1 Q:'$L(Y)  D
 "RTN","BGOUTL",394,0)
- .E  S Z=$E(Y,1,L-2),Y=$E(Y,L,99999)
+ .S L=$F(Y,$C(13))
 "RTN","BGOUTL",395,0)
- .S @X@(I,0)=$TR(Z,$C(13,10))
+ .I 'L!(L>242) D
 "RTN","BGOUTL",396,0)
- Q $S($D(@X):X,1:"")
+ ..S L=$S($L(Y)'>240:999,1:0)
 "RTN","BGOUTL",397,0)
- ; Convert a value to internal format
+ ..F  S L2=$F(Y," ",L) Q:'L2!(L2>242)  S L=L2
 "RTN","BGOUTL",398,0)
-TOINTRNL(FNUM,FLD,VAL) ;EP
+ .I 'L S Z=$E(Y,1,240),Y=$E(Y,241,99999)
 "RTN","BGOUTL",399,0)
- N RET
+ .E  S Z=$E(Y,1,L-2),Y=$E(Y,L,99999)
 "RTN","BGOUTL",400,0)
- D CHK^DIE(FNUM,FLD,,VAL,.RET)
+ .S @X@(I,0)=$TR(Z,$C(13,10))
 "RTN","BGOUTL",401,0)
- Q $S(U[$G(RET):"",1:RET)
+ Q $S($D(@X):X,1:"")
 "RTN","BGOUTL",402,0)
- ; Return an error code/error dialog
+ ; Convert a value to internal format
 "RTN","BGOUTL",403,0)
-ERR(CODE,PARAMS) ;EP
+TOINTRNL(FNUM,FLD,VAL) ;EP
 "RTN","BGOUTL",404,0)
- Q -CODE_U_$$EZBLD^DIALOG(CODE+903620000,.PARAMS)
+ N RET
 "RTN","BGOUTL",405,0)
- ; Return a temporary global reference
+ D CHK^DIE(FNUM,FLD,,VAL,.RET)
 "RTN","BGOUTL",406,0)
-TMPGBL(X) ;EP
+ Q $S(U[$G(RET):"",1:RET)
 "RTN","BGOUTL",407,0)
- K ^TMP("BGO"_$G(X),$J) Q $NA(^($J))
+ ; Return an error code/error dialog
 "RTN","BGOUTL",408,0)
- ; Returns status of screen application
+ERR(CODE,PARAMS) ;EP
 "RTN","BGOUTL",409,0)
- ;  0=failed  1=passed
+ N MSG
 "RTN","BGOUTL",410,0)
-XSCRN(IEN,SCRN) ;EP
+ S MSG=$$EZBLD^DIALOG(CODE+903620000,.PARAMS)
 "RTN","BGOUTL",411,0)
- N S,X,Y,I,J,FLD,OPR,VAL,N,P
+ Q -CODE_U_$S($L(MSG):MSG,1:"Unknown error #"_CODE)
 "RTN","BGOUTL",412,0)
- S X=1  ; Default to passed
+ ; Return a temporary global reference
 "RTN","BGOUTL",413,0)
- I SCRN'="" D
+TMPGBL(X) ;EP
 "RTN","BGOUTL",414,0)
- .I $E(SCRN,1,2)="I " D
+ K ^TMP("BGO"_$G(X),$J) Q $NA(^($J))
 "RTN","BGOUTL",415,0)
- ..S Y=IEN X SCRN S X=$T
+ ; Returns status of screen application
 "RTN","BGOUTL",416,0)
- .E  D
+ ;  0=failed  1=passed
 "RTN","BGOUTL",417,0)
- ..F I=1:1 S S=$P(SCRN,"&",I) Q:S=""  D  Q:'X
+XSCRN(IEN,SCRN) ;EP
 "RTN","BGOUTL",418,0)
- ...S FLD=+S,X=0
+ N S,X,Y,I,J,FLD,OPR,VAL,N,P
 "RTN","BGOUTL",419,0)
- ...Q:'FLD
+ S X=1  ; Default to passed
 "RTN","BGOUTL",420,0)
- ...S OPR=""
+ I SCRN'="" D
 "RTN","BGOUTL",421,0)
- ...F J=1:1:3 Q:"=<>'[]"'[$E(S,$L(FLD)+J)  S OPR=OPR_$E(S,$L(FLD)+J)
+ .I $E(SCRN,1,2)="I " D
 "RTN","BGOUTL",422,0)
- ...Q:OPR=""
+ ..S Y=IEN X SCRN S X=$T
 "RTN","BGOUTL",423,0)
- ...S VAL=$P(S,OPR,2,999)
+ .E  D
 "RTN","BGOUTL",424,0)
- ...S N=$P($G(^DD(FNUM,FLD,0)),U,4),P=$P(N,";",2),N=$P(N,";")
+ ..F I=1:1 S S=$P(SCRN,"&",I) Q:S=""  D  Q:'X
 "RTN","BGOUTL",425,0)
- ...Q:N=""!(P="")
+ ...S FLD=+S,X=0
 "RTN","BGOUTL",426,0)
- ...X "S X=$P($G(@GBL@(IEN,N)),U,P)"_OPR_"VAL"
+ ...Q:'FLD
 "RTN","BGOUTL",427,0)
+ ...S OPR=""
+"RTN","BGOUTL",428,0)
+ ...F J=1:1:3 Q:"=<>'[]"'[$E(S,$L(FLD)+J)  S OPR=OPR_$E(S,$L(FLD)+J)
+"RTN","BGOUTL",429,0)
+ ...Q:OPR=""
+"RTN","BGOUTL",430,0)
+ ...S VAL=$P(S,OPR,2,999)
+"RTN","BGOUTL",431,0)
+ ...S N=$P($G(^DD(FNUM,FLD,0)),U,4),P=$P(N,";",2),N=$P(N,";")
+"RTN","BGOUTL",432,0)
+ ...Q:N=""!(P="")
+"RTN","BGOUTL",433,0)
+ ...X "S X=$P($G(@GBL@(IEN,N)),U,P)"_OPR_"VAL"
+"RTN","BGOUTL",434,0)
  Q X
 "RTN","BGOUTL2")
-0^2^B72128497
+0^2^B71594988
 "RTN","BGOUTL2",1,0)
-BGOUTL2 ; IHS/BAO/TMD - Utilities (continued)  ;18-Jun-2015 17:13;DKM
+BGOUTL2 ; IHS/BAO/TMD - Utilities (continued)  ;28-May-2015 22:40;AA
 "RTN","BGOUTL2",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,5,6,10,11,12,13**;Mar 20, 2007;Build 11
+ ;;1.1;BGO COMPONENTS;**1,3,5,6,10,11,12,13**;Mar 20, 2007;Build 4
 "RTN","BGOUTL2",3,0)
  ; Add refusals to output stream
 "RTN","BGOUTL2",4,0)
@@ -2051,7 +4371,7 @@ REFEVT(IEN,OPR,X) ;EP
 "RTN","BGOUTL2",151,0)
  S TYPE=$P($G(^AUTTREFT(+X,0)),U)
 "RTN","BGOUTL2",152,0)
- D BRDCAST^BGOUTL4("REFUSAL."_DFN_"."_TYPE,IEN_U_$G(CIA("UID"),$G(RGNETB("UID")))_U_OPR)
+ D BRDCAST^CIANBEVT("REFUSAL."_DFN_"."_TYPE,IEN_U_$G(CIA("UID"))_U_OPR)
 "RTN","BGOUTL2",153,0)
  Q
 "RTN","BGOUTL2",154,0)
@@ -2231,7 +4551,7 @@ VFGET(RET,INP,FNUM,FLDS) ;EP
 "RTN","BGOUTL2",241,0)
 GV1 S X=$$GETREC^BGOUTL(FNUM,VFIEN,FLDS)
 "RTN","BGOUTL2",242,0)
- S CNT=CNT+1,@RET@(CNT)=$P(X,U)_U_$$ISLOCKED^BGOUTL4(+$P($G(@GBL@(VFIEN,0)),U,3))_U_$P(X,U,2,9999)
+ S CNT=CNT+1,@RET@(CNT)=$P(X,U)_U_$$ISLOCKED^BEHOENCX(+$P($G(@GBL@(VFIEN,0)),U,3))_U_$P(X,U,2,9999)
 "RTN","BGOUTL2",243,0)
  Q
 "RTN","BGOUTL2",244,0)
@@ -2257,11 +4577,11 @@ VFEVT(FNUM,VFIEN,OPR,X) ;EP
 "RTN","BGOUTL2",254,0)
  S:'$D(X) X=$G(@GBL@(VFIEN,0))
 "RTN","BGOUTL2",255,0)
- S DFN=$P(X,U,2),VIEN=$P(X,U,3),DATA=VFIEN_U_$G(CIA("UID"),$G(RGNETB("UID")))_U_OPR_U_$P(X,U)_U_VIEN
+ S DFN=$P(X,U,2),VIEN=$P(X,U,3),DATA=VFIEN_U_$G(CIA("UID"))_U_OPR_U_$P(X,U)_U_VIEN
 "RTN","BGOUTL2",256,0)
- D:DFN BRDCAST^BGOUTL4("PCC."_DFN_"."_ID,DATA)
+ D:DFN BRDCAST^CIANBEVT("PCC."_DFN_"."_ID,DATA)
 "RTN","BGOUTL2",257,0)
- D:VIEN BRDCAST^BGOUTL4("VISIT."_VIEN_"."_ID,DATA)
+ D:VIEN BRDCAST^CIANBEVT("VISIT."_VIEN_"."_ID,DATA)
 "RTN","BGOUTL2",258,0)
  D:VIEN VFMOD(VIEN)
 "RTN","BGOUTL2",259,0)
@@ -2349,9 +4669,9 @@ SNMDCONC(RET,CONCID) ; EP
 "RTN","BGOUTL3")
 0^3^B3068906
 "RTN","BGOUTL3",1,0)
-BGOUTL3 ; IHS/BAO/TMD - Utilities (continued)  ;18-Jun-2015 17:13;DKM
+BGOUTL3 ; IHS/BAO/TMD - Utilities (continued)  ;11-Jul-2013 13:22;du
 "RTN","BGOUTL3",2,0)
- ;;1.1;BGO COMPONENTS;**11,13**;Mar 20, 2007;Build 11
+ ;;1.1;BGO COMPONENTS;**11,13**;Mar 20, 2007;Build 4
 "RTN","BGOUTL3",3,0)
 GETSET(RET,BGOFILE,BGOFLD,BGOCHK) ;gets set of codes
 "RTN","BGOUTL3",4,0)
@@ -2427,64 +4747,6 @@ EXAM ;Check exam codes
 "RTN","BGOUTL3",39,0)
  I C=42!(C=43),X'="L",X'="M",X'="H" K X Q
 "RTN","BGOUTL3",40,0)
- Q
-"RTN","BGOUTL4")
-0^4^B2220385
-"RTN","BGOUTL4",1,0)
-BGOUTL4 ; IHS/RI/DKM Bridge utilities;18-Jun-2015 17:13;DKM
-"RTN","BGOUTL4",2,0)
- ;;1.1;BGO COMPONENTS;;;Build 11
-"RTN","BGOUTL4",3,0)
-HASKEY(KEY,USR) ;
-"RTN","BGOUTL4",4,0)
- I $L($T(^RGCWFUSR)) Q $$HASKEY^RGCWFUSR(.KEY,.USR)
-"RTN","BGOUTL4",5,0)
- Q $$HASKEY^BEHOUSCX(.KEY,.USR)
-"RTN","BGOUTL4",6,0)
-ACTLOC(LOC,DAT) ;
-"RTN","BGOUTL4",7,0)
- I $L($T(^RGCWENCX)) Q $$ACTLOC^RGCWENCX(.LOC,.DAT)
-"RTN","BGOUTL4",8,0)
- Q $$ACTLOC^BEHOENCX(.LOC,.DAT)
-"RTN","BGOUTL4",9,0)
-ISLOCKED(IEN) ;
-"RTN","BGOUTL4",10,0)
- I $L($T(^RGCWENCX)) Q $$ISLOCKED^RGCWENCX(.IEN)
-"RTN","BGOUTL4",11,0)
- Q $$ISLOCKED^BEHOENCX(.IEN)
-"RTN","BGOUTL4",12,0)
-FNDVIS(DFN,DAT,CAT,LOC,CRE,PRV,ELC) ;
-"RTN","BGOUTL4",13,0)
- I $L($T(^RGCWENCX)) Q $$FNDVIS^RGCWENCX(.DFN,.DAT,.CAT,.LOC,.CRE,.PRV,.ELC)
-"RTN","BGOUTL4",14,0)
- Q $$FNDVIS^BEHOENCX(.DFN,.DAT,.CAT,.LOC,.CRE,.PRV,.ELC)
-"RTN","BGOUTL4",15,0)
-LOCK(DATA,GBL,OPR) ;
-"RTN","BGOUTL4",16,0)
- I $L($T(^CIANBRPC)) D LOCK^CIANBRPC(.DATA,.GBL,.OPR)
-"RTN","BGOUTL4",17,0)
- I $L($T(^RGNETBRP)) D LOCK^RGNETBRP(.DATA,.GBL,.OPR)
-"RTN","BGOUTL4",18,0)
- Q
-"RTN","BGOUTL4",19,0)
-ISACTIVE(IEN,DAT) ;
-"RTN","BGOUTL4",20,0)
- I $L($T(^RGCWFUSR)) Q $$ISACTIVE^RGCWFUSR(.IEN,.DAT)
-"RTN","BGOUTL4",21,0)
- Q $$ACTIVE^BEHOUSCX
-"RTN","BGOUTL4",22,0)
-BRDCAST(TYPE,STUB,USR,AID) ;
-"RTN","BGOUTL4",23,0)
- N CNT
-"RTN","BGOUTL4",24,0)
- S CNT=0
-"RTN","BGOUTL4",25,0)
- I $L($T(^CIANBEVT)) S CNT=$$BRDCAST^CIANBEVT(.TYPE,.STUB,.USR,.AID)
-"RTN","BGOUTL4",26,0)
- I $L($T(^RGNETBEV)) S CNT=CNT+$$BRDCAST^RGNETBEV(.TYPE,.STUB,.USR,.AID)
-"RTN","BGOUTL4",27,0)
- Q:$Q CNT
-"RTN","BGOUTL4",28,0)
  Q
 "VER")
 8.0^22.0

@@ -12,6 +12,7 @@ package org.carewebframework.vista.ui.familyhistory.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.carewebframework.api.event.IGenericEvent;
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
 import org.carewebframework.common.StrUtil;
@@ -37,7 +38,20 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
     
     private static final long serialVersionUID = 1L;
     
+    private static final String FHX_EVENT = "PCC.%.FHH";
+    
+    private final IGenericEvent<String> fhxEventHandler = new IGenericEvent<String>() {
+        
+        @Override
+        public void eventCallback(String eventName, String eventData) {
+            refresh();
+        }
+        
+    };
+    
     private final FamilyHistoryService service;
+    
+    private String fhxEvent;
     
     // Start of auto-wired section
     
@@ -141,8 +155,17 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
     
     @Override
     public void onPatientChanged(Patient patient) {
+        if (fhxEvent != null) {
+            getEventManager().unsubscribe(fhxEvent, fhxEventHandler);
+        }
+        
         super.onPatientChanged(patient);
         ZKUtil.disableChildren(toolbar, patient == null);
+        fhxEvent = patient == null ? null : FHX_EVENT.replace("%", patient.getId().getIdPart());
+        
+        if (fhxEvent != null) {
+            getEventManager().subscribe(fhxEvent, fhxEventHandler);
+        }
     }
     
     @Override
