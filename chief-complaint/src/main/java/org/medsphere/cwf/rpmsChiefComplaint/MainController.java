@@ -16,9 +16,6 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
-import ca.uhn.fhir.model.dstu2.resource.Encounter;
-import ca.uhn.fhir.model.dstu2.resource.Patient;
-
 import org.carewebframework.api.context.UserContext;
 import org.carewebframework.api.event.EventManager;
 import org.carewebframework.api.event.IEventManager;
@@ -57,7 +54,10 @@ import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Menuitem;
 
-public class MainController extends BgoBaseController<Object> implements IPluginEvent {
+import ca.uhn.fhir.model.dstu2.resource.Encounter;
+import ca.uhn.fhir.model.dstu2.resource.Patient;
+
+public class MainController extends BgoBaseController<Object>implements IPluginEvent {
     
     private static final long serialVersionUID = 1L;
     
@@ -69,7 +69,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
     
     private final static Set<EncounterFlag> EF1 = EncounterFlag.flags(EncounterFlag.NOT_LOCKED, EncounterFlag.VALIDATE_ONLY,
         EncounterFlag.FORCE);
-    
+        
     private Image imgMain;
     
     private Listbox lbCC;
@@ -147,7 +147,7 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         
         @Override
         public void canceled() {
-            
+        
         }
     };
     
@@ -430,17 +430,23 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
             return;
         }
         
+        showMessage("Loading Chief Complaint Data");
+        
         if (allowAsync && !noAsync) {
             getAsyncDispatcher().callRPCAsync("BGOCC GET", visitIEN);
         } else {
-            loadChiefComplaints(getBroker().callRPCList("BGOCC GET", null, visitIEN));
+            Events.echoEvent("onFetchData", root, null);
         }
     }
     
+    public void onFetchData() {
+        loadChiefComplaints(getBroker().callRPCList("BGOCC GET", null, visitIEN));
+    }
+    
     private void loadChiefComplaints(List<String> data) {
+        showMessage(null);
         String t = "";
         chiefList.clear();
-        showMessage("Loading Chief Complaint Data");
         
         try {
             if (data == null || data.isEmpty()) {
@@ -467,7 +473,6 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
         } finally {
             refreshList();
         }
-        showMessage(null);
         
     }
     
@@ -480,19 +485,19 @@ public class MainController extends BgoBaseController<Object> implements IPlugin
             case ADD:
                 addComplaint();
                 break;
-            
+                
             case EDIT:
                 editComplaint();
                 break;
-            
+                
             case DELETE:
                 deleteComplaint();
                 break;
-            
+                
             case MANAGE:
                 managePickList();
                 break;
-            
+                
             case REFRESH:
                 refresh();
                 break;
