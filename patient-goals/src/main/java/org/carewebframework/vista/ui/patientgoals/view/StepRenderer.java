@@ -34,10 +34,11 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
      */
     @Override
     protected Component renderRow(Row row, Step step) {
+        Component root = row.getFellowIfAny("root");
         GoalRenderer.applyGroupStyle(row, step);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onReviewStep", step);
+        anchor.addForward(Events.ON_CLICK, root, "onReviewStep", step);
         createCell(row, "").appendChild(anchor);
         createCell(row, step.getNumberAsString());
         createCell(row, step.getName());

@@ -1,11 +1,8 @@
 @CHARSET "UTF-8";
 
-.vistaFamilyHistory .z-toolbar label {
-	margin-bottom: 0;
-}
-
-.vistaFamilyHistory .z-toolbar .z-separator {
-	margin-right: 5px;
+.vistaFamilyHistory .z-a:focus {
+	outline: none;
+	text-decoration: none;
 }
 
 .vistaFamilyHistory-grid .z-column-content {

@@ -8,6 +8,11 @@
 	margin-right: 5px;
 }
 
+.vistaPatientGoals .z-a:focus {
+	outline: none;
+	text-decoration: none;
+}
+
 .vistaPatientGoals-grid .z-column-content {
 	white-space: pre-line;
 	line-height: 15px;

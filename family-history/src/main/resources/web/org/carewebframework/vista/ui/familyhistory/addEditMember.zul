@@ -1,5 +1,6 @@
 <zk xmlns="http://www.zkoss.org/2005/zul"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:w="client"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
 	<window title="Add/Edit Relation" mold="bootstrap" width="500px"
@@ -11,31 +12,41 @@
 			</columns>
 			<rows>
 				<row>
-					<labeledelement label="Relation:" position="top" hflex="1">
+					<labeledelement label="Relation:" position="top"
+						hflex="1">
 						<combobox id="cboRelationship" hflex="1" />
 					</labeledelement>
-					<labeledelement label="Name:" position="top" hflex="1">
-						<textbox id="txtName" hflex="1" />
+					<labeledelement label="Name:" position="top"
+						hflex="1">
+						<textbox id="txtName" hflex="1" maxlength="30"
+							w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					</labeledelement>
 				</row>
 				<row>
-					<labeledelement label="Status:" position="top" hflex="1">
+					<labeledelement label="Status:" position="top"
+						hflex="1">
 						<combobox id="cboStatus" hflex="1" />
 					</labeledelement>
 				</row>
 				<row id="rowDeath">
-					<labeledelement label="Cause of Death:" position="top" hflex="1">
-						<textbox id="txtCauseOfDeath" hflex="1" maxlength="60" />
+					<labeledelement label="Cause of Death:"
+						position="top" hflex="1">
+						<textbox id="txtCauseOfDeath" hflex="1"
+							maxlength="60"
+							w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 					</labeledelement>
-					<labeledelement label="Age at Death:" position="top" hflex="1">
+					<labeledelement label="Age at Death:" position="top"
+						hflex="1">
 						<combobox id="cboAgeAtDeath" hflex="1" />
 					</labeledelement>
 				</row>
 				<row>
-					<labeledelement label="Multiple Birth:" position="top" hflex="1">
+					<labeledelement label="Multiple Birth:"
+						position="top" hflex="1">
 						<combobox id="cboMultipleBirth" hflex="1" />
 					</labeledelement>
-					<labeledelement id="lblMultipleBirthType" label="Multiple Birth Type:" position="top" hflex="1">
+					<labeledelement id="lblMultipleBirthType"
+						label="Multiple Birth Type:" position="top" hflex="1">
 						<combobox id="cboMultipleBirthType" hflex="1" />
 					</labeledelement>
 				</row>

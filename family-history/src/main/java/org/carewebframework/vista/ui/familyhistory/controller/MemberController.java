@@ -12,6 +12,8 @@ package org.carewebframework.vista.ui.familyhistory.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.math.NumberUtils;
+
 import org.carewebframework.api.event.IGenericEvent;
 import org.carewebframework.api.query.DateQueryFilter.DateType;
 import org.carewebframework.cal.ui.reporting.controller.AbstractGridController;
@@ -26,6 +28,7 @@ import org.carewebframework.vista.ui.familyhistory.view.MemberRenderer;
 
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Toolbar;
 
@@ -44,7 +47,11 @@ public class MemberController extends AbstractGridController<FamilyMember, Famil
         
         @Override
         public void eventCallback(String eventName, String eventData) {
-            refresh();
+            String[] pcs = StrUtil.split(eventData, StrUtil.U);
+            
+            if (NumberUtils.toInt(pcs[2]) != service.getBroker().getId()) {
+                Events.echoEvent("onRefresh", root, null);
+            }
         }
         
     };

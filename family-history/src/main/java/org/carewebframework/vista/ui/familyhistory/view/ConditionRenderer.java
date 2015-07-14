@@ -37,14 +37,15 @@ public class ConditionRenderer extends AbstractRowRenderer<Condition, Object> {
      */
     @Override
     public Component renderRow(Row row, Condition condition) {
+        Component root = row.getFellowIfAny("root", true);
         Cell cell = createCell(row, null);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
-        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onReviewCondition", condition);
+        anchor.addForward(Events.ON_CLICK, root, "onReviewCondition", condition);
         cell.appendChild(anchor);
         anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-remove");
-        anchor.addForward(Events.ON_CLICK, row.getFellow("root", true), "onDeleteCondition", condition);
+        anchor.addForward(Events.ON_CLICK, root, "onDeleteCondition", condition);
         cell.appendChild(anchor);
         createCell(row, condition.getSCTText());
         createCell(row, condition.getNote());

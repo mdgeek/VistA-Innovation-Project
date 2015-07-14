@@ -26,7 +26,6 @@
 						natural="ascending" />
 				</column>
 			</columns>
-			<rows />
 		</grid>
 	</idspace>
 </zk>

@@ -3,6 +3,7 @@
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
 	<panel id="root" height="100%" width="100%"
+		sclass="vistaFamilyHistory"
 		apply="${vistaFamilyHistoryMemberController}">
 		<toolbar id="toolbar" sclass="alert-info">
 			<labeledelement position="right" align="center"

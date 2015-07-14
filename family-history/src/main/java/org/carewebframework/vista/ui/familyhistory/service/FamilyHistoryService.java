@@ -152,7 +152,8 @@ public class FamilyHistoryService extends AbstractBrokerQueryService<FamilyMembe
             synchronized (mutex) {
                 if (initChoices) {
                     relationshipChoices = FileEntry.fromList(
-                        service.callRPCList("RGUTRPC FILGET", null, "9999999.36", null, null, "I $P($G(^(21)),U)"), true);
+                        service.callRPCList("RGUTRPC FILGET", null, "9999999.36", null, null, "I $P($G(^(21)),U)", 9999),
+                        true);
                     statusChoices = FileEntry.fromList(service.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".04"),
                         true);
                     ageAtDeathChoices = FileEntry.fromList(service.callRPCList("RGUTRPC SETVALS", null, "9000014.1", ".05"),
