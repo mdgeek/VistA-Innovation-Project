@@ -53,6 +53,11 @@
 			<constructor-arg ref="vistaPatientGoalsGoalService" />
 		</bean>
 
+		<bean id="vistaPatientGoalsDeleteController" scope="prototype"
+			class="org.carewebframework.vista.ui.patientgoals.controller.DeleteController">
+			<constructor-arg ref="vistaPatientGoalsGoalService" />
+		</bean>
+
 	</beans>
 
 </beans>

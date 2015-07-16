@@ -38,6 +38,11 @@
 	color: green;
 }
 
+.vistaPatientGoals-grid .z-cell .glyphicon-remove {
+	color: red;
+	margin-left: 10px;
+}
+
 .vistaPatientGoals-grid .z-cell .glyphicon-pencil {
 	color: brown;
 }

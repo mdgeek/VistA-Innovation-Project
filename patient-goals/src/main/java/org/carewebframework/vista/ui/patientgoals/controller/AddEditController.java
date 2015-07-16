@@ -23,7 +23,6 @@ import org.carewebframework.ui.zk.ZKUtil;
 import org.carewebframework.vista.mbroker.FMDate;
 import org.carewebframework.vista.ui.patientgoals.model.Goal;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase;
-import org.carewebframework.vista.ui.patientgoals.model.GoalBase.DeleteReason;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalGroup;
 import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalStatus;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
@@ -42,7 +41,6 @@ import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
-import org.zkoss.zul.Row;
 import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Tabpanel;
@@ -60,7 +58,7 @@ public class AddEditController extends FrameworkController {
     private static final String[] TYPES = { "GOAL", "STEP", "ACTIVE", "INACTIVE", "DECLINED", "ADD", "REVIEW" };
     
     public enum ActionType {
-        ADD, REVIEW, DELETE;
+        ADD, REVIEW;
         
         /**
          * Formats the label to be used for the tab caption based on the action type and the goal or
@@ -90,8 +88,6 @@ public class AddEditController extends FrameworkController {
     private boolean isStep;
     
     private boolean hasChanged;
-    
-    private boolean deleting;
     
     private String requiredMessage;
     
@@ -126,14 +122,6 @@ public class AddEditController extends FrameworkController {
     private Radiogroup rgTypes;
     
     private Radiogroup rgStatus;
-    
-    private Radiogroup rgDeleteReason;
-    
-    private Label lblDeleteReason;
-    
-    private Row rowDeleteText;
-    
-    private Textbox txtDeleteText;
     
     // End of auto-wired members.
     
@@ -221,7 +209,6 @@ public class AddEditController extends FrameworkController {
         super.doAfterCompose(comp);
         populateGoalTypes();
         populateGoalStatus();
-        populateDeleteReason();
         populateControls();
         requiredMessage = getLabel("required");
         ZKUtil.wireChangeEvents(comp, comp, Events.ON_CHANGE);
@@ -292,13 +279,7 @@ public class AddEditController extends FrameworkController {
             }
         }
         
-        if (txtDeleteText != null) {
-            txtDeleteText.setText(goalBase.getDeleteText());
-        }
-        
         initRadio(rgStatus, goalBase.getStatus(), 0);
-        initRadio(rgDeleteReason, goalBase.getDeleteReason(), -1);
-        updateDeleteState();
         
         if (goalBase.getGroup() == GoalGroup.DECLINED && actionType == ActionType.ADD) {
             Events.postEvent("onChanging", txtReason, null);
@@ -346,13 +327,6 @@ public class AddEditController extends FrameworkController {
             }
         }
         
-        if (deleting && rgDeleteReason.getSelectedItem() != null) {
-            goalBase.setDeleteReason((DeleteReason) rgDeleteReason.getSelectedItem().getValue());
-        }
-        
-        if (deleting && txtDeleteText.isVisible()) {
-            goalBase.setDeleteText(txtDeleteText.getText());
-        }
     }
     
     /**
@@ -376,40 +350,12 @@ public class AddEditController extends FrameworkController {
     private void populateGoalStatus() {
         if (rgStatus != null) {
             for (GoalStatus goalStatus : GoalStatus.values()) {
-                Radio radio = new Radio(goalStatus.toString());
-                radio.setValue(goalStatus);
-                rgStatus.appendChild(radio);
+                if (goalStatus != GoalStatus.D) {
+                    Radio radio = new Radio(goalStatus.toString());
+                    radio.setValue(goalStatus);
+                    rgStatus.appendChild(radio);
+                }
             }
-        }
-    }
-    
-    /**
-     * Populates radio group of delete reasons.
-     */
-    private void populateDeleteReason() {
-        if (rgDeleteReason != null) {
-            for (DeleteReason deleteReason : DeleteReason.values()) {
-                Radio radio = new Radio(getLabel("reason." + deleteReason.name()));
-                radio.setValue(deleteReason);
-                rgDeleteReason.appendChild(radio);
-            }
-        }
-    }
-    
-    /**
-     * Updates the form to reflect the current deletion state.
-     */
-    public void updateDeleteState() {
-        if (rgStatus != null) {
-            Radio radio = rgStatus.getSelectedItem();
-            deleting = radio != null && radio.getValue() == GoalStatus.D;
-            lblDeleteReason.setVisible(deleting);
-            rgDeleteReason.setVisible(deleting);
-            radio = rgDeleteReason == null ? null : rgDeleteReason.getSelectedItem();
-            boolean isOther = radio != null && radio.getValue() == DeleteReason.O;
-            rowDeleteText.setVisible(isOther);
-            txtDeleteText.setFocus(isOther);
-            Clients.resize(root);
         }
     }
     
@@ -518,14 +464,6 @@ public class AddEditController extends FrameworkController {
             return isMissing(datFollowup);
         }
         
-        if (deleting && rgDeleteReason.getSelectedItem() == null) {
-            return isMissing(rgDeleteReason);
-        }
-        
-        if (rowDeleteText != null && rowDeleteText.isVisible() && txtDeleteText.getText().trim().isEmpty()) {
-            return isMissing(txtDeleteText);
-        }
-        
         return true;
     }
     
@@ -600,20 +538,6 @@ public class AddEditController extends FrameworkController {
     }
     
     /**
-     * Update the deletion state when changed.
-     */
-    public void onCheck$rgStatus() {
-        updateDeleteState();
-    }
-    
-    /**
-     * Update the deletion state when changed.
-     */
-    public void onCheck$rgDeleteReason() {
-        updateDeleteState();
-    }
-    
-    /**
      * Clicking the close button on the tab is equivalent to clicking the Cancel button.
      * 
      * @param event The tab closure event.
@@ -633,15 +557,10 @@ public class AddEditController extends FrameworkController {
             return false;
         }
         
-        if (deleting && !PromptDialog.confirm(getLabel("confirmDelete.text"),
-            getLabel("confirmDelete.title", goalBase.getName()))) {
-            return false;
-        }
-        
         populateGoalBase();
         
         try {
-            switch (deleting ? ActionType.DELETE : actionType) {
+            switch (actionType) {
                 case ADD:
                     if (isStep) {
                         service.addStep(step);
@@ -659,13 +578,6 @@ public class AddEditController extends FrameworkController {
                     }
                     break;
                     
-                case DELETE:
-                    if (isStep) {
-                        service.deleteStep(step);
-                    } else {
-                        service.deleteGoal(goal);
-                    }
-                    break;
             }
             
             if (actionType == ActionType.REVIEW) {

@@ -15,6 +15,7 @@ import org.carewebframework.vista.ui.patientgoals.model.Step;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.A;
+import org.zkoss.zul.Cell;
 import org.zkoss.zul.Row;
 
 /**
@@ -34,12 +35,17 @@ public class StepRenderer extends AbstractRowRenderer<Step, Object> {
      */
     @Override
     protected Component renderRow(Row row, Step step) {
-        Component root = row.getFellowIfAny("root");
+        Component root = row.getFellowIfAny("root", true);
         GoalRenderer.applyGroupStyle(row, step);
+        Cell cell = createCell(row, null);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, root, "onReviewStep", step);
-        createCell(row, "").appendChild(anchor);
+        cell.appendChild(anchor);
+        anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-remove");
+        anchor.addForward(Events.ON_CLICK, root, "onDeleteStep", step);
+        cell.appendChild(anchor);
         createCell(row, step.getNumberAsString());
         createCell(row, step.getName());
         createCell(row, step.getStartDate());

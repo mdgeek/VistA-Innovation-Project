@@ -66,11 +66,16 @@ public class GoalRenderer extends AbstractRowRenderer<Goal, Object> {
     public Component renderRow(Row row, Goal goal) {
         applyGroupStyle(row, goal);
         boolean declined = goal.getGroup() == GoalGroup.DECLINED;
+        Cell cell = createCell(row, null);
         A anchor = new A();
         anchor.setIconSclass("glyphicon glyphicon-pencil");
         anchor.addForward(Events.ON_CLICK, "root", "onReviewGoal", goal);
-        createCell(row, "").appendChild(anchor);
-        Cell cell = createCell(row, "");
+        cell.appendChild(anchor);
+        anchor = new A();
+        anchor.setIconSclass("glyphicon glyphicon-remove");
+        anchor.addForward(Events.ON_CLICK, "root", "onDeleteGoal", goal);
+        cell.appendChild(anchor);
+        cell = createCell(row, "");
         
         if (goal.getGroup() == GoalGroup.ACTIVE) {
             anchor = new A();

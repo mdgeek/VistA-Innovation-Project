@@ -1,0 +1,32 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:w="client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul 
+                        http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window mold="bootstrap" contentStyle="padding:5px"
+		apply="${vistaPatientGoalsDeleteController}">
+		<vlayout vflex="1">
+			<labeledelement hflex="1"
+				label="${$composer.getLabel('reason')}">
+				<radiogroup id="rgReason" />
+			</labeledelement>
+			<labeledelement hflex="1" position="top"
+				label="${$composer.getLabel('other')}">
+				<textbox id="txtOther" maxlength="120" hflex="1"
+					w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
+			</labeledelement>
+			<label sclass="alert-danger" hflex="1"
+				style="float:left;font-weight:bold;text-align:center;white-space:pre-line;padding:5px"
+				value="${$composer.getLabel('warning')}" />
+		</vlayout>
+		<toolbar align="end">
+				<button id="btnOK" 
+					label="${labels.cwf.btn.ok.label}"
+					disabled="true" zclass="btn" sclass="btn-success" />
+				<button id="btnCancel"
+					label="${labels.cwf.btn.cancel.label}" zclass="btn"
+					sclass="btn-danger" />
+		</toolbar>
+	</window>
+</zk>

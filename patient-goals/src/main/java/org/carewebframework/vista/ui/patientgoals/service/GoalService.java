@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import ca.uhn.fhir.model.dstu2.resource.Patient;
-
 import org.apache.commons.lang.math.NumberUtils;
 
 import org.carewebframework.api.context.UserContext;
@@ -29,6 +27,8 @@ import org.carewebframework.vista.ui.patientgoals.model.GoalBase.GoalStatus;
 import org.carewebframework.vista.ui.patientgoals.model.GoalType;
 import org.carewebframework.vista.ui.patientgoals.model.Review;
 import org.carewebframework.vista.ui.patientgoals.model.Step;
+
+import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 /**
  * Data service for patient goals.
@@ -144,7 +144,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     goal.setNumber(NumberUtils.toFloat(pcs[10]));
                     state = 1;
                     break;
-                
+                    
                 case 1: // Types
                     for (int i = 0; i < pcs.length; i++) {
                         goal.getTypes().add(getGoalType(pcs[i]));
@@ -152,17 +152,17 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
                     
                     state = 2;
                     break;
-                
+                    
                 case 2: // Goal name
                     goal.setName(pcs[0]);
                     state = 3;
                     break;
-                
+                    
                 case 3: // Goal reason
                     goal.setReason(pcs[0]);
                     state = 4;
                     break;
-                
+                    
                 case 6: // Step text
                     step.setName(pcs[0]);
                     state = 5;
@@ -277,8 +277,8 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
     }
     
     public void deleteGoal(Goal goal) {
-        String result = service.callRPC("BEHOPGAP DELGOAL", goal.getIEN(), service.getUserId(), FMDate.now(), goal
-                .getDeleteReason().name(), goal.getDeleteText());
+        String result = service.callRPC("BEHOPGAP DELGOAL", goal.getIEN(), service.getUserId(), FMDate.now(),
+            goal.getDeleteReason().name(), goal.getDeleteText());
         checkResult(result);
     }
     
@@ -336,8 +336,9 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
     
     public void deleteStep(Step step) {
         String result = service.callRPC("BEHOPGAP DELSTEP", step.getGoal().getIEN(), step.getFacilityIEN(), step.getIEN(),
-            service.getUserId(), FMDate.now(), step.getDeleteReason().name(), step.getDeleteText());
+            service.getUserId(), FMDate.today(), step.getDeleteReason().name(), step.getDeleteText());
         checkResult(result);
+        step.getGoal().getSteps().remove(step);
     }
     
     public float nextStepNumber(Step step) {

@@ -64,24 +64,10 @@
 				<row valign="middle"
 					unless="${$composer.isType('DECLINED')}">
 					<label value="${$composer.getLabel('status')}" />
-					<cell>
+					<cell colspan="3">
 						<radiogroup id="rgStatus" hflex="1"
 							sclass="vistaPatientGoals-framed" />
 					</cell>
-					<label id="lblDeleteReason"
-						value="${$composer.getLabel('deleteReason')}" />
-					<cell>
-						<radiogroup id="rgDeleteReason" hflex="1"
-							sclass="vistaPatientGoals-framed" />
-					</cell>
-				</row>
-				<row id="rowDeleteText" valign="middle"
-					unless="${$composer.isType('DECLINED')}">
-					<cell colspan="2" />
-					<label value="${$composer.getLabel('otherReason')}" />
-					<textbox id="txtDeleteText" hflex="1"
-						maxlength="120"
-						w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 				</row>
 			</rows>
 		</grid>

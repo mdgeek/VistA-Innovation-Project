@@ -360,6 +360,19 @@ public class GoalController extends AbstractGridController<Goal, Goal> {
     }
     
     /**
+     * Handle request to delete a goal.
+     * 
+     * @param event The trigger event.
+     */
+    public void onDeleteGoal(Event event) {
+        Goal goal = (Goal) event.getData();
+        
+        if (DeleteController.execute(goal)) {
+            rerender();
+        }
+    }
+    
+    /**
      * Initialize a new goal base instance with default values.
      * 
      * @param goalBase Goal base to initialize.
@@ -416,6 +429,19 @@ public class GoalController extends AbstractGridController<Goal, Goal> {
     public void onReviewStep(Event event) {
         Step step = (Step) event.getData();
         AddEditController.execute(tabbox, step, ActionType.REVIEW);
+    }
+    
+    /**
+     * Handle request to delete a step.
+     * 
+     * @param event The trigger event.
+     */
+    public void onDeleteStep(Event event) {
+        Step step = (Step) event.getData();
+        
+        if (DeleteController.execute(step)) {
+            rerender();
+        }
     }
     
     /**
@@ -498,7 +524,7 @@ public class GoalController extends AbstractGridController<Goal, Goal> {
             getModel().add((Goal) data);
         }
         
-        applyFilters();
+        rerender();
     }
     
     /**
