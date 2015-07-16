@@ -368,7 +368,7 @@ public class GoalController extends AbstractGridController<Goal, Goal> {
         Goal goal = (Goal) event.getData();
         
         if (DeleteController.execute(goal)) {
-            AddEditController.closeTab(tabbox, goal);
+            AddEditController.closeTabs(tabbox, goal);
             rerender();
         }
     }
@@ -441,7 +441,7 @@ public class GoalController extends AbstractGridController<Goal, Goal> {
         Step step = (Step) event.getData();
         
         if (DeleteController.execute(step)) {
-            AddEditController.closeTab(tabbox, step);
+            AddEditController.closeTabs(tabbox, step);
             rerender();
         }
     }

@@ -160,13 +160,20 @@ public class AddEditController extends FrameworkController {
      * Closes any tabs associated with a goal or step.
      * 
      * @param tabbox The tab box.
-     * @param goalBase The step or goal.
+     * @param goalBase The step or goal. If a goal, any tabs associated with its steps are also
+     *            closed.
      */
-    public static void closeTab(Tabbox tabbox, GoalBase goalBase) {
+    protected static void closeTabs(Tabbox tabbox, GoalBase goalBase) {
         Tab tab = findTab(tabbox, goalBase, ActionType.REVIEW);
         
         if (tab != null) {
             tab.close();
+            
+            if (goalBase instanceof Goal) {
+                for (Step step : ((Goal) goalBase).getSteps()) {
+                    closeTabs(tabbox, step);
+                }
+            }
         }
     }
     
