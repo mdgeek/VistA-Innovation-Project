@@ -338,7 +338,6 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         String result = service.callRPC("BEHOPGAP DELSTEP", step.getGoal().getIEN(), step.getFacilityIEN(), step.getIEN(),
             service.getUserId(), FMDate.today(), step.getDeleteReason().name(), step.getDeleteText());
         checkResult(result);
-        step.getGoal().getSteps().remove(step);
     }
     
     public float nextStepNumber(Step step) {
