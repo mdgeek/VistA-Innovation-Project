@@ -28,7 +28,6 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zk.ui.event.InputEvent;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
@@ -122,19 +121,11 @@ public class DeleteController extends FrameworkController {
      */
     public void onChange(Event event) {
         event = ZKUtil.getEventOrigin(event);
-        String other;
-        
-        if (event instanceof InputEvent && event.getTarget() == txtOther) {
-            other = ((InputEvent) event).getValue();
-        } else {
-            other = txtOther.getValue();
-        }
-        
         DeleteReason reason = getDeleteReason();
         boolean isOther = reason == DeleteReason.O;
         ZKUtil.updateStyle((HtmlBasedComponent) txtOther.getParent(), "visibility", isOther ? null : "hidden");
         txtOther.setFocus(isOther);
-        boolean hasRequired = reason != null && (!isOther || !other.trim().isEmpty());
+        boolean hasRequired = reason != null && (!isOther || !txtOther.getText().trim().isEmpty());
         btnOK.setDisabled(!hasRequired);
     }
     

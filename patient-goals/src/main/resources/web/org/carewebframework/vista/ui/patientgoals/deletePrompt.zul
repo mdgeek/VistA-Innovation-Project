@@ -13,7 +13,7 @@
 			</labeledelement>
 			<labeledelement hflex="1" position="top"
 				label="${$composer.getLabel('other')}">
-				<textbox id="txtOther" maxlength="120" hflex="1"
+				<textbox id="txtOther" instant="true" maxlength="120" hflex="1"
 					w:onKeyPress="cwf.constrainInput(event,/^[^\^\@]+$/)" />
 			</labeledelement>
 			<label sclass="alert-danger" hflex="1"
