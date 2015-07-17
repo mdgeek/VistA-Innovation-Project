@@ -135,7 +135,7 @@ public class AddEditController extends FrameworkController {
      * @return Returns the created tab.
      */
     public static Tab execute(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
-        Tab tab = findTab(tabbox, goalBase, actionType);
+        Tab tab = findTab(tabbox, goalBase);
         
         if (tab != null) {
             tabbox.setSelectedTab(tab);
@@ -164,34 +164,41 @@ public class AddEditController extends FrameworkController {
      *            closed.
      */
     protected static void closeTabs(Tabbox tabbox, GoalBase goalBase) {
-        Tab tab = findTab(tabbox, goalBase, ActionType.REVIEW);
+        String id = getUniqueId(goalBase);
+        boolean partial = goalBase instanceof Goal;
+        Tab tab;
         
-        if (tab != null) {
+        while ((tab = findTab(tabbox, id, partial)) != null) {
             tab.close();
-            
-            if (goalBase instanceof Goal) {
-                for (Step step : ((Goal) goalBase).getSteps()) {
-                    closeTabs(tabbox, step);
-                }
-            }
         }
     }
     
     /**
-     * Searches for an existing tab for the action type and step/goal.
+     * Searches for a tab associated with the specified step/goal.
      * 
      * @param tabbox The tab box.
      * @param goalBase The step or goal.
-     * @param actionType The type of action.
-     * @return An existing tab corresponding to the action type and step/goal, or null if none
-     *         found.
+     * @return A tab associated with the step/goal, or null if none found.
      */
-    private static Tab findTab(Tabbox tabbox, GoalBase goalBase, ActionType actionType) {
-        String id = createId(goalBase, actionType);
+    private static Tab findTab(Tabbox tabbox, GoalBase goalBase) {
+        return findTab(tabbox, getUniqueId(goalBase), false);
+    }
+    
+    /**
+     * Searches for an existing tab with the specified id.
+     * 
+     * @param tabbox The tab box.
+     * @param id The id to search.
+     * @param partial If true a partial match is acceptable.
+     * @return A tab whose id matches the input, or null if none found.
+     */
+    private static Tab findTab(Tabbox tabbox, String id, boolean partial) {
         List<Tab> tabs = tabbox.getTabs().getChildren();
         
         for (int i = 1; i < tabs.size(); i++) {
-            if (id.equals(tabs.get(i).getValue())) {
+            String tabId = tabs.get(i).getValue();
+            
+            if (partial ? tabId.startsWith(id) : tabId.equals(id)) {
                 return tabs.get(i);
             }
         }
@@ -200,16 +207,13 @@ public class AddEditController extends FrameworkController {
     }
     
     /**
-     * Returns a unique id to be used to identify a tab servicing an action type for a specific
-     * goal/step.
+     * Returns a unique id to be used to identify a tab servicing a specific goal or step.
      * 
      * @param goalBase The step or goal.
-     * @param actionType The type of action.
      * @return A unique id.
      */
-    private static String createId(GoalBase goalBase, ActionType actionType) {
-        return actionType + "." + goalBase.getGroup() + "." + goalBase.getIEN()
-                + (goalBase instanceof Step ? "." + ((Step) goalBase).getGoal().getIEN() : "");
+    private static String getUniqueId(GoalBase goalBase) {
+        return (goalBase instanceof Step ? getUniqueId(((Step) goalBase).getGoal()) : "") + goalBase.getIEN() + ".";
     }
     
     /**
@@ -264,7 +268,7 @@ public class AddEditController extends FrameworkController {
         }
         
         tab.setLabel(actionType.getLabel(goalBase));
-        tab.setValue(createId(goalBase, actionType));
+        tab.setValue(getUniqueId(goalBase));
     }
     
     /**
