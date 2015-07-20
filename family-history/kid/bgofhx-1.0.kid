@@ -1,11 +1,11 @@
-KIDS Distribution saved on Jul 16, 2015@13:58:52
+KIDS Distribution saved on Jul 18, 2015@08:55:50
 FAMILY HISTORY 1.0
 **KIDS**:FAMILY HISTORY 1.0^
 
 **INSTALL NAME**
 FAMILY HISTORY 1.0
 "BLD",8515,0)
-FAMILY HISTORY 1.0^^0^3150716^n
+FAMILY HISTORY 1.0^^0^3150718^n
 "BLD",8515,4,0)
 ^9.64PA^9000014.1^3
 "BLD",8515,4,9000014,0)
@@ -27,7 +27,7 @@ y^y^f^^n^^y^o^n
 "BLD",8515,4,"B",9999999.36,9999999.36)
 
 "BLD",8515,6.3)
-18
+19
 "BLD",8515,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8515,"KRN",.4,0)
@@ -1077,7 +1077,7 @@ D XPZ2^XPDIQ
 "RTN","BGOFHLK",1,0)
 BGOFHLK ; IHS/BAO/TMD - FHL - PROGRAM TO GET LIST OF DIAGNOSES ;02-Apr-2013 09:12;MGH
 "RTN","BGOFHLK",2,0)
- ;;1.1;BGO COMPONENTS;**6,12**;Mar 20, 2007;Build 18
+ ;;1.1;BGO COMPONENTS;**6,12**;Mar 20, 2007;Build 19
 "RTN","BGOFHLK",3,0)
  ;---------------------------------------------------------------
 "RTN","BGOFHLK",4,0)
@@ -1213,7 +1213,7 @@ CHKFH ;Family history lookup
 "RTN","BGOFHX",1,0)
 BGOFHX ; IHS/MSC/MGH - New family history component ;13-Jul-2015 08:40;DKM
 "RTN","BGOFHX",2,0)
- ;;1.1;BGO COMPONENTS;**6,13**;Mar 20, 2007;Build 18
+ ;;1.1;BGO COMPONENTS;**6,13**;Mar 20, 2007;Build 19
 "RTN","BGOFHX",3,0)
  ;---------------------------------------------
 "RTN","BGOFHX",4,0)
@@ -1549,7 +1549,7 @@ EVT(RIEN,FHIEN,OPR,X) ;EP
 "RTN","BGOREL",1,0)
 BGOREL ; IHS/MSC/MGH - New family history component ;09-Jul-2015 22:28;DKM
 "RTN","BGOREL",2,0)
- ;;1.1;BGO COMPONENTS;**6,13**;Mar 20, 2007;Build 18
+ ;;1.1;BGO COMPONENTS;**6,13**;Mar 20, 2007;Build 19
 "RTN","BGOREL",3,0)
  ;---------------------------------------------
 "RTN","BGOREL",4,0)

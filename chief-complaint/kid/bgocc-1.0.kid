@@ -1,11 +1,11 @@
-KIDS Distribution saved on Jul 16, 2015@13:58:52
+KIDS Distribution saved on Jul 18, 2015@08:55:50
 CHIEF COMPLAINT 1.0
 **KIDS**:CHIEF COMPLAINT 1.0^
 
 **INSTALL NAME**
 CHIEF COMPLAINT 1.0
 "BLD",8513,0)
-CHIEF COMPLAINT 1.0^^0^3150716^n
+CHIEF COMPLAINT 1.0^^0^3150718^n
 "BLD",8513,4,0)
 ^9.64PA^9999999.89^3
 "BLD",8513,4,90362.2,0)
@@ -27,7 +27,7 @@ n^y^f^^n^^y^o^n
 "BLD",8513,4,"B",9999999.89,9999999.89)
 
 "BLD",8513,6.3)
-30
+31
 "BLD",8513,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8513,"KRN",.4,0)
@@ -53,7 +53,7 @@ n^y^f^^n^^y^o^n
 "BLD",8513,"KRN",9.8,"NM",0)
 ^9.68A^1^1
 "BLD",8513,"KRN",9.8,"NM",1,0)
-BGOCC^^0^B13472940
+BGOCC^^0^B13469939
 "BLD",8513,"KRN",9.8,"NM","B","BGOCC",1)
 
 "BLD",8513,"KRN",19,0)
@@ -575,11 +575,11 @@ D XPZ2^XPDIQ
 "RTN")
 1
 "RTN","BGOCC")
-0^1^B13472940
+0^1^B13469939
 "RTN","BGOCC",1,0)
-BGOCC ; IHS/BAO/TMD - Manage Chief Complaints ;16-Jun-2015 11:36;DKM
+BGOCC ; IHS/BAO/TMD - Manage Chief Complaints ;18-Jul-2015 08:52;DKM
 "RTN","BGOCC",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,4,11**;Mar 20, 2007;Build 30
+ ;;1.1;BGO COMPONENTS;**1,3,4,11**;Mar 20, 2007;Build 31
 "RTN","BGOCC",3,0)
  ; Returns chief complaint for current visit context for
 "RTN","BGOCC",4,0)
@@ -593,7 +593,7 @@ TIUML(TARGET) ;
 "RTN","BGOCC",8,0)
  Q:X="" " "
 "RTN","BGOCC",9,0)
- S X=$$VSTR2VIS^BEHOENCX(DFN,X)
+ S X=$$VSTR2VIS^BGOUTL4(DFN,X)
 "RTN","BGOCC",10,0)
  Q:X<1 " "
 "RTN","BGOCC",11,0)
