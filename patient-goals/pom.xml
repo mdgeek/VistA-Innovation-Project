@@ -10,6 +10,13 @@
 	<artifactId>org.carewebframework.vista.ui.patientgoals</artifactId>
 	<name>VistA Patient Goals Plugin</name>
 	
+	<properties>
+		<maven.carewebframework.help.moduleId>vistaPatientGoalsHelp</maven.carewebframework.help.moduleId>
+		<maven.carewebframework.help.moduleName>Patient Goals Help</maven.carewebframework.help.moduleName>
+		<maven.carewebframework.help.moduleSource>BEHPatientGoals.chm</maven.carewebframework.help.moduleSource>
+		<maven.carewebframework.help.moduleFormat>chm</maven.carewebframework.help.moduleFormat>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.carewebframework</groupId>
