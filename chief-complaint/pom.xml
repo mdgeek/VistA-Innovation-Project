@@ -15,7 +15,7 @@
 
 	<properties>
 		<maven.carewebframework.help.moduleId>rpmsChiefComplaintHelp</maven.carewebframework.help.moduleId>
-		<maven.carewebframework.help.moduleName>Chief Complaint Help</maven.carewebframework.help.moduleName>
+		<maven.carewebframework.help.moduleName>Chief Complaint</maven.carewebframework.help.moduleName>
 		<maven.carewebframework.help.moduleSource>IhsBgoChiefComplaint.chm</maven.carewebframework.help.moduleSource>
 		<maven.carewebframework.help.moduleFormat>chm</maven.carewebframework.help.moduleFormat>
 	</properties>
