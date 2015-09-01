@@ -10,6 +10,13 @@
 	<artifactId>org.carewebframework.vista.ui.familyhistory</artifactId>
 	<name>VistA Family History Plugin</name>
 	
+	<properties>
+		<maven.carewebframework.help.moduleId>vistaFamilyHistoryHelp</maven.carewebframework.help.moduleId>
+		<maven.carewebframework.help.moduleName>Family History</maven.carewebframework.help.moduleName>
+		<maven.carewebframework.help.moduleSource>IhsBgoFamHX.chm</maven.carewebframework.help.moduleSource>
+		<maven.carewebframework.help.moduleFormat>chm</maven.carewebframework.help.moduleFormat>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.carewebframework</groupId>
