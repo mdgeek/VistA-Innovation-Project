@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:cwp="http://www.carewebframework.org/schema/plugin"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.carewebframework.org/schema/plugin
+		http://www.carewebframework.org/schema/plugin/plugin-extensions.xsd">
+
+<!-- This profile is processed during web server startup -->
+
+	<beans profile="root">
+		
+		<!-- This is the sample definition for a CareWeb plugin -->
+		<cwp:plugin id="rpmsImmunizations" name="Immunizations" 
+			url="~./org/medsphere/cwf/rpmsImmunizations/immunizations.zul">
+			<cwp:resource>
+			</cwp:resource>
+			<cwp:serialization>
+				<cwp:property name="Hide Buttons" id="hideButtons" type="boolean"
+					description="If true, hides the button controls on the component." />
+    			<cwp:property name="Hide Icon" id="hideIcon" type="boolean"
+					description="if true, hides the icon on the component." />
+                <cwp:property name="Update asynchronously" id="allowAsync" type="boolean"
+					description="If true, data requests are processed asynchronously." />
+			</cwp:serialization>		
+			<!-- You may specify plugin level security constraints here:
+			<cwp:security requiresAll="false">
+				<cwp:authority name="PRIV_PRIVNAME"/>
+				<cwp:authority name="ROLE_ROLENAME"/>
+			</cwp:security>
+			-->
+		</cwp:plugin>
+		
+	</beans>
+	
+<!-- This profile is processed for each managed desktop. -->
+
+	<beans profile="desktop">
+
+		<bean id="rpmsImmunizationsMainController" 
+			class="org.medsphere.cwf.rpmsImmunizations.MainController" 
+			scope="prototype"/>
+		<bean id="rpmsImmunizationsAddController"
+			class="org.medsphere.cwf.rpmsImmunizations.AddImmunController"
+			scope="prototype"/>
+		<bean id="rpmsImmunizationsAddContraController"
+			class="org.medsphere.cwf.rpmsImmunizations.AddImmunContraController"
+			scope="prototype"/>
+		<bean id="rpmsImmunizationsSelectorController"
+			class="org.medsphere.cwf.rpmsImmunizations.ImmunSelectorController"
+			scope="prototype"/>
+		<bean id="rpmsImmunizationsPatientCaseDataController"
+			class="org.medsphere.cwf.rpmsImmunizations.PatientCaseDataController"
+			scope="prototype"/>
+	</beans>
+</beans>

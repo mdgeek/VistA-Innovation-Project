@@ -1,0 +1,95 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window id="winCase" title="Edit Patient Case Data" width="450px"
+		apply="${rpmsImmunizationsPatientCaseDataController}">
+		<hlayout>
+			<vlayout spacing="10px" width="350px">
+				<separator height="5px" />
+				<hlayout style="text-align:right">
+					<div width="100px">Case Manager</div>
+					<textbox id="txtManager" hflex="1" />
+					<button id="btnManager" label="..."
+						tooltiptext="Display Managers to Select"
+						forward="onOK=btnManager.onClick" />
+				</hlayout>
+				<hlayout>
+					<div width="100px" style="text-align:right">
+						<label id="lblResult">Parent/Guardian</label>
+					</div>
+					<textbox id="txtParent" hflex="1" />
+				</hlayout>
+				<hlayout>
+					<div width="100px" style="text-align:right">
+						Other Info
+					</div>
+					<textbox id="txtOther" multiline="false" hflex="1"
+						maxlength="245" xmlns:w="client">
+						<attribute w:name="onKeyPress">
+							var regex=/^[a-zA-Z0-9]+$/; var key =
+							String.fromCharCode(event.which); if
+							(!regex.exec(key)) {event.stop();}
+						</attribute>
+					</textbox>
+				</hlayout>
+				<hlayout>
+					<div width="100px" style="text-align:right">
+						Register
+					</div>
+					<radiogroup id="rgStatus">
+						<radio label="Active" />
+						<radio label="Inactive" />
+					</radiogroup>
+				</hlayout>
+			</vlayout>
+			<toolbar mold="panel" orient="vertical" hflex="1" vflex="1"
+				style="border-left: solid 0px; padding-left: 15px">
+				<button id="btnSave" label="Ok" width="60px" tooltiptext="Add Case Data"/>
+				<separator height="5px" />
+				<button id="btnCancel" label="Cancel" width="60px" tooltiptext="Cancel and Reset Data"/>
+
+			</toolbar>
+		</hlayout>
+		<groupbox id="gbInactive">
+			<hlayout>
+				<div width="75px" style="text-align: right">
+					<label id="lblInactiveDate">Inactive Date</label>
+				</div>
+				<datebox id="datInactiveDate" width="110px" constraint="no future"/>
+				<button id="btnInactiveDate" label="..." visible="false"/>
+				<div width="55px"
+						style="text-align: right; display:inline:inline-block">
+						<label id="lblInactiveReason" pre="true" />
+						<zscript>
+							lblInactiveReason.setValue("Inactive\nReason");
+						</zscript>
+					</div>
+				<combobox id="cboInactiveReason" hflex="1" />
+			</hlayout>
+			<separator height="5p" />
+			<hlayout>
+				<div width="180px" style="text-align: right">
+					<label id="lblInactiveMoved">Moved To/Tx Elsewhere</label>
+				</div>
+				<textbox id="txtInactiveMoved" hflex="1" />
+			</hlayout>
+		</groupbox>
+		<separator height="7px" />
+		<hlayout>
+			<div width="150px" style="text-align: right">
+				Forecast Influ/Pneumo
+			</div>
+			<combobox id="cboForecast" />
+		</hlayout>
+		<separator height="7px" />
+		<hlayout>
+			<div width="150px" style="text-align: right">
+				Mother's HBsAG Status
+			</div>
+			<combobox id="cboMother" />
+		</hlayout>
+<separator height="10px"/>
+	</window>
+</zk>

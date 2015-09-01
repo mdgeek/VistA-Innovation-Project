@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window id="winMain" title="Enter Patient Contraindication"
+		width="450px" mold="bootstrap" apply="${rpmsImmunizationsAddContraController}">
+		<hlayout>
+			<vlayout spacing="10px" width="350px">
+				<space />
+				<hlayout style="text-align:right">
+					<div width="100px">Vaccine</div>
+					<textbox id="txtVaccine" hflex="1" forward="onOK=btnVaccine.onClick"/>
+					<button id="btnVaccine" label="..." tooltiptext="List Immunizations to Select" />
+				</hlayout>
+				<separator bar="true" height="1px" />
+				<listbox id="lstContra" vflex="1" rows="10">
+					<listhead>
+						<listheader hflex="1" label="Contraindication Reason" />
+					</listhead>
+				</listbox>
+			</vlayout>
+			<toolbar mold="panel" orient="vertical" hflex="1" vflex="1"
+				style="border-left: solid 1px; padding-left: 15px">
+				<space />
+				<button id="btnSave" label="Save" width="60px" />
+				<separator height="5px" />
+				<button id="btnCancel" label="Cancel" width="60px" />
+			</toolbar>
+		</hlayout>
+	</window>
+</zk>

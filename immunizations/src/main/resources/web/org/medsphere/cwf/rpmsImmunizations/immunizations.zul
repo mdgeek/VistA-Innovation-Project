@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><?taglib uri="http://www.carewebframework.org/tld/security" prefix="sec"?>
+<?taglib uri="http://www.carewebframework.org/tld/core" prefix="rc"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<menupopup id="contextVacMenu">
+		<menuitem id="mnuAdd" label="Add Vaccination" forward="onClick=btnAdd.onClick" />
+		<menuitem id="mnuEdit" label="Edit Vaccination" forward="onClick=btnEdit.onClick" />
+		<menuitem id="mnuDelete" label="Delete Vaccination" forward="onClick=btnDelete.onClick" />
+		<menuseparator />
+		<menuitem id="mnuPrintRecord" label="Print Official Record" forward="onClick=btnPrintRecord.onClick"/>
+		<menuitem id="mnuDueLetter" label="Print Due Letter" forward="onClick=btnDueLetter.onClick"/>
+		<menuitem id="mnuProfile" label="Print Profile" forward="onClick=btnProfile.onClick"/>
+		<menuitem id="mnuCaseData" label="Case Data" forward="onClick=btnCaseData.onClick"/>
+		<menuseparator />
+		<menuitem id="mnuVisitDetail" label="Display Visit Detail" />
+		<menuseparator />
+		<menuitem id="mnuWebRef" label="Web References" forward="onClick=imgInfo.onClick"/>
+		<menuseparator />
+		<menuitem id="mnuRefresh" label="Refresh" />
+	</menupopup>
+	
+	<menupopup id="contextContraMenu">
+		<menuitem id="mnuAddContra" label="Add Contraindication" forward="onClick=btnAddContra.onClick"/>
+		<menuitem id="mnuDeleteContra" label="Delete Contraindication" forward="onClick=btnDeleteContra.onClick"/>
+	</menupopup>
+
+	<panel height="100%"  apply="${rpmsImmunizationsMainController}">
+	<panelchildren>
+		<vlayout height="100%">
+			<toolbar align="center" style="background:lightblue" >
+			<span style="float:left">
+				<image id="imgMain" src="~./org/medsphere/cwf/rpmsImmunizations/syringe.ico" />
+				<label value="Immunization Record" id="lblInfo"
+					style="font-size:16px;font-weight:bold;color:purple" />
+				<!-- <button id="imgInfo1" style="color: blue" IconSclass="glyphicon glyphicon-info-sign"/> -->
+				<button zclass="btn" sclass="btn-link" id="imgInfo" style="color: blue;font-size: 18pt; padding:0;padding-left:10px" 
+					IconSclass="glyphicon glyphicon-info-sign" tooltiptext="${labels.immunizations.button.info.tooltip}"/>
+			</span>
+			</toolbar>
+			<borderlayout height="150px">
+				<west size="49%" border="0">
+					<groupbox >
+						<caption> Forecast</caption>
+						<listbox id="lbForecast" height="105px">
+							<listhead sizable="true">
+								<listheader hflex="3"/>
+								<listheader hflex="1"/>
+							</listhead>
+						</listbox>
+					</groupbox>
+				</west>
+				<center flex="true" border="0"></center>
+				<east size="49%" border="0">
+					<groupbox  >
+						<caption>Contraindications</caption>
+						<vlayout>
+							<span style="float:right">
+								<button id="btnAddContra" label="Add" tooltiptext="${labels.immunizations.button.contra.add.tooltip}"/>
+								<button id="btnDeleteContra" label="Delete" tooltiptext="${labels.immunizations.button.contra.delete.tooltip}"/>
+							</span>
+						</vlayout>
+						<separator height="2px" />
+						<listbox id="lbContra" height="75px" context="contextContraMenu" />
+					</groupbox>
+				</east>
+			</borderlayout>
+			<groupbox hflex="1" vflex="1" >
+				<caption>Vaccinations</caption>
+				<toolbar align="center" style="background:lightblue" >
+					<span style="float:left">
+						<button id="btnPrintRecord" label="Print Record" 
+							tooltiptext="${labels.immunizations.button.print.tooltip}"/>
+						<button id="btnDueLetter" label="Due Letter" 
+							tooltiptext="${labels.immunizations.button.due.tooltip}"/>
+						<button id="btnProfile" label="Profile" 
+							tooltiptext="${labels.immunizations.button.profile.tooltip}"/>
+						<button id="btnCaseData" label="Case Data" 
+							tooltiptext="${labels.immunizations.button.casereg.tooltip}"/>
+					</span>
+					<span style="float:right">
+						<button id="btnAdd" label="Add"
+							tooltiptext="${labels.immunizations.button.add.tooltip}"/>
+						<button id="btnEdit" label="Edit"
+							tooltiptext="${labels.immunizations.button.edit.tooltip}" />
+						<button id="btnDelete" label="Delete"
+							tooltiptext="${labels.immunizations.button.delete.tooltip}" />
+					</span>
+				</toolbar>
+				
+				<listbox id="lbImmunizations" sizedByContent="false"
+				    emptyMessage="${labels.immunizations.no.data.found}"
+					sclass="immunizations-list"
+					multiple="false" 
+					vflex="1" context="contextVacMenu">
+					<listhead sizable="true">
+						<listheader label="Vaccine" width="150px" id="vaccineName"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader label="Visit Date" hflex="min" id="Date"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader id="age" hflex="min" label="Age@Visit" align="center"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" label="Location" id="location"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" label="Reaction" id="reaction"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" label="Volume" id="volume"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" label="Inj. Site" id="injSite"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" id="Lot" label="Lot"
+							forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" id="manufacturer" label="Manufacturer"
+						    forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" id="visDate" label="VIS Date"
+						    forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" id="adminBy" label="Administered By"
+						    forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="min" id="vacElig" label="Vaccine Eligibility"
+						    forward="onSort=lbImmunizations.onSort" />
+						<listheader hflex="1" id="adminNotes" label="Admin Notes"
+						    forward="onSort=lbImmunizations.onSort" />
+					</listhead>
+				</listbox>
+			</groupbox>
+		</vlayout>
+		</panelchildren>
+	</panel>
+
+	<style>
+		.immunizations-list .z-listcell {
+		border-right: solid lightgray
+		1px;
+		}
+		
+		.immunizations-list-current {
+		color: blue;
+		}
+		
+		.immunizations-list-highlight *{
+			color:blue;
+
+	</style>
+</zk>

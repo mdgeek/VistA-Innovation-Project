@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.carewebframework</groupId>
+		<artifactId>org.carewebframework.rpms.ui-parent</artifactId>
+		<version>1.2.0-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>org.medsphere.cwf</groupId>
+	<artifactId>org.medsphere.cwf.rpmsImmunizations</artifactId>
+	<name>RPMS Immunizations Plugin</name>
+	
+	<properties>
+		<!-- Uncomment and update maven.carewebframework.help.x properties when your plugin has help content -->
+		<!-- <maven.carewebframework.help.moduleId>immunizationsHelp</maven.carewebframework.help.moduleId> -->
+		<!-- <maven.carewebframework.help.moduleName>immunizations Help</maven.carewebframework.help.moduleName> -->
+		<!-- <maven.carewebframework.help.moduleSource>immunizations-Help.jar</carewebframework.careweb.help.moduleSource> -->
+		<!-- <maven.carewebframework.help.moduleFormat>javahelp</carewebframework.careweb.help.moduleFormat> -->
+	</properties>
+	
+	<dependencies>
+	<dependency>
+			<groupId>org.carewebframework</groupId>
+			<artifactId>org.carewebframework.shell</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.carewebframework</groupId>
+			<artifactId>org.carewebframework.rpms.ui.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.carewebframework</groupId>
+			<artifactId>org.carewebframework.vista.ui.encounter</artifactId>
+			<version>${org.carewebframework.vista.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.carewebframework</groupId>
+			<artifactId>org.carewebframework.ui.test</artifactId>
+		</dependency>
+	</dependencies>
+</project>

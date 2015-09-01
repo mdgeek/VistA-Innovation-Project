@@ -1,0 +1,53 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window id="vacLookup" title="Vaccine Selection" border="normal" mode="modal" 
+		closable="true" apply="${rpmsImmunizationsSelectorController}"
+		width="700px">
+		<vlayout vflex="1">
+			<hlayout>
+				<label id="lblInfo" style="font-weight:bold"
+					multiline="true" />	
+				<groupbox title="Search Criteria" hflex="2">
+					<hlayout style="text-align:right">
+					<separator width="20px"/>
+					<image id="imgMain" width="32px" height="32px"
+					src="~./org/medsphere/cwf/rpmsImmunizations/Searchicon.png" />
+						<div width="100px">Search Value</div>
+						<textbox id="txtSearch" hflex="1"/>
+						<button id="btnSearch" label="Search" />
+					</hlayout>
+				</groupbox>
+				<separator />
+				<toolbar align="center" orient="vertical"
+					mold="panel">
+					<button id="btnSelect" label="Select" />
+					<separator />
+					<button id="btnCancel" label="Cancel"
+						forward="onClick=onClose" />
+				</toolbar>
+			</hlayout>
+			<hlayout>
+				<separator width="60px" />
+				<radiogroup id="rgQual" orient="vertical">
+					<radio label="Show All Active Vaccines" />
+					<radio label="Show Only active Vaccines with a Lot Number" />
+					<radio label="Show All Vaccines" />
+				</radiogroup>
+			</hlayout>
+			<div>Select one of the following Records</div>
+			<listbox id="lbVaccines" vflex="1" rows="10" forward="onOK=btnSelect.onClick">
+				<listhead sizable="true">
+					<listheader id="name" width="35%" 
+					label="Immunization" forward="onSort=lbVaccines.onSort"	/>
+					<listheader id="desc" width="50%" 
+					label="Description" forward="onSort=lbVaccines.onSort" />
+					<listheader id="isInactive" hflex="1" 
+					label="Inactive" forward="onSort=lbVaccines.onSort" />
+				</listhead>
+			</listbox>
+		</vlayout>
+	</window>
+</zk>

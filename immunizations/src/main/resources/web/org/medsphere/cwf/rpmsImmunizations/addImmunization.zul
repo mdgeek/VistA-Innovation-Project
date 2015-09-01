@@ -1,0 +1,179 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<window id="winMain" title="Add/Edit Immunization" width="550px"
+		apply="${rpmsImmunizationsAddController}">
+		<hlayout>
+			<vlayout spacing="10px" width="450px">
+				<hlayout style="text-align:right">
+					<div width="100px">Vaccine</div>
+					<textbox id="txtVaccine" hflex="1" readonly="true"/>
+					<button id="btnVaccine" label="..."
+						tooltiptext="Display Vaccines to Select" />
+				</hlayout>
+				<separator bar="true" height="1px" />
+				<hlayout>
+					<div width="100px" style="text-align:right">
+						<label id="lblProv" value="Documented By"/>
+					</div>
+					<textbox id="txtProvider" hflex="1"
+						forward="onOK=btnProvider.onClick" />
+					<button id="btnProvider" label="..."
+						tooltiptext="Display Providers to Select" />
+				</hlayout>
+				<vlayout id="fraDate">
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Event Date
+						</div>
+						<datebox id="datEventDate" hflex="1" constraint="no future"/>
+						<button id="btnEventDate" label="..."
+							visible="false" />
+					</hlayout>
+				</vlayout>
+
+				<vlayout id="fraHistorical">
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Location
+						</div>
+						<textbox id="txtLocation" hflex="1"
+							forward="onOK=btnLocation.onClick" />
+						<button id="btnLocation" label="..."
+							tooltiptext="Display Locations to Select" />
+					</hlayout>
+					<hlayout>
+						<div width="100px" />
+						<radiogroup orient="vertical"
+							tooltiptext="Select the type of exam event you wish to record.">
+							<radio id="radFacility" label="Facility"
+								selected="true" />
+							<radio id="radOther" label="Other" />
+						</radiogroup>
+						<div hflex="1" />
+					</hlayout>
+				</vlayout>
+				<vlayout id="fraCurrent" spacing="10px">
+					<hlayout>
+						<div width="100px"></div>
+						<label id="lblWarn" style="color: red"/>
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Lot
+						</div>
+						<combobox id="cboLot" hflex="1" />
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Injection Site
+						</div>
+						<combobox id="cboSite" hflex="1" />
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Volume
+						</div>
+						<doublespinner id="spnVolume" width="65px"
+							step="0.05" constraint="min 0 max 5"/>
+						<div>(ml)</div>
+
+						<div style="text-align:right" width="100px">
+							Vac. Info. Sheet
+						</div>
+						<datebox id="datVIS" hflex="1"
+							constraint="no future" />
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Given
+						</div>
+						<datetimebox id="datGiven" hflex="1"
+							constraint="no future" />
+						<space width="20px" />
+						<div style="text-align:left" width="130px">
+							<checkbox id="cbCounsel" />
+							Patient/Family Counseled by Provider
+						</div>
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							<label id="lblVacElig">Vac. Eligibility</label>
+						</div>
+						<combobox id="cboVacElig" hflex="1" />
+					</hlayout>
+				</vlayout>
+				<vlayout id="fraRefusal">
+					<hlayout>
+						<div style="text-align: right" width="100px">
+							Reason
+						</div>
+						<combobox id="cboReason" hflex="1"></combobox>
+					</hlayout>
+					<hlayout>
+						<div width="100px" style="text-align:right">
+							Comment
+						</div>
+						<textbox id="txtComment" multiline="true"
+							hflex="1" rows="4" maxlength="245" xmlns:w="client"
+							tooltiptext="Comment (max 245 chars.)">
+							<attribute w:name="onKeyPress">
+								
+								<![CDATA[ var keyCode = event.which; if
+								(keyCode == 94 || keyCode < 32 ||
+								keyCode >126) event.stop(); ]]>
+														
+							</attribute>
+						</textbox>
+					</hlayout>
+				</vlayout>
+				<vlayout id="fraAdminNote">
+				<hlayout>
+					<div width="100px" style="text-align:right">
+						Admin Notes
+					</div>
+					<textbox id="txtAdminNote" multiline="true"
+						hflex="1" rows="4" maxlength="245" xmlns:w="client">
+						<attribute w:name="onKeyPress">
+							
+							<![CDATA[ var keyCode = event.which; if
+							(keyCode == 94 || keyCode < 32 || keyCode
+							>126) event.stop(); ]]>
+													
+						</attribute>
+					</textbox>
+				</hlayout>
+				</vlayout>
+				<vlayout id="fraReaction">
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Reaction
+						</div>
+						<combobox id="cboReaction" hflex="1" />
+					</hlayout>
+					<hlayout>
+						<div style="text-align:right" width="100px">
+							Dose Override
+						</div>
+						<combobox id="cboOverride" hflex="1" />
+					</hlayout>
+				</vlayout>
+				<separator height="20px" />
+			</vlayout>
+			<toolbar mold="panel" orient="vertical" hflex="1" vflex="1"
+				style="border-left: solid 1px; padding-left: 14px">
+				<button id="btnSave" label="Save" width="60px" />
+				<separator height="5px" />
+				<button id="btnCancel" label="Cancel" width="60px" />
+				<separator height="50px" />
+				<radiogroup orient="vertical" width="80px" tooltiptext="Select the type of event you wish to record.">
+					<radio id="radCurrent" label=" Current" />
+					<radio id="radHistorical" label=" Historical" />
+					<radio id="radRefusal" label=" Not Done" />
+				</radiogroup>
+			</toolbar>
+		</hlayout>
+	</window>
+</zk>
