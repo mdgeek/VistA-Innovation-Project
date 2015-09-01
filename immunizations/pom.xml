@@ -14,11 +14,10 @@
 	<name>RPMS Immunizations Plugin</name>
 	
 	<properties>
-		<!-- Uncomment and update maven.carewebframework.help.x properties when your plugin has help content -->
-		<!-- <maven.carewebframework.help.moduleId>immunizationsHelp</maven.carewebframework.help.moduleId> -->
-		<!-- <maven.carewebframework.help.moduleName>immunizations Help</maven.carewebframework.help.moduleName> -->
-		<!-- <maven.carewebframework.help.moduleSource>immunizations-Help.jar</carewebframework.careweb.help.moduleSource> -->
-		<!-- <maven.carewebframework.help.moduleFormat>javahelp</carewebframework.careweb.help.moduleFormat> -->
+		<maven.carewebframework.help.moduleId>rpmsImmunizationsHelp</maven.carewebframework.help.moduleId>
+		<maven.carewebframework.help.moduleName>Immunizations</maven.carewebframework.help.moduleName>
+		<maven.carewebframework.help.moduleSource>IhsBgoImmunization.chm</maven.carewebframework.help.moduleSource>
+		<maven.carewebframework.help.moduleFormat>chm</maven.carewebframework.help.moduleFormat>
 	</properties>
 	
 	<dependencies>

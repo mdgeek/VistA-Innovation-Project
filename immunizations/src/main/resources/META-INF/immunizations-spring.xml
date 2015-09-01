@@ -25,6 +25,9 @@
                 <cwp:property name="Update asynchronously" id="allowAsync" type="boolean"
 					description="If true, data requests are processed asynchronously." />
 			</cwp:serialization>		
+			<cwp:resource>
+				<cwp:help-resource module="rpmsImmunizationsHelp" />
+			</cwp:resource>
 			<!-- You may specify plugin level security constraints here:
 			<cwp:security requiresAll="false">
 				<cwp:authority name="PRIV_PRIVNAME"/>
