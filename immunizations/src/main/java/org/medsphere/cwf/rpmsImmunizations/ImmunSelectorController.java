@@ -92,7 +92,7 @@ public class ImmunSelectorController extends BgoBaseController<String> {
         super.doAfterCompose(comp);
         
         searchText = (String) arg.get(0);
-        forceShow = (boolean) arg.get(1);
+        forceShow = (Boolean) arg.get(1);
         lbVaccines.setItemRenderer(new VaccineRenderer(btnSelect));
         lookUpOpt = getParam("Imm-LookupOpt");
         RowComparator.autowireColumnComparators(lbVaccines.getListhead().getChildren());
