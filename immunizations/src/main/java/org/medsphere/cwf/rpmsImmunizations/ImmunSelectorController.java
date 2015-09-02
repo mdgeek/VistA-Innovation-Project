@@ -33,6 +33,19 @@ public class ImmunSelectorController extends BgoBaseController<String> {
     
     private static final long serialVersionUID = 1L;
     
+    /*    *//**
+             * Renders the list of Vaccines.
+             */
+    /*
+     * private final AbstractListitemRenderer<String, Object> renderer = new
+     * AbstractListitemRenderer<Vaccine, Object>() {
+     * 
+     * @Override protected void renderItem(Listitem item, Vaccine data) {
+     * createCell(item, data.getvName); createCell(item, data.getvDesc());
+     * createCell(item, data.getvInactive() == true ? "Yes" : "No");
+     * item.addForward(Events.ON_DOUBLE_CLICK, btnSelect, Events.ON_CLICK); } };
+     */
+    
     private static final Comparator<String> PLComparator = new Comparator<String>() {
         
         @Override
@@ -79,7 +92,7 @@ public class ImmunSelectorController extends BgoBaseController<String> {
         super.doAfterCompose(comp);
         
         searchText = (String) arg.get(0);
-        forceShow = (Boolean) arg.get(1);
+        forceShow = (boolean) arg.get(1);
         lbVaccines.setItemRenderer(new VaccineRenderer(btnSelect));
         lookUpOpt = getParam("Imm-LookupOpt");
         RowComparator.autowireColumnComparators(lbVaccines.getListhead().getChildren());
@@ -177,7 +190,7 @@ public class ImmunSelectorController extends BgoBaseController<String> {
         }
         
         result = "9999999.14^" + StrUtil.xlate(txtSearch.getValue().toUpperCase(), U, "") + "^^^^^" + sScreen
-                + "^1^.01;1.14;.07";
+                + "^1^.01;1.14;.07;1.01;1.03;1.05;1.07;1.09";
         return result;
     }
     
@@ -243,11 +256,24 @@ public class ImmunSelectorController extends BgoBaseController<String> {
             Vaccine value = item.getValue();
             String label = value.getName();
             
-            if (label.toUpperCase().startsWith(searchVal)) {
+            if (label.toUpperCase().startsWith(searchVal) || checkBrands(value.getBrands(), searchVal)) {
                 return i;
             }
         }
         return -1;
+    }
+    
+    private boolean checkBrands(String brands, String searchVal) {
+        String[] pcs = StrUtil.split(brands, U);
+        if (!brands.equals("^^^^")) {
+            for (String s : pcs) {
+                if (s.toUpperCase().startsWith(searchVal)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+        
     }
     
     public void onClick$rgQual() {
@@ -262,7 +288,7 @@ public class ImmunSelectorController extends BgoBaseController<String> {
     }
     
     private void setParam(String param, Object value) {
-        String s = VistAUtil.getBrokerSession().callRPC("BGOUTL SETPARM", param + U + value);
+        VistAUtil.getBrokerSession().callRPC("BGOUTL SETPARM", param + U + value);
     }
     
 }
