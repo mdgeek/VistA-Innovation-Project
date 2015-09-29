@@ -1,0 +1,1972 @@
+KIDS Distribution saved on Sep 03, 2015@16:03:22
+IMMUNIZATION MANAGEMENT 1.0
+**KIDS**:IMMUNIZATION MANAGEMENT 1.0^
+
+**INSTALL NAME**
+IMMUNIZATION MANAGEMENT 1.0
+"BLD",8518,0)
+IMMUNIZATION MANAGEMENT 1.0^^0^3150903^n
+"BLD",8518,4,0)
+^9.64PA^^
+"BLD",8518,6.3)
+4
+"BLD",8518,"KRN",0)
+^9.67PA^9002226^21
+"BLD",8518,"KRN",.4,0)
+.4
+"BLD",8518,"KRN",.401,0)
+.401
+"BLD",8518,"KRN",.402,0)
+.402
+"BLD",8518,"KRN",.403,0)
+.403
+"BLD",8518,"KRN",.5,0)
+.5
+"BLD",8518,"KRN",.84,0)
+.84
+"BLD",8518,"KRN",3.6,0)
+3.6
+"BLD",8518,"KRN",3.8,0)
+3.8
+"BLD",8518,"KRN",9.2,0)
+9.2
+"BLD",8518,"KRN",9.8,0)
+9.8
+"BLD",8518,"KRN",9.8,"NM",0)
+^9.68A^2^2
+"BLD",8518,"KRN",9.8,"NM",1,0)
+BGOVIMM^^0^B184357636
+"BLD",8518,"KRN",9.8,"NM",2,0)
+BGOVIMM2^^0^B42280522
+"BLD",8518,"KRN",9.8,"NM","B","BGOVIMM",1)
+
+"BLD",8518,"KRN",9.8,"NM","B","BGOVIMM2",2)
+
+"BLD",8518,"KRN",19,0)
+19
+"BLD",8518,"KRN",19.1,0)
+19.1
+"BLD",8518,"KRN",101,0)
+101
+"BLD",8518,"KRN",409.61,0)
+409.61
+"BLD",8518,"KRN",771,0)
+771
+"BLD",8518,"KRN",779.2,0)
+779.2
+"BLD",8518,"KRN",870,0)
+870
+"BLD",8518,"KRN",8989.51,0)
+8989.51
+"BLD",8518,"KRN",8989.52,0)
+8989.52
+"BLD",8518,"KRN",8994,0)
+8994
+"BLD",8518,"KRN",8994,"NM",0)
+^9.68A^15^15
+"BLD",8518,"KRN",8994,"NM",1,0)
+BGOVIMM DEL^^0
+"BLD",8518,"KRN",8994,"NM",2,0)
+BGOVIMM DELCONT^^0
+"BLD",8518,"KRN",8994,"NM",3,0)
+BGOVIMM GET^^0
+"BLD",8518,"KRN",8994,"NM",4,0)
+BGOVIMM GETCASE^^0
+"BLD",8518,"KRN",8994,"NM",5,0)
+BGOVIMM GETCONT^^0
+"BLD",8518,"KRN",8994,"NM",6,0)
+BGOVIMM GETVFC^^0
+"BLD",8518,"KRN",8994,"NM",7,0)
+BGOVIMM LOADIMM^^0
+"BLD",8518,"KRN",8994,"NM",8,0)
+BGOVIMM LOT^^0
+"BLD",8518,"KRN",8994,"NM",9,0)
+BGOVIMM PRINT^^0
+"BLD",8518,"KRN",8994,"NM",10,0)
+BGOVIMM PRIPRV^^0
+"BLD",8518,"KRN",8994,"NM",11,0)
+BGOVIMM PROFILE^^0
+"BLD",8518,"KRN",8994,"NM",12,0)
+BGOVIMM SET^^0
+"BLD",8518,"KRN",8994,"NM",13,0)
+BGOVIMM SETCONT^^0
+"BLD",8518,"KRN",8994,"NM",14,0)
+BGOVIMM SETREG^^0
+"BLD",8518,"KRN",8994,"NM",15,0)
+BGOVIMM2 GETELIG^^0
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM DEL",1)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM DELCONT",2)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM GET",3)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM GETCASE",4)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM GETCONT",5)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM GETVFC",6)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM LOADIMM",7)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM LOT",8)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM PRINT",9)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM PRIPRV",10)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM PROFILE",11)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM SET",12)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM SETCONT",13)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM SETREG",14)
+
+"BLD",8518,"KRN",8994,"NM","B","BGOVIMM2 GETELIG",15)
+
+"BLD",8518,"KRN",9002226,0)
+9002226
+"BLD",8518,"KRN","B",.4,.4)
+
+"BLD",8518,"KRN","B",.401,.401)
+
+"BLD",8518,"KRN","B",.402,.402)
+
+"BLD",8518,"KRN","B",.403,.403)
+
+"BLD",8518,"KRN","B",.5,.5)
+
+"BLD",8518,"KRN","B",.84,.84)
+
+"BLD",8518,"KRN","B",3.6,3.6)
+
+"BLD",8518,"KRN","B",3.8,3.8)
+
+"BLD",8518,"KRN","B",9.2,9.2)
+
+"BLD",8518,"KRN","B",9.8,9.8)
+
+"BLD",8518,"KRN","B",19,19)
+
+"BLD",8518,"KRN","B",19.1,19.1)
+
+"BLD",8518,"KRN","B",101,101)
+
+"BLD",8518,"KRN","B",409.61,409.61)
+
+"BLD",8518,"KRN","B",771,771)
+
+"BLD",8518,"KRN","B",779.2,779.2)
+
+"BLD",8518,"KRN","B",870,870)
+
+"BLD",8518,"KRN","B",8989.51,8989.51)
+
+"BLD",8518,"KRN","B",8989.52,8989.52)
+
+"BLD",8518,"KRN","B",8994,8994)
+
+"BLD",8518,"KRN","B",9002226,9002226)
+
+"KRN",8994,2783,-1)
+0^3
+"KRN",8994,2783,0)
+BGOVIMM GET^GET^BGOVIMM^4^^^^1
+"KRN",8994,2783,1,0)
+^8994.01^1^1^3080903^^
+"KRN",8994,2783,1,1,0)
+Get immunization history.
+"KRN",8994,2783,2,0)
+^8994.02A^1^1
+"KRN",8994,2783,2,1,0)
+INP^1^^1^1
+"KRN",8994,2783,2,1,1,0)
+^^3^3^3080903.115843
+"KRN",8994,2783,2,1,1,1,0)
+Patient IEN^Record Types
+"KRN",8994,2783,2,1,1,2,0)
+
+"KRN",8994,2783,2,1,1,3,0)
+If record types is not specified, all record types are returned.
+"KRN",8994,2783,2,"B","DFN",1)
+
+"KRN",8994,2783,2,"B","INP",1)
+
+"KRN",8994,2783,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2783,3,0)
+^8994.03^20^20^3080903^^
+"KRN",8994,2783,3,1,0)
+Returned as a list of records in one of the following formats:
+"KRN",8994,2783,3,2,0)
+
+"KRN",8994,2783,3,3,0)
+For an immunization:
+"KRN",8994,2783,3,4,0)
+  I ^ Imm Name [2] ^ Visit Date [3] ^ V File IEN [4] ^ Other Location [5] ^ 
+"KRN",8994,2783,3,5,0)
+  Group [6] ^ Imm IEN [7] ^ Lot [8] ^ Reaction [9] ^ VIS Date [10] ^ 
+"KRN",8994,2783,3,6,0)
+  Age [11] ^ Visit Date [12] ^ Provider IEN~Name [13] ^ Inj Site [14] ^
+"KRN",8994,2783,3,7,0)
+  Volume [15] ^ Visit IEN [16] ^ Visit Category [17] ^ Full Name [18] ^ 
+"KRN",8994,2783,3,8,0)
+  Location IEN~Name [19] ^ Visit Locked [20] ^ Event Date/Time [21] ^ 
+"KRN",8994,2783,3,9,0)
+  Dose Override [22] ^ VPED IEN [23]
+"KRN",8994,2783,3,10,0)
+
+"KRN",8994,2783,3,11,0)
+For an immunization forecast:
+"KRN",8994,2783,3,12,0)
+  F ^ Imm Name [2] ^ Status [3]
+"KRN",8994,2783,3,13,0)
+
+"KRN",8994,2783,3,14,0)
+For a contraindication:
+"KRN",8994,2783,3,15,0)
+  C ^ Contra IEN [2] ^ Imm Name [3] ^ Reason [4] ^ Date [5]
+"KRN",8994,2783,3,16,0)
+
+"KRN",8994,2783,3,17,0)
+For a refusal:
+"KRN",8994,2783,3,18,0)
+  R ^ Refusal IEN [2] ^ Type IEN [3] ^ Type Name [4] ^ Item IEN [5] ^ 
+"KRN",8994,2783,3,19,0)
+  Item Name [6] ^ Provider IEN [7] ^ Provider Name [8] ^ Date [9] ^ 
+"KRN",8994,2783,3,20,0)
+  Locked [10] ^ Reason [11] ^ Comment [12]
+"KRN",8994,2784,-1)
+0^14
+"KRN",8994,2784,0)
+BGOVIMM SETREG^SETREG^BGOVIMM2^1
+"KRN",8994,2784,1,0)
+^8994.01^1^1^3061203.093858
+"KRN",8994,2784,1,1,0)
+Add/edit patient immunization registry entry.
+"KRN",8994,2784,2,0)
+^8994.02A^1^1
+"KRN",8994,2784,2,1,0)
+INP^1^^1^1
+"KRN",8994,2784,2,1,1,0)
+^^3^3^3061203.093942
+"KRN",8994,2784,2,1,1,1,0)
+Patient IEN [1] ^ Case Manager IEN [2] ^ Parent [3] ^ Other Info [4] ^ Activate Flag [5] ^
+"KRN",8994,2784,2,1,1,2,0)
+Inactive Date [6] ^ Inactive Reason [7] ^ Tx Location [8] ^ Forecast Inf/Pneu [9] ^
+"KRN",8994,2784,2,1,1,3,0)
+Mother HBSAg Status [10]
+"KRN",8994,2784,2,"B","INP",1)
+
+"KRN",8994,2784,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2784,3,0)
+^^2^2^3061203.093948
+"KRN",8994,2784,3,1,0)
+Failure: -n^error text
+"KRN",8994,2784,3,2,0)
+Success: null 
+"KRN",8994,2785,-1)
+0^13
+"KRN",8994,2785,0)
+BGOVIMM SETCONT^SETCONT^BGOVIMM2^1
+"KRN",8994,2785,1,0)
+^8994.01^1^1^3061203.094743
+"KRN",8994,2785,1,1,0)
+Add a contraindication.
+"KRN",8994,2785,2,0)
+^8994.02A^1^1
+"KRN",8994,2785,2,1,0)
+INP^1^^1^1
+"KRN",8994,2785,2,1,1,0)
+^^1^1^3061210.121234
+"KRN",8994,2785,2,1,1,1,0)
+Patient IEN [1] ^ Vaccine IEN [2] ^ Contraindication IEN [3] ^ Visit Date [4]
+"KRN",8994,2785,2,"B","INP",1)
+
+"KRN",8994,2785,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2785,3,0)
+^^2^2^3061211.013248
+"KRN",8994,2785,3,1,0)
+Failure: -n^error text
+"KRN",8994,2785,3,2,0)
+Success: Contraindication IEN
+"KRN",8994,2786,-1)
+0^2
+"KRN",8994,2786,0)
+BGOVIMM DELCONT^DELCONT^BGOVIMM2^1
+"KRN",8994,2786,1,0)
+^8994.01^1^1^3061203.094903
+"KRN",8994,2786,1,1,0)
+Delete a contraindication.
+"KRN",8994,2786,2,0)
+^8994.02A^1^1
+"KRN",8994,2786,2,1,0)
+IEN^1^^1^1
+"KRN",8994,2786,2,1,1,0)
+^^1^1^3061203.094915
+"KRN",8994,2786,2,1,1,1,0)
+Contraindication IEN
+"KRN",8994,2786,2,"B","IEN",1)
+
+"KRN",8994,2786,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2786,3,0)
+^^2^2^3061203.094922
+"KRN",8994,2786,3,1,0)
+Failure: -n^error text
+"KRN",8994,2786,3,2,0)
+Success: null 
+"KRN",8994,2787,-1)
+0^10
+"KRN",8994,2787,0)
+BGOVIMM PRIPRV^PRIPRV^BGOVIMM2^1
+"KRN",8994,2787,1,0)
+^^1^1^3061203.095736
+"KRN",8994,2787,1,1,0)
+Get primary provider for specified V Immunization.
+"KRN",8994,2787,2,0)
+^8994.02A^1^1
+"KRN",8994,2787,2,1,0)
+IEN^1^^1^1
+"KRN",8994,2787,2,1,1,0)
+^^1^1^3061203.095809
+"KRN",8994,2787,2,1,1,1,0)
+V Immunization IEN
+"KRN",8994,2787,2,"B","IEN",1)
+
+"KRN",8994,2787,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2787,3,0)
+^^1^1^3061203.095837
+"KRN",8994,2787,3,1,0)
+Provider IEN ^ Provider Name ^ V Provider IEN
+"KRN",8994,2788,-1)
+0^1
+"KRN",8994,2788,0)
+BGOVIMM DEL^DEL^BGOVIMM^1
+"KRN",8994,2788,1,0)
+^^1^1^3061203.100539
+"KRN",8994,2788,1,1,0)
+Delete an immunization.
+"KRN",8994,2788,2,0)
+^8994.02A^1^1
+"KRN",8994,2788,2,1,0)
+VIMM^1^^1^1
+"KRN",8994,2788,2,1,1,0)
+^^1^1^3061203.100552
+"KRN",8994,2788,2,1,1,1,0)
+V Immunization IEN
+"KRN",8994,2788,2,"B","VIMM",1)
+
+"KRN",8994,2788,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2788,3,0)
+^^2^2^3061203.100557
+"KRN",8994,2788,3,1,0)
+Failure: -n^error text
+"KRN",8994,2788,3,2,0)
+Success: null 
+"KRN",8994,2789,-1)
+0^9
+"KRN",8994,2789,0)
+BGOVIMM PRINT^PRINT^BGOVIMM2^4^^^^1
+"KRN",8994,2789,1,0)
+^8994.01^1^1^3061203.10102
+"KRN",8994,2789,1,1,0)
+Return fully resolved immunization letter.
+"KRN",8994,2789,2,0)
+^8994.02A^1^1
+"KRN",8994,2789,2,1,0)
+INP^1^^1^1
+"KRN",8994,2789,2,1,1,0)
+^^1^1^3061203.101053
+"KRN",8994,2789,2,1,1,1,0)
+Patient IEN [1] ^ Letter IEN [2] ^ Text of Date/Location Line [3] ^ Forecast Date [4]
+"KRN",8994,2789,2,"B","INP",1)
+
+"KRN",8994,2789,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2789,3,0)
+^^1^1^3061203.10112
+"KRN",8994,2789,3,1,0)
+Text of letter with all embedded functions fully resolved.
+"KRN",8994,2790,-1)
+0^5
+"KRN",8994,2790,0)
+BGOVIMM GETCONT^GETCONT^BGOVIMM2^4^^^^1
+"KRN",8994,2790,1,0)
+^^1^1^3061210.115436
+"KRN",8994,2790,1,1,0)
+Get immunization contraindication reasons.
+"KRN",8994,2790,3,0)
+^^2^2^3061210.115453
+"KRN",8994,2790,3,1,0)
+List of records of the format:
+"KRN",8994,2790,3,2,0)
+  IEN ^ Name
+"KRN",8994,2791,-1)
+0^4
+"KRN",8994,2791,0)
+BGOVIMM GETCASE^GETCASE^BGOVIMM2^2^^^^1
+"KRN",8994,2791,1,0)
+^^1^1^3061203.104237
+"KRN",8994,2791,1,1,0)
+Get case data.
+"KRN",8994,2791,2,0)
+^8994.02A^1^1
+"KRN",8994,2791,2,1,0)
+DFN^1^^1^1
+"KRN",8994,2791,2,1,1,0)
+^^1^1^3061203.10425
+"KRN",8994,2791,2,1,1,1,0)
+Patient IEN
+"KRN",8994,2791,2,"B","DFN",1)
+
+"KRN",8994,2791,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2791,3,0)
+^^1^1^3061203.104453
+"KRN",8994,2791,3,1,0)
+List of records containing requested case data.
+"KRN",8994,2792,-1)
+0^7
+"KRN",8994,2792,0)
+BGOVIMM LOADIMM^LOADIMM^BGOVIMM^2^^^^1
+"KRN",8994,2792,1,0)
+^^1^1^3061203.105814
+"KRN",8994,2792,1,1,0)
+Get the patient's immunization defaults and contraindications.
+"KRN",8994,2792,2,0)
+^8994.02A^1^1
+"KRN",8994,2792,2,1,0)
+INP^1^^1^1
+"KRN",8994,2792,2,1,1,0)
+^^1^1^3061203.105829
+"KRN",8994,2792,2,1,1,1,0)
+Patient IEN ^ Immunization Type IEN
+"KRN",8994,2792,2,"B","INP",1)
+
+"KRN",8994,2792,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2792,3,0)
+^^8^8^3061210.115712
+"KRN",8994,2792,3,1,0)
+Failure: -n^error text
+"KRN",8994,2792,3,2,0)
+Success: 
+"KRN",8994,2792,3,3,0)
+
+"KRN",8994,2792,3,4,0)
+First record:
+"KRN",8994,2792,3,5,0)
+  Default Lot # [1] ^ Default Volume [2] ^ Default VIS Date [3]
+"KRN",8994,2792,3,6,0)
+
+"KRN",8994,2792,3,7,0)
+Subsequent records:
+"KRN",8994,2792,3,8,0)
+  Contraindication IEN [1] ^ Contraindication Text [2] ^ Date Noted [3]
+"KRN",8994,2793,-1)
+0^8
+"KRN",8994,2793,0)
+BGOVIMM LOT^LOT^BGOVIMM2^4^^^^1
+"KRN",8994,2793,1,0)
+^^1^1^3061203.111717
+"KRN",8994,2793,1,1,0)
+Retrieve lot #'s associated with a vaccine.
+"KRN",8994,2793,2,0)
+^8994.02A^1^1
+"KRN",8994,2793,2,1,0)
+IMM^1^^1^1
+"KRN",8994,2793,2,1,1,0)
+^^1^1^3061203.111739
+"KRN",8994,2793,2,1,1,1,0)
+Immunization type IEN
+"KRN",8994,2793,2,"B","IMM",1)
+
+"KRN",8994,2793,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2793,3,0)
+^^2^2^3061203.111916
+"KRN",8994,2793,3,1,0)
+Returned as a list of records in the format:
+"KRN",8994,2793,3,2,0)
+    Lot IEN ^ Name ^ Manufacturer 
+"KRN",8994,2794,-1)
+0^12
+"KRN",8994,2794,0)
+BGOVIMM SET^SET^BGOVIMM^1
+"KRN",8994,2794,1,0)
+^8994.01^1^1^3061203.114652
+"KRN",8994,2794,1,1,0)
+Add/edit an immunization.
+"KRN",8994,2794,2,0)
+^8994.02A^1^1
+"KRN",8994,2794,2,1,0)
+INP^1^^1^1
+"KRN",8994,2794,2,1,1,0)
+^^4^4^3080201.111109
+"KRN",8994,2794,2,1,1,1,0)
+Visit IEN [1] ^ Historical [2] ^ Patient IEN [3] ^ Imm IEN [4] ^ V File IEN [5] ^ 
+"KRN",8994,2794,2,1,1,2,0)
+Provider IEN [6] ^ Location [7] ^ Other Location [8] ^ Imm Date [9] ^ Lot # [10] ^ 
+"KRN",8994,2794,2,1,1,3,0)
+Reaction [11] ^ VIS Date [12] ^ Dose Override [13] ^ Inj Site [14] ^ Volume [15] ^
+"KRN",8994,2794,2,1,1,4,0)
+Counselled [16]
+"KRN",8994,2794,2,"B","INP",1)
+
+"KRN",8994,2794,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2794,3,0)
+^8994.03^2^2^3061208^
+"KRN",8994,2794,3,1,0)
+Failure: -n^error text
+"KRN",8994,2794,3,2,0)
+Success: V File IEN
+"KRN",8994,2795,-1)
+0^11
+"KRN",8994,2795,0)
+BGOVIMM PROFILE^PROFILE^BGOVIMM2^4^^^^1
+"KRN",8994,2795,1,0)
+^^1^1^3070613.115108
+"KRN",8994,2795,1,1,0)
+Return the immunization profile.
+"KRN",8994,2795,2,0)
+^8994.02A^1^1
+"KRN",8994,2795,2,1,0)
+DFN^1^^1^1
+"KRN",8994,2795,2,1,1,0)
+^^1^1^3070430.140039
+"KRN",8994,2795,2,1,1,1,0)
+Patient internal entry #.
+"KRN",8994,2795,2,"B","DFN",1)
+
+"KRN",8994,2795,2,"PARAMSEQ",1,1)
+
+"KRN",8994,2795,3,0)
+^^2^2^3070430.140104
+"KRN",8994,2795,3,1,0)
+Failure: -n^error text
+"KRN",8994,2795,3,2,0)
+Success: Text of report
+"KRN",8994,2796,-1)
+0^6
+"KRN",8994,2796,0)
+BGOVIMM GETVFC^GETVFC^BGOVIMM2^1
+"KRN",8994,2796,1,0)
+^8994.01^1^1^3090917^
+"KRN",8994,2796,1,1,0)
+Determine if site is IHS and return default VFC
+"KRN",8994,2796,2,0)
+^8994.02A^1^1
+"KRN",8994,2796,2,1,0)
+INP^1^^1
+"KRN",8994,2796,2,1,1,0)
+^8994.021^1^1^3090917^
+"KRN",8994,2796,2,1,1,1,0)
+Patient DFN
+"KRN",8994,2796,2,"B","INP",1)
+
+"KRN",8994,2796,3,0)
+^^1^1^3090917.114515
+"KRN",8994,2796,3,1,0)
+[1] IHS (Y/N) ^ [2] Pt Age ^ [3] Default VFC
+"KRN",8994,2797,-1)
+0^15
+"KRN",8994,2797,0)
+BGOVIMM2 GETELIG^GETELIG^BGOVIMM2^4^^^^1
+"KRN",8994,2797,1,0)
+^8994.01^1^1^3130624^^^
+"KRN",8994,2797,1,1,0)
+Return list of active eligibilities for an immunization
+"KRN",8994,2797,2,0)
+^8994.02A^1^1
+"KRN",8994,2797,2,1,0)
+DFN^1
+"KRN",8994,2797,2,1,1,0)
+^8994.021^1^1^3130612^
+"KRN",8994,2797,2,1,1,1,0)
+Patient IEN
+"KRN",8994,2797,2,"B","DFN",1)
+
+"KRN",8994,2797,3,0)
+^8994.03^4^4^3130624^^^
+"KRN",8994,2797,3,1,0)
+List of items
+"KRN",8994,2797,3,2,0)
+^TMP("BGO",6508,9)="4^V04^Am Indian/AK Native^Am Indian/AK Native"
+"KRN",8994,2797,3,3,0)
+
+"KRN",8994,2797,3,4,0)
+Format= IEN [1] ^ Code [2] ^ Label [3] ^ Local txt [4]
+"MBREQ")
+0
+"ORD",16,8994)
+8994;16;1;;;;;;;RPCDEL^XPDIA1
+"ORD",16,8994,0)
+REMOTE PROCEDURE
+"QUES","XPF1",0)
+Y
+"QUES","XPF1","??")
+^D REP^XPDH
+"QUES","XPF1","A")
+Shall I write over your |FLAG| File
+"QUES","XPF1","B")
+YES
+"QUES","XPF1","M")
+D XPF1^XPDIQ
+"QUES","XPF2",0)
+Y
+"QUES","XPF2","??")
+^D DTA^XPDH
+"QUES","XPF2","A")
+Want my data |FLAG| yours
+"QUES","XPF2","B")
+YES
+"QUES","XPF2","M")
+D XPF2^XPDIQ
+"QUES","XPI1",0)
+YO
+"QUES","XPI1","??")
+^D INHIBIT^XPDH
+"QUES","XPI1","A")
+Want KIDS to INHIBIT LOGONs during the install
+"QUES","XPI1","B")
+NO
+"QUES","XPI1","M")
+D XPI1^XPDIQ
+"QUES","XPM1",0)
+PO^VA(200,:EM
+"QUES","XPM1","??")
+^D MG^XPDH
+"QUES","XPM1","A")
+Enter the Coordinator for Mail Group '|FLAG|'
+"QUES","XPM1","B")
+
+"QUES","XPM1","M")
+D XPM1^XPDIQ
+"QUES","XPO1",0)
+Y
+"QUES","XPO1","??")
+^D MENU^XPDH
+"QUES","XPO1","A")
+Want KIDS to Rebuild Menu Trees Upon Completion of Install
+"QUES","XPO1","B")
+NO
+"QUES","XPO1","M")
+D XPO1^XPDIQ
+"QUES","XPZ1",0)
+Y
+"QUES","XPZ1","??")
+^D OPT^XPDH
+"QUES","XPZ1","A")
+Want to DISABLE Scheduled Options, Menu Options, and Protocols
+"QUES","XPZ1","B")
+NO
+"QUES","XPZ1","M")
+D XPZ1^XPDIQ
+"QUES","XPZ2",0)
+Y
+"QUES","XPZ2","??")
+^D RTN^XPDH
+"QUES","XPZ2","A")
+Want to MOVE routines to other CPUs
+"QUES","XPZ2","B")
+NO
+"QUES","XPZ2","M")
+D XPZ2^XPDIQ
+"RTN")
+2
+"RTN","BGOVIMM")
+0^1^B184357636
+"RTN","BGOVIMM",1,0)
+BGOVIMM ;IHS/BAO/TMD - IMMUNIZATION mgt   ;03-Sep-2015 14:58;DKM
+"RTN","BGOVIMM",2,0)
+ ;;1.1;BGO COMPONENTS;**1,3,4,5,6,9,10,11,12,13**;Mar 20, 2007;Build 4
+"RTN","BGOVIMM",3,0)
+ ; Returns the version # of the Immunization package
+"RTN","BGOVIMM",4,0)
+VERSION(RET,DUMMY) ;
+"RTN","BGOVIMM",5,0)
+ S RET=$$VER^BILOGO
+"RTN","BGOVIMM",6,0)
+ Q
+"RTN","BGOVIMM",7,0)
+ ; Return the ICD9 code IEN for a vaccine
+"RTN","BGOVIMM",8,0)
+IMMICD(TYPE,VIEN,ACTV) ;EP
+"RTN","BGOVIMM",9,0)
+ N X,ICD,ICDIEN,DATE
+"RTN","BGOVIMM",10,0)
+ S ICD=$P($G(^AUTTIMM(TYPE,0)),U,14),ICDIEN=""
+"RTN","BGOVIMM",11,0)
+ I ICD'="" D
+"RTN","BGOVIMM",12,0)
+ .;IHS/MSC/MGH Patch 12 changes
+"RTN","BGOVIMM",13,0)
+ .;S ICDIEN=$O(^ICD9("AB",ICD,0))
+"RTN","BGOVIMM",14,0)
+ .;S:'ICDIEN ICDIEN=$O(^ICD9("AB",ICD_" ",0))
+"RTN","BGOVIMM",15,0)
+ .I $$AICD^BGOUTL2 D
+"RTN","BGOVIMM",16,0)
+ ..S ICDIEN=$P($$ICDDX^ICDEX(ICD,$$NOW^XLFDT,"","I"),U,1)
+"RTN","BGOVIMM",17,0)
+ .E  D
+"RTN","BGOVIMM",18,0)
+ ..S ICDIEN=$P($$ICDDX^ICDCODE(ICD,$$NOW^XLFDT),U,1)
+"RTN","BGOVIMM",19,0)
+ I ICDIEN,$G(ACTV) D
+"RTN","BGOVIMM",20,0)
+ .S DATE=$S($G(VIEN):+$G(^AUPNVSIT(VIEN,0)),1:"")
+"RTN","BGOVIMM",21,0)
+ .S X=$$CHKICD^BGOVPOV(ICDIEN,DATE)
+"RTN","BGOVIMM",22,0)
+ .S:X<0 ICDIEN=X
+"RTN","BGOVIMM",23,0)
+ Q ICDIEN
+"RTN","BGOVIMM",24,0)
+ ; Return the CPT code IEN for a vaccine and visit
+"RTN","BGOVIMM",25,0)
+IMMCPT(TYPE,VIEN,ACTV) ;EP
+"RTN","BGOVIMM",26,0)
+ Q $$IMMCPT^BGOVIMM2(.TYPE,.VIEN,.ACTV)
+"RTN","BGOVIMM",27,0)
+ ; Get the patient's immunization defaults and contraindications
+"RTN","BGOVIMM",28,0)
+ ;  INP = Patient IEN ^ Immunization Type IEN
+"RTN","BGOVIMM",29,0)
+ ;  Returned as:
+"RTN","BGOVIMM",30,0)
+ ;   RET(0) = Default Lot # [1] ^ Default Volume [2] ^ Default VIS Date [3]
+"RTN","BGOVIMM",31,0)
+ ;   RET(n) = Contraindication IEN [1] ^ Contraindication Text [2] ^ Date Noted [3]
+"RTN","BGOVIMM",32,0)
+LOADIMM(RET,INP) ;EP
+"RTN","BGOVIMM",33,0)
+ N DFN,IMM,X,N,D,DFLTLOT,DFLTVOL,DFLTVISD,CNT
+"RTN","BGOVIMM",34,0)
+ S RET(0)=$$ERR^BGOUTL(1008)
+"RTN","BGOVIMM",35,0)
+ S DFN=+INP
+"RTN","BGOVIMM",36,0)
+ Q:'DFN
+"RTN","BGOVIMM",37,0)
+ S IMM=+$P(INP,U,2)
+"RTN","BGOVIMM",38,0)
+ Q:'IMM
+"RTN","BGOVIMM",39,0)
+ S X=$G(^AUTTIMM(IMM,0))
+"RTN","BGOVIMM",40,0)
+ S DFLTLOT=$P(X,U,4)
+"RTN","BGOVIMM",41,0)
+ S DFLTVOL=$P(X,U,18)
+"RTN","BGOVIMM",42,0)
+ ;IHS/MSC/MGH Patch 11 Add leading zeros
+"RTN","BGOVIMM",43,0)
+ I $E(DFLTVOL,1,1)="." S DFLTVOL="0"_DFLTVOL
+"RTN","BGOVIMM",44,0)
+ S DFLTVISD=$$FMTDATE^BGOUTL($P(X,U,13))
+"RTN","BGOVIMM",45,0)
+ S RET(0)=DFLTLOT_U_DFLTVOL_U_DFLTVISD
+"RTN","BGOVIMM",46,0)
+ S (X,CNT)=0
+"RTN","BGOVIMM",47,0)
+ F  S X=$O(^BIPC("AC",DFN,IMM,X)) Q:'X  D
+"RTN","BGOVIMM",48,0)
+ .S N=$P($G(^BIPC(X,0)),U,3),D=$P(^(0),U,4)
+"RTN","BGOVIMM",49,0)
+ .Q:'N
+"RTN","BGOVIMM",50,0)
+ .Q:$P($G(^BICONT(N,0)),U,2)
+"RTN","BGOVIMM",51,0)
+ .S CNT=CNT+1,RET(CNT)=N_U_$P($G(^BICONT(N,0)),U)_U_D
+"RTN","BGOVIMM",52,0)
+ Q
+"RTN","BGOVIMM",53,0)
+ ; Get immunization history
+"RTN","BGOVIMM",54,0)
+ ;  INP = Patient IEN [1] ^ Record Types [2]
+"RTN","BGOVIMM",55,0)
+ ;  RET returned as a list of records in one of the following formats:
+"RTN","BGOVIMM",56,0)
+ ;  For immunizations:
+"RTN","BGOVIMM",57,0)
+ ;    I ^ Imm Name [2] ^ Visit Date [3] ^ V File IEN [4] ^ Other Location [5] ^ Group [6] ^ Imm IEN [7] ^ Lot [8] ^
+"RTN","BGOVIMM",58,0)
+ ;     Reaction [9] ^ VIS Date [10] ^ Age [11] ^ Visit Date [12] ^ Provider IEN~Name [13] ^ Inj Site [14] ^
+"RTN","BGOVIMM",59,0)
+ ;     Volume [15] ^ Visit IEN [16] ^ Visit Category [17] ^ Full Name [18] ^ Location IEN~Name [19] ^
+"RTN","BGOVIMM",60,0)
+ ;     Visit Locked [20] ^ Event Date/Time [21] ^ Dose Override [22] ^ VPED IEN [23] ^ VFC eligibility [24] ^ Manufacturer [25] ^ Admin Notes [26]
+"RTN","BGOVIMM",61,0)
+ ;  For forecast:
+"RTN","BGOVIMM",62,0)
+ ;    F ^ Imm Name [2] ^ Status [3]
+"RTN","BGOVIMM",63,0)
+ ;  For contraindications:
+"RTN","BGOVIMM",64,0)
+ ;    C ^ Contra IEN [2] ^ Imm Name [3] ^ Reason [4] ^ Date [5]
+"RTN","BGOVIMM",65,0)
+ ;  For refusals:
+"RTN","BGOVIMM",66,0)
+ ;    R ^ Refusal IEN [2] ^ Type IEN [3] ^ Type Name [4] ^ Item IEN [5] ^ Item Name [6] ^ Provider IEN [7] ^
+"RTN","BGOVIMM",67,0)
+ ;     Provider Name [8] ^ Date [9] ^ Locked [10] ^ Reason [11] ^ Comment [12]
+"RTN","BGOVIMM",68,0)
+GET(RET,INP) ;EP
+"RTN","BGOVIMM",69,0)
+ N BIRESULT,DFN,DLM,HX,ELE,CNT,VIEN,BIPDSS,VIMM,TYPE,P,A,I,J,K,X,V,VFC,ADMIN
+"RTN","BGOVIMM",70,0)
+ N XREF,FNUM,OFF,BIPDSSA,OR,LOT,LOTIEN,MANUF
+"RTN","BGOVIMM",71,0)
+ S RET=$$TMPGBL^BGOUTL
+"RTN","BGOVIMM",72,0)
+ S DFN=+INP,INP=$P(INP,U,2)
+"RTN","BGOVIMM",73,0)
+ Q:'DFN
+"RTN","BGOVIMM",74,0)
+ S:INP="" INP="IFCR"
+"RTN","BGOVIMM",75,0)
+ S BIPDSS=""
+"RTN","BGOVIMM",76,0)
+ S DLM=$C(31,31),HX="",V="|",CNT=0
+"RTN","BGOVIMM",77,0)
+ S XREF=$$VFPTXREF^BGOUTL2,FNUM=$$FNUM,OFF=$S($G(DUZ("AG"))="I":0,1:9999999)
+"RTN","BGOVIMM",78,0)
+ D:INP["F" IMMFORC^BIRPC(.HX,DFN,"","","",.BIPDSS)
+"RTN","BGOVIMM",79,0)
+ S P=$P(HX,DLM,2)
+"RTN","BGOVIMM",80,0)
+ S:'$L(P) P=$P(HX,DLM)
+"RTN","BGOVIMM",81,0)
+ I $L(P) F I=1:1:$L(P,U) D:$L($P(P,U,I)) ADD("F^"_$P(P,U,I))
+"RTN","BGOVIMM",82,0)
+ S HX=""
+"RTN","BGOVIMM",83,0)
+ D:INP["C" CONTRAS^BIRPC5(.HX,DFN)
+"RTN","BGOVIMM",84,0)
+ S P=$P(HX,DLM,2)
+"RTN","BGOVIMM",85,0)
+ S:'$L(P) P=$P(HX,DLM)
+"RTN","BGOVIMM",86,0)
+ I $L(P) F I=1:1:$L(P,U) D:$L($P(P,U,I)) ADD("C^"_$P(P,U,I))
+"RTN","BGOVIMM",87,0)
+ S HX="",P=1
+"RTN","BGOVIMM",88,0)
+ ;MSC/MGH - 07/08/09 - Branching for compatibility with Vista and RPMS
+"RTN","BGOVIMM",89,0)
+ I DUZ("AG")="I" D
+"RTN","BGOVIMM",90,0)
+ .;IHS/MSC/MGH patch 6 added field 77 VFC
+"RTN","BGOVIMM",91,0)
+ .;IHS/MSC/MGH patch 10 field 69 aded
+"RTN","BGOVIMM",92,0)
+ .;IHS/MSC/MGH patch 13 field 85 added
+"RTN","BGOVIMM",93,0)
+ .F I=4,21,24,36,27,30,33,44,51,57,60,61,67,68,76,35,9,34,0,0,65,77,69,87 S P=P+1 S:I ELE(I)=P
+"RTN","BGOVIMM",94,0)
+ .D:INP["I" IMMHX^BIRPC(.HX,DFN,.ELE,0)
+"RTN","BGOVIMM",95,0)
+ .S P=$P(HX,DLM,2)
+"RTN","BGOVIMM",96,0)
+ .I $L(P) D ADD("I^"_P) Q                                              ; Error
+"RTN","BGOVIMM",97,0)
+ .S HX=$P(HX,DLM)
+"RTN","BGOVIMM",98,0)
+ .F I=1:1 S P=$P(HX,U,I) Q:P=""  D
+"RTN","BGOVIMM",99,0)
+ ..Q:$P(P,V)'="I"
+"RTN","BGOVIMM",100,0)
+ ..S A="I",J=0,K=1
+"RTN","BGOVIMM",101,0)
+ ..F  S J=$O(ELE(J)) Q:'J  S K=K+1,$P(A,V,ELE(J))=$P(P,V,K)
+"RTN","BGOVIMM",102,0)
+ ..S VIMM=+$P(A,V,4),VIEN=$P(A,V,16),TYPE=$P(A,V,7),VFC=$P(A,V,23),OR=$P(A,V,22)
+"RTN","BGOVIMM",103,0)
+ ..S ADMIN=$P(A,V,25)
+"RTN","BGOVIMM",104,0)
+ ..S LOT=$P(A,V,8)
+"RTN","BGOVIMM",105,0)
+ ..I LOT'="" D
+"RTN","BGOVIMM",106,0)
+ ...S LOTIEN=$O(^AUTTIML("B",LOT,""))
+"RTN","BGOVIMM",107,0)
+ ...S MANUF=$$GET1^DIQ(9999999.41,LOTIEN,.02)
+"RTN","BGOVIMM",108,0)
+ ...I MANUF'="" S $P(A,V,26)=MANUF
+"RTN","BGOVIMM",109,0)
+ ..;IHS/MSC/MGH call added for INVALID DOSE
+"RTN","BGOVIMM",110,0)
+ ..S BIPDSSA=0
+"RTN","BGOVIMM",111,0)
+ ..I $$PDSS^BIUTL8($P(A,V,4),$P(A,V,24),BIPDSS) D
+"RTN","BGOVIMM",112,0)
+ ...S Z=$P(A,V,2),BIPDSSA=1
+"RTN","BGOVIMM",113,0)
+ ...S $P(A,V,2)=Z_"--INVALID SEE IMMSERVE--"
+"RTN","BGOVIMM",114,0)
+ ..I OR'="" D
+"RTN","BGOVIMM",115,0)
+ ...S Z=$P(A,V,2)
+"RTN","BGOVIMM",116,0)
+ ...S OR=$S(OR=1:"INVALID--BAD STORAGE",OR=2:"INVALID--DEFECTIVE",OR=3:"INVALID--EXPIRED",OR=4:"INVALID--ADMIN ERROR",OR=5:"FORCED VALID",1:"@")
+"RTN","BGOVIMM",117,0)
+ ...S $P(A,V,2)=Z_"-- "_OR
+"RTN","BGOVIMM",118,0)
+ ...;End patch 10 changes
+"RTN","BGOVIMM",119,0)
+ ..S:$P(A,V,10)="NO DATE" $P(A,V,10)=""
+"RTN","BGOVIMM",120,0)
+ ..S X=$P(A,V,14)
+"RTN","BGOVIMM",121,0)
+ ..S:$L(X) $P(A,V,14)=X_"~"_$$EXTERNAL^DILFD(9000010.11,.09,,X)
+"RTN","BGOVIMM",122,0)
+ ..D GI1(13,200),GI1(19,9999999.06)
+"RTN","BGOVIMM",123,0)
+ ..;IHS/MSC/MGH Patch 11 Add leading zero
+"RTN","BGOVIMM",124,0)
+ ..I $E($P(A,V,15),1,1)="." S $P(A,V,15)="0"_$P(A,V,15)
+"RTN","BGOVIMM",125,0)
+ ..S $P(A,V,20)=$$ISLOCKED^RGCWENCX(VIEN)
+"RTN","BGOVIMM",126,0)
+ ..S $P(A,V,21)=$P($G(^AUPNVIMM(VIMM,12)),U)
+"RTN","BGOVIMM",127,0)
+ ..S $P(A,V,23)=$$FNDPED(VIEN,$$IMMCPT(TYPE,VIEN))
+"RTN","BGOVIMM",128,0)
+ ..;S $P(A,V,24)=$S(VFC=0:"Unknown",VFC=1:"Not Eligible",VFC=2:"Medicaid",VFC=3:"Uninsured",VFC=4:"Am Indian/AK Native",VFC=5:"Federally Qualified",VFC=6:"State-specific Elig",VFC=7:"Local-specific Elig",1:"")
+"RTN","BGOVIMM",129,0)
+ ..;Next line changed for patch 13
+"RTN","BGOVIMM",130,0)
+ ..S $P(A,V,24)=$$GET1^DIQ(9002084.83,VFC,.02)
+"RTN","BGOVIMM",131,0)
+ ..D ADD(A)
+"RTN","BGOVIMM",132,0)
+ E  D
+"RTN","BGOVIMM",133,0)
+ .N REC,LP,X,Y,Z,FNUM
+"RTN","BGOVIMM",134,0)
+ .S FNUM=9000010.11,OFF=9999999
+"RTN","BGOVIMM",135,0)
+ .S LP="" F  S LP=$O(^AUPNVIMM("C",DFN,LP)) Q:'LP  D
+"RTN","BGOVIMM",136,0)
+ ..S X=$G(^AUPNVIMM(LP,0))
+"RTN","BGOVIMM",137,0)
+ ..Q:$P(X,U,2)'=DFN
+"RTN","BGOVIMM",138,0)
+ ..S $P(X,U,8,99)=$P($G(^AUPNVIMM(LP,9999999)),U,8,99)
+"RTN","BGOVIMM",139,0)
+ ..S Y=$G(^AUTTIMM(+X,0))
+"RTN","BGOVIMM",140,0)
+ ..Q:'$L(Y)
+"RTN","BGOVIMM",141,0)
+ ..S VIEN=+$P(X,U,3)
+"RTN","BGOVIMM",142,0)
+ ..S Z=$G(^AUPNVSIT(VIEN,0))
+"RTN","BGOVIMM",143,0)
+ ..Q:'$L(Z)
+"RTN","BGOVIMM",144,0)
+ ..S REC="I"
+"RTN","BGOVIMM",145,0)
+ ..S REC=REC_U_$P(Y,U,2)                                               ; Imm Short
+"RTN","BGOVIMM",146,0)
+ ..S REC=REC_U_$$FMTDATE^BGOUTL(+Z)                                    ; Visit Date
+"RTN","BGOVIMM",147,0)
+ ..S REC=REC_U_LP                                                      ; V File IEN
+"RTN","BGOVIMM",148,0)
+ ..S REC=REC_U_$P($G(^AUPNVSIT(VIEN,21)),U)                            ; Other Loc
+"RTN","BGOVIMM",149,0)
+ ..S REC=REC_U_$$GET1^DIQ(FNUM,LP,.09)                                 ; Group
+"RTN","BGOVIMM",150,0)
+ ..S REC=REC_U_+X                                                      ; Imm IEN
+"RTN","BGOVIMM",151,0)
+ ..S REC=REC_U_$$GET1^DIQ(9999999.41,+$P(X,U,5),.01)                   ; Lot
+"RTN","BGOVIMM",152,0)
+ ..S REC=REC_U_$$GET1^DIQ(FNUM,LP,.06)                                 ; Reaction
+"RTN","BGOVIMM",153,0)
+ ..S REC=REC_U_$$ENTRY^RGUTDT($P(X,U,12))                              ; VIS Date
+"RTN","BGOVIMM",154,0)
+ ..S REC=REC_U_$$PTAGE^BGOUTL(DFN,+Z)                                  ; Age
+"RTN","BGOVIMM",155,0)
+ ..S REC=REC_U_$$ENTRY^RGUTDT(+Z,0)                                    ; Visit Date
+"RTN","BGOVIMM",156,0)
+ ..S REC=REC_U_$$GI2($P($G(^AUPNVIMM(LP,12)),U,4),200)                 ; Provider
+"RTN","BGOVIMM",157,0)
+ ..S REC=REC_U_$P(X,U,9)_"~"_$$GET1^DIQ(FNUM,LP,.09+OFF)               ; Inj Site
+"RTN","BGOVIMM",158,0)
+ ..S REC=REC_U_$P(X,U,11)                                              ; Volume
+"RTN","BGOVIMM",159,0)
+ ..S REC=REC_U_VIEN                                                    ; Visit IEN
+"RTN","BGOVIMM",160,0)
+ ..S REC=REC_U_$P(Z,U,7)                                               ; Visit Cat
+"RTN","BGOVIMM",161,0)
+ ..S REC=REC_U_$P(Y,U)                                                 ; Full Name
+"RTN","BGOVIMM",162,0)
+ ..S REC=REC_U_$$GI2($P(Z,U,6),9999999.06)                             ; Location
+"RTN","BGOVIMM",163,0)
+ ..S REC=REC_U_$$ISLOCKED^RGCWENCX(VIEN)                               ; Visit Loc
+"RTN","BGOVIMM",164,0)
+ ..D ADD(REC)
+"RTN","BGOVIMM",165,0)
+ I INP["R" D
+"RTN","BGOVIMM",166,0)
+ .N ARRAY,CNT2,Z,STR,SAVE,SAVE2,DATA
+"RTN","BGOVIMM",167,0)
+ .S CNT2=0,ARRAY="DATA"
+"RTN","BGOVIMM",168,0)
+ .D REFGET^BGOUTL2(.ARRAY,DFN,9999999.14,.CNT2)
+"RTN","BGOVIMM",169,0)
+ .S Z=0 F  S Z=$O(@ARRAY@(Z)) Q:Z=""  D
+"RTN","BGOVIMM",170,0)
+ ..S STR=$G(@ARRAY@(Z))
+"RTN","BGOVIMM",171,0)
+ ..S SAVE=$P(STR,U,13),SAVE2=$P(STR,U,11)
+"RTN","BGOVIMM",172,0)
+ ..I SAVE'="" S $P(STR,U,11)=SAVE,$P(STR,U,13)=SAVE2
+"RTN","BGOVIMM",173,0)
+ ..D ADD(STR)
+"RTN","BGOVIMM",174,0)
+ Q
+"RTN","BGOVIMM",175,0)
+GI1(PC,FN) ;EP
+"RTN","BGOVIMM",176,0)
+ N X
+"RTN","BGOVIMM",177,0)
+ S X=+$P(A,V,PC)
+"RTN","BGOVIMM",178,0)
+ S:X $P(A,V,PC)=X_"~"_$$GET1^DIQ(FN,X,.01)
+"RTN","BGOVIMM",179,0)
+ Q
+"RTN","BGOVIMM",180,0)
+GI2(PC,FN) ;EP
+"RTN","BGOVIMM",181,0)
+ Q $S(PC:PC_"~"_$$GET1^DIQ(FN,PC,.01),1:"")
+"RTN","BGOVIMM",182,0)
+ ; Delete an immunization
+"RTN","BGOVIMM",183,0)
+ ;  VIMM = V File IEN
+"RTN","BGOVIMM",184,0)
+ ;  FLG  = Delete flag where
+"RTN","BGOVIMM",185,0)
+ ;    0: V File and codes (default)
+"RTN","BGOVIMM",186,0)
+ ;    1: V File only
+"RTN","BGOVIMM",187,0)
+ ;    2: Codes only
+"RTN","BGOVIMM",188,0)
+DEL(RET,VIMM,FLG) ;EP
+"RTN","BGOVIMM",189,0)
+ N VIEN,TYPE,CPT,ICD,INJS,DATE,DFN,PRV,VPED,X0,X12
+"RTN","BGOVIMM",190,0)
+ S RET=""
+"RTN","BGOVIMM",191,0)
+ S VIMM=+$G(VIMM),FLG=+$G(FLG)
+"RTN","BGOVIMM",192,0)
+ S X0=$G(^AUPNVIMM(VIMM,0)),X12=$G(^(12))
+"RTN","BGOVIMM",193,0)
+ I 'X0 S RET=$$ERR^BGOUTL(1080) Q
+"RTN","BGOVIMM",194,0)
+ S TYPE=+X0,DFN=$P(X0,U,2),VIEN=$P(X0,U,3),INJS=$P(X0,U,9)
+"RTN","BGOVIMM",195,0)
+ S DATE=+X12,PRV=$P(X12,U,4)
+"RTN","BGOVIMM",196,0)
+ S:'DATE DATE=+$G(^AUPNVSIT(VIEN,0))
+"RTN","BGOVIMM",197,0)
+ D:FLG'=2 BIDEL(.RET,VIMM,$$FNUM)
+"RTN","BGOVIMM",198,0)
+ Q:RET!(FLG=1)
+"RTN","BGOVIMM",199,0)
+ S CPT=$$IMMCPT(TYPE,VIEN),ICD=$$IMMICD(TYPE,VIEN),VPED=$$FNDPED(VIEN,CPT)
+"RTN","BGOVIMM",200,0)
+ ;IHS/MSC/MGH Patch 13 CPT codes no longer added or deleted
+"RTN","BGOVIMM",201,0)
+ ;S:CPT>0 RET=$$DELCPT(CPT,ICD,VIEN,DFN,PRV,INJS,DATE,VPED)
+"RTN","BGOVIMM",202,0)
+ Q:RET
+"RTN","BGOVIMM",203,0)
+ D:VPED DEL^BGOVPED(,VPED)
+"RTN","BGOVIMM",204,0)
+ ;IHS/MSC/MGG Patch 13 ICD code no longer added or deleted
+"RTN","BGOVIMM",205,0)
+ ;S:ICD>0 RET=$$DELICD(ICD,VIEN,DFN,PRV)
+"RTN","BGOVIMM",206,0)
+ Q
+"RTN","BGOVIMM",207,0)
+ ; Immunization education topic IEN
+"RTN","BGOVIMM",208,0)
+IMMTOP() Q $O(^AUTTEDT("B","IM-INFORMATION",0))
+"RTN","BGOVIMM",209,0)
+ ; Find patient ed entry corresponding to immunization CPT code
+"RTN","BGOVIMM",210,0)
+FNDPED(VIEN,CPT) ;
+"RTN","BGOVIMM",211,0)
+ N VPED,TOP,X
+"RTN","BGOVIMM",212,0)
+ Q:'CPT ""
+"RTN","BGOVIMM",213,0)
+ S VPED=0,TOP=$$IMMTOP
+"RTN","BGOVIMM",214,0)
+ F  S VPED=$O(^AUPNVPED("AD",VIEN,VPED)) Q:'VPED  S X=$G(^AUPNVPED(VPED,0)) I +X=TOP,$P(X,U,9)=CPT Q
+"RTN","BGOVIMM",215,0)
+ Q VPED
+"RTN","BGOVIMM",216,0)
+ ; Call BI delete
+"RTN","BGOVIMM",217,0)
+BIDEL(RET,VFIEN,FNUM) ;EP
+"RTN","BGOVIMM",218,0)
+ N GBL,DATA,VIEN
+"RTN","BGOVIMM",219,0)
+ S GBL=$$ROOT^DILFD(FNUM,,1)
+"RTN","BGOVIMM",220,0)
+ S DATA=$G(@GBL@(VFIEN,0)),VIEN=$P(DATA,U,3)
+"RTN","BGOVIMM",221,0)
+ S RET=$$CHKVISIT^BGOUTL(VIEN)
+"RTN","BGOVIMM",222,0)
+ Q:RET
+"RTN","BGOVIMM",223,0)
+ D DELETE^BIRPC3(.RET,VFIEN,$S(FNUM=$$FNUM:"I",1:"S"))
+"RTN","BGOVIMM",224,0)
+ S RET=$$IMMERR(RET)
+"RTN","BGOVIMM",225,0)
+ D:'RET VFEVT^BGOUTL2(FNUM,VFIEN,2,DATA)
+"RTN","BGOVIMM",226,0)
+ Q
+"RTN","BGOVIMM",227,0)
+ ; Delete ICD9 code
+"RTN","BGOVIMM",228,0)
+DELICD(ICD,VIEN,DFN,PRV) ;EP
+"RTN","BGOVIMM",229,0)
+ N RET,VPOV,X0,X12
+"RTN","BGOVIMM",230,0)
+ Q:"E"[$P($G(^AUPNVSIT(VIEN,0)),U,7)!'$G(ICD) ""
+"RTN","BGOVIMM",231,0)
+ S VPOV=0
+"RTN","BGOVIMM",232,0)
+ F  S VPOV=$O(^AUPNVPOV("AD",VIEN,VPOV)) Q:'VPOV  D  Q:$D(RET)
+"RTN","BGOVIMM",233,0)
+ .S X0=$G(^AUPNVPOV(VPOV,0)),X12=$G(^(12))
+"RTN","BGOVIMM",234,0)
+ .Q:ICD'=+X0
+"RTN","BGOVIMM",235,0)
+ .I $G(PRV),$P(X12,U,4)'=PRV Q
+"RTN","BGOVIMM",236,0)
+ .D VFDEL^BGOUTL2(.RET,9000010.07,VPOV)
+"RTN","BGOVIMM",237,0)
+ Q $G(RET)
+"RTN","BGOVIMM",238,0)
+ ; Delete CPT code(s)
+"RTN","BGOVIMM",239,0)
+DELCPT(CPT,ICD,VIEN,DFN,PRV,SITE,DATE,CNSL) ;EP
+"RTN","BGOVIMM",240,0)
+ N RET
+"RTN","BGOVIMM",241,0)
+ S RET=""
+"RTN","BGOVIMM",242,0)
+ ;Patch 9 IHS/MSC/MGH CPT codes no longer added or deleted
+"RTN","BGOVIMM",243,0)
+ Q RET
+"RTN","BGOVIMM",244,0)
+ Q:"E"[$P($G(^AUPNVSIT(VIEN,0)),U,7) ""
+"RTN","BGOVIMM",245,0)
+ S:CPT CPT=$$ADJCPT(CPT,DFN,DATE,.CNSL)
+"RTN","BGOVIMM",246,0)
+ S:CPT RET=$$DC1(CPT,VIEN,.PRV)
+"RTN","BGOVIMM",247,0)
+ Q:RET RET
+"RTN","BGOVIMM",248,0)
+ I 'RET D
+"RTN","BGOVIMM",249,0)
+ .N C
+"RTN","BGOVIMM",250,0)
+ .I SITE'="O",SITE'="IN" F C=90465,90466,90471,90472 S C(C)=""
+"RTN","BGOVIMM",251,0)
+ .E  F C=90467,90468,90473,90474 S C(C)=""
+"RTN","BGOVIMM",252,0)
+ .S RET=$$DC1(.C,VIEN,.PRV,.ICD)
+"RTN","BGOVIMM",253,0)
+ I 'RET D
+"RTN","BGOVIMM",254,0)
+ .N C
+"RTN","BGOVIMM",255,0)
+ .S C=$$SYRCPT(SITE)
+"RTN","BGOVIMM",256,0)
+ .S:C RET=$$DC1(C,VIEN,.PRV)
+"RTN","BGOVIMM",257,0)
+ Q RET
+"RTN","BGOVIMM",258,0)
+ ; Delete CPT in visit
+"RTN","BGOVIMM",259,0)
+DC1(CPTS,VIEN,PRV,ICD) ;
+"RTN","BGOVIMM",260,0)
+ N C,X0,X12,VCPT,RET,QTY
+"RTN","BGOVIMM",261,0)
+ S VCPT=0
+"RTN","BGOVIMM",262,0)
+ S:$D(CPTS)=1 CPTS(CPTS)=""
+"RTN","BGOVIMM",263,0)
+ F  S VCPT=$O(^AUPNVCPT("AD",VIEN,VCPT)) Q:'VCPT  D  Q:$D(RET)
+"RTN","BGOVIMM",264,0)
+ .S X0=$G(^AUPNVCPT(VCPT,0)),X12=$G(^(12)),C=$P(X0,U)
+"RTN","BGOVIMM",265,0)
+ .Q:$G(PRV)'=$P(X12,U,4)
+"RTN","BGOVIMM",266,0)
+ .Q:$G(ICD)'=$P(X0,U,5)
+"RTN","BGOVIMM",267,0)
+ .Q:'$D(CPTS(C))
+"RTN","BGOVIMM",268,0)
+ .S QTY=$P(X0,U,16)
+"RTN","BGOVIMM",269,0)
+ .I QTY>1 D
+"RTN","BGOVIMM",270,0)
+ ..D SETQTY^BGOVCPT(.RET,VCPT_U_(QTY-1))
+"RTN","BGOVIMM",271,0)
+ .E  D VFDEL^BGOUTL2(.RET,9000010.18,VCPT)
+"RTN","BGOVIMM",272,0)
+ Q $G(RET)
+"RTN","BGOVIMM",273,0)
+ ; Get syringe CPT
+"RTN","BGOVIMM",274,0)
+SYRCPT(SITE) ;
+"RTN","BGOVIMM",275,0)
+ Q $S(SITE="O":"",SITE="IN":"",1:$O(^ICPT("B","A4206",0)))
+"RTN","BGOVIMM",276,0)
+ ; Get administration CPT
+"RTN","BGOVIMM",277,0)
+ADMINCPT(VIEN,CPT,SITE) ;
+"RTN","BGOVIMM",278,0)
+ N C,X,Y,CPT2,CNT
+"RTN","BGOVIMM",279,0)
+ S (X,Y,CNT)=0,CPT2=90471
+"RTN","BGOVIMM",280,0)
+ F  S X=$O(^AUPNVCPT("AD",VIEN,X)) Q:'X!Y  D
+"RTN","BGOVIMM",281,0)
+ .S C=$P($G(^AUPNVCPT(X,0)),U)
+"RTN","BGOVIMM",282,0)
+ .S:(C=90471)!(C=90473)!(C=90465)!(C=90467) CPT2=90472
+"RTN","BGOVIMM",283,0)
+ .S:C=CPT Y=1
+"RTN","BGOVIMM",284,0)
+ Q:Y ""                                                                ; Already exists
+"RTN","BGOVIMM",285,0)
+ S:SITE="O"!(SITE="IN") CPT2=$S(CPT2=90471:90473,1:90474)
+"RTN","BGOVIMM",286,0)
+ Q CPT2
+"RTN","BGOVIMM",287,0)
+ ; Adjust CPT code for age
+"RTN","BGOVIMM",288,0)
+ADJCPT(CPT,DFN,DATE,CNSL) ;
+"RTN","BGOVIMM",289,0)
+ Q $S('$G(CNSL,1):CPT,$$PTAGE^BGOUTL(DFN,DATE)'<8:CPT,CPT=90471:90465,CPT=90472:90466,CPT=90473:90467,CPT=90474:90468,1:CPT)
+"RTN","BGOVIMM",290,0)
+ ; Add an ICD9 code
+"RTN","BGOVIMM",291,0)
+ADDICD(ICDIEN,VIEN,DFN,PRV) ;EP
+"RTN","BGOVIMM",292,0)
+ N X,Y,RET,APCDALVR,DLAYGO,ICD,ICDNAME
+"RTN","BGOVIMM",293,0)
+ Q:$$GET^XPAR("ALL","BGO IMM STOP ADDING ICD CODES") 0
+"RTN","BGOVIMM",294,0)
+ S (X,Y)=0
+"RTN","BGOVIMM",295,0)
+ F  S X=$O(^AUPNVPOV("AD",VIEN,X)) Q:'X!Y  S Y=ICDIEN=$P($G(^AUPNVPOV(X,0)),U)
+"RTN","BGOVIMM",296,0)
+ ;IHS/MSC/MGH Patch 12
+"RTN","BGOVIMM",297,0)
+ I $$AICD^BGOUTL2 S ICDNAME=$$ICDDX^ICDEX(+ICDIEN,$$NOW^XLFDT,"","I")
+"RTN","BGOVIMM",298,0)
+ E  S ICDNAME=$P($G(^ICD9(+ICDIEN,0)),U,3)
+"RTN","BGOVIMM",299,0)
+ D:'Y SET^BGOVPOV(.RET,U_VIEN_U_"`"_ICDIEN_U_DFN_U_ICDNAME_"^^^^^^^^^^"_PRV)
+"RTN","BGOVIMM",300,0)
+ ;D:'Y SET^BGOVPOV(.RET,U_VIEN_U_"`"_ICDIEN_U_DFN_U_$P($G(^ICD9(+ICDIEN,0)),U,3)_"^^^^^^^^^^"_PRV)
+"RTN","BGOVIMM",301,0)
+ Q $G(RET)
+"RTN","BGOVIMM",302,0)
+ ; Add/Edit immunization
+"RTN","BGOVIMM",303,0)
+ ;  INP = Visit IEN [1] ^ Historical [2] ^ Patient IEN [3] ^ Imm IEN [4] ^ V File IEN [5] ^
+"RTN","BGOVIMM",304,0)
+ ;        Provider IEN [6] ^ Location [7] ^ Other Location [8] ^ Imm Date [9] ^ Lot # [10] ^
+"RTN","BGOVIMM",305,0)
+ ;        Reaction [11] ^ VIS Date [12] ^ Dose Override [13] ^ Inj Site [14] ^ Volume [15] ^
+"RTN","BGOVIMM",306,0)
+ ;        Counselled [16] ^ VFC Eligibility [17] ^ admin comments [18]
+"RTN","BGOVIMM",307,0)
+SET(RET,INP) ;EP
+"RTN","BGOVIMM",308,0)
+ N V,CPT,ICD,VFIEN,VOL,OVRD,VIEN,DFN,TYPE,LOT,RXN,PRV,VISD,CNSL
+"RTN","BGOVIMM",309,0)
+ N EVNTDT,LOCIEN,OUTLOC,HIST,CAT,INJS,IMMNM,FNUM,VFNEW,ARG,OFF,VFC,VFCIEN
+"RTN","BGOVIMM",310,0)
+ S RET="",FNUM=$$FNUM,V="|"
+"RTN","BGOVIMM",311,0)
+ S OFF=$S($G(DUZ("AG"))="I":0,1:9999999)
+"RTN","BGOVIMM",312,0)
+ S VIEN=+INP
+"RTN","BGOVIMM",313,0)
+ S HIST=$P(INP,U,2)
+"RTN","BGOVIMM",314,0)
+ I 'VIEN,'HIST S RET=$$ERR^BGOUTL(1002) Q
+"RTN","BGOVIMM",315,0)
+ S DFN=+$P(INP,U,3)
+"RTN","BGOVIMM",316,0)
+ S TYPE=+$P(INP,U,4)
+"RTN","BGOVIMM",317,0)
+ S VFIEN=$P(INP,U,5)
+"RTN","BGOVIMM",318,0)
+ S VFNEW='VFIEN
+"RTN","BGOVIMM",319,0)
+ S PRV=$P(INP,U,6)
+"RTN","BGOVIMM",320,0)
+ S LOCIEN=$P(INP,U,7)
+"RTN","BGOVIMM",321,0)
+ S OUTLOC=$P(INP,U,8)
+"RTN","BGOVIMM",322,0)
+ S EVNTDT=$$CVTDATE^BGOUTL($P(INP,U,9))
+"RTN","BGOVIMM",323,0)
+ I 'DFN!'TYPE S RET=$$ERR^BGOUTL(1008) Q
+"RTN","BGOVIMM",324,0)
+ S CAT=$P($G(^AUPNVSIT(VIEN,0)),U,7)
+"RTN","BGOVIMM",325,0)
+ S:CAT="E" HIST=1
+"RTN","BGOVIMM",326,0)
+ I HIST D  Q:RET<0
+"RTN","BGOVIMM",327,0)
+ .S PRV=""
+"RTN","BGOVIMM",328,0)
+ .S RET=$$MAKEHIST^BGOUTL(DFN,EVNTDT,$S($L(OUTLOC):OUTLOC,1:LOCIEN),VIEN)
+"RTN","BGOVIMM",329,0)
+ .S:RET>0 VIEN=RET,CAT="E",RET=""
+"RTN","BGOVIMM",330,0)
+ S RET=$$CHKVISIT^BGOUTL(VIEN,DFN)
+"RTN","BGOVIMM",331,0)
+ Q:RET
+"RTN","BGOVIMM",332,0)
+ S LOT=$P(INP,U,10)
+"RTN","BGOVIMM",333,0)
+ S RXN=$P(INP,U,11)                                                    ; Reaction
+"RTN","BGOVIMM",334,0)
+ S VISD=$P(INP,U,12)
+"RTN","BGOVIMM",335,0)
+ S OVRD=$P(INP,U,13)                                                   ; Dose override
+"RTN","BGOVIMM",336,0)
+ S INJS=$$TOINTRNL^BGOUTL(FNUM,.09+OFF,$P(INP,U,14))                   ; Immunization Site
+"RTN","BGOVIMM",337,0)
+ ;IHS/MSC/MGH Patch 11 take the + off to save 0.5 mg
+"RTN","BGOVIMM",338,0)
+ ;S VOL=+$P(INP,U,15)
+"RTN","BGOVIMM",339,0)
+ S VOL=$P(INP,U,15)
+"RTN","BGOVIMM",340,0)
+ S CNSL=$P(INP,U,16)                                                   ; Patient/family counselled
+"RTN","BGOVIMM",341,0)
+ S VFC=$P(INP,U,17)                                                    ;VFC eligibility for children
+"RTN","BGOVIMM",342,0)
+ I VFC'="" D
+"RTN","BGOVIMM",343,0)
+ .S VFCIEN=$O(^BIELIG("C",VFC,""))
+"RTN","BGOVIMM",344,0)
+ .;S VFC=$S(VFC="Unknown":0,VFC="Not Eligible":1,VFC="Medicaid":2,VFC="Uninsured":3,VFC="Am Indian/AK Native":4,VFC="Federally Qualified":5,VFC="State-specific Elig":6,VFC="Local-specific Elig":7,1:"")
+"RTN","BGOVIMM",345,0)
+ S:'$L(CNSL) CNSL=$P($G(^VA(200,DUZ,"PS")),U)&($$PTAGE^BGOUTL(DFN,EVNTDT)<8)
+"RTN","BGOVIMM",346,0)
+ S ADMIN=$P(INP,U,18)
+"RTN","BGOVIMM",347,0)
+ I 'VFIEN D  Q:RET
+"RTN","BGOVIMM",348,0)
+ .S IMMNM=$$GET1^DIQ(9999999.14,TYPE,.01)
+"RTN","BGOVIMM",349,0)
+ .D VFCHK^BGOUTL2(.RET,FNUM,TYPE,IMMNM,VIEN)
+"RTN","BGOVIMM",350,0)
+ I VFIEN,'HIST D DEL(,VFIEN,2)
+"RTN","BGOVIMM",351,0)
+ S ARG=$$BIARG("I",VIEN,VFIEN,TYPE,PRV)
+"RTN","BGOVIMM",352,0)
+ S:LOT $P(ARG,V,5)=LOT
+"RTN","BGOVIMM",353,0)
+ S:RXN $P(ARG,V,15)=RXN
+"RTN","BGOVIMM",354,0)
+ S $P(ARG,V,16)=$G(VFCIEN)
+"RTN","BGOVIMM",355,0)
+ S $P(ARG,V,17)=VISD
+"RTN","BGOVIMM",356,0)
+ S $P(ARG,V,19)=OVRD
+"RTN","BGOVIMM",357,0)
+ S $P(ARG,V,20)=INJS
+"RTN","BGOVIMM",358,0)
+ S $P(ARG,V,21)=VOL
+"RTN","BGOVIMM",359,0)
+ S $P(ARG,V,27)=ADMIN
+"RTN","BGOVIMM",360,0)
+ I 'HIST D  Q:RET
+"RTN","BGOVIMM",361,0)
+ .;IHS/MSC/MGH Patch 13 stop adding ICD codes
+"RTN","BGOVIMM",362,0)
+ .;S ICD=$$IMMICD(TYPE,VIEN,1),CPT=0
+"RTN","BGOVIMM",363,0)
+ .;IHS/MSC/MGH patch 9 stop adding CPT codes
+"RTN","BGOVIMM",364,0)
+ .;IHS/MSC/MGH this part put back to add CPT to education
+"RTN","BGOVIMM",365,0)
+ .S CPT=$$IMMCPT(TYPE,VIEN,1)
+"RTN","BGOVIMM",366,0)
+ .;S:ICD<0 RET=ICD
+"RTN","BGOVIMM",367,0)
+ .;S:CPT<0 RET=CPT
+"RTN","BGOVIMM",368,0)
+ D BISET(.RET,ARG,FNUM,TYPE,VIEN,VFIEN,EVNTDT)
+"RTN","BGOVIMM",369,0)
+ Q:HIST!(RET'>0)
+"RTN","BGOVIMM",370,0)
+ I RET'<0,CNSL D
+"RTN","BGOVIMM",371,0)
+ .N RET1,TOP
+"RTN","BGOVIMM",372,0)
+ .S TOP=$$IMMTOP
+"RTN","BGOVIMM",373,0)
+ .Q:'TOP
+"RTN","BGOVIMM",374,0)
+ .D SET^BGOVPED(.RET1,U_TOP_U_DFN_U_VIEN_U_PRV_"^^^^"_CPT_"^^^^"_EVNTDT_"^^^^^1")
+"RTN","BGOVIMM",375,0)
+ .S:RET1 RET=RET1
+"RTN","BGOVIMM",376,0)
+ I RET'<0,$G(ICD) D
+"RTN","BGOVIMM",377,0)
+ .N RET1
+"RTN","BGOVIMM",378,0)
+ .;Remove adding ICD codes in Patch 13
+"RTN","BGOVIMM",379,0)
+ .;S RET1=$$ADDICD(ICD,VIEN,DFN,PRV)
+"RTN","BGOVIMM",380,0)
+ .S:RET1 RET=RET1
+"RTN","BGOVIMM",381,0)
+ Q
+"RTN","BGOVIMM",382,0)
+ ; Set data using BI add/edit call
+"RTN","BGOVIMM",383,0)
+BISET(RET,ARG,FNUM,TYPE,VIEN,VFIEN,EVNTDT) ;EP
+"RTN","BGOVIMM",384,0)
+ N VFNEW,FDA
+"RTN","BGOVIMM",385,0)
+ S VFNEW='VFIEN
+"RTN","BGOVIMM",386,0)
+ D ADDEDIT^BIRPC3(.RET,ARG)
+"RTN","BGOVIMM",387,0)
+ S RET=$$IMMERR(.RET)
+"RTN","BGOVIMM",388,0)
+ Q:RET
+"RTN","BGOVIMM",389,0)
+ D VFFND^BGOUTL2(.VFIEN,FNUM,TYPE,VIEN)
+"RTN","BGOVIMM",390,0)
+ S FDA=$NA(FDA(FNUM,VFIEN_","))
+"RTN","BGOVIMM",391,0)
+ S @FDA@(1201)=$S(EVNTDT:EVNTDT,1:"")
+"RTN","BGOVIMM",392,0)
+ ;IHS/MSC/MGH new fields added patch 11
+"RTN","BGOVIMM",393,0)
+ I VFNEW D
+"RTN","BGOVIMM",394,0)
+ .S @FDA@(1216)="N"
+"RTN","BGOVIMM",395,0)
+ .S @FDA@(1217)="`"_DUZ
+"RTN","BGOVIMM",396,0)
+ S @FDA@(1218)="N"
+"RTN","BGOVIMM",397,0)
+ S @FDA@(1219)="`"_DUZ
+"RTN","BGOVIMM",398,0)
+ I FNUM=9000010.11 D
+"RTN","BGOVIMM",399,0)
+ .;Patch 6 Updated to capture user last update
+"RTN","BGOVIMM",400,0)
+ .S @FDA@(1214)="`"_DUZ
+"RTN","BGOVIMM",401,0)
+ I $$UPDATE^BGOUTL(.FDA,"E@")
+"RTN","BGOVIMM",402,0)
+ D VFEVT^BGOUTL2(FNUM,VFIEN,'VFNEW)
+"RTN","BGOVIMM",403,0)
+ S RET=VFIEN
+"RTN","BGOVIMM",404,0)
+ Q
+"RTN","BGOVIMM",405,0)
+ ; Format argument for BI add/edit call
+"RTN","BGOVIMM",406,0)
+BIARG(REC,VIEN,VFIEN,ITM,PRV) ;EP
+"RTN","BGOVIMM",407,0)
+ N X,V,X0,X21
+"RTN","BGOVIMM",408,0)
+ S V="|",X=REC,X0=$G(^AUPNVSIT(VIEN,0)),X21=$G(^(21))
+"RTN","BGOVIMM",409,0)
+ S $P(X,V,2)=$P(X0,U,5)
+"RTN","BGOVIMM",410,0)
+ S $P(X,V,3)=ITM
+"RTN","BGOVIMM",411,0)
+ S $P(X,V,6)=$P(X0,U)
+"RTN","BGOVIMM",412,0)
+ S $P(X,V,7)=$P(X0,U,6)
+"RTN","BGOVIMM",413,0)
+ S $P(X,V,8)=$P(X21,U)
+"RTN","BGOVIMM",414,0)
+ S $P(X,V,9)=$P(X0,U,7)
+"RTN","BGOVIMM",415,0)
+ S $P(X,V,10)=VIEN
+"RTN","BGOVIMM",416,0)
+ S:VFIEN $P(X,V,11)=VFIEN
+"RTN","BGOVIMM",417,0)
+ S:PRV $P(X,V,18)=PRV
+"RTN","BGOVIMM",418,0)
+ S $P(X,V,23)=DUZ(2)
+"RTN","BGOVIMM",419,0)
+ Q X
+"RTN","BGOVIMM",420,0)
+ ; Format error message from immunization package
+"RTN","BGOVIMM",421,0)
+IMMERR(MSG) ;EP
+"RTN","BGOVIMM",422,0)
+ N X
+"RTN","BGOVIMM",423,0)
+ S X=$P($G(MSG),$C(31),3)
+"RTN","BGOVIMM",424,0)
+ S:X[" #" X=$P(X," #")
+"RTN","BGOVIMM",425,0)
+ Q $S($L(X):$$ERR^BGOUTL(1082,X),1:"")
+"RTN","BGOVIMM",426,0)
+ ; Add record to output
+"RTN","BGOVIMM",427,0)
+ADD(X) S CNT=CNT+1,@RET@(CNT)=$TR(X,"|",U)
+"RTN","BGOVIMM",428,0)
+ Q
+"RTN","BGOVIMM",429,0)
+ ; Return V File #
+"RTN","BGOVIMM",430,0)
+FNUM() Q 9000010.11
+"RTN","BGOVIMM2")
+0^2^B42280522
+"RTN","BGOVIMM2",1,0)
+BGOVIMM2 ;IHS/BAO/TMD  BGO - IMMUNIZATION mgt;03-Sep-2015 14:58;DKM
+"RTN","BGOVIMM2",2,0)
+ ;;1.1;BGO COMPONENTS;**1,3,4,6,10,11,12,13**;Mar 20, 2007;Build 4
+"RTN","BGOVIMM2",3,0)
+ ;---------------------------------------------
+"RTN","BGOVIMM2",4,0)
+ ; Get case data
+"RTN","BGOVIMM2",5,0)
+GETCASE(RET,DFN) ;EP
+"RTN","BGOVIMM2",6,0)
+ K RET
+"RTN","BGOVIMM2",7,0)
+ I '$D(^BIP(DFN,0)) S RET(0)=$$ERR^BGOUTL(1083)
+"RTN","BGOVIMM2",8,0)
+ E  D GETS^DIQ(9002084,DFN,".1;.09;.13;.08;.16;.12;.15;.11","IE","RET")
+"RTN","BGOVIMM2",9,0)
+ Q
+"RTN","BGOVIMM2",10,0)
+ ; Add/edit patient immunization registry entry
+"RTN","BGOVIMM2",11,0)
+ ;  INP = Patient IEN [1] ^ Case Manager IEN [2] ^ Parent [3] ^ Other Info [4] ^ Activate Flag [5] ^
+"RTN","BGOVIMM2",12,0)
+ ;        Inactive Date [6] ^ Inactive Reason [7] ^ Tx Location [8] ^ Forecast Inf/Pneu [9] ^
+"RTN","BGOVIMM2",13,0)
+ ;        Mother HBSAg Status [10]
+"RTN","BGOVIMM2",14,0)
+SETREG(RET,INP) ;EP
+"RTN","BGOVIMM2",15,0)
+ N DFNX,CM,PARENT,OTH,ACTIVATE,INACT,REAS,MOV,FLU,HBSAG,FDA
+"RTN","BGOVIMM2",16,0)
+ S RET=""
+"RTN","BGOVIMM2",17,0)
+ S DFNX=+$G(INP)
+"RTN","BGOVIMM2",18,0)
+ I '$D(^DPT(DFNX,0)) S RET=$$ERR^BGOUTL(1001) Q
+"RTN","BGOVIMM2",19,0)
+ S CM=$P(INP,U,2)
+"RTN","BGOVIMM2",20,0)
+ S PARENT=$P(INP,U,3)
+"RTN","BGOVIMM2",21,0)
+ S OTH=$P(INP,U,4)
+"RTN","BGOVIMM2",22,0)
+ S ACTIVATE=$P(INP,U,5)
+"RTN","BGOVIMM2",23,0)
+ S INACT=$P(INP,U,6)
+"RTN","BGOVIMM2",24,0)
+ S REAS=$P(INP,U,7)
+"RTN","BGOVIMM2",25,0)
+ S MOV=$P(INP,U,8)
+"RTN","BGOVIMM2",26,0)
+ S FLU=$P(INP,U,9)
+"RTN","BGOVIMM2",27,0)
+ S HBSAG=$P(INP,U,10)
+"RTN","BGOVIMM2",28,0)
+ D:'$D(^BIP(DFNX)) ADDPAT^BIPATE(DFNX,DUZ(2),.RET)
+"RTN","BGOVIMM2",29,0)
+ S RET=$$IMMERR^BGOVIMM(.RET)
+"RTN","BGOVIMM2",30,0)
+ Q:RET
+"RTN","BGOVIMM2",31,0)
+ S FDA=$NA(FDA(9002084,DFNX_","))
+"RTN","BGOVIMM2",32,0)
+ I $L(ACTIVATE),$P(^BIP(DFNX,0),U,8) S (INACT,REAS,MOV)="@"
+"RTN","BGOVIMM2",33,0)
+ S:CM @FDA@(.1)="`"_CM
+"RTN","BGOVIMM2",34,0)
+ S @FDA@(.09)=PARENT
+"RTN","BGOVIMM2",35,0)
+ S @FDA@(.13)=OTH
+"RTN","BGOVIMM2",36,0)
+ S @FDA@(.08)=INACT
+"RTN","BGOVIMM2",37,0)
+ S @FDA@(.16)=REAS
+"RTN","BGOVIMM2",38,0)
+ S @FDA@(.12)=MOV
+"RTN","BGOVIMM2",39,0)
+ S @FDA@(.15)=FLU
+"RTN","BGOVIMM2",40,0)
+ S @FDA@(.11)=HBSAG
+"RTN","BGOVIMM2",41,0)
+ S RET=$$UPDATE^BGOUTL(.FDA,"E")
+"RTN","BGOVIMM2",42,0)
+ Q
+"RTN","BGOVIMM2",43,0)
+ ; Get Primary Provider for VIMM IEN
+"RTN","BGOVIMM2",44,0)
+PRIPRV(RET,VIMMIEN) ;EP
+"RTN","BGOVIMM2",45,0)
+ S RET=$$PRIPRV^BGOUTL($P($G(^AUPNVIMM(+VIMMIEN,0)),U,3))
+"RTN","BGOVIMM2",46,0)
+ Q
+"RTN","BGOVIMM2",47,0)
+ ; Retrieve lot #'s associated with a vaccine
+"RTN","BGOVIMM2",48,0)
+ ; IMM = Immunization type IEN
+"RTN","BGOVIMM2",49,0)
+ ; Returned as a list of records in the format:
+"RTN","BGOVIMM2",50,0)
+ ;  Lot IEN ^ Name ^ Manufacturer ^ Exp Date
+"RTN","BGOVIMM2",51,0)
+LOT(RET,IMM) ;EP
+"RTN","BGOVIMM2",52,0)
+ N CNT,FLG,LOT
+"RTN","BGOVIMM2",53,0)
+ S RET=$$TMPGBL^BGOUTL
+"RTN","BGOVIMM2",54,0)
+ S CNT=0,IMM=+$G(IMM),FLG=IMM
+"RTN","BGOVIMM2",55,0)
+ F  D:IMM  Q:FLG  S IMM=$O(^AUTTIML("C",IMM)) Q:'IMM
+"RTN","BGOVIMM2",56,0)
+ .S LOT=0
+"RTN","BGOVIMM2",57,0)
+ .F  S LOT=$O(^AUTTIML("C",IMM,LOT)) Q:'LOT  D
+"RTN","BGOVIMM2",58,0)
+ ..N X,NAME,MANUFAC,EXPDT
+"RTN","BGOVIMM2",59,0)
+ ..S X=$G(^AUTTIML(LOT,0))
+"RTN","BGOVIMM2",60,0)
+ ..Q:'$L(X)
+"RTN","BGOVIMM2",61,0)
+ ..Q:$P(X,U,3)=1
+"RTN","BGOVIMM2",62,0)
+ ..;IHS/MSC/MGH P14 Facility specific lot
+"RTN","BGOVIMM2",63,0)
+ ..Q:(($P(X,U,14))&($P(X,U,14)'=$G(DUZ(2)))) ""
+"RTN","BGOVIMM2",64,0)
+ ..S NAME=$P(X,U)
+"RTN","BGOVIMM2",65,0)
+ ..S MANUFAC=$P(X,U,2)
+"RTN","BGOVIMM2",66,0)
+ ..S:MANUFAC MANUFAC=$P($G(^AUTTIMAN(MANUFAC,0)),U)
+"RTN","BGOVIMM2",67,0)
+ ..S EXPDT=$$FMTDATE^BGOUTL($P(X,U,9))
+"RTN","BGOVIMM2",68,0)
+ ..S CNT=CNT+1,@RET@(CNT)=LOT_U_NAME_U_MANUFAC_U_EXPDT
+"RTN","BGOVIMM2",69,0)
+ Q
+"RTN","BGOVIMM2",70,0)
+ ; Add a contraindication
+"RTN","BGOVIMM2",71,0)
+ ;   INP = Patient IEN [1] ^ Vaccine IEN [2] ^ Reason IEN [3] ^ Visit Date [4]
+"RTN","BGOVIMM2",72,0)
+SETCONT(RET,INP) ;EP
+"RTN","BGOVIMM2",73,0)
+ N DATE,REFDT,DFN,VACP,RSN,FDA,NEW,IEN,IENX,X,CT
+"RTN","BGOVIMM2",74,0)
+ S CT=""
+"RTN","BGOVIMM2",75,0)
+ S DFN=+INP
+"RTN","BGOVIMM2",76,0)
+ I '$D(^DPT(DFN,0)) S RET=$$ERR^BGOUTL(1001) Q
+"RTN","BGOVIMM2",77,0)
+ S VACP=+$P(INP,U,2)
+"RTN","BGOVIMM2",78,0)
+ I '$D(^AUTTIMM(VACP,0)) S RET=$$ERR^BGOUTL(1084) Q
+"RTN","BGOVIMM2",79,0)
+ S RSN=+$P(INP,U,3)
+"RTN","BGOVIMM2",80,0)
+ S DATE=$P(INP,U,4)
+"RTN","BGOVIMM2",81,0)
+ S IEN=0
+"RTN","BGOVIMM2",82,0)
+ F  S IEN=$O(^BIPC("B",DFN,IEN)) Q:'IEN  D  Q:$D(X)
+"RTN","BGOVIMM2",83,0)
+ .S X=$G(^BIPC(IEN,0))
+"RTN","BGOVIMM2",84,0)
+ .I +X=DFN,$P(X,U,2)=VACP,$P(X,U,3)=RSN Q
+"RTN","BGOVIMM2",85,0)
+ .K X
+"RTN","BGOVIMM2",86,0)
+ S NEW='IEN
+"RTN","BGOVIMM2",87,0)
+ S FDA=$NA(FDA(9002084.11,$S(NEW:"+1,",1:IEN_",")))
+"RTN","BGOVIMM2",88,0)
+ S @FDA@(.01)="`"_DFN
+"RTN","BGOVIMM2",89,0)
+ S @FDA@(.02)="`"_VACP
+"RTN","BGOVIMM2",90,0)
+ S @FDA@(.03)="`"_RSN
+"RTN","BGOVIMM2",91,0)
+ ;IHS/MSC/MGH Patch 10 save date for refusal file
+"RTN","BGOVIMM2",92,0)
+ S DATE=$S(DATE:DATE,1:DT)
+"RTN","BGOVIMM2",93,0)
+ S @FDA@(.04)=DATE
+"RTN","BGOVIMM2",94,0)
+ S RET=$$UPDATE^BGOUTL(.FDA,"E",.IENX)
+"RTN","BGOVIMM2",95,0)
+ Q:RET
+"RTN","BGOVIMM2",96,0)
+ S:NEW IEN=$G(IENX(1))
+"RTN","BGOVIMM2",97,0)
+ ;IHS/MSC/MGH add concept CT for refusal contraindication only
+"RTN","BGOVIMM2",98,0)
+ I $$UP^XLFSTR($P($G(^BICONT(RSN,0)),U))["REFUSAL" D
+"RTN","BGOVIMM2",99,0)
+ .S CT=443390004
+"RTN","BGOVIMM2",100,0)
+ .S RET=$$REFSET2^BGOUTL2(DFN,DATE,VACP,"IMMUNIZATION","R","","","",CT)
+"RTN","BGOVIMM2",101,0)
+ S:'RET RET=IEN
+"RTN","BGOVIMM2",102,0)
+ D:RET>0 BRDCAST^RGNETBEV("CONTRAINDICATION."_DFN_".IMMUNIZATION",IEN_U_$G(RGNETB("UID"))_U_'NEW)
+"RTN","BGOVIMM2",103,0)
+ Q
+"RTN","BGOVIMM2",104,0)
+ ; Delete a contraindication
+"RTN","BGOVIMM2",105,0)
+DELCONT(RET,IEN) ;EP
+"RTN","BGOVIMM2",106,0)
+ N DFN
+"RTN","BGOVIMM2",107,0)
+ S DFN=+$G(^BIPC(IEN,0))
+"RTN","BGOVIMM2",108,0)
+ Q:'DFN
+"RTN","BGOVIMM2",109,0)
+ ;S RET=$$DELETE^BGOUTL("^BIPC(",IEN)
+"RTN","BGOVIMM2",110,0)
+ D DELCONT^BIRPC4(.RET,IEN)
+"RTN","BGOVIMM2",111,0)
+ D:'RET BRDCAST^RGNETBEV("CONTRAINDICATION."_DFN_".IMMUNIZATION",IEN_U_$G(RGNETB("UID"))_U_2)
+"RTN","BGOVIMM2",112,0)
+ Q
+"RTN","BGOVIMM2",113,0)
+ ; Get contraindication reasons
+"RTN","BGOVIMM2",114,0)
+ ; Returns a list of records in the format:
+"RTN","BGOVIMM2",115,0)
+ ;  IEN ^ Name
+"RTN","BGOVIMM2",116,0)
+GETCONT(RET,DUMMY) ;EP
+"RTN","BGOVIMM2",117,0)
+ N CNT,X,Y
+"RTN","BGOVIMM2",118,0)
+ S RET=$$TMPGBL^BGOUTL
+"RTN","BGOVIMM2",119,0)
+ S (X,CNT)=0
+"RTN","BGOVIMM2",120,0)
+ F  S X=$O(^BICONT(X)) Q:'X  D
+"RTN","BGOVIMM2",121,0)
+ .S Y=$P($G(^BICONT(X,0)),U)
+"RTN","BGOVIMM2",122,0)
+ .S:$L(Y) CNT=CNT+1,@RET@(CNT)=X_U_Y
+"RTN","BGOVIMM2",123,0)
+ Q
+"RTN","BGOVIMM2",124,0)
+ ; Return immunization profile
+"RTN","BGOVIMM2",125,0)
+PROFILE(RET,DFN) ;EP
+"RTN","BGOVIMM2",126,0)
+ D IMMPROF^BIRPC(.RET,+DFN,"","")
+"RTN","BGOVIMM2",127,0)
+ S:$A($G(@RET@(1)))=31 @RET@(1)=$$IMMERR^BGOVIMM(@RET@(1))
+"RTN","BGOVIMM2",128,0)
+ Q
+"RTN","BGOVIMM2",129,0)
+ ; Return fully resolved immunization letter
+"RTN","BGOVIMM2",130,0)
+ ;  INP = Patient IEN [1] ^ Letter IEN [2] ^ Text of Date/Location Line [3] ^ Forecast Date [4]
+"RTN","BGOVIMM2",131,0)
+PRINT(RET,INP) ;EP
+"RTN","BGOVIMM2",132,0)
+ N BIDFN,BIDLOC,BIFDT,BIPCS,BILET,S,N
+"RTN","BGOVIMM2",133,0)
+ S RET=$NA(^UTILITY($J,"W"))
+"RTN","BGOVIMM2",134,0)
+ K @RET
+"RTN","BGOVIMM2",135,0)
+ S BIDFN=+INP
+"RTN","BGOVIMM2",136,0)
+ S BILET=$P(INP,U,2)
+"RTN","BGOVIMM2",137,0)
+ S BIDLOC=$P(INP,U,3)
+"RTN","BGOVIMM2",138,0)
+ S BIFDT=$P(INP,U,4)
+"RTN","BGOVIMM2",139,0)
+ S S=$S($D(^BISITE(DUZ(2),0)):DUZ(2),1:+^AUTTSITE(1,0))
+"RTN","BGOVIMM2",140,0)
+ S BILET=$S(BILET=1:$P($G(^BISITE(S,0)),U,4),1:$P($G(^BISITE(S,0)),U,13))
+"RTN","BGOVIMM2",141,0)
+ I 'BILET S @RET@(1,0)="ERROR: Missing letter template" Q
+"RTN","BGOVIMM2",142,0)
+ D BUILD^BILETPR1(BIDFN,BILET,BIDLOC,BIFDT)
+"RTN","BGOVIMM2",143,0)
+ I '$D(^TMP("BILET",$J)) S @RET@(1,0)="ERROR: Blank letter template" Q
+"RTN","BGOVIMM2",144,0)
+ ; Resolve embedded functions
+"RTN","BGOVIMM2",145,0)
+ S N=0
+"RTN","BGOVIMM2",146,0)
+ F  S N=$O(^TMP("BILET",$J,N)) Q:'N  D
+"RTN","BGOVIMM2",147,0)
+ .N X,DIWL,DIWR,DIWF
+"RTN","BGOVIMM2",148,0)
+ .S X=^TMP("BILET",$J,N,0),DIWL=1,DIWR=80,DIWF="N"
+"RTN","BGOVIMM2",149,0)
+ .D ^DIWP
+"RTN","BGOVIMM2",150,0)
+ K ^TMP("BILET",$J)
+"RTN","BGOVIMM2",151,0)
+ S ^UTILITY($J,"W",1)=""
+"RTN","BGOVIMM2",152,0)
+ Q
+"RTN","BGOVIMM2",153,0)
+ ;Determine patient's age, if the site is an IHS site,and the default value for the VFC
+"RTN","BGOVIMM2",154,0)
+ ;INP=DFN of patient
+"RTN","BGOVIMM2",155,0)
+ ;RET= [1] IHS (Y/N)^ [2] Age ^ [3] Default
+"RTN","BGOVIMM2",156,0)
+GETVFC(RET,INP) ;EP call to get the VFC default for a patient
+"RTN","BGOVIMM2",157,0)
+ N IHS,AGE,DEFAULT,DFN
+"RTN","BGOVIMM2",158,0)
+ K RET
+"RTN","BGOVIMM2",159,0)
+ S IHS="N",AGE="",DEFAULT=""
+"RTN","BGOVIMM2",160,0)
+ S DFN=$P(INP,U,1)
+"RTN","BGOVIMM2",161,0)
+ I DUZ("AG")="I" D
+"RTN","BGOVIMM2",162,0)
+ .;IHS/MSC/MGH P11 no longer age dependent
+"RTN","BGOVIMM2",163,0)
+ .S IHS="Y"
+"RTN","BGOVIMM2",164,0)
+ .S AGE=$$PTAGE^BGOUTL(DFN)
+"RTN","BGOVIMM2",165,0)
+ .;I AGE<19 D
+"RTN","BGOVIMM2",166,0)
+ .S DEFAULT=$$BENTYP^BIUTL11(DFN)
+"RTN","BGOVIMM2",167,0)
+ .I DEFAULT=1 S DEFAULT="Am Indian/AK Native"
+"RTN","BGOVIMM2",168,0)
+ S RET=IHS_U_AGE_U_DEFAULT
+"RTN","BGOVIMM2",169,0)
+ Q
+"RTN","BGOVIMM2",170,0)
+ ; Add CPT code(s)
+"RTN","BGOVIMM2",171,0)
+ADDCPT(CPT,ICD,VIEN,DFN,PRV,SITE,DATE,CNSL) ;EP
+"RTN","BGOVIMM2",172,0)
+ ;IHS/MSC/MGH Patch 9 CPT codes no longer added or deleted
+"RTN","BGOVIMM2",173,0)
+ Q 0
+"RTN","BGOVIMM2",174,0)
+ N RET,CPT2,CPT3
+"RTN","BGOVIMM2",175,0)
+ Q:$$GET^XPAR("ALL","BGO IMM STOP ADDING CPT CODES") 0
+"RTN","BGOVIMM2",176,0)
+ S:'$G(DATE) DATE=+$G(^AUPNVSIT(VIEN,0))
+"RTN","BGOVIMM2",177,0)
+ S CPT2=$$ADMINCPT^BGOVIMM(VIEN,CPT,SITE),CPT3=$$SYRCPT^BGOVIMM(SITE),RET=0
+"RTN","BGOVIMM2",178,0)
+ Q:'CPT2 RET ; Already exists
+"RTN","BGOVIMM2",179,0)
+ S CPT=$$ADJCPT^BGOVIMM(CPT,DFN,DATE,.CNSL),CPT2=$$ADJCPT^BGOVIMM(CPT2,DFN,DATE,.CNSL)
+"RTN","BGOVIMM2",180,0)
+ S RET=$$ADDCPT^BGOVCPT(CPT,,VIEN,DFN,PRV)
+"RTN","BGOVIMM2",181,0)
+ S:RET'<0 RET=$$ADDCPT^BGOVCPT(CPT2,.ICD,VIEN,DFN,PRV)
+"RTN","BGOVIMM2",182,0)
+ I 'RET,CPT3 S RET=$$ADDCPT^BGOVCPT(CPT3,,VIEN,DFN,PRV)
+"RTN","BGOVIMM2",183,0)
+ Q RET
+"RTN","BGOVIMM2",184,0)
+ ; Return the CPT code IEN for a vaccine and visit
+"RTN","BGOVIMM2",185,0)
+IMMCPT(TYPE,VIEN,ACTV) ;EP
+"RTN","BGOVIMM2",186,0)
+ N X,CVX,CPT,AGE,DFN,DATE
+"RTN","BGOVIMM2",187,0)
+ Q:'VIEN $$ERR^BGOUTL(1002)
+"RTN","BGOVIMM2",188,0)
+ S DFN=$P($G(^AUPNVSIT(VIEN,0)),U,5),DATE=+$G(^(0))
+"RTN","BGOVIMM2",189,0)
+ Q:'DFN!'DATE $$ERR^BGOUTL(1003)
+"RTN","BGOVIMM2",190,0)
+ S AGE=$$PTAGE^BGOUTL(DFN,DATE)
+"RTN","BGOVIMM2",191,0)
+ S X=$G(^AUTTIMM(TYPE,0))
+"RTN","BGOVIMM2",192,0)
+ S CVX=$P(X,U,3)
+"RTN","BGOVIMM2",193,0)
+ S CPT=$P(X,U,11)
+"RTN","BGOVIMM2",194,0)
+ I CVX=15 S CPT=$S(AGE>2:90658,1:90657)  ;ihs=90757
+"RTN","BGOVIMM2",195,0)
+ E  I CVX=43 S CPT=$S(AGE>18:90746,1:90743) ;ihs=90743
+"RTN","BGOVIMM2",196,0)
+ E  I CVX=111 S CPT=90660    ;ihs=none
+"RTN","BGOVIMM2",197,0)
+ I CPT,$G(ACTV) D
+"RTN","BGOVIMM2",198,0)
+ .S X=$$CHKCPT^BGOVCPT(CPT,DATE)
+"RTN","BGOVIMM2",199,0)
+ .S:X<0 CPT=X
+"RTN","BGOVIMM2",200,0)
+ Q CPT
+"RTN","BGOVIMM2",201,0)
+ ;DKA Added DFN to satisfy RPC call from EHR component
+"RTN","BGOVIMM2",202,0)
+GETELIG(RET,DFN) ;Return active eligibility codes
+"RTN","BGOVIMM2",203,0)
+ N ACT,CNT,IEN,NODE
+"RTN","BGOVIMM2",204,0)
+ S RET=$$TMPGBL^BGOUTL
+"RTN","BGOVIMM2",205,0)
+ S CNT=0
+"RTN","BGOVIMM2",206,0)
+ S ACT="" F  S ACT=$O(^BIELIG("AC",0,ACT)) Q:ACT=""  D
+"RTN","BGOVIMM2",207,0)
+ .S IEN=0 F  S IEN=$O(^BIELIG("AC",0,ACT,IEN)) Q:'+IEN  D
+"RTN","BGOVIMM2",208,0)
+ ..S CNT=CNT+1
+"RTN","BGOVIMM2",209,0)
+ ..S NODE=$G(^BIELIG(IEN,0))
+"RTN","BGOVIMM2",210,0)
+ ..S @RET@(CNT)=IEN_U_$P(NODE,U,1)_U_$P(NODE,U,2)_U_$P(NODE,U,4)
+"RTN","BGOVIMM2",211,0)
+ Q
+"VER")
+8.0^22.0
+**END**
+**END**

@@ -4,7 +4,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 	<window id="winCase" title="Edit Patient Case Data" width="450px"
-		apply="${rpmsImmunizationsPatientCaseDataController}">
+		apply="${rpmsImmunizationsPatientCaseDataController}"
+		mold="bootstrap">
 		<hlayout>
 			<vlayout spacing="10px" width="350px">
 				<separator height="5px" />
@@ -46,9 +47,11 @@
 			</vlayout>
 			<toolbar mold="panel" orient="vertical" hflex="1" vflex="1"
 				style="border-left: solid 0px; padding-left: 15px">
-				<button id="btnSave" label="Ok" width="60px" tooltiptext="Add Case Data"/>
+				<button id="btnSave" zclass="btn" sclass="btn-success"
+					label="Ok" hflex="1" tooltiptext="Add Case Data" />
 				<separator height="5px" />
-				<button id="btnCancel" label="Cancel" width="60px" tooltiptext="Cancel and Reset Data"/>
+				<button id="btnCancel" zclass="btn" sclass="btn-danger"
+					label="Cancel" hflex="1" tooltiptext="Cancel and Reset Data" />
 
 			</toolbar>
 		</hlayout>
@@ -57,12 +60,14 @@
 				<div width="75px" style="text-align: right">
 					<label id="lblInactiveDate">Inactive Date</label>
 				</div>
-				<datebox id="datInactiveDate" width="110px" constraint="no future"/>
-				<button id="btnInactiveDate" label="..." visible="false"/>
+				<datebox id="datInactiveDate" width="110px"
+					constraint="no future" />
+				<button id="btnInactiveDate" label="..."
+					visible="false" />
 				<div width="55px"
-						style="text-align: right; display:inline:inline-block">
-						<label id="lblInactiveReason" pre="true" />
-						<zscript>
+					style="text-align: right; display:inline:inline-block">
+					<label id="lblInactiveReason" pre="true" />
+					<zscript>
 							lblInactiveReason.setValue("Inactive\nReason");
 						</zscript>
 					</div>
@@ -90,6 +95,6 @@
 			</div>
 			<combobox id="cboMother" />
 		</hlayout>
-<separator height="10px"/>
+		<separator height="10px"/>
 	</window>
 </zk>

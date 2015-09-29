@@ -19,6 +19,7 @@ import org.carewebframework.api.event.EventManager;
 import org.carewebframework.api.event.EventUtil;
 import org.carewebframework.api.event.IEventManager;
 import org.carewebframework.api.event.IGenericEvent;
+import org.carewebframework.cal.api.encounter.EncounterContext;
 import org.carewebframework.cal.api.encounter.EncounterContext.IEncounterContextEvent;
 import org.carewebframework.cal.api.patient.PatientContext;
 import org.carewebframework.cal.api.patient.PatientContext.IPatientContextEvent;
@@ -33,20 +34,26 @@ import org.carewebframework.ui.command.CommandUtil;
 import org.carewebframework.ui.zk.ListUtil;
 import org.carewebframework.ui.zk.ReportBox;
 import org.carewebframework.ui.zk.RowComparator;
+import org.carewebframework.ui.zk.ZKUtil;
+import org.carewebframework.vista.ui.encounter.EncounterUtil;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCCompleteEvent;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCErrorEvent;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Menuitem;
 
+import ca.uhn.fhir.model.dstu2.resource.Encounter;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 /**
@@ -80,27 +87,17 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     
     private Image imgMain;
     
+    private Label lblMessage;
+    
     private Listbox lbImmunizations;
     
     private Listbox lbForecast;
     
     private Listbox lbContra;
     
-    private Button btnAdd;
-    
-    private Button btnEdit;
-    
-    private Button btnDelete;
-    
     private Button btnProfile;
     
     private Button btnCaseData;
-    
-    private Menuitem mnuAdd;
-    
-    private Menuitem mnuEdit;
-    
-    private Menuitem mnuDelete;
     
     private Menuitem mnuPrintRecord;
     
@@ -111,10 +108,6 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     private Menuitem mnuCaseData;
     
     private Menuitem mnuVisitDetail;
-    
-    private Menuitem mnuAddContra;
-    
-    private Menuitem mnuDeleteContra;
     
     private String pccEvent;
     
@@ -132,13 +125,11 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     
     private boolean noRefresh;
     
+    private A btnAddImmun;
+    
     private Button btnPrintRecord;
     
     private Button btnDueLetter;
-    
-    private Button btnAddContra;
-    
-    private Button btnDeleteContra;
     
     private final List<ImmunItem> immunList = new ArrayList<ImmunItem>();
     
@@ -304,15 +295,10 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
      */
     public void setHideButtons(boolean hideButtons) {
         this.hideButtons = hideButtons;
-        btnAdd.setVisible(!hideButtons);
-        btnEdit.setVisible(!hideButtons);
-        btnDelete.setVisible(!hideButtons);
         btnProfile.setVisible(!hideButtons);
         btnCaseData.setVisible(!hideButtons && isManager);
         btnPrintRecord.setVisible(!hideButtons);
         btnDueLetter.setVisible(!hideButtons);
-        btnAddContra.setVisible(!hideButtons);
-        btnDeleteContra.setVisible(!hideButtons);
     }
     
     /**
@@ -356,7 +342,6 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
      */
     @Override
     public void onActivate() {
-        log.trace("Plugin Activated");
     }
     
     /**
@@ -467,31 +452,48 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     }
     
     private void updateControls() {
-        boolean b = (PatientContext.getActivePatient() == null) || !bgoSecurity.isEnabled;
+        Patient patient = PatientContext.getActivePatient();
+        Encounter encounter = EncounterContext.getActiveEncounter();
+        showMessage(patient == null ? "No patient selected" : null);
+        boolean b = patient == null || !bgoSecurity.isEnabled;
         //|| !BgoUtil.checkSecurity(true);
+        btnAddImmun.setDisabled(encounter == null || EncounterUtil.isLocked(encounter));
         ImmunItem immun = getSelectedImmun();
-        boolean locked = immun == null ? true : immun.isLocked();
-        btnAdd.setDisabled(b);
-        btnEdit.setDisabled(b || locked);
-        btnDelete.setDisabled(locked);
         btnPrintRecord.setDisabled(b);
         btnDueLetter.setDisabled(b);
         btnProfile.setDisabled(b);
         btnCaseData.setVisible(isManager);
         btnCaseData.setDisabled(b);
-        btnAddContra.setDisabled(b);
-        btnDeleteContra.setDisabled(b || lbContra.getSelectedIndex() < 0);
-        mnuAddContra.setDisabled(btnAddContra.isDisabled());
-        mnuDeleteContra.setDisabled(btnDeleteContra.isDisabled());
-        mnuAdd.setDisabled(btnAdd.isDisabled());
-        mnuEdit.setDisabled(btnEdit.isDisabled());
-        mnuDelete.setDisabled(btnDelete.isDisabled());
         mnuPrintRecord.setDisabled(btnPrintRecord.isDisabled());
         mnuDueLetter.setDisabled(btnDueLetter.isDisabled());
         mnuProfile.setDisabled(btnProfile.isDisabled());
         mnuCaseData.setVisible(btnCaseData.isVisible());
         mnuCaseData.setDisabled(b);
         mnuVisitDetail.setDisabled(immun == null || immun.getEncounter() == null);
+    }
+    
+    /**
+     * Displays a message to client.
+     *
+     * @param message Message to display to client. If null, message label is hidden.
+     */
+    public void showMessage(String message) {
+        showMessage(message, false);
+    }
+    
+    /**
+     * Displays a message to client.
+     *
+     * @param message Message to display to client. If null, message label is hidden.
+     * @param isError If true, highlight the message to indicate an error.
+     */
+    public void showMessage(String message, boolean isError) {
+        message = StrUtil.formatMessage(message);
+        boolean show = message != null;
+        lblMessage.setVisible(show);
+        lblMessage.setValue(show ? message : "");
+        ZKUtil.toggleSclass(lblMessage, "alert-danger", "alert-warning", isError);
+        lblMessage.getNextSibling().setVisible(!show);
     }
     
     private void refreshLists() {
@@ -617,11 +619,13 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
         PatientCaseDataController.execute();
     }
     
-    public void onClick$btnAddContra() {
+    public void onAddContraindication(Event event) {
+        lbContra.setSelectedItem((Listitem) event.getData());
         doCommand(Command.ADDCONTRA);
     }
     
-    public void onClick$btnDeleteContra() {
+    public void onDeleteContraindication(Event event) {
+        lbContra.setSelectedItem((Listitem) event.getData());
         doCommand(Command.DELCONTRA);
     }
     
@@ -678,15 +682,17 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
         }
     }
     
-    public void onClick$btnAdd() {
+    public void onAddImmunization() {
         doCommand(Command.ADD);
     }
     
-    public void onClick$btnEdit() {
+    public void onEditImmunization(Event event) {
+        lbImmunizations.setSelectedItem((Listitem) event.getData());
         doCommand(Command.EDIT);
     }
     
-    public void onClick$btnDelete() {
+    public void onDeleteImmunization(Event event) {
+        lbImmunizations.setSelectedItem((Listitem) event.getData());
         doCommand(Command.DELETE);
     }
     
@@ -703,7 +709,10 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     }
     
     public void onDoubleClick$lbImmunizations() {
-        if (!btnEdit.isDisabled()) {
+        ImmunItem immun = getSelectedImmun();
+        boolean locked = immun == null || immun.isLocked();
+        
+        if (!locked) {
             doCommand(Command.EDIT);
         }
     }

@@ -5,6 +5,9 @@ import org.carewebframework.common.DateUtil;
 import org.carewebframework.common.StrUtil;
 import org.carewebframework.ui.zk.AbstractListitemRenderer;
 
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.A;
+import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 
 public class ImmunizationsRenderer extends AbstractListitemRenderer<ImmunItem, Object> {
@@ -14,6 +17,24 @@ public class ImmunizationsRenderer extends AbstractListitemRenderer<ImmunItem, O
         boolean flag = false;
         
         if (data.isType('I') || (data.isType('R'))) {
+            Listcell cell = createCell(item, null);
+            
+            if (!data.isLocked()) {
+                A anchor = new A();
+                anchor.setIconSclass("glyphicon glyphicon-pencil");
+                anchor.addForward(Events.ON_CLICK, "root", "onEditImmunization", item);
+                cell.appendChild(anchor);
+                anchor = new A();
+                anchor.setIconSclass("glyphicon glyphicon-remove");
+                anchor.addForward(Events.ON_CLICK, "root", "onDeleteImmunization", item);
+                cell.appendChild(anchor);
+            } else {
+                A anchor = new A();
+                anchor.setIconSclass("glyphicon glyphicon-lock");
+                anchor.setDisabled(true);
+                cell.appendChild(anchor);
+            }
+            
             createCell(item, data.getVaccineName());
             createCell(item, data.getDate());
             createCell(item, data.getAge());

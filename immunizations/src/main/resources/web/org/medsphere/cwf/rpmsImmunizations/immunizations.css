@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+.rpmsImmunizations .glyphicon-plus {
+	color: green;
+}
+
+.rpmsImmunizations .glyphicon-remove {
+	color: red;
+}
+
+.rpmsImmunizations .glyphicon-pencil {
+	color: brown;
+}
+
+.rpmsImmunizations .glyphicon-lock {
+	color: lightgray;
+}
+
+.rpmsImmunizations .z-listcell { 
+	border-right: solid lightgray 1px; 
+}
+
+.rpmsImmunizations-current { 
+	color: blue; 
+}
+
+.rpmsImmunizations-highlight * { 
+	color: blue;
+}
+		
+.rpmsImmunizations .z-a:focus {
+	outline: none;
+	text-decoration: none;
+}
+
+.rpmsImmunizations-bold,
+.rpmsImmunizations-bold * {
+	font-weight: bold!important;
+}
+

@@ -4,19 +4,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 	<window id="winMain" title="Add/Edit Immunization" width="550px"
-		apply="${rpmsImmunizationsAddController}">
+		apply="${rpmsImmunizationsAddController}" mold="bootstrap">
 		<hlayout>
-			<vlayout spacing="10px" width="450px">
+			<vlayout spacing="10px" width="450px" style="padding-top: 5px">
 				<hlayout style="text-align:right">
 					<div width="100px">Vaccine</div>
-					<textbox id="txtVaccine" hflex="1" readonly="true"/>
+					<textbox id="txtVaccine" hflex="1" readonly="true" />
 					<button id="btnVaccine" label="..."
 						tooltiptext="Display Vaccines to Select" />
 				</hlayout>
 				<separator bar="true" height="1px" />
 				<hlayout>
 					<div width="100px" style="text-align:right">
-						<label id="lblProv" value="Documented By"/>
+						<label id="lblProv" value="Documented By" />
 					</div>
 					<textbox id="txtProvider" hflex="1"
 						forward="onOK=btnProvider.onClick" />
@@ -28,7 +28,8 @@
 						<div style="text-align:right" width="100px">
 							Event Date
 						</div>
-						<datebox id="datEventDate" hflex="1" constraint="no future"/>
+						<datebox id="datEventDate" hflex="1"
+							constraint="no future" />
 						<button id="btnEventDate" label="..."
 							visible="false" />
 					</hlayout>
@@ -58,7 +59,7 @@
 				<vlayout id="fraCurrent" spacing="10px">
 					<hlayout>
 						<div width="100px"></div>
-						<label id="lblWarn" style="color: red"/>
+						<label id="lblWarn" style="color: red" />
 					</hlayout>
 					<hlayout>
 						<div style="text-align:right" width="100px">
@@ -77,7 +78,7 @@
 							Volume
 						</div>
 						<doublespinner id="spnVolume" width="65px"
-							step="0.05" constraint="min 0 max 5"/>
+							step="0.05" constraint="min 0 max 5" />
 						<div>(ml)</div>
 
 						<div style="text-align:right" width="100px">
@@ -100,7 +101,9 @@
 					</hlayout>
 					<hlayout>
 						<div style="text-align:right" width="100px">
-							<label id="lblVacElig">Vac. Eligibility</label>
+							<label id="lblVacElig">
+								Vac. Eligibility
+							</label>
 						</div>
 						<combobox id="cboVacElig" hflex="1" />
 					</hlayout>
@@ -120,31 +123,31 @@
 							hflex="1" rows="4" maxlength="245" xmlns:w="client"
 							tooltiptext="Comment (max 245 chars.)">
 							<attribute w:name="onKeyPress">
+
 								
 								<![CDATA[ var keyCode = event.which; if
 								(keyCode == 94 || keyCode < 32 ||
 								keyCode >126) event.stop(); ]]>
+								
 														
 							</attribute>
 						</textbox>
 					</hlayout>
 				</vlayout>
 				<vlayout id="fraAdminNote">
-				<hlayout>
-					<div width="100px" style="text-align:right">
-						Admin Notes
-					</div>
-					<textbox id="txtAdminNote" multiline="true"
-						hflex="1" rows="4" maxlength="245" xmlns:w="client">
-						<attribute w:name="onKeyPress">
-							
-							<![CDATA[ var keyCode = event.which; if
-							(keyCode == 94 || keyCode < 32 || keyCode
-							>126) event.stop(); ]]>
-													
+					<hlayout>
+						<div width="100px" style="text-align:right">
+							Admin Notes
+						</div>
+						<textbox id="txtAdminNote" multiline="true"
+							hflex="1" rows="4" maxlength="245" xmlns:w="client">
+							<attribute w:name="onKeyPress">
+								<![CDATA[ var keyCode = event.which; if
+								(keyCode == 94 || keyCode < 32 ||
+								keyCode >126) event.stop(); ]]>
 						</attribute>
-					</textbox>
-				</hlayout>
+						</textbox>
+					</hlayout>
 				</vlayout>
 				<vlayout id="fraReaction">
 					<hlayout>
@@ -162,18 +165,21 @@
 				</vlayout>
 				<separator height="20px" />
 			</vlayout>
-			<toolbar mold="panel" orient="vertical" hflex="1" vflex="1"
-				style="border-left: solid 1px; padding-left: 14px">
-				<button id="btnSave" label="Save" width="60px" />
+			<vlayout hflex="1" vflex="1"
+				style="border-left: solid 1px; padding: 5px">
+				<button id="btnSave" zclass="btn" sclass="btn-success"
+					label="Save" hflex="1"/>
 				<separator height="5px" />
-				<button id="btnCancel" label="Cancel" width="60px" />
+				<button id="btnCancel" zclass="btn" sclass="btn-danger"
+					label="Cancel" hflex="1" />
 				<separator height="50px" />
-				<radiogroup orient="vertical" width="80px" tooltiptext="Select the type of event you wish to record.">
+				<radiogroup orient="vertical"
+					tooltiptext="Select the type of event you wish to record.">
 					<radio id="radCurrent" label=" Current" />
 					<radio id="radHistorical" label=" Historical" />
 					<radio id="radRefusal" label=" Not Done" />
 				</radiogroup>
-			</toolbar>
+			</vlayout>
 		</hlayout>
 	</window>
 </zk>
