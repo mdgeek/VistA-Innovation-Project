@@ -900,7 +900,8 @@ public class AddImmunController extends BgoBaseController<Object> {
     
     private String getParam(String param, String def) {
         String s = getBroker().callRPC("BGOUTL GETPARM", param);
-        return s == null ? def : StrUtil.xlate(s, "&", "");
+        s = StringUtils.isEmpty(s) ? def : s;
+        return s.replace("&", "");
     }
     
     private void updateDialogTitle() {

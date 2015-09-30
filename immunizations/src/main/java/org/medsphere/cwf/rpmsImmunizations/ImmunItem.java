@@ -28,8 +28,6 @@ import ca.uhn.fhir.model.dstu2.resource.Practitioner;
    Location IEN~Name [19] ^ Visit Locked [20] ^ Event Date/Time [21] ^
    Dose Override [22] ^ VPED IEN [23] ^ VFC Eligibility [ 24] ^ Admin Notes [25] ^ Manufacturer [26]
 
-Enter RETURN to continue or '^' to exit:
-  
  For an immunization forecast:
    F ^ Imm Name [2] ^ Status [3]
   
@@ -166,11 +164,12 @@ public class ImmunItem {
     public String getReason() {
         if (contraInd != null) {
             return contraInd.getReason();
-        } else {
-            if (refusal != null) {
-                return refusal.getReason();
-            }
         }
+        
+        if (refusal != null) {
+            return refusal.getReason();
+        }
+        
         return "";
     }
     
@@ -270,17 +269,19 @@ public class ImmunItem {
     }
     
     public boolean delete() {
-        Practitioner provider = getProvider();
-        IUser user = UserContext.getActiveUser();
         if (isImmunization()) {
-            if (provider != null && !user.equals(provider)) {
+            Practitioner provider = getProvider();
+            IUser user = UserContext.getActiveUser();
+            String id = provider == null ? null : provider.getId().getIdPart();
+            
+            if (id != null && !user.getLogicalId().equals(id)) {
                 String s = VistAUtil.getBrokerSession().callRPC("BGOVIMM PRIPRV", immunization.getId().getIdPart());
                 String[] pcs = StrUtil.split(s, StrUtil.U, 2);
                 
                 if (!user.getLogicalId().equals(pcs[0])) {
                     PromptDialog.showError("To delete the vaccination, you must either be the person that entered it or be "
                             + "designated as the primary provider for the visit.\n" + BgoConstants.TC_PRI_PRV + pcs[1]
-                            + "\nExaminer: " + provider.getName(),
+                            + "\nExaminer: " + FhirUtil.formatName(provider.getName()),
                         "Cannot Delete Vaccination");
                     return false;
                 }

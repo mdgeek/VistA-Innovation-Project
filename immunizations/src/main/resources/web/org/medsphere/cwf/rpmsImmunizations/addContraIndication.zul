@@ -20,7 +20,7 @@
 					</labeledelement>
 				</hlayout>
 				<separator bar="true" height="1px" />
-				<listbox id="lstContra" vflex="1">
+				<listbox id="lstContra" vflex="1" rows="10">
 					<listhead>
 						<listheader hflex="1"
 							label="Contraindication Reason" />
