@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+.rpmsImmunizations .glyphicon {
+	margin-left: 3px;
+}
+
 .rpmsImmunizations .glyphicon-plus {
 	color: green;
 }

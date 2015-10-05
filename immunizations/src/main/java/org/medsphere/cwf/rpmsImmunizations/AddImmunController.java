@@ -329,7 +329,7 @@ public class AddImmunController extends BgoBaseController<Object> {
         if (patient == null) {
             return "";
         } else {
-            return "after " + new SimpleDateFormat("yyyyMMdd").format(patient.getBirthDate());
+            return "no future,after " + new SimpleDateFormat("yyyyMMdd").format(patient.getBirthDate());
         }
     }
     
@@ -639,6 +639,8 @@ public class AddImmunController extends BgoBaseController<Object> {
     public void onClick$radFacility() {
         btnLocation.setVisible(true);
         txtLocation.setValue("");
+        txtLocation.setReadonly(true);
+        btnLocation.setFocus(true);
         selLoc = "";
         updateControls();
     }
@@ -647,6 +649,8 @@ public class AddImmunController extends BgoBaseController<Object> {
         btnLocation.setVisible(false);
         txtLocation.setAttribute("ID", null);
         txtLocation.setValue("");
+        txtLocation.setReadonly(false);
+        txtLocation.setFocus(true);
         selLoc = "";
         updateControls();
     }

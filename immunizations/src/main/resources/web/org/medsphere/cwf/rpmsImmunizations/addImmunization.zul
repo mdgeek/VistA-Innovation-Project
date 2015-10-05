@@ -41,13 +41,14 @@
 							Location
 						</div>
 						<textbox id="txtLocation" hflex="1"
+							readonly="true" instant="true"
 							forward="onOK=btnLocation.onClick" />
 						<button id="btnLocation" label="..."
 							tooltiptext="Display Locations to Select" />
 					</hlayout>
 					<hlayout>
 						<div width="100px" />
-						<radiogroup orient="vertical"
+						<radiogroup orient="horizontal"
 							tooltiptext="Select the type of exam event you wish to record.">
 							<radio id="radFacility" label="Facility"
 								selected="true" />

@@ -84,7 +84,7 @@
 							sizedByContent="false"
 							multiple="false" vflex="1" context="contextVacMenu">
 							<listhead sizable="true">
-								<listheader width="30px">
+								<listheader width="40px">
 									<a id="btnAddImmun" forward="onClick=root.onAddImmunization"
 										iconSclass="glyphicon glyphicon-plus" />
 								</listheader>

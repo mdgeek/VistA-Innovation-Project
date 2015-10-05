@@ -19,7 +19,6 @@ import org.carewebframework.api.event.EventManager;
 import org.carewebframework.api.event.EventUtil;
 import org.carewebframework.api.event.IEventManager;
 import org.carewebframework.api.event.IGenericEvent;
-import org.carewebframework.cal.api.encounter.EncounterContext;
 import org.carewebframework.cal.api.encounter.EncounterContext.IEncounterContextEvent;
 import org.carewebframework.cal.api.patient.PatientContext;
 import org.carewebframework.cal.api.patient.PatientContext.IPatientContextEvent;
@@ -35,7 +34,6 @@ import org.carewebframework.ui.zk.ListUtil;
 import org.carewebframework.ui.zk.ReportBox;
 import org.carewebframework.ui.zk.RowComparator;
 import org.carewebframework.ui.zk.ZKUtil;
-import org.carewebframework.vista.ui.encounter.EncounterUtil;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCCompleteEvent;
 import org.carewebframework.vista.ui.mbroker.AsyncRPCErrorEvent;
 
@@ -43,7 +41,6 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zul.A;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
@@ -53,7 +50,6 @@ import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Menuitem;
 
-import ca.uhn.fhir.model.dstu2.resource.Encounter;
 import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 /**
@@ -124,8 +120,6 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     private Listheader colSort;
     
     private boolean noRefresh;
-    
-    private A btnAddImmun;
     
     private Button btnPrintRecord;
     
@@ -453,11 +447,9 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     
     private void updateControls() {
         Patient patient = PatientContext.getActivePatient();
-        Encounter encounter = EncounterContext.getActiveEncounter();
         showMessage(patient == null ? "No patient selected" : null);
         boolean b = patient == null || !bgoSecurity.isEnabled;
         //|| !BgoUtil.checkSecurity(true);
-        btnAddImmun.setDisabled(encounter == null || EncounterUtil.isLocked(encounter));
         ImmunItem immun = getSelectedImmun();
         btnPrintRecord.setDisabled(b);
         btnDueLetter.setDisabled(b);
@@ -684,6 +676,7 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     
     public void onAddImmunization() {
         doCommand(Command.ADD);
+        refresh(); // VistA port does not send event.
     }
     
     public void onEditImmunization(Event event) {
