@@ -204,9 +204,7 @@ public class ImmunSelectorController extends BgoBaseController<String> {
     }
     
     /**
-     * Process onClick event for vaccine selection
-     * 
-     * @capture the selected vaccine
+     * Process onClick event for vaccine selection capture the selected vaccine
      */
     public void onClick$btnSelect() {
         Listitem item = lbVaccines.getSelectedItem();

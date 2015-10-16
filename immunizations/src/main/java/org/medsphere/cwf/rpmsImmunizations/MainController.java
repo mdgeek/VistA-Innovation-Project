@@ -301,6 +301,8 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
+        lblMessage.setZclass("z-toolbar");
+        ZKUtil.updateStyle(lblMessage, "text-align", "center");
         bgoSecurity = BgoUtil.initSecurity("BGO DISABLE IMM EDITING", "BIZ EDIT PATIENTS");
         isManager = getBroker().callRPCBool("RGCWFUSR HASKEYS", "BIZ MANAGER");
         lbImmunizations.setItemRenderer(immunRenderer);

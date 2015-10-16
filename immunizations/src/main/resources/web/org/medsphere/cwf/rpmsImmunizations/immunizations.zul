@@ -55,7 +55,7 @@
 					title="Contraindications">
 					<listbox id="lbContra" vflex="1">
 						<listhead>
-							<listheader width="20px">
+							<listheader width="25px">
 								<a id="btnAddContra" forward="onClick=root.onAddContraindication"
 									iconSclass="glyphicon glyphicon-plus" />
 							</listheader>
