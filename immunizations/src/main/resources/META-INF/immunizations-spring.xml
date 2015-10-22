@@ -29,12 +29,6 @@
 				<cwp:help-resource module="rpmsImmunizationsHelp" />
 				<cwp:css-resource url="~./org/medsphere/cwf/rpmsImmunizations/immunizations.css?1.3" />
 			</cwp:resource>
-			<!-- You may specify plugin level security constraints here:
-			<cwp:security requiresAll="false">
-				<cwp:authority name="PRIV_PRIVNAME"/>
-				<cwp:authority name="ROLE_ROLENAME"/>
-			</cwp:security>
-			-->
 		</cwp:plugin>
 		
 	</beans>
@@ -42,21 +36,29 @@
 <!-- This profile is processed for each managed desktop. -->
 
 	<beans profile="desktop">
-
-		<bean id="rpmsImmunizationsMainController" 
-			class="org.medsphere.cwf.rpmsImmunizations.MainController" 
-			scope="prototype"/>
-		<bean id="rpmsImmunizationsAddController"
-			class="org.medsphere.cwf.rpmsImmunizations.AddImmunController"
-			scope="prototype"/>
-		<bean id="rpmsImmunizationsAddContraController"
-			class="org.medsphere.cwf.rpmsImmunizations.AddImmunContraController"
-			scope="prototype"/>
-		<bean id="rpmsImmunizationsSelectorController"
-			class="org.medsphere.cwf.rpmsImmunizations.ImmunSelectorController"
-			scope="prototype"/>
-		<bean id="rpmsImmunizationsPatientCaseDataController"
-			class="org.medsphere.cwf.rpmsImmunizations.PatientCaseDataController"
-			scope="prototype"/>
+	
+		<bean id="rpmsImmunizationService" class="org.medsphere.cwf.rpmsImmunizations.ImmunService">
+			<property name="brokerSession" ref="brokerSession" />
+		</bean>
+		
+		<bean id="rpmsImmunizationsMainController" scope="prototype"
+			class="org.medsphere.cwf.rpmsImmunizations.MainController">
+			<property name="service" ref="rpmsImmunizationService" />
+		</bean>
+		
+		<bean id="rpmsImmunizationsAddController" scope="prototype"
+			class="org.medsphere.cwf.rpmsImmunizations.AddImmunController">
+			<property name="service" ref="rpmsImmunizationService" />
+		</bean>
+			
+		<bean id="rpmsImmunizationsAddContraController" scope="prototype"
+			class="org.medsphere.cwf.rpmsImmunizations.AddImmunContraController" />
+			
+		<bean id="rpmsImmunizationsSelectorController" scope="prototype"
+			class="org.medsphere.cwf.rpmsImmunizations.ImmunSelectorController" />
+			
+		<bean id="rpmsImmunizationsPatientCaseDataController" scope="prototype"
+			class="org.medsphere.cwf.rpmsImmunizations.PatientCaseDataController" />
+			
 	</beans>
 </beans>

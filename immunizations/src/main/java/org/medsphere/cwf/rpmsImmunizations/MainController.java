@@ -147,6 +147,8 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
     
     private boolean isManager;
     
+    private ImmunService service;
+    
     @Override
     public void onAsyncRPCComplete(AsyncRPCCompleteEvent event) {
         if (event.getRPCName().equals("BGOVIMM GET")) {
@@ -717,4 +719,7 @@ public class MainController extends BgoBaseController<Object>implements IPluginE
             PatientContext.getActivePatient().getId().getIdPart() + "^F");
     }
     
+    public void setService(ImmunService service) {
+        this.service = service;
+    }
 }

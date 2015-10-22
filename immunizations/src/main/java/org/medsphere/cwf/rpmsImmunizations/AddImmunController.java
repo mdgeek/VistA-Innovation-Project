@@ -4,8 +4,6 @@ import static org.carewebframework.common.StrUtil.U;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -152,6 +150,8 @@ public class AddImmunController extends BgoBaseController<Object> {
     
     private String strVFCData;
     
+    private Component lblVIS;
+    
     private Datebox datVIS;
     
     private Checkbox cbCounsel;
@@ -164,15 +164,7 @@ public class AddImmunController extends BgoBaseController<Object> {
     
     private String selLoc;
     
-    private static final Comparator<String> PLComparator = new Comparator<String>() {
-        
-        @Override
-        public int compare(String itm1, String itm2) {
-            String str1 = StrUtil.piece(itm1, U, 2);
-            String str2 = StrUtil.piece(itm2, U, 2);
-            return str1.toString().compareToIgnoreCase(str2.toString());
-        }
-    };
+    private ImmunService service;
     
     private final ComboitemRenderer<String> comboRenderer = new ImmunComboRenderer();
     
@@ -197,8 +189,10 @@ public class AddImmunController extends BgoBaseController<Object> {
         this.immunItem = (ImmunItem) params.get(0);
         Window win = (Window) root;
         win.setTitle(StrUtil.formatMessage(win.getTitle(), immunItem == null ? "Add" : "Edit"));
-        strVFCData = getVFCData();
         patient = PatientContext.getActivePatient();
+        strVFCData = service.getVFCData(patient);
+        datVIS.setVisible(service.isRPMS());
+        lblVIS.setVisible(service.isRPMS());
         loadForm();
     }
     
@@ -206,11 +200,11 @@ public class AddImmunController extends BgoBaseController<Object> {
      * Loads form data from the current Immunization Item
      */
     private void loadForm() {
-        getReasons(refusalReasons);
-        getVacEligibilty(vacElig);
-        getVacSites(vacSites);
-        getReactions(vacReactions);
-        getOverrides(vacOverrides);
+        service.getReasons(refusalReasons);
+        service.getVacEligibilty(vacElig);
+        service.getVacSites(vacSites);
+        service.getReactions(vacReactions);
+        service.getOverrides(vacOverrides);
         updateComboValues();
         
         selPrv = "";
@@ -219,7 +213,7 @@ public class AddImmunController extends BgoBaseController<Object> {
         //datGiven.setDateConstraint(new SimpleDateConstraint(SimpleDateConstraint.NO_NEGATIVE, DateUtil.addDays(patient.getBirthDate(), -1, true), null, BgoConstants.TX_BAD_DATE_DOB));
         datGiven.setDateConstraint(getConstraintDOBDate());
         datEventDate.setConstraint(getConstraintDOBDate());
-        radFacility.setLabel(getParam("Caption-Facility", "&Facility"));
+        radFacility.setLabel(service.getParam("Caption-Facility", "&Facility"));
         if (immunItem != null) {
             
             txtVaccine.setValue(immunItem.getVaccineName());
@@ -254,7 +248,7 @@ public class AddImmunController extends BgoBaseController<Object> {
                     ZKUtil.disableChildren(fraDate, true);
                     ZKUtil.disableChildren(fraHistorical, true);
                 default:
-                    getLot(lotNumbers);
+                    service.getLot(lotNumbers, getVaccineID());
                     loadComboValues(cboLot, lotNumbers, comboRenderer);
                     loadVaccination();
                     txtLocation.setValue(immunItem.isImmunization() ? immunItem.getLocationName() : "");
@@ -276,7 +270,6 @@ public class AddImmunController extends BgoBaseController<Object> {
             IUser user = UserContext.getActiveUser();
             Practitioner provider = new Practitioner();
             provider.setId(user.getLogicalId());
-            ;
             provider.setName(FhirUtil.parseName(user.getFullName()));
             txtProvider.setValue(FhirUtil.formatName(provider.getName()));
             txtProvider.setAttribute("ID", VistAUtil.parseIEN(provider)); //provider.getId().getIdPart());
@@ -285,7 +278,6 @@ public class AddImmunController extends BgoBaseController<Object> {
             location.setName("");
             location.setId("");
             datGiven.setDate(getBroker().getHostTime());
-            
             onClick$btnVaccine(null);
             
             if (txtVaccine.getValue().isEmpty()) {
@@ -321,7 +313,6 @@ public class AddImmunController extends BgoBaseController<Object> {
         }
         btnSave.setLabel(immunItem == null ? "Add" : "Save");
         btnSave.setTooltiptext(immunItem == null ? "Add record" : "Save record");
-        //cboReason.setFocus(true);
         txtVaccine.setFocus(true);
     }
     
@@ -371,10 +362,6 @@ public class AddImmunController extends BgoBaseController<Object> {
         btnSave.invalidate();
     }
     
-    private String getVFCData() {
-        return getBroker().callRPC("BGOVIMM GETVFC", VistAUtil.parseIEN(PatientContext.getActivePatient())); //PatientContext.getActivePatient().getId().getIdPart() );
-    }
-    
     private void setEventType(EventType evType) {
         eventType = evType;
         
@@ -419,69 +406,6 @@ public class AddImmunController extends BgoBaseController<Object> {
         updateDialogTitle();
         winMain.invalidate();
         updateControls();
-    }
-    
-    private void getReasons(List<String> result) {
-        getBroker().callRPCList("BGOREF GETREA", result, "IMMUNIZATION");
-        Collections.sort(result, PLComparator);
-        result.add(0, NONESEL);
-    }
-    
-    private void getReactions(List<String> result) {
-        getBroker().callRPCList("BGOUTL DICLKUP", result, "9002084.8^^^^^^.03=1^^.01");
-        Collections.sort(result, PLComparator);
-        result.add(0, "None");
-    }
-    
-    private void getOverrides(List<String> result) {
-        result.clear();
-        result.add("0^No Override");
-        result.add("1^Invalid - Bad Storage");
-        result.add("2^Invalid - Defective");
-        result.add("3^Invalid - Expired");
-        result.add("4^Invalid - Admin Error");
-        result.add("9^Forced Valid");
-    }
-    
-    private void getLot(List<String> result) {
-        getBroker().callRPCList("BGOVIMM LOT", result, getVaccineID());
-        for (int i = 0; i < result.size(); i++) {
-            String s = result.get(i);
-            String[] pcs = StrUtil.split(s, U, 4);
-            pcs[1] = pcs[1] + (pcs[2].isEmpty() ? "" : "  " + pcs[2]);
-            pcs[1] = pcs[1] + (pcs[3].isEmpty() ? "" : "  (exp " + pcs[3] + ")");
-            result.set(i, VistAUtil.concatParams(pcs[0], pcs[1], pcs[2], pcs[3]));
-        }
-        result.add(0, "(Lot Not Specified)");
-    }
-    
-    private void getVacSites(List<String> result) {
-        result.clear();
-        result.add("Left Thigh IM");
-        result.add("Left Thigh SQ");
-        result.add("Right Thigh IM");
-        result.add("Right Thigh SQ");
-        result.add("Both Thighs IM");
-        result.add("Left Deltoid IM");
-        result.add("Left Arm SQ");
-        result.add("Right Deltoid IM");
-        result.add("Right Arm SQ");
-        result.add("Oral");
-        result.add("Intranasal");
-        result.add("Left Arm Intradermal");
-        result.add("Right Arm Intradermal");
-    }
-    
-    private void getVacEligibilty(List<String> result) {
-        result.clear();
-        getBroker().callRPCList("BGOVIMM2 GETELIG", result, VistAUtil.parseIEN(PatientContext.getActivePatient()));
-        for (int i = 0; i < result.size(); i++) {
-            String s = result.get(i);
-            String[] pcs = StrUtil.split(s, U, 4);
-            result.set(i, pcs[0] + U + pcs[2] + U + pcs[1] + U + pcs[3]);
-        }
-        Collections.sort(result, PLComparator);
-        result.add(0, "(None Selected)");
     }
     
     private String getVaccineID() {
@@ -530,10 +454,8 @@ public class AddImmunController extends BgoBaseController<Object> {
     
     private void loadVaccination() {
         String s = "";
-        vacDefaults.clear();
-        getBroker().callRPCList("BGOVIMM LOADIMM", vacDefaults,
-            VistAUtil.parseIEN(PatientContext.getActivePatient()) + U + getVaccineID());
-            
+        service.getVacDefaults(vacDefaults, patient, getVaccineID());
+        
         if (PCC.errorCheck(vacDefaults)) {
             onClick$btnCancel();
         }
@@ -612,7 +534,7 @@ public class AddImmunController extends BgoBaseController<Object> {
             txtVaccine.setValue(StrUtil.piece(val, StrUtil.U, 2));
             txtVaccine.setAttribute("ID", StrUtil.piece(val, StrUtil.U));
             resetControls();
-            getLot(lotNumbers);
+            service.getLot(lotNumbers, getVaccineID());
             loadComboValues(cboLot, lotNumbers, comboRenderer);
             loadVaccination();
         }
@@ -716,7 +638,7 @@ public class AddImmunController extends BgoBaseController<Object> {
                             return;
                         }
                     } catch (Exception e) {
-                        PromptDialog.showError(e.getMessage());
+                        PromptDialog.showError(e);
                         return;
                     }
                 }
@@ -739,7 +661,7 @@ public class AddImmunController extends BgoBaseController<Object> {
             }
             close(false);
         } catch (Exception e) {
-            PromptDialog.showError(e.getMessage());
+            PromptDialog.showError(e);
             return;
         }
     }
@@ -805,8 +727,9 @@ public class AddImmunController extends BgoBaseController<Object> {
             eventType == EventType.CURRENT && cboLot.getSelectedIndex() > -1 ? cboLot.getSelectedItem().getValue() : "");
         appendData(sb, fraReaction.isVisible() && (cboReaction.getSelectedIndex() > -1)
                 ? cboReaction.getSelectedItem().getValue() : "");
-        appendData(sb, eventType == EventType.CURRENT ? new FMDate(datVIS.getValue()).getFMDate() : "");
-        
+        appendData(sb,
+            eventType == EventType.CURRENT && datVIS.getValue() != null ? new FMDate(datVIS.getValue()).getFMDate() : "");
+            
         appendData(sb, fraReaction.isVisible() && (cboOverride.getSelectedIndex() > -1)
                 ? cboOverride.getSelectedItem().getValue() : "");
         appendData(sb,
@@ -902,12 +825,6 @@ public class AddImmunController extends BgoBaseController<Object> {
         return true;
     }
     
-    private String getParam(String param, String def) {
-        String s = getBroker().callRPC("BGOUTL GETPARM", param);
-        s = StringUtils.isEmpty(s) ? def : s;
-        return s.replace("&", "");
-    }
-    
     private void updateDialogTitle() {
         String l = immunItem == null ? "Add" : "Edit";
         String m = radHistorical.isChecked() ? "Historical" : "";
@@ -932,18 +849,7 @@ public class AddImmunController extends BgoBaseController<Object> {
         updateControls();
     }
     
-    /*    public void onChange$datGiven(Event event) {
-    	//Patient patient = PatientContext.getActivePatient();
-    	Date d = datGiven.getDate();
-    	if (d == null) {
-    		return;
-    	}
-    	Date bd = patient.getBirthDate();
-    	int diff = d.compareTo(patient.getBirthDate());
-    	
-    	if (diff < 0) {
-    		PromptDialog.showError(BgoConstants.TX_BAD_DATE_DOB, BgoConstants.TC_BAD_DATE_DOB);
-    		datGiven.setDate(getBroker().getHostTime());
-    	}
-    }*/
+    public void setService(ImmunService service) {
+        this.service = service;
+    }
 }

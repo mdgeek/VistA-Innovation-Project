@@ -82,7 +82,7 @@
 							step="0.05" constraint="min 0 max 5" />
 						<div>(ml)</div>
 
-						<div style="text-align:right" width="100px">
+						<div id="lblVIS" style="text-align:right" width="100px">
 							Vac. Info. Sheet
 						</div>
 						<datebox id="datVIS" hflex="1"
