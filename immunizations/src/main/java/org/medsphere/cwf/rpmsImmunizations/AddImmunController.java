@@ -166,7 +166,7 @@ public class AddImmunController extends BgoBaseController<Object> {
     
     private ImmunService service;
     
-    private final ComboitemRenderer<String> comboRenderer = new ImmunComboRenderer();
+    private static final ComboitemRenderer<String> comboRenderer = new ImmunComboRenderer();
     
     //private final static Set<EncounterFlag> EF = EncounterFlag.flags(EncounterFlag.NOT_LOCKED, EncounterFlag.VALIDATE_ONLY);
     
@@ -442,7 +442,6 @@ public class AddImmunController extends BgoBaseController<Object> {
     private void loadComboValues(Combobox cbo, List<String> lst, ComboitemRenderer<?> renderer) {
         cbo.setItemRenderer(renderer);
         cbo.setModel(new ListModelList<String>(lst));
-        ;
         Events.sendEvent(cbo, new Event("onInitRender", cbo, "0"));
     }
     

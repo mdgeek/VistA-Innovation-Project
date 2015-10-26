@@ -18,13 +18,16 @@ import ca.uhn.fhir.model.dstu2.resource.Patient;
 
 public class ImmunService {
     
+    /**
+     * Case insensitive comparison on second piece.
+     */
     private static final Comparator<String> PLComparator = new Comparator<String>() {
         
         @Override
         public int compare(String itm1, String itm2) {
             String str1 = StrUtil.piece(itm1, U, 2);
             String str2 = StrUtil.piece(itm2, U, 2);
-            return str1.toString().compareToIgnoreCase(str2.toString());
+            return str1.compareToIgnoreCase(str2);
         }
     };
     
@@ -63,9 +66,7 @@ public class ImmunService {
     }
     
     public List<String> getContra(List<String> result) {
-        result = broker.callRPCList("BGOVIMM GETCONT", result);
-        Collections.sort(result, PLComparator);
-        return result;
+        return sort(broker.callRPCList("BGOVIMM GETCONT", result));
     }
     
     public String setContra(String data) {
@@ -89,14 +90,12 @@ public class ImmunService {
     }
     
     public List<String> getReasons(List<String> result) {
-        result = broker.callRPCList("BGOREF GETREA", result, "IMMUNIZATION");
-        Collections.sort(result, PLComparator);
-        return result;
+        return sort(broker.callRPCList("BGOREF GETREA", result, "IMMUNIZATION"));
     }
     
     public List<String> getReactions(List<String> result) {
         result = broker.callRPCList("BGOUTL DICLKUP", result, "9002084.8^^^^^^.03=1^^.01");
-        Collections.sort(result, PLComparator);
+        sort(result);
         result.add(0, "None");
         return result;
     }
@@ -140,21 +139,7 @@ public class ImmunService {
     }
     
     public List<String> getVacSites(List<String> result) {
-        result = init(result);
-        result.add("Left Thigh IM");
-        result.add("Left Thigh SQ");
-        result.add("Right Thigh IM");
-        result.add("Right Thigh SQ");
-        result.add("Both Thighs IM");
-        result.add("Left Deltoid IM");
-        result.add("Left Arm SQ");
-        result.add("Right Deltoid IM");
-        result.add("Right Arm SQ");
-        result.add("Oral");
-        result.add("Intranasal");
-        result.add("Left Arm Intradermal");
-        result.add("Right Arm Intradermal");
-        return result;
+        return sort(broker.callRPCList("BGOVIMM GETSITES", result));
     }
     
     public List<String> getVacDefaults(List<String> result, Patient patient, String vaccineId) {
@@ -169,12 +154,23 @@ public class ImmunService {
             String[] pcs = StrUtil.split(s, U, 4);
             result.set(i, pcs[0] + U + pcs[2] + U + pcs[1] + U + pcs[3]);
         }
-        Collections.sort(result, PLComparator);
+        sort(result);
         result.add(0, "(None Selected)");
         return result;
     }
     
     public void setBrokerSession(BrokerSession broker) {
         this.broker = broker;
+    }
+    
+    /**
+     * Sorts a list on second piece.
+     * 
+     * @param result List to sort.
+     * @return Same as result.
+     */
+    private List<String> sort(List<String> result) {
+        Collections.sort(result, PLComparator);
+        return result;
     }
 }

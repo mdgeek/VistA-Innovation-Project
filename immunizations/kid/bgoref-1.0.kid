@@ -1,4 +1,4 @@
-KIDS Distribution saved on Oct 22, 2015@00:07:51
+KIDS Distribution saved on Oct 22, 2015@10:56:11
 PATIENT REFUSALS 1.0
 **KIDS**:PATIENT REFUSALS 1.0^
 
@@ -27,7 +27,7 @@ y^y^f^^n^^y^o^n
 "BLD",8519,4,"B",9999999.73,9999999.73)
 
 "BLD",8519,6.3)
-8
+9
 "BLD",8519,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8519,"KRN",.4,0)
@@ -513,7 +513,7 @@ D XPZ2^XPDIQ
 "RTN","BGOREF",1,0)
 BGOREF ; IHS/BAO/TMD - Manage REFUSALS ;03-Sep-2015 14:58;DKM
 "RTN","BGOREF",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,5,11,13**;Mar 20, 2007;Build 8
+ ;;1.1;BGO COMPONENTS;**1,3,5,11,13**;Mar 20, 2007;Build 9
 "RTN","BGOREF",3,0)
  ; Add/edit a refusal
 "RTN","BGOREF",4,0)
