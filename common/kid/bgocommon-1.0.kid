@@ -1,11 +1,11 @@
-KIDS Distribution saved on Oct 22, 2015@10:56:11
+KIDS Distribution saved on Oct 27, 2015@20:10:21
 BGO COMMON 1.0
 **KIDS**:BGO COMMON 1.0^
 
 **INSTALL NAME**
 BGO COMMON 1.0
 "BLD",8514,0)
-BGO COMMON 1.0^^0^3151022^n
+BGO COMMON 1.0^^0^3151027^n
 "BLD",8514,4,0)
 ^9.64PA^9999999.27^1
 "BLD",8514,4,9999999.27,0)
@@ -15,7 +15,7 @@ y^y^f^^^^n
 "BLD",8514,4,"B",9999999.27,9999999.27)
 
 "BLD",8514,6.3)
-23
+25
 "BLD",8514,"KRN",0)
 ^9.67PA^9002226^21
 "BLD",8514,"KRN",.4,0)
@@ -2301,7 +2301,7 @@ D XPZ2^XPDIQ
 "RTN","AUPNSICD",1,0)
 AUPNSICD ; IHS/CMI/LAB - Screen Purpose of Visit/ICD9 codes 24-MAY-1993 ;13-Jul-2015 15:20;DKM
 "RTN","AUPNSICD",2,0)
- ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 23
+ ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 25
 "RTN","AUPNSICD",3,0)
  ;IHS/TUCSON/LAB - added checks for filegram and CHS, do not
 "RTN","AUPNSICD",4,0)
@@ -2971,7 +2971,7 @@ CHKRFB30 ;coding system 30 - ICD10
 "RTN","AUPNSICH",1,0)
 AUPNSICH ; IHS/CMI/LAB - Screen Purpose of Visit/ICD9 codes 24-MAY-1993 ; 
 "RTN","AUPNSICH",2,0)
- ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 23
+ ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 25
 "RTN","AUPNSICH",3,0)
  ;IHS/TUCSON/LAB - added checks for filegram and CHS, do not
 "RTN","AUPNSICH",4,0)
@@ -3585,7 +3585,7 @@ HELPLEX ;EP
 "RTN","AUPNVUTL",1,0)
 AUPNVUTL ; IHS/CMI/LAB - AUPN UTILITIES ; 
 "RTN","AUPNVUTL",2,0)
- ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 23
+ ;;2.0;IHS PCC SUITE;**2,10**;MAY 14, 2009;Build 25
 "RTN","AUPNVUTL",3,0)
 SNOMED(N) ;PEP - called from various dds provider narrative
 "RTN","AUPNVUTL",4,0)
@@ -3847,7 +3847,7 @@ REFR(%) ;PEP - REFUSAL REASON TEXT FORM
 "RTN","BGOUTL",1,0)
 BGOUTL ; IHS/BAO/TMD - Utilities ;12-Jul-2015 21:49;DKM
 "RTN","BGOUTL",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,4,5,6,13**;Mar 20, 2007;Build 23
+ ;;1.1;BGO COMPONENTS;**1,3,4,5,6,13**;Mar 20, 2007;Build 25
 "RTN","BGOUTL",3,0)
  ; Compute patient's age
 "RTN","BGOUTL",4,0)
@@ -4707,7 +4707,7 @@ XSCRN(IEN,SCRN) ;EP
 "RTN","BGOUTL2",1,0)
 BGOUTL2 ; IHS/BAO/TMD - Utilities (continued)  ;18-Jul-2015 08:52;DKM
 "RTN","BGOUTL2",2,0)
- ;;1.1;BGO COMPONENTS;**1,3,5,6,10,11,12,13**;Mar 20, 2007;Build 23
+ ;;1.1;BGO COMPONENTS;**1,3,5,6,10,11,12,13**;Mar 20, 2007;Build 25
 "RTN","BGOUTL2",3,0)
  ; Add refusals to output stream
 "RTN","BGOUTL2",4,0)
@@ -5307,7 +5307,7 @@ SNMDCONC(RET,CONCID) ; EP
 "RTN","BGOUTL3",1,0)
 BGOUTL3 ; IHS/BAO/TMD - Utilities (continued)  ;11-Jul-2013 13:22;du
 "RTN","BGOUTL3",2,0)
- ;;1.1;BGO COMPONENTS;**11,13**;Mar 20, 2007;Build 23
+ ;;1.1;BGO COMPONENTS;**11,13**;Mar 20, 2007;Build 25
 "RTN","BGOUTL3",3,0)
 GETSET(RET,BGOFILE,BGOFLD,BGOCHK) ;gets set of codes
 "RTN","BGOUTL3",4,0)
@@ -5389,7 +5389,7 @@ EXAM ;Check exam codes
 "RTN","BGOUTL4",1,0)
 BGOUTL4 ; IHS/RI/DKM Bridge utilities;18-Jul-2015 08:52;DKM
 "RTN","BGOUTL4",2,0)
- ;;1.1;BGO COMPONENTS;;;Build 23
+ ;;1.1;BGO COMPONENTS;;;Build 25
 "RTN","BGOUTL4",3,0)
 HASKEY(KEY,USR) ;
 "RTN","BGOUTL4",4,0)
