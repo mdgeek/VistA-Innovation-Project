@@ -82,7 +82,7 @@ public class AddComplaintController extends BgoBaseController<Object> {
     
     private final static Set<EncounterFlag> EF1 = EncounterFlag.flags(EncounterFlag.NOT_LOCKED, EncounterFlag.VALIDATE_ONLY,
         EncounterFlag.FORCE);
-    
+        
     private final List<String> header = new ArrayList<String>();
     
     private final List<String> complaints = new ArrayList<String>();
@@ -160,7 +160,8 @@ public class AddComplaintController extends BgoBaseController<Object> {
             try {
                 String result = "";
                 String ccIEN = complaint != null ? complaint.getId().getIdPart() : "";
-                result = getBroker().callRPC("BGOCC SET", visitIEN + U + ccIEN + U + txtComplaint.getText());
+                result = getBroker().callRPC("BGOCC SET",
+                    visitIEN + U + ccIEN + U + txtComplaint.getText().replace('\10', '\13'));
                 PCC.errorCheck(result);
                 close(false);
             } catch (Exception e) {
