@@ -320,8 +320,7 @@ public class GoalService extends AbstractBrokerQueryService<Goal> {
         addPiece(sb, step.getFollowupDate());
         addPiece(sb, step.getProviderIEN());
         addPiece(sb, step.getName());
-        String result = service.callRPC("BEHOPGAP ADDSTEP", step.getGoal().getIEN(),
-            Collections.singletonList(sb.toString()));
+        String result = service.callRPC("BEHOPGAP ADDSTEP", step.getGoal().getIEN(), sb.toString());
         step.setIEN(checkResult(result));
         step.setNumber(number);
         step.setCreatedDate(FMDate.today());

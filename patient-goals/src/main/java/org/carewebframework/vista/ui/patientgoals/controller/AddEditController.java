@@ -312,7 +312,7 @@ public class AddEditController extends FrameworkController {
     }
     
     /**
-     * Updates the goal/stop from input elements.
+     * Updates the goal/step from input elements.
      */
     private void populateGoalBase() {
         if (!isStep && changeSet.contains(txtNote)) {
