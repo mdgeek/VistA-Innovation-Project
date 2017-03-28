@@ -9,7 +9,7 @@
 
 	<beans profile="root">
 
-		<cwp:plugin url="~./org/carewebframework/vista/ui/patientgoals/goals.zul" id="vistaPatientGoals"
+		<cwp:plugin url="~./org/carewebframework/vista/plugin/patientgoals/goals.zul" id="vistaPatientGoals"
 			name="Patient Goals">
 			<cwp:serialization>
 				<cwp:property id="deferredFetch" type="boolean" getter="isDeferredFetch"
@@ -29,32 +29,32 @@
 	<beans profile="desktop">
 
 		<bean id="vistaPatientGoalsGoalService" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.service.GoalService">
+			class="org.carewebframework.vista.plugin.patientgoals.service.GoalService">
 			<constructor-arg ref="brokerSession" />
 		</bean>
 
 		<bean id="vistaPatientGoalsGoalController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.GoalController">
+			class="org.carewebframework.vista.plugin.patientgoals.controller.GoalController">
 			<constructor-arg ref="vistaPatientGoalsGoalService" />
 			<property name="rowRenderer">
-				<bean class="org.carewebframework.vista.ui.patientgoals.view.GoalRenderer" />
+				<bean class="org.carewebframework.vista.plugin.patientgoals.view.GoalRenderer" />
 			</property>
 		</bean>
 
 		<bean id="vistaPatientGoalsStepController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.StepController">
+			class="org.carewebframework.vista.plugin.patientgoals.controller.StepController">
 			<property name="rowRenderer">
-				<bean class="org.carewebframework.vista.ui.patientgoals.view.StepRenderer" />
+				<bean class="org.carewebframework.vista.plugin.patientgoals.view.StepRenderer" />
 			</property>
 		</bean>
 		
 		<bean id="vistaPatientGoalsAddEditController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.AddEditController">
+			class="org.carewebframework.vista.plugin.patientgoals.controller.AddEditController">
 			<constructor-arg ref="vistaPatientGoalsGoalService" />
 		</bean>
 
 		<bean id="vistaPatientGoalsDeleteController" scope="prototype"
-			class="org.carewebframework.vista.ui.patientgoals.controller.DeleteController">
+			class="org.carewebframework.vista.plugin.patientgoals.controller.DeleteController">
 			<constructor-arg ref="vistaPatientGoalsGoalService" />
 		</bean>
 

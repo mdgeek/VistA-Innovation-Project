@@ -10,7 +10,7 @@
 	<beans profile="root">
 
 		<cwp:plugin id="vistaCIRTool" name="Clinical Information Reconciliation Tool"
-			url="~./org/carewebframework/vista/ui/cirtool/main.zul">
+			url="~./org/carewebframework/vista/plugin/cirtool/main.zul">
 			<cwp:serialization>
 			</cwp:serialization>
 			<cwp:resource>
@@ -23,7 +23,7 @@
 	<beans profile="desktop">
 
 		<bean name="vistaCIRToolController"
-			class="org.carewebframework.vista.ui.cirtool.MainController" scope="prototype" />
+			class="org.carewebframework.vista.plugin.cirtool.MainController" scope="prototype" />
 
 	</beans>
 </beans>

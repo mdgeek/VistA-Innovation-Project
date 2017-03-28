@@ -10,12 +10,12 @@
 	<beans profile="root">
 
 		<cwp:plugin id="vistaFamilyHistory" name="Family History"
-			url="~./org/carewebframework/vista/ui/familyhistory/member.zul">
+			url="~./org/carewebframework/vista/plugin/familyhistory/member.zul">
 			<cwp:serialization>
 			</cwp:serialization>
 			<cwp:resource>
 				<cwp:help-resource module="vistaFamilyHistoryHelp" />
-				<cwp:css-resource url="~./org/carewebframework/vista/ui/familyhistory/familyhistory.css?1.3" />
+				<cwp:css-resource url="~./org/carewebframework/vista/plugin/familyhistory/familyhistory.css?1.3" />
 			</cwp:resource>
 		</cwp:plugin>
 
@@ -24,32 +24,32 @@
 	<beans profile="desktop">
 
 		<bean id="vistaFamilyHistoryService" lazy-init="true"
-			class="org.carewebframework.vista.ui.familyhistory.service.FamilyHistoryService">
+			class="org.carewebframework.vista.plugin.familyhistory.service.FamilyHistoryService">
 			<constructor-arg ref="brokerSession" />
 		</bean>
 
 		<bean name="vistaFamilyHistoryMemberController" scope="prototype"
-			class="org.carewebframework.vista.ui.familyhistory.controller.MemberController">
+			class="org.carewebframework.vista.plugin.familyhistory.controller.MemberController">
 			<constructor-arg ref="vistaFamilyHistoryService" />
 			<property name="rowRenderer">
-				<bean class="org.carewebframework.vista.ui.familyhistory.view.MemberRenderer" />
+				<bean class="org.carewebframework.vista.plugin.familyhistory.view.MemberRenderer" />
 			</property>
 		</bean>
 
 		<bean name="vistaFamilyHistoryConditionController" scope="prototype"
-			class="org.carewebframework.vista.ui.familyhistory.controller.ConditionController">
+			class="org.carewebframework.vista.plugin.familyhistory.controller.ConditionController">
 			<property name="rowRenderer">
-				<bean class="org.carewebframework.vista.ui.familyhistory.view.ConditionRenderer" />
+				<bean class="org.carewebframework.vista.plugin.familyhistory.view.ConditionRenderer" />
 			</property>
 		</bean>
 		
 		<bean name="vistaFamilyHistoryAddEditMemberController" scope="prototype" 
-			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditMemberController">
+			class="org.carewebframework.vista.plugin.familyhistory.controller.AddEditMemberController">
 			<constructor-arg ref="vistaFamilyHistoryService" />
 		</bean>
 
 		<bean name="vistaFamilyHistoryAddEditConditionController" scope="prototype" 
-			class="org.carewebframework.vista.ui.familyhistory.controller.AddEditConditionController">
+			class="org.carewebframework.vista.plugin.familyhistory.controller.AddEditConditionController">
 			<constructor-arg ref="vistaFamilyHistoryService" />
 		</bean>
 	

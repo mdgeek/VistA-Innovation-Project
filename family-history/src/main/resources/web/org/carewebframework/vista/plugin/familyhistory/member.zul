@@ -1,0 +1,66 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<panel id="root" height="100%" width="100%"
+		sclass="vistaFamilyHistory"
+		apply="${vistaFamilyHistoryMemberController}">
+		<toolbar id="toolbar" sclass="alert-info">
+			<labeledelement position="right" align="center"
+				label="${labels.vistaFamilyHistory.member.title}"
+				labelStyle="font-size:1.5em;font-weight:bold;">
+				<image id="imgMain" height="32px"
+					style="padding: 0 5px 0 5px;"
+					src="~./org/carewebframework/vista/plugin/familyhistory/familyhistory.png" />
+			</labeledelement>
+			<div style="float:right;margin-top:5px">
+				<a id="btnNewMember"
+					label="${labels.vistaFamilyHistory.member.toolbar.new_member.label}"
+					sclass="vistaFamilyHistory-bold" forward="root.onAddMember" />
+				<separator bar="true" orient="vertical" />
+				<a id="btnExpandAll"
+					label="${labels.vistaFamilyHistory.member.toolbar.expand_all.label}"
+					sclass="vistaFamilyHistory-bold" />
+				<space width="10px" />
+				<a id="btnCollapseAll"
+					label="${labels.vistaFamilyHistory.member.toolbar.collapse_all.label}"
+					sclass="vistaFamilyHistory-bold" />
+				<space width="10px" />
+			</div>
+		</toolbar>
+		<panelchildren>
+			<div height="100%" width="100%">
+				<label id="lblMessage" visible="false" />
+				<grid id="grid" vflex="1" oddRowSclass="none"
+					sclass="vistaFamilyHistory-grid cwf-grid-nohover">
+					<columns>
+						<column width="30px" />
+						<column align="center" width="50px"
+							label="${labels.vistaFamilyHistory.member.column.review.label}" />
+						<column align="center" width="50px"
+							label="${labels.vistaFamilyHistory.member.column.new_condition.label}" />
+						<column align="center" id="relationship"
+							label="${labels.vistaFamilyHistory.member.column.relation.label}" />
+						<column align="center" id="name"
+							label="${labels.vistaFamilyHistory.member.column.name.label}" />
+						<column align="center" id="status"
+							label="${labels.vistaFamilyHistory.member.column.status.label}" />
+						<column align="center" id="ageAtDeath"
+							label="${labels.vistaFamilyHistory.member.column.age_at_death.label}" />
+						<column align="center" id="causeOfDeath"
+							label="${labels.vistaFamilyHistory.member.column.cause_of_death.label}" />
+						<column align="center" id="multipleBirth"
+							label="${labels.vistaFamilyHistory.member.column.multiple_birth.label}" />
+						<column align="center" id="multipleBirthType"
+							label="${labels.vistaFamilyHistory.member.column.multiple_birth_type.label}" />
+						<column visible="false">
+							<custom-attributes getter="getIEN"
+								natural="ascending" />
+						</column>
+					</columns>
+					<rows />
+				</grid>
+			</div>
+		</panelchildren>
+	</panel>
+</zk>

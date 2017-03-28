@@ -3,11 +3,11 @@
 	
 	<parent>
 		<groupId>org.carewebframework</groupId>
-		<artifactId>org.carewebframework.vista.ui-parent</artifactId>
-		<version>1.1.1-SNAPSHOT</version>
+		<artifactId>org.carewebframework.vista.plugin-parent</artifactId>
+		<version>1.2.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>org.carewebframework.vista.ui.patientgoals</artifactId>
+	<artifactId>org.carewebframework.vista.plugin.patientgoals</artifactId>
 	<name>VistA Patient Goals Plugin</name>
 	
 	<properties>
@@ -27,9 +27,9 @@
 			<artifactId>org.carewebframework.vista.ui.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.carewebframework</groupId>
-			<artifactId>org.carewebframework.cal.ui.reporting</artifactId>
-			<version>${org.carewebframework.cal.version}</version>
+			<groupId>org.hspconsortium.carewebframework</groupId>
+			<artifactId>cwf-ui-reporting</artifactId>
+			<version>${org.hspconsortium.carewebframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
